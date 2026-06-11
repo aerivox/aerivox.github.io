@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vigil — archivio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f3f5;
+  --ink: #15171c;
+  --muted: #5b5f6a;
+  --rule: #c7cad2;
+  --accent: #8c2332;
+  --serif: "STIX Two Text", Georgia, serif;
+  --display: "Instrument Serif", Georgia, serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--serif); font-size: 1.0625rem; line-height: 1.6;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.masthead { padding: 3.5rem 0 1.75rem; border-bottom: 2px solid var(--ink); animation: rise .7s .05s both; }
+.kicker {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin: 0 0 .9rem;
+}
+.masthead h1 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.05; margin: 0;
+}
+.archive { list-style: none; margin: 2rem 0 0; padding: 0; animation: rise .7s .2s both; }
+.archive li { border-top: 1px solid var(--rule); }
+.archive li:last-child { border-bottom: 1px solid var(--rule); }
+.archive a {
+  display: flex; flex-direction: column; gap: .25rem;
+  padding: 1.1rem 0; text-decoration: none; color: inherit;
+  transition: padding-left .18s ease, color .18s ease;
+}
+.archive a:hover { padding-left: .6rem; color: var(--accent); }
+.archive .d {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.archive a:hover .d { color: var(--accent); }
+.archive .t { font-family: var(--display); font-size: 1.5rem; }
+.colophon {
+  border-top: 2px solid var(--ink); margin-top: 3rem; padding: 1.4rem 0 3.5rem;
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">vigil · consolidamento notturno</p>
+    <h1>archivio</h1>
+  </div>
+</header>
+<main class="wrap">
+  <ul class="archive">
+      <li><a href="2026-06-11.html"><span class="d">giovedì 11 giugno 2026</span><span class="t">Malformazioni congenite esterne · Patologie delle vie ottiche</span></a></li>
+  </ul>
+</main>
+<footer class="colophon">
+  <div class="wrap">consolidamento notturno · generato da vigil</div>
+</footer>
+</body>
+</html>
