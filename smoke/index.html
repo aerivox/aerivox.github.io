@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>smoke test</title>
+  <style>
+    body { font-family: monospace; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { text-align: left; padding: 0.4rem 0.8rem; border: 1px solid #ccc; }
+    th { background: #f4f4f4; }
+    .pass { color: #2a7a2a; }
+    .fail { color: #c0392b; }
+  </style>
+</head>
+<body>
+  <h1>smoke test</h1>
+  <p>Run timestamp (UTC): <strong>Thu Jun 11 14:43:30 UTC 2026</strong></p>
+  <table>
+    <thead>
+      <tr><th>Check</th><th>Result</th><th>Detail</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SOURCES</td>
+        <td class="pass">PASS</td>
+        <td>grimoire at /home/user/grimoire; aerivox.github.io at /home/user/aerivox.github.io</td>
+      </tr>
+      <tr>
+        <td>PRIVATE-READ</td>
+        <td class="pass">PASS</td>
+        <td>First non-empty line of projects/agon/instructions.md: ---</td>
+      </tr>
+      <tr>
+        <td>NETWORK</td>
+        <td class="pass">PASS</td>
+        <td>sheets.googleapis.com returned HTTP 404 (reachable)</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
