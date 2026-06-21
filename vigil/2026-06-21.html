@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vigil · 21 giugno 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f3f5;
+  --ink: #15171c;
+  --muted: #5b5f6a;
+  --rule: #c7cad2;
+  --accent: #8c2332;
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --ok: #1e6b4e;
+  --ok-soft: color-mix(in srgb, var(--ok) 9%, transparent);
+  --serif: "STIX Two Text", Georgia, serif;
+  --display: "Instrument Serif", Georgia, serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.masthead          { animation: rise .7s .05s both; }
+.scorerail         { animation: rise .7s .15s both; }
+main > section:nth-of-type(1) { animation: rise .7s .25s both; }
+main > section:nth-of-type(2) { animation: rise .7s .35s both; }
+main > section:nth-of-type(3) { animation: rise .7s .45s both; }
+main > section:nth-of-type(n+4) { animation: rise .7s .55s both; }
+@media (prefers-reduced-motion: reduce) {
+  .masthead, .scorerail, main > section { animation: none; }
+  .rationale { transition: none; }
+}
+
+.masthead { padding: 3.5rem 0 1.75rem; border-bottom: 2px solid var(--ink); }
+.kicker {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--accent);
+  margin: 0 0 .9rem;
+}
+.masthead h1 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.05; margin: 0 0 1.5rem;
+}
+.topics { list-style: none; margin: 0; padding: 0; }
+.topics li {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: .55rem 0;
+}
+.topics .mod {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  flex: 0 0 11.5rem;
+}
+.topics .name { font-size: 1.15rem; }
+.topics a { color: inherit; text-decoration: none; }
+.topics a:hover { color: var(--accent); }
+
+.spark { margin-top: 2.2rem; max-width: 36em; }
+.spark::before {
+  content: "⁂"; display: block;
+  color: var(--accent); font-size: .95rem; margin-bottom: 1rem;
+}
+.spark p {
+  font-size: 1.15rem; line-height: 1.6;
+  margin: 0 0 1rem;
+}
+.spark p:last-child { margin-bottom: 0; }
+
+.scorerail {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.scorerail .wrap {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: .6rem; padding-bottom: .6rem;
+}
+.scorerail button {
+  font: inherit; color: var(--muted); background: none; border: none;
+  padding: 0; cursor: pointer; text-decoration: underline;
+  text-underline-offset: 3px; letter-spacing: inherit; text-transform: inherit;
+}
+.scorerail button:hover { color: var(--accent); }
+
+.topic-section { padding: 3rem 0 1rem; }
+.topic-head { position: relative; margin-bottom: 2rem; }
+.topic-num {
+  position: absolute; right: 0; top: -1.4rem; z-index: 0;
+  font-family: var(--display); font-size: 7rem; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px var(--rule);
+  user-select: none; pointer-events: none;
+}
+.topic-head .mod {
+  position: relative; z-index: 1;
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  margin: 0 0 .3rem;
+}
+.topic-head h2 {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0;
+}
+
+.q { border-top: 1px solid var(--rule); padding: 1.6rem 0 2.2rem; }
+.q-tag {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .18em; color: var(--accent); margin: 0 0 .6rem;
+}
+.q-text { font-size: 1.125rem; font-weight: 600; margin: 0 0 1.1rem; }
+.opts { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.opts button {
+  display: flex; align-items: baseline; gap: .85rem; width: 100%;
+  font-family: var(--serif); font-size: 1rem; line-height: 1.45;
+  text-align: left; color: var(--ink);
+  background: transparent; border: 1px solid var(--rule);
+  padding: .7rem .9rem; cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .78rem; font-weight: 500;
+  color: var(--accent); flex: 0 0 1.1rem;
+}
+.opts:not(.locked) button:hover {
+  transform: translateX(5px); border-color: var(--ink);
+}
+.opts.locked button { cursor: default; }
+.opts.locked button:not(.chosen):not(.is-correct) { opacity: .45; }
+.opts button.chosen.ko { border-color: var(--accent); background: var(--accent-soft); }
+.opts button.is-correct.revealed { border-color: var(--ok); background: var(--ok-soft); }
+.opts button.chosen.ko .key,
+.opts button.is-correct.revealed .key { font-size: 0; }
+.opts button.chosen.ko .key::after { content: "✕"; font-size: .85rem; color: var(--accent); }
+.opts button.is-correct.revealed .key::after { content: "✓"; font-size: .85rem; color: var(--ok); }
+
+.rationale {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease;
+}
+.rationale.open { grid-template-rows: 1fr; }
+.rationale > div { overflow: hidden; }
+.rationale p {
+  margin: 1.1rem 0 0; padding: .2rem 0 .2rem 1rem;
+  border-left: 2px solid var(--accent); color: var(--ink); font-size: .98rem;
+}
+
+.boards { padding: 3rem 0; }
+.boards > h2 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0 0 2rem;
+  padding-top: 1.6rem; border-top: 2px solid var(--ink);
+}
+.case { margin-bottom: 3rem; }
+.vignette { font-size: 1.1rem; margin: 0 0 1.4rem; }
+.stage { border-top: 1px solid var(--rule); }
+.stage:last-of-type { border-bottom: 1px solid var(--rule); }
+.stage summary {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .75rem .2rem; cursor: pointer; list-style: none;
+  font-weight: 600; transition: background .18s ease;
+}
+.stage summary::-webkit-details-marker { display: none; }
+.stage summary:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.stage-key {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  color: var(--accent); border: 1px solid var(--accent);
+  min-width: 1.7rem; text-align: center; padding: .15rem .3rem;
+}
+.stage summary::after {
+  content: "+"; margin-left: auto; font-family: var(--mono);
+  color: var(--muted); transition: transform .25s ease;
+}
+.stage[open] summary::after { transform: rotate(45deg); }
+.stage-body { padding: .3rem .2rem 1.3rem; animation: rise .4s ease both; }
+.stage-body p { margin: .6rem 0; }
+.refs { font-family: var(--mono); font-size: .8rem; }
+.refs a { color: var(--accent); text-underline-offset: 3px; }
+.rationale p.refs {
+  margin-top: .4rem; font-size: .8rem;
+  border-left-color: transparent; color: var(--muted);
+}
+
+.colophon {
+  border-top: 2px solid var(--ink); margin-top: 2rem;
+  padding: 1.4rem 0 3.5rem;
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.colophon .wrap {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.colophon a { color: inherit; text-underline-offset: 3px; }
+.colophon a:hover { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .topics .mod { flex-basis: 7.5rem; }
+  .topic-num { font-size: 4.5rem; top: -.8rem; }
+}
+</style>
+</head>
+<body data-date="2026-06-21">
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">vigil · consolidamento notturno</p>
+    <h1>domenica 21 giugno 2026</h1>
+    <ul class="topics">
+      <li><span class="mod">Dermatologia</span><span class="name"><a href="#t1">Infezioni cutanee batteriche</a></span></li>
+    </ul>
+    <div class="spark">
+      <p>Le piodermiti hanno un padre, e si chiama Jean-Alfred Fournier. Parigi, fine Ottocento: è l'uomo che nel 1883 descrive la fascite necrotizzante dello scroto che ancora porta il suo nome, la gangrena che divora i tessuti molli in poche ore mentre la pelle in superficie sembra quasi tranquilla. Fournier insegnava che la sifilide e le infezioni cutanee andavano lette sul corpo come si legge un testo, lesione per lesione, e formò una generazione di dermatologi a guardare prima di nominare. È la lezione che ti serve oggi: tra un'impetigine che si gratta via e una fascite che corre sotto il derma c'è un abisso, e a volte li separa solo un dolore sproporzionato a ciò che l'occhio vede. Quanto ti fidi di una pelle che sembra calma?</p>
+    </div>
+  </div>
+</header>
+
+<div class="scorerail">
+  <div class="wrap">
+    <span id="rail-progress">risposte 0/18</span>
+    <span id="rail-score">corrette 0</span>
+    <button id="rail-reset" type="button">azzera</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="topic-section" id="t1">
+    <header class="topic-head">
+      <span class="topic-num" aria-hidden="true">01</span>
+      <p class="mod">Dermatologia</p>
+      <h2>Infezioni cutanee batteriche</h2>
+    </header>
+
+    <article class="q" data-q="q01">
+      <p class="q-tag">Q01</p>
+      <p class="q-text">Nelle forme classiche di impetigine non bollosa, qual è l'agente eziologico più frequentemente responsabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Stafilococco aureo del gruppo fagico secondo</button></li>
+        <li><button type="button"><span class="key">B</span>Pseudomonas aeruginosa</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Streptococco beta-emolitico di gruppo A</button></li>
+        <li><button type="button"><span class="key">D</span>Corynebacterium minutissimum</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le forme classiche di impetigine sono sostenute prevalentemente dallo streptococco beta-emolitico di gruppo A, che colonizza faringe e mucosa nasale dieci giorni prima delle lesioni cutanee. Lo stafilococco aureo, in particolare il gruppo fagico secondo produttore di tossina esfoliativa, è invece responsabile della variante bollosa. Il discriminatore è la distinzione classica contro bollosa, non l'attribuzione generica a un piogeno.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q02">
+      <p class="q-tag">Q02</p>
+      <p class="q-text">Quali strati cutanei sono interessati dall'erisipela?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Derma e ipoderma, con i vasi linfatici</button></li>
+        <li><button type="button"><span class="key">B</span>Epidermide al di sotto dello strato corneo</button></li>
+        <li><button type="button"><span class="key">C</span>Ostio del follicolo pilosebaceo</button></li>
+        <li><button type="button"><span class="key">D</span>Fasce muscolari e tessuto molle sottocutaneo profondo</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'erisipela è una forma di cellulite che interessa derma e ipoderma con coinvolgimento dei vasi linfatici, da cui linfangite e linfoadenopatia; clinicamente dà una placca eritematosa a margini netti, a scalino, con aspetto a buccia d'arancia. La sede superficiale intraepidermica appartiene all'impetigine, l'ostio follicolare alla follicolite, le fasce e il muscolo alla fascite necrotizzante. Il discriminatore è la profondità dermo-ipodermica unita al tropismo linfatico.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q03">
+      <p class="q-tag">Q03</p>
+      <p class="q-text">Qual è la caratteristica che distingue l'ectima dall'impetigine?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Lesione intraepidermica che guarisce senza alcuna cicatrice</button></li>
+        <li><button type="button"><span class="key">B</span>Bolle flaccide confluenti su cute non eritematosa</button></li>
+        <li><button type="button"><span class="key">C</span>Pustole giallastre centrate da un pelo</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Ulcera a stampino con esito cicatriziale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nell'ectima la perdita di sostanza raggiunge tutta l'epidermide e il derma superficiale, generando un'ulcera rotonda ben circoscritta a stampino, con bordo violaceo rialzato e crosta bruno-nerastra, che guarisce sempre con cicatrice. L'impetigine resta intraepidermica e guarisce senza esiti. Le bolle aflegmasiche appartengono all'impetigine bollosa, le pustole centrate dal pelo alla follicolite. Il discriminatore è la profondità della lesione e il conseguente esito cicatriziale.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q04">
+      <p class="q-tag">Q04</p>
+      <p class="q-text">Quale reperto caratterizza l'esantema della scarlattina?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Bolle flaccide a contenuto citrino confluenti</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Micropapule follicolari con risparmio periorale</button></li>
+        <li><button type="button"><span class="key">C</span>Chiazze color rosso corallo alla luce di Wood</button></li>
+        <li><button type="button"><span class="key">D</span>Noduli eritematosi dolenti localizzati agli arti inferiori</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'esantema scarlattinoso è follicolare, fatto di micropapule rosse a punta di spillo centrate sui follicoli, con consistenza a carta vetrata e un alone biancastro di risparmio attorno alla bocca e al mento; si accompagna a enantema e lingua a fragola. Le bolle citrine sono dell'impetigine bollosa, la fluorescenza corallo dell'eritrasma, i noduli dolenti dell'eritema nodoso. Il discriminatore è il pattern follicolare puntiforme con risparmio periorale.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q05">
+      <p class="q-tag">Q05</p>
+      <p class="q-text">Qual è la complicanza più severa, per quanto rara, dell'impetigine streptococcica?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Glomerulonefrite acuta post-streptococcica</button></li>
+        <li><button type="button"><span class="key">B</span>Trasformazione in carcinoma spinocellulare invasivo</button></li>
+        <li><button type="button"><span class="key">C</span>Alopecia cicatriziale definitiva</button></li>
+        <li><button type="button"><span class="key">D</span>Cheratite con perforazione corneale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La complicanza più temibile, sebbene poco frequente e tipica dei bambini piccoli, è la glomerulonefrite acuta post-streptococcica, con latenza di circa venti giorni dall'impetigine. Non si tratta di una lesione precancerosa, e l'alopecia cicatriziale è esito della follicolite profonda, non dell'impetigine superficiale. Il discriminatore è il meccanismo immuno-mediato post-streptococcico a distanza di settimane.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q06">
+      <p class="q-tag">Q06</p>
+      <p class="q-text">Quale elemento caratterizza la follicolite profonda rispetto alla forma superficiale?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Lesione esclusivamente intraepidermica priva di flogosi</button></li>
+        <li><button type="button"><span class="key">B</span>Pustola superficiale centrata dal pelo, in genere asintomatica</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Aspetto a fico maturo spaccato con alopecia cicatriziale</button></li>
+        <li><button type="button"><span class="key">D</span>Chiazza brunastra delle pieghe fluorescente alla luce di Wood</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La follicolite profonda, espressa nella sicosi della barba, dà placche confluenti che si rompono con croste giallastre e assumono l'aspetto a fico maturo spaccato; la distruzione del follicolo esita in alopecia cicatriziale definitiva. La pustola asintomatica dell'ostio è la forma superficiale, la chiazza delle pieghe è l'eritrasma. Il discriminatore è il coinvolgimento profondo del follicolo con perdita irreversibile del pelo.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q07">
+      <p class="q-tag">Q07</p>
+      <p class="q-text">Quale coppia di agente e reperto alla luce di Wood identifica l'eritrasma?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Malassezia, fluorescenza giallo-verde</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Corynebacterium minutissimum, fluorescenza rosso corallo</button></li>
+        <li><button type="button"><span class="key">C</span>Streptococco di gruppo A, assenza di fluorescenza</button></li>
+        <li><button type="button"><span class="key">D</span>Candida albicans, fluorescenza bluastra</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eritrasma è una dermatosi batterica delle pieghe sostenuta dal Corynebacterium minutissimum, gram positivo, che alla luce di Wood emette una fluorescenza rosso corallo caratteristica. Le micosi delle pieghe, suo principale diagnostico differenziale, danno invece una fluorescenza verde-giallastra. Il discriminatore è proprio il colore corallo, che separa la causa batterica da quella micotica.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q08">
+      <p class="q-tag">Q08</p>
+      <p class="q-text">Quale segno clinico precoce orienta verso una fascite necrotizzante piuttosto che verso una cellulite?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Edema improntabile con segno della fovea e cute tesa</button></li>
+        <li><button type="button"><span class="key">B</span>Margine netto a scalino con aspetto a buccia d'arancia</button></li>
+        <li><button type="button"><span class="key">C</span>Pustole follicolari multiple tendenti a confluire</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Dolore sproporzionato al quadro obiettivo con cute molle</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La fascite necrotizzante esordisce con dolore intenso e sproporzionato rispetto al modesto eritema, e la cute appare paradossalmente morbida; solo più tardi compaiono bolle emorragiche, necrosi e anestesia per coinvolgimento nervoso. Nella cellulite la cute è tesa, dolente e improntabile, mentre il margine a scalino con buccia d'arancia è dell'erisipela. Il discriminatore è il dolore sproporzionato unito alla consistenza molle dei tessuti.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q09">
+      <p class="q-tag">Q09</p>
+      <p class="q-text">Qual è l'agente eziologico più frequente della paronichia acuta da traumatismo della piega ungueale?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Streptococco beta-emolitico di gruppo A</button></li>
+        <li><button type="button"><span class="key">B</span>Pseudomonas aeruginosa</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Stafilococco aureo</button></li>
+        <li><button type="button"><span class="key">D</span>Corynebacterium minutissimum</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La paronichia acuta è più spesso sostenuta dallo stafilococco aureo, che penetra attraverso un traumatismo della piega ungueale, frequente nei lavoratori manuali; la spremitura libera materiale purulento. Possono concorrere altri batteri e la candida, quest'ultima con materiale biancastro, per cui il tampone guida la terapia mirata. Il discriminatore è l'origine batterica stafilococcica con essudato purulento, contro il materiale chiaro della forma da candida.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q10">
+      <p class="q-tag">Q10</p>
+      <p class="q-text">Quale reperto è proprio della staphylococcal scalded skin syndrome (SSSS)?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Segno di Nikolsky positivo da tossina esfoliativa</button></li>
+        <li><button type="button"><span class="key">B</span>Ulcere rotonde a stampino localizzate agli arti inferiori</button></li>
+        <li><button type="button"><span class="key">C</span>Pomfo fugace e pruriginoso a rapida migrazione</button></li>
+        <li><button type="button"><span class="key">D</span>Fluorescenza rosso corallo alla luce di Wood</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nella SSSS la tossina esfoliativa dello stafilococco di tipo secondo provoca un'epidermolisi diffusa con segno di Nikolsky positivo, indice della fragilità cutanea: un banale stimolo distacca lo strato superficiale. Il neonato si comporta come un ustionato su tutta la superficie, con squilibri idro-elettrolitici gravi. Le ulcere a stampino sono dell'ectima, il pomfo dell'orticaria, la fluorescenza corallo dell'eritrasma. Il discriminatore è il distacco epidermico tossino-mediato con Nikolsky positivo.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Boards</h2>
+
+    <article class="q" data-q="b01">
+      <p class="q-tag">B01</p>
+      <p class="q-text">Uomo di 58 anni, diabetico, con dolore ingravescente alla coscia comparso in 24 ore, sproporzionato rispetto a un modesto eritema. Febbre alta, tachicardia, ipotensione; nelle ultime ore la cute, prima tesa, è divenuta molle con bolle emorragiche e iniziale necrosi. Qual è il provvedimento prioritario?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Antibioticoterapia orale ambulatoriale con rivalutazione a 48 ore</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Esplorazione chirurgica urgente con debridement esteso</button></li>
+        <li><button type="button"><span class="key">C</span>Risonanza magnetica in elezione prima di ogni intervento</button></li>
+        <li><button type="button"><span class="key">D</span>Sola terapia antibiotica endovenosa ad ampio spettro</button></li>
+        <li><button type="button"><span class="key">E</span>Drenaggio percutaneo ecoguidato della raccolta</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il quadro è un'infezione necrotizzante dei tessuti molli: il fattore prognostico decisivo è la tempestività del debridement chirurgico, che va condotto in urgenza e ripetuto. La sola antibioticoterapia non arresta la progressione e l'imaging non deve ritardare la sala operatoria. Il discriminatore è il carattere necrotizzante con tossicità sistemica, che impone la chirurgia immediata.</p>
+        <p class="refs">Secondo PubMed: <a href="https://pubmed.ncbi.nlm.nih.gov/40452628/">PMID 40452628</a> (chirurgia entro 6-12 ore, minore mortalità e amputazione) · <a href="https://pubmed.ncbi.nlm.nih.gov/34612747/">PMID 34612747</a>.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b02">
+      <p class="q-tag">B02</p>
+      <p class="q-text">Donna di 70 anni con comparsa rapida di una placca eritematosa rilevata alla gamba, calda e dolente, a margini netti e a scalino, con una stria arrossata che risale verso l'inguine e febbre. La cute resta tesa, il dolore è proporzionato al quadro. Qual è la diagnosi più probabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Dermatite allergica da contatto</button></li>
+        <li><button type="button"><span class="key">B</span>Trombosi venosa profonda</button></li>
+        <li><button type="button"><span class="key">C</span>Fascite necrotizzante</button></li>
+        <li><button type="button"><span class="key">D</span>Eritema nodoso</button></li>
+        <li><button type="button" data-correct><span class="key">E</span>Erisipela</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il margine netto e rilevato, la stria di linfangite e l'esordio febbrile rapido configurano un'erisipela, cellulite superficiale a tropismo linfatico per lo più streptococcica. La trombosi venosa profonda non dà margine netto né questo pattern febbrile, la fascite si annuncia con dolore sproporzionato e cute molle, l'eritema nodoso dà noduli dolenti e la dermatite è pruriginosa con distribuzione da contatto. Il discriminatore è il bordo netto a scalino con linfangite.</p>
+        <p class="refs">Secondo PubMed: <a href="https://pubmed.ncbi.nlm.nih.gov/33494874/">PMID 33494874</a> (cellulite ed erisipela, diagnosi clinica).</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b03">
+      <p class="q-tag">B03</p>
+      <p class="q-text">Bambino di 5 anni con alcune lesioni crostose color miele attorno alla bocca, poco estese, senza febbre e in buone condizioni generali. Qual è la gestione più appropriata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Corticosteroide topico potente</button></li>
+        <li><button type="button"><span class="key">B</span>Antibiotico sistemico endovenoso con ricovero ospedaliero</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Antibiotico o antisettico topico, coprendo le lesioni</button></li>
+        <li><button type="button"><span class="key">D</span>Aciclovir orale</button></li>
+        <li><button type="button"><span class="key">E</span>Drenaggio chirurgico delle lesioni</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'impetigine localizzata e poco estesa si tratta con terapia topica, antisettica o antibiotica, coprendo le lesioni per limitarne la diffusione e l'autocontagio; la via sistemica si riserva alle forme diffuse o refrattarie. Il corticosteroide peggiorerebbe l'infezione e l'aciclovir riguarda l'herpes simplex, suo diagnostico differenziale. Il discriminatore è l'estensione limitata, che orienta al topico.</p>
+        <p class="refs">Secondo PubMed: <a href="https://pubmed.ncbi.nlm.nih.gov/33852242/">PMID 33852242</a> (terapia topica dell'impetigine e resistenze).</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b04">
+      <p class="q-tag">B04</p>
+      <p class="q-text">Neonato di 3 mesi, dopo una congiuntivite, con eritema diffuso, bolle flaccide che si rompono lasciando aree denudate, segno di Nikolsky positivo, febbre e croste periorifiziali. Qual è la gestione più appropriata?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Antibiotico antistafilococcico sistemico e supporto idro-elettrolitico</button></li>
+        <li><button type="button"><span class="key">B</span>Debridement chirurgico esteso di tutte le aree esfoliate</button></li>
+        <li><button type="button"><span class="key">C</span>Corticosteroide sistemico ad alte dosi come prima scelta</button></li>
+        <li><button type="button"><span class="key">D</span>Sola terapia antisettica topica</button></li>
+        <li><button type="button"><span class="key">E</span>Immunoglobuline endovena come unico trattamento</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La SSSS è mediata dalla tossina esfoliativa: la gestione si fonda sull'antibiotico antistafilococcico sistemico e sulla correzione degli squilibri idro-elettrolitici, gestendo il bambino come un ustionato. Il debridement chirurgico è sconsigliato perché aumenta complicanze e durata del ricovero, mentre i corticosteroidi non sono indicati e il solo topico è insufficiente. Il discriminatore è la natura tossino-mediata, che richiede supporto e antibiotico, non chirurgia.</p>
+        <p class="refs">Secondo PubMed: <a href="https://pubmed.ncbi.nlm.nih.gov/33283348/">PMID 33283348</a> (debridement da evitare nella SSSS).</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b05">
+      <p class="q-tag">B05</p>
+      <p class="q-text">Bambino che circa tre settimane dopo lesioni cutanee crostose color miele, ormai risolte, presenta edema periorbitario, urine scure e pressione arteriosa elevata. Quale diagnosi è più probabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Sepsi stafilococcica acuta</button></li>
+        <li><button type="button"><span class="key">B</span>Sindrome nefrosica da lesioni minime</button></li>
+        <li><button type="button"><span class="key">C</span>Reazione orticarioide da farmaco</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Glomerulonefrite acuta post-streptococcica</button></li>
+        <li><button type="button"><span class="key">E</span>Insufficienza prerenale da disidratazione</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La latenza di alcune settimane da un'impetigine streptococcica e il quadro nefritico, fatto di ematuria, edema e ipertensione, indicano una glomerulonefrite acuta post-streptococcica, immuno-mediata. La sindrome nefrosica si esprime con proteinuria massiva e non con ematuria e ipertensione, e la sepsi avrebbe decorso acuto contestuale all'infezione. Il discriminatore è l'intervallo di settimane con sindrome nefritica dopo l'infezione cutanea.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b06">
+      <p class="q-tag">B06</p>
+      <p class="q-text">Cuoca con tumefazione cronica delle pieghe ungueali di più dita, ricorrente, da cui alla pressione esce materiale biancastro; lavoro con prolungata esposizione all'umidità. Qual è l'orientamento eziologico e terapeutico più probabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Stafilococco aureo, incidere e drenare in urgenza</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Candida, allontanamento dall'umidità e antimicotico</button></li>
+        <li><button type="button"><span class="key">C</span>Streptococco di gruppo A, penicillina orale</button></li>
+        <li><button type="button"><span class="key">D</span>Pseudomonas, fluorochinolone sistemico</button></li>
+        <li><button type="button"><span class="key">E</span>Herpes simplex, aciclovir orale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La paronichia cronica di chi lavora a lungo in ambiente umido è tipicamente da candida, e il materiale che fuoriesce è biancastro, non francamente purulento come nella forma batterica acuta; la gestione punta sull'allontanamento dall'umidità e su un antimicotico, con tampone di conferma. La forma stafilococcica acuta dà essudato purulento e talora richiede incisione. Il discriminatore è il decorso cronico in esposizione umida con materiale biancastro.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b07">
+      <p class="q-tag">B07</p>
+      <p class="q-text">Uomo senza fissa dimora, diabetico ed etilista, con lesioni ulcerative rotonde agli arti inferiori, bordo violaceo rialzato e crosta bruno-nerastra; alla rimozione della crosta il fondo è purulento e la guarigione è lenta. Quale diagnosi è più probabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Impetigine classica non bollosa</button></li>
+        <li><button type="button"><span class="key">B</span>Erisipela del volto</button></li>
+        <li><button type="button"><span class="key">C</span>Follicolite superficiale</button></li>
+        <li><button type="button"><span class="key">D</span>Eritrasma inguinale</button></li>
+        <li><button type="button" data-correct><span class="key">E</span>Ectima</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le ulcere a stampino con bordo violaceo rialzato e crosta bruno-nerastra agli arti inferiori, in un soggetto con fattori che deprimono l'immunità come diabete, alcolismo e malnutrizione, e a guarigione lenta con esito cicatriziale, configurano l'ectima. L'impetigine resta superficiale e senza cicatrice, l'erisipela dà una placca eritematosa non ulcerata. Il discriminatore è l'ulcerazione profonda con esito cicatriziale nel paziente predisposto.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b08">
+      <p class="q-tag">B08</p>
+      <p class="q-text">Bambino con febbre e faringite, poi esantema diffuso a carta vetrata con risparmio dell'area attorno alla bocca, lingua a fragola e accentuazione alle pieghe. Quale diagnosi e impostazione terapeutica è più appropriata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Malattia di Kawasaki, immunoglobuline endovenose</button></li>
+        <li><button type="button"><span class="key">B</span>Eritema polimorfo, sospensione del farmaco</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Scarlattina, antibiotico per prevenire le complicanze</button></li>
+        <li><button type="button"><span class="key">D</span>Megaloeritema, terapia di supporto</button></li>
+        <li><button type="button"><span class="key">E</span>Reazione morbilliforme da farmaco, antistaminico</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'esantema follicolare a carta vetrata con risparmio periorale, lingua a fragola e faringite è la scarlattina, sostenuta dalla tossina eritrogenica dello streptococco beta-emolitico di gruppo A; l'antibiotico mira anche a prevenire le complicanze. La malattia di Kawasaki ha febbre prolungata e altri criteri, il megaloeritema dà l'aspetto a guancia schiaffeggiata. Il discriminatore è la triade esantema a carta vetrata, risparmio periorale e lingua a fragola dopo faringite.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Vignette cliniche</h2>
+
+    <article class="case">
+      <p class="q-tag">V01</p>
+      <p class="vignette">Uomo di 58 anni si presenta per dolore ingravescente alla coscia destra comparso nelle ultime 24 ore, descritto come molto più intenso di quanto l'aspetto della pelle lasci prevedere. Riferisce febbre e malessere marcato.</p>
+
+      <details class="stage">
+        <summary><span class="stage-key">An</span>Anamnesi</summary>
+        <div class="stage-body">
+          <p>Diabete mellito di tipo 2 mal controllato. Tre giorni prima una piccola ferita da puntura alla coscia, trascurata. Nelle ultime ore astenia profonda, brividi e cardiopalmo.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">EO</span>Esame obiettivo</summary>
+        <div class="stage-body">
+          <p>Area eritemato-violacea a margini sfumati, calda; la cute, inizialmente tesa, alla palpazione risulta stranamente cedevole e molle. Il dolore evocato è sproporzionato al modesto reperto visibile. Compaiono alcune bolle a contenuto emorragico e una zona centrale di ridotta sensibilità. Tachicardia, ipotensione, febbre a 39 gradi.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Es</span>Esami</summary>
+        <div class="stage-body">
+          <p>Leucocitosi neutrofila, PCR molto elevata, iponatriemia, creatinina in aumento e lattati elevati: profilo di tossicità sistemica e di sofferenza tissutale. Gli indici compositi di rischio orientano verso un'infezione necrotizzante; l'imaging mostra edema delle fasce e raccolte lungo i piani profondi, ma non deve ritardare l'intervento.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">DD</span>Diagnosi differenziale</summary>
+        <div class="stage-body">
+          <p>Cellulite ed erisipela (dolore proporzionato, cute tesa, margini più definiti, tossicità sistemica precoce assente); trombosi venosa profonda (assenza di bolle e di tossicità); ascesso dei tessuti molli (raccolta circoscritta senza necrosi diffusa). Il dolore sproporzionato con cute molle e bolle emorragiche separa il quadro da una cellulite comune.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Dx</span>Diagnosi</summary>
+        <div class="stage-body">
+          <p>Infezione necrotizzante dei tessuti molli con interessamento delle fasce, a evoluzione rapida e a rischio di shock settico.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Rx</span>Gestione</summary>
+        <div class="stage-body">
+          <p>Esplorazione chirurgica urgente con debridement esteso di tutto il tessuto necrotico, da ripetere a distanza di poche ore se la progressione continua. In parallelo antibiotici endovenosi ad ampio spettro con copertura per anaerobi e attività antitossinica, rianimazione con liquidi e terapia del dolore. Nelle forme che non si arrestano, l'amputazione dell'arto può rendersi necessaria. La prognosi dipende soprattutto dalla precocità del primo intervento.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <span><a href="./">← indice</a></span>
+    <span>argomenti del 20 giugno · generato nella notte da vigil</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var KEY = "vigil:" + document.body.dataset.date;
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+
+  var questions = document.querySelectorAll(".q");
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function apply(q, idx) {
+    var opts = q.querySelector(".opts");
+    var buttons = opts.querySelectorAll("button");
+    opts.classList.add("locked");
+    buttons.forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx) {
+        b.classList.add("chosen");
+        if (!b.hasAttribute("data-correct")) b.classList.add("ko");
+      }
+      if (b.hasAttribute("data-correct")) b.classList.add("is-correct", "revealed");
+    });
+    var r = q.querySelector(".rationale");
+    if (r) r.classList.add("open");
+  }
+
+  function refreshRail() {
+    var answered = 0, correct = 0;
+    questions.forEach(function (q) {
+      var idx = state[q.dataset.q];
+      if (idx === undefined) return;
+      answered++;
+      var b = q.querySelectorAll(".opts button")[idx];
+      if (b && b.hasAttribute("data-correct")) correct++;
+    });
+    document.getElementById("rail-progress").textContent = "risposte " + answered + "/" + questions.length;
+    document.getElementById("rail-score").textContent = "corrette " + correct;
+  }
+
+  questions.forEach(function (q) {
+    var qid = q.dataset.q;
+    var buttons = q.querySelectorAll(".opts button");
+    buttons.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (state[qid] !== undefined) return;
+        state[qid] = i;
+        save();
+        apply(q, i);
+        refreshRail();
+      });
+    });
+    if (state[qid] !== undefined) apply(q, state[qid]);
+  });
+
+  document.getElementById("rail-reset").addEventListener("click", function () {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  });
+
+  refreshRail();
+})();
+</script>
+</body>
+</html>
