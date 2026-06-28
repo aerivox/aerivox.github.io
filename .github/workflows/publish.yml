@@ -1,0 +1,23 @@
+name: publish to main
+
+on:
+  push:
+    branches:
+      - main-d9wcbs
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-to-main
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fast-forward main to this branch
+        run: git push origin HEAD:main
