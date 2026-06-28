@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vigil · 28 giugno 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f3f5;
+  --ink: #15171c;
+  --muted: #5b5f6a;
+  --rule: #c7cad2;
+  --accent: #8c2332;
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --ok: #1e6b4e;
+  --ok-soft: color-mix(in srgb, var(--ok) 9%, transparent);
+  --serif: "STIX Two Text", Georgia, serif;
+  --display: "Instrument Serif", Georgia, serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.masthead          { animation: rise .7s .05s both; }
+.scorerail         { animation: rise .7s .15s both; }
+main > section:nth-of-type(1) { animation: rise .7s .25s both; }
+main > section:nth-of-type(2) { animation: rise .7s .35s both; }
+main > section:nth-of-type(3) { animation: rise .7s .45s both; }
+main > section:nth-of-type(n+4) { animation: rise .7s .55s both; }
+@media (prefers-reduced-motion: reduce) {
+  .masthead, .scorerail, main > section { animation: none; }
+  .rationale { transition: none; }
+}
+
+.masthead { padding: 3.5rem 0 1.75rem; border-bottom: 2px solid var(--ink); }
+.kicker {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--accent);
+  margin: 0 0 .9rem;
+}
+.masthead h1 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.05; margin: 0 0 1.5rem;
+}
+.topics { list-style: none; margin: 0; padding: 0; }
+.topics li {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: .55rem 0;
+}
+.topics .mod {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  flex: 0 0 11.5rem;
+}
+.topics .name { font-size: 1.15rem; }
+.topics a { color: inherit; text-decoration: none; }
+.topics a:hover { color: var(--accent); }
+
+.spark { margin-top: 2.2rem; max-width: 36em; }
+.spark::before {
+  content: "⁂"; display: block;
+  color: var(--accent); font-size: .95rem; margin-bottom: 1rem;
+}
+.spark p {
+  font-size: 1.15rem; line-height: 1.6;
+  margin: 0 0 1rem;
+}
+.spark p:last-child { margin-bottom: 0; }
+
+.scorerail {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.scorerail .wrap {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: .6rem; padding-bottom: .6rem;
+}
+.scorerail button {
+  font: inherit; color: var(--muted); background: none; border: none;
+  padding: 0; cursor: pointer; text-decoration: underline;
+  text-underline-offset: 3px; letter-spacing: inherit; text-transform: inherit;
+}
+.scorerail button:hover { color: var(--accent); }
+
+.topic-section { padding: 3rem 0 1rem; }
+.topic-head { position: relative; margin-bottom: 2rem; }
+.topic-num {
+  position: absolute; right: 0; top: -1.4rem; z-index: 0;
+  font-family: var(--display); font-size: 7rem; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px var(--rule);
+  user-select: none; pointer-events: none;
+}
+.topic-head .mod {
+  position: relative; z-index: 1;
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  margin: 0 0 .3rem;
+}
+.topic-head h2 {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0;
+}
+
+.q { border-top: 1px solid var(--rule); padding: 1.6rem 0 2.2rem; }
+.q-tag {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .18em; color: var(--accent); margin: 0 0 .6rem;
+}
+.q-text { font-size: 1.125rem; font-weight: 600; margin: 0 0 1.1rem; }
+.opts { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.opts button {
+  display: flex; align-items: baseline; gap: .85rem; width: 100%;
+  font-family: var(--serif); font-size: 1rem; line-height: 1.45;
+  text-align: left; color: var(--ink);
+  background: transparent; border: 1px solid var(--rule);
+  padding: .7rem .9rem; cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .78rem; font-weight: 500;
+  color: var(--accent); flex: 0 0 1.1rem;
+}
+.opts:not(.locked) button:hover {
+  transform: translateX(5px); border-color: var(--ink);
+}
+.opts.locked button { cursor: default; }
+.opts.locked button:not(.chosen):not(.is-correct) { opacity: .45; }
+.opts button.chosen.ko { border-color: var(--accent); background: var(--accent-soft); }
+.opts button.is-correct.revealed { border-color: var(--ok); background: var(--ok-soft); }
+.opts button.chosen.ko .key,
+.opts button.is-correct.revealed .key { font-size: 0; }
+.opts button.chosen.ko .key::after { content: "✕"; font-size: .85rem; color: var(--accent); }
+.opts button.is-correct.revealed .key::after { content: "✓"; font-size: .85rem; color: var(--ok); }
+
+.rationale {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease;
+}
+.rationale.open { grid-template-rows: 1fr; }
+.rationale > div { overflow: hidden; }
+.rationale p {
+  margin: 1.1rem 0 0; padding: .2rem 0 .2rem 1rem;
+  border-left: 2px solid var(--accent); color: var(--ink); font-size: .98rem;
+}
+
+.boards { padding: 3rem 0; }
+.boards > h2 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0 0 2rem;
+  padding-top: 1.6rem; border-top: 2px solid var(--ink);
+}
+.case { margin-bottom: 3rem; }
+.vignette { font-size: 1.1rem; margin: 0 0 1.4rem; }
+.stage { border-top: 1px solid var(--rule); }
+.stage:last-of-type { border-bottom: 1px solid var(--rule); }
+.stage summary {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .75rem .2rem; cursor: pointer; list-style: none;
+  font-weight: 600; transition: background .18s ease;
+}
+.stage summary::-webkit-details-marker { display: none; }
+.stage summary:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.stage-key {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  color: var(--accent); border: 1px solid var(--accent);
+  min-width: 1.7rem; text-align: center; padding: .15rem .3rem;
+}
+.stage summary::after {
+  content: "+"; margin-left: auto; font-family: var(--mono);
+  color: var(--muted); transition: transform .25s ease;
+}
+.stage[open] summary::after { transform: rotate(45deg); }
+.stage-body { padding: .3rem .2rem 1.3rem; animation: rise .4s ease both; }
+.stage-body p { margin: .6rem 0; }
+.refs { font-family: var(--mono); font-size: .8rem; }
+.refs a { color: var(--accent); text-underline-offset: 3px; }
+.rationale p.refs {
+  margin-top: .4rem; font-size: .8rem;
+  border-left-color: transparent; color: var(--muted);
+}
+
+.colophon {
+  border-top: 2px solid var(--ink); margin-top: 2rem;
+  padding: 1.4rem 0 3.5rem;
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.colophon .wrap {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.colophon a { color: inherit; text-underline-offset: 3px; }
+.colophon a:hover { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .topics .mod { flex-basis: 7.5rem; }
+  .topic-num { font-size: 4.5rem; top: -.8rem; }
+}
+</style>
+</head>
+<body data-date="2026-06-28">
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">vigil · consolidamento notturno</p>
+    <h1>domenica 28 giugno 2026</h1>
+    <ul class="topics">
+      <li><span class="mod">Chirurgia Plastica</span><span class="name"><a href="#t1">Malformazioni congenite esterne</a></span></li>
+      <li><span class="mod">Oftalmologia</span><span class="name"><a href="#t2">Patologie delle vie lacrimali</a></span></li>
+    </ul>
+    <div class="spark">
+      <p>I tarli più resistenti della medicina hanno spesso un nome solo. Quello del dotto naso-lacrimale si chiama Toti. A Firenze, nel 1904, Addeo Toti era un otorinolaringoiatra stanco di vedere occhi lacrimare a vuoto perché il canale che porta le lacrime al naso si era chiuso: invece di accanirsi sul condotto malato, lo scavalcò, aprendo una via nuova tra il sacco lacrimale e la cavità nasale. La chiamò dacriocistorinostomia, una parola che sembra una punizione e invece è un'eleganza: se la porta non si apre, ne fai un'altra nel muro accanto. A più di un secolo di distanza, con endoscopi e laser, stiamo ancora facendo il gesto di Toti. Cosa serve per decidere che un canale non vale la pena di essere salvato, e che è ora di costruirne uno nuovo?</p>
+    </div>
+  </div>
+</header>
+
+<div class="scorerail">
+  <div class="wrap">
+    <span id="rail-progress">risposte 0/30</span>
+    <span id="rail-score">corrette 0</span>
+    <button id="rail-reset" type="button">azzera</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="topic-section" id="t1">
+    <header class="topic-head">
+      <span class="topic-num" aria-hidden="true">01</span>
+      <p class="mod">Chirurgia Plastica</p>
+      <h2>Malformazioni congenite esterne</h2>
+    </header>
+
+    <article class="q" data-q="q01">
+      <p class="q-tag">Q01</p>
+      <p class="q-text">La correzione chirurgica della palatoschisi viene programmata tra il sesto e il nono mese di vita. Quale obiettivo funzionale giustifica principalmente questa finestra temporale?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Consentire la saldatura spontanea del palato duro prima dell'intervento</button></li>
+        <li><button type="button"><span class="key">B</span>Ridurre il rischio anestesiologico rispetto ai primissimi mesi di vita</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Prevenire la rinolalia aperta intervenendo prima dell'acquisizione del linguaggio</button></li>
+        <li><button type="button"><span class="key">D</span>Permettere l'eruzione completa degli incisivi decidui superiori</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La finestra tra sei e nove mesi precede lo sviluppo del linguaggio: chiudere il velo prima che il bambino parli evita i compensi articolatori irreversibili della rinolalia aperta. Il discriminatore è il legame con il linguaggio: il rischio anestesiologico spiega perché non si anticipa a tre mesi, ma non è l'obiettivo funzionale, e il palato non salda spontaneamente.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q02">
+      <p class="q-tag">Q02</p>
+      <p class="q-text">Nella palatoschisi l'otite media secretiva ricorrente con ipoacusia trasmissiva dipende da un meccanismo specifico. Quale?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Inserzione anomala dei muscoli palatini, che non aprono la tuba di Eustachio</button></li>
+        <li><button type="button"><span class="key">B</span>Colonizzazione batterica ascendente dal rinofaringe attraverso la schisi</button></li>
+        <li><button type="button"><span class="key">C</span>Reflusso del latte nelle cavità nasali per incompetenza velofaringea</button></li>
+        <li><button type="button"><span class="key">D</span>Ipoplasia congenita della catena ossiculare associata alla schisi</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>I muscoli elevatore del palato e tensore del velo, inserendosi in modo anomalo sui margini della schisi, non aprono l'ostio tubarico durante la deglutizione: il drenaggio dell'orecchio medio si arresta e le secrezioni si addensano (glue ear). Il discriminatore è il difetto meccanico della tuba, non un'infezione: l'otite è secretiva e non richiede un patogeno.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q03">
+      <p class="q-tag">Q03</p>
+      <p class="q-text">Un neonato presenta micrognazia, glossoptosi e ostruzione delle vie aeree superiori che richiede gestione d'urgenza. Questa triade configura:</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Sindrome di Treacher-Collins</button></li>
+        <li><button type="button"><span class="key">B</span>Microsomia emifacciale</button></li>
+        <li><button type="button"><span class="key">C</span>Sindrome di Apert</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Sequenza di Pierre-Robin</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Micrognazia, glossoptosi e ostruzione respiratoria definiscono la sequenza di Pierre-Robin, prototipo di urgenza neonatale del distretto cefalico (sospensione della lingua, sondino naso-gastrico). Il discriminatore è la glossoptosi ostruttiva: Treacher-Collins è bilaterale e simmetrica con coloboma e piega antimongolica, la microsomia è monolaterale, Apert associa sindattilia e craniosinostosi.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q04">
+      <p class="q-tag">Q04</p>
+      <p class="q-text">Secondo la legge di Virchow, la sinostosi precoce della sutura sagittale produce:</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Plagiocefalia, per appiattimento monolaterale della fronte</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Scafocefalia, per arresto della crescita trasversale con compenso antero-posteriore</button></li>
+        <li><button type="button"><span class="key">C</span>Trigonocefalia, per restringimento della regione metopica</button></li>
+        <li><button type="button"><span class="key">D</span>Brachicefalia, per arresto della crescita antero-posteriore</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Virchow: la crescita si arresta perpendicolarmente alla sutura fusa e prosegue parallela ad essa. La sagittale chiusa blocca la crescita trasversale e allunga il cranio in senso antero-posteriore, dando la forma a scafo. Il discriminatore è l'asse della sutura: la coronale dà plagiocefalia, la metopica trigonocefalia, la lambdoidea brachicefalia.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q05">
+      <p class="q-tag">Q05</p>
+      <p class="q-text">Nelle craniosinostosi, qual è il motore fisiopatologico delle complicanze neurologiche e oculari, da cui la deformità deriva?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>L'ipertensione endocranica da mancata espansione del cranio</button></li>
+        <li><button type="button"><span class="key">B</span>La deformità progressiva della volta cranica in sé</button></li>
+        <li><button type="button"><span class="key">C</span>L'ossificazione encondrale accelerata delle suture</button></li>
+        <li><button type="button"><span class="key">D</span>La compressione diretta dei nervi cranici da parte delle suture</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il cranio che non può espandersi genera ipertensione endocranica, vero motore del danno cognitivo, del papilledema e della proptosi; la deformità è una conseguenza della sutura fusa, non la causa del danno. Il discriminatore è causa contro effetto: la forma del cranio è derivata, l'ipertensione è il driver.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q06">
+      <p class="q-tag">Q06</p>
+      <p class="q-text">Due sindromi da craniosinostosi multipla, entrambe autosomiche dominanti, si distinguono soprattutto per l'interessamento degli arti. Quale reperto orienta verso la sindrome di Apert piuttosto che verso la sindrome di Crouzon?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Proptosi oculare da ridotta profondità delle orbite</button></li>
+        <li><button type="button"><span class="key">B</span>Ipoplasia del terzo medio della faccia</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Sindattilia complessa delle mani con mano a cucchiaio</button></li>
+        <li><button type="button"><span class="key">D</span>Brachicefalia da fusione di più suture craniche</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Crouzon e Apert condividono brachicefalia, ipoplasia medio-facciale e proptosi; sono le mani a separarli. Apert (acrocefalo-sindattilia) ha sindattilia ossea grave a mano a cucchiaio e alluce bifido, mentre in Crouzon gli arti sono normali. Il discriminatore è l'interessamento degli arti.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q07">
+      <p class="q-tag">Q07</p>
+      <p class="q-text">Tra i tre tipi di sindattilia, solo la forma ossea causa clinodattilia progressiva del dito coinvolto. Perché?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Il tessuto fibroso interdigitale retrae attivamente il dito più lungo</button></li>
+        <li><button type="button"><span class="key">B</span>La fusione cutanea impedisce la crescita ungueale e devia la falange</button></li>
+        <li><button type="button"><span class="key">C</span>L'assenza di commessura altera l'inserzione dei tendini flessori</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>La fusione ossea vincola il dito più lungo a quello più corto, deviandolo</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nella forma ossea le falangi distali sono fuse: il dito più lungo non può allungarsi liberamente e viene deviato verso il più corto (clinodattilia), motivo della correzione precoce. Nelle forme cutanea e membranosa l'osso cresce indipendente e non si devia. Il discriminatore è il vincolo osseo alla crescita.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q08">
+      <p class="q-tag">Q08</p>
+      <p class="q-text">Politelia e polimastia sono malformazioni mammarie per eccesso che si dispongono lungo la linea mammaria embrionaria. Quale ne è il decorso?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Dalla clavicola al margine costale, lungo l'emiclaveare</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Dal cavo ascellare al tubercolo pubico</button></li>
+        <li><button type="button"><span class="key">C</span>Dalla regione interclaveare al processo xifoideo</button></li>
+        <li><button type="button"><span class="key">D</span>Dal cavo ascellare alla cresta iliaca anteriore</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La linea mammaria (cresta del latte) corre dal cavo ascellare al tubercolo pubico: tessuto mammario ectopico e capezzoli sovrannumerari compaiono lungo questo tragitto. Il discriminatore è il decorso ascella-pube; le altre opzioni collocano la linea in sedi toraciche mediane o laterali non pertinenti.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q09">
+      <p class="q-tag">Q09</p>
+      <p class="q-text">La mammella tuberosa è una malformazione di forma. Quale alterazione anatomica ne è alla base?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Capsula perighiandolare ristretta che ostacola lo sviluppo dei quadranti inferiori</button></li>
+        <li><button type="button"><span class="key">B</span>Ipoplasia del muscolo grande pettorale con assenza del pilastro ascellare</button></li>
+        <li><button type="button"><span class="key">C</span>Differenza volumetrica superiore a un terzo tra le due mammelle</button></li>
+        <li><button type="button"><span class="key">D</span>Erniazione del tessuto adiposo attraverso un difetto del solco sottomammario</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Una capsula perighiandolare costrittiva impedisce l'espansione dei quadranti inferiori, dirige la crescita in senso tubulare e produce erniazione attraverso l'areola slargata. Il discriminatore è la costrizione capsulare: l'ipoplasia del pettorale appartiene alla sindrome di Poland, la differenza di un terzo definisce l'asimmetria secondo Houston.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q10">
+      <p class="q-tag">Q10</p>
+      <p class="q-text">L'ipospadia associa un meato uretrale in posizione ventrale e prossimale ad altri reperti costitutivi. Quale combinazione completa il quadro tipico?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Prepuzio circolare completo e meato in sede apicale</button></li>
+        <li><button type="button"><span class="key">B</span>Incurvamento dorsale del pene e uretra allungata</button></li>
+        <li><button type="button"><span class="key">C</span>Prepuzio assente e meato sul rafe scrotale mediano</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Prepuzio presente solo dorsalmente e recurvatum ventrale del pene</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'ipospadia associa meato ventrale-prossimale, prepuzio incompleto presente solo dorsalmente, recurvatum ventrale e uretra accorciata. Il discriminatore è la coerenza ventrale del difetto: il prepuzio non è circolare e l'incurvamento è ventrale, non dorsale.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="topic-section" id="t2">
+    <header class="topic-head">
+      <span class="topic-num" aria-hidden="true">02</span>
+      <p class="mod">Oftalmologia</p>
+      <h2>Patologie delle vie lacrimali</h2>
+    </header>
+
+    <article class="q" data-q="q11">
+      <p class="q-tag">Q11</p>
+      <p class="q-text">Una paziente lamenta fuoriuscita continua di lacrime dall'occhio. Quale caratteristica orienta verso epifora piuttosto che verso lacrimazione?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Insorgenza transitoria dopo l'esposizione al freddo</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Carattere continuo e persistente da deficit di drenaggio</button></li>
+        <li><button type="button"><span class="key">C</span>Comparsa durante uno stimolo emozionale intenso</button></li>
+        <li><button type="button"><span class="key">D</span>Risoluzione spontanea nell'arco di pochi minuti</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'epifora è la fuoriuscita continua e patologica per insufficiente drenaggio delle vie escretrici; la lacrimazione è iperproduzione riflessa o emozionale, transitoria. Il discriminatore è la persistenza da ostacolo al deflusso, non la transitorietà da iperproduzione.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q12">
+      <p class="q-tag">Q12</p>
+      <p class="q-text">Nell'occhio secco iperevaporativo, quale struttura è primariamente disfunzionante?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Ghiandola lacrimale principale</button></li>
+        <li><button type="button"><span class="key">B</span>Cellule caliciformi mucipare della congiuntiva</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Ghiandole di Meibomio</button></li>
+        <li><button type="button"><span class="key">D</span>Ghiandole accessorie di Krause e Wolfring</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La forma iperevaporativa nasce dalla disfunzione delle ghiandole di Meibomio: il deficit dello strato lipidico instabilizza il film e ne accelera l'evaporazione. Il discriminatore è la componente lipidica: il deficit acquoso della ghiandola principale caratterizza invece la forma aqueous-deficient.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q13">
+      <p class="q-tag">Q13</p>
+      <p class="q-text">La forma aqueous-deficient associata a sindrome di Sjogren riconosce un bersaglio autoanticorpale sulle cellule acinari. Quale?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Recettore muscarinico M3</button></li>
+        <li><button type="button"><span class="key">B</span>Recettore per il TSH</button></li>
+        <li><button type="button"><span class="key">C</span>Desmogleina 3</button></li>
+        <li><button type="button"><span class="key">D</span>Canale del cloro CFTR</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nella sindrome di Sjogren gli anticorpi contro il recettore muscarinico M3 bloccano la stimolazione colinergica della secrezione acinare; si aggiungono il malposizionamento delle acquaporine e l'infiltrato linfocitario. Il discriminatore è il bersaglio M3: il recettore del TSH appartiene all'orbitopatia tiroidea, la desmogleina 3 al pemfigo.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q14">
+      <p class="q-tag">Q14</p>
+      <p class="q-text">L'occhio secco grave danneggia la superficie corneale. Quale segno obiettivo è espressione diretta di questo danno?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Iride a bombe con blocco pupillare</button></li>
+        <li><button type="button"><span class="key">B</span>Edema corneale con aloni colorati attorno alle luci</button></li>
+        <li><button type="button"><span class="key">C</span>Precipitati cheratici a grasso di montone</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Cheratite puntata superficiale e filamentosa</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La sofferenza epiteliale da disidratazione si manifesta come cheratite puntata superficiale e, nelle forme avanzate, filamentosa. Il discriminatore è l'epiteliopatia da secchezza: iride a bombe ed edema con aloni appartengono al glaucoma acuto, i precipitati a grasso di montone all'uveite granulomatosa.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q15">
+      <p class="q-tag">Q15</p>
+      <p class="q-text">L'imperforazione del dotto naso-lacrimale è presente in circa il 50% dei neonati ma diventa clinicamente rilevante solo in una minoranza. Quale proporzione la descrive?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Circa il 20%, con risoluzione spontanea nel 50% dei casi</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Circa il 2%, con risoluzione spontanea nel 90% dei casi</button></li>
+        <li><button type="button"><span class="key">C</span>Circa il 10%, con risoluzione spontanea nel 30% dei casi</button></li>
+        <li><button type="button"><span class="key">D</span>Circa il 30%, con necessità di sondaggio nella maggioranza</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La canalizzazione è incompleta nel 50% dei neonati, ma la dacriocistite si manifesta in circa il 2% e il 90% guarisce con il solo massaggio discendente. Il discriminatore sono i due numeri appaiati (2% sintomatico, 90% di risoluzione), che le altre opzioni alterano.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q16">
+      <p class="q-tag">Q16</p>
+      <p class="q-text">Nella dacriocistite del neonato il massaggio del sacco lacrimale si esegue dall'alto verso il basso. Qual è il razionale?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Favorire lo svuotamento retrogrado del sacco verso i puntini</button></li>
+        <li><button type="button"><span class="key">B</span>Stimolare la peristalsi propulsiva dei canalicoli lacrimali</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Riprodurre il vettore di pressione che apre la membrana alla valvola di Hasner</button></li>
+        <li><button type="button"><span class="key">D</span>Drenare il pus verso la congiuntiva per l'esame colturale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La pressione discendente genera il vettore idraulico che apre la membrana persistente alla valvola di Hasner, all'estremità inferiore del canale naso-lacrimale; in senso inverso non raggiungerebbe l'ostruzione. Il discriminatore è la sede dell'ostacolo, in basso, che impone la direzione.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q17">
+      <p class="q-tag">Q17</p>
+      <p class="q-text">La stenosi acquisita dei puntini lacrimali può avere origine cicatriziale da congiuntivite. Quali agenti ne sono causa tipica?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Streptococcus pneumoniae e Haemophilus influenzae</button></li>
+        <li><button type="button"><span class="key">B</span>Toxoplasma gondii e citomegalovirus</button></li>
+        <li><button type="button"><span class="key">C</span>Pseudomonas aeruginosa e Acanthamoeba</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Tracoma e cheratocongiuntivite da adenovirus</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le congiuntiviti cicatriziali da tracoma (Chlamydia trachomatis) e da adenovirus retraggono e stenosano l'orifizio dei puntini. Il discriminatore è la natura cicatriziale congiuntivale: gli agenti piogeni e i patogeni corneali elencati non producono questo esito cicatriziale puntale.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q18">
+      <p class="q-tag">Q18</p>
+      <p class="q-text">Nella dacriocistite acuta dell'adulto, quali sono gli agenti eziologici più frequentemente implicati?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Pseudomonas aeruginosa e Serratia marcescens</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>S. pneumoniae, S. aureus e S. epidermidis</button></li>
+        <li><button type="button"><span class="key">C</span>Chlamydia trachomatis e Neisseria gonorrhoeae</button></li>
+        <li><button type="button"><span class="key">D</span>Moraxella e anaerobi obbligati del cavo orale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il ristagno nel sacco ostruito seleziona soprattutto S. pneumoniae, S. aureus e S. epidermidis, che raggiungono il sacco per via ascendente nasale o discendente congiuntivale. Il discriminatore è la flora piogena comune del sacco; gli altri agenti non sono i tipici della dacriocistite batterica.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q19">
+      <p class="q-tag">Q19</p>
+      <p class="q-text">Il dacrioflemmone può complicarsi con una grave estensione intracranica. Attraverso quale via si propaga?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Vena angolare verso il seno cavernoso</button></li>
+        <li><button type="button"><span class="key">B</span>Linfatici preauricolari verso il collo</button></li>
+        <li><button type="button"><span class="key">C</span>Dotto naso-lacrimale verso il meato inferiore</button></li>
+        <li><button type="button"><span class="key">D</span>Arteria oftalmica verso l'apice orbitario</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La vena angolare, tributaria del seno cavernoso e priva di valvole, permette la propagazione dell'infezione con tromboflebite del seno cavernoso, complicanza potenzialmente letale. Il discriminatore è la via venosa angolare; le altre vie non spiegano l'estensione intracranica settica.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q20">
+      <p class="q-tag">Q20</p>
+      <p class="q-text">La dacriocistorinostomia è il trattamento dell'ostruzione del sacco lacrimale. Quale affermazione la descrive correttamente?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Asporta il sacco lacrimale chiudendo i puntini in via definitiva</button></li>
+        <li><button type="button"><span class="key">B</span>Dilata il dotto stenotico ripristinando la via anatomica originaria</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Crea una nuova via sacco-naso, controindicata in fase acuta</button></li>
+        <li><button type="button"><span class="key">D</span>È l'intervento d'urgenza di prima scelta nel dacrioflemmone</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La DCR bypassa l'ostruzione creando un'anastomosi diretta tra sacco e naso e va eseguita solo dopo la risoluzione della flogosi acuta; in acuto ci si limita a incisione e drenaggio. Il discriminatore è il principio di bypass unito alla controindicazione in fase acuta: non è un'asportazione né una semplice dilatazione.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Boards</h2>
+
+    <article class="q" data-q="b01">
+      <p class="q-tag">B01</p>
+      <p class="q-text">Lattante di 5 settimane con lacrimazione persistente e secrezione mucosa di un occhio dalla nascita; alla pressione sul canto interno refluisce materiale mucoso dal puntino inferiore, senza proptosi né segni di flogosi acuta. Qual è la condotta iniziale più appropriata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Sondaggio delle vie lacrimali in urgenza, in anestesia generale</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Massaggio del sacco e antibiotico topico negli episodi di secrezione, con osservazione</button></li>
+        <li><button type="button"><span class="key">C</span>Dacriocistorinostomia</button></li>
+        <li><button type="button"><span class="key">D</span>Dilatazione con catetere a palloncino</button></li>
+        <li><button type="button"><span class="key">E</span>Intubazione con tubo di silicone</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nel lattante sotto l'anno l'ostruzione congenita del dotto naso-lacrimale si gestisce in modo conservativo (massaggio discendente, antibiotico topico solo per la secrezione), perché la maggior parte si risolve spontaneamente; il sondaggio si riserva alla persistenza oltre l'anno. Il discriminatore è l'età sotto l'anno senza flogosi acuta.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/30360371/">PMID 30360371</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/28700811/">PMID 28700811</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b02">
+      <p class="q-tag">B02</p>
+      <p class="q-text">Neonato con schisi completa del palato, alimentato con tettarella dedicata e senza compromissione respiratoria. Per ottimizzare lo sviluppo del linguaggio, quando va programmata la palatoplastica?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Alla nascita, in regime di urgenza</button></li>
+        <li><button type="button"><span class="key">B</span>A 1-2 mesi, contestualmente alla correzione del labbro</button></li>
+        <li><button type="button"><span class="key">C</span>A 3-4 anni, dopo l'eruzione dei denti decidui</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Tra 6 e 12 mesi, prima dello sviluppo del linguaggio</button></li>
+        <li><button type="button"><span class="key">E</span>Dopo i 5 anni, prima dell'ingresso a scuola</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La palatoplastica tra 6 e 12 mesi stabilisce un meccanismo velofaringeo competente prima dell'articolazione, riducendo fistole e insufficienza velofaringea; anticiparla espone a rischio anestesiologico, ritardarla consolida compensi articolatori. Il discriminatore è la finestra pre-linguaggio.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/28027255/">PMID 28027255</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b03">
+      <p class="q-tag">B03</p>
+      <p class="q-text">Adulto con tumefazione dolente, calda e arrossata sopra il sacco lacrimale, comparsa in due giorni, febbre e reflusso mucopurulento dai puntini. Qual è la gestione corretta?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Antibiotici sistemici e drenaggio dell'eventuale ascesso, rimandando la dacriocistorinostomia a flogosi risolta</button></li>
+        <li><button type="button"><span class="key">B</span>Dacriocistorinostomia esterna immediata in piena fase acuta</button></li>
+        <li><button type="button"><span class="key">C</span>Sondaggio e irrigazione delle vie lacrimali in urgenza</button></li>
+        <li><button type="button"><span class="key">D</span>Dilatazione del dotto con catetere a palloncino</button></li>
+        <li><button type="button"><span class="key">E</span>Solo lubrificanti topici e impacchi freddi</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La dacriocistite acuta si tratta con antibiotici sistemici, con incisione e drenaggio in caso di ascesso; la dacriocistorinostomia definitiva si pianifica dopo la risoluzione, sebbene la DCR endoscopica precoce sia un'opzione emergente. Il discriminatore è il timing della DCR rispetto alla fase acuta.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/38444220/">PMID 38444220</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b04">
+      <p class="q-tag">B04</p>
+      <p class="q-text">Neonato con micrognazia e desaturazioni cicliche che peggiorano in posizione supina, difficoltà alimentare e caduta posteriore della lingua all'esame. Qual è il primo provvedimento per le vie aeree?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Tracheostomia immediata</button></li>
+        <li><button type="button"><span class="key">B</span>Riparazione del palato in urgenza</button></li>
+        <li><button type="button"><span class="key">C</span>Sola ossigenoterapia supplementare</button></li>
+        <li><button type="button"><span class="key">D</span>Ricostruzione mandibolare con innesto osseo</button></li>
+        <li><button type="button" data-correct><span class="key">E</span>Posizionamento prono come primo passo, con escalation alla distrazione mandibolare se l'ostruzione persiste</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nella sequenza con glossoptosi si parte dal posizionamento prono e dalla cannula nasofaringea; se l'ostruzione persiste si ricorre a distrazione mandibolare o adesione linguo-labiale, riservando la tracheostomia ai casi refrattari. Il discriminatore è l'approccio graduale, dal meno invasivo.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/35987882/">PMID 35987882</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/30851756/">PMID 30851756</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b05">
+      <p class="q-tag">B05</p>
+      <p class="q-text">Neonato con tumefazione bluastra subito sotto il canto interno, presente dalla nascita, e difficoltà respiratoria durante la poppata, con masse endonasali bilaterali. Qual è la diagnosi e la condotta?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Glaucoma congenito, invio urgente per tonometria</button></li>
+        <li><button type="button"><span class="key">B</span>Cellulite orbitaria, antibiotici per via endovenosa</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Dacriocele congenito con cisti endonasale, da marsupializzare o sondare per l'ostruzione respiratoria</button></li>
+        <li><button type="button"><span class="key">D</span>Emangioma capillare, osservazione</button></li>
+        <li><button type="button"><span class="key">E</span>Encefalocele, valutazione neurochirurgica</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il dacriocele è una raccolta di muco e liquido amniotico nel sacco da mancata perforazione della valvola di Hasner; le cisti endonasali bilaterali ostruiscono il respiro nel neonato respiratore nasale obbligato e impongono marsupializzazione o sondaggio. Il discriminatore è la tumefazione bluastra alla nascita unita all'ostruzione nasale.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/30360371/">PMID 30360371</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b06">
+      <p class="q-tag">B06</p>
+      <p class="q-text">Lattante di 3 mesi con cranio lungo e stretto, cresta sagittale palpabile e sviluppo neurologico normale. Quale opzione è preferibile se trattato precocemente?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Craniectomia endoscopica della sutura con ortesi postoperatoria, ottimale nei primi mesi</button></li>
+        <li><button type="button"><span class="key">B</span>Rimodellamento a cielo aperto come unica opzione a qualunque età</button></li>
+        <li><button type="button"><span class="key">C</span>Osservazione, con normalizzazione spontanea attesa</button></li>
+        <li><button type="button"><span class="key">D</span>Posizionamento di una derivazione liquorale</button></li>
+        <li><button type="button"><span class="key">E</span>Release isolato della sutura metopica</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La scafocefalia da sinostosi sagittale, la più frequente tra le singole suture, si presta alla craniectomia endoscopica con casco quando eseguita precocemente, per le minori perdite ematiche; il rimodellamento aperto resta per le presentazioni tardive o severe. Il discriminatore è la precocità che abilita la tecnica mininvasiva.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/39986882/">PMID 39986882</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/39699590/">PMID 39699590</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b07">
+      <p class="q-tag">B07</p>
+      <p class="q-text">Lattante con sindattilia completa che coinvolge le dita marginali della mano e iniziale deviazione angolare progressiva. Quale condotta è corretta?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Attendere la maturità scheletrica prima di operare</button></li>
+        <li><button type="button"><span class="key">B</span>Astenersi dall'intervento e limitarsi all'osservazione</button></li>
+        <li><button type="button"><span class="key">C</span>Operare solo per motivi estetici in adolescenza</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Separazione precoce nelle dita marginali e nelle forme ossee, per prevenire la deformità progressiva</button></li>
+        <li><button type="button"><span class="key">E</span>Separare entrambi i lati dello stesso dito in un unico tempo</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le dita di lunghezza diversa (marginali) e le fusioni ossee deviano progressivamente e vanno separate precocemente; non si liberano mai entrambi i lati di un dito nello stesso tempo, per il rischio vascolare. Il discriminatore è la precocità nelle forme a rischio di deformità.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/23970273/">PMID 23970273</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/26497594/">PMID 26497594</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b08">
+      <p class="q-tag">B08</p>
+      <p class="q-text">Donna di 55 anni con secchezza oculare e orale, tumefazione bilaterale delle parotidi e test di Schirmer inferiore a 5 mm. Quale accertamento conferma la malattia autoimmune sistemica?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Avviare ciclosporina topica e concludere l'iter diagnostico</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Ricerca degli anticorpi anti-Ro/SSA, con eventuale biopsia delle ghiandole salivari labiali</button></li>
+        <li><button type="button"><span class="key">C</span>Misurazione della pressione intraoculare</button></li>
+        <li><button type="button"><span class="key">D</span>Topografia corneale computerizzata</button></li>
+        <li><button type="button"><span class="key">E</span>Sondaggio delle vie naso-lacrimali</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>I criteri classificativi 2016 ACR/EULAR pesano gli anti-SSA/Ro e la sialoadenite linfocitaria focale alla biopsia labiale, oltre ai segni oculari e orali; la conferma indirizza all'invio reumatologico. Il discriminatore è la dimostrazione dell'autoimmunità sistemica, non un trattamento sintomatico.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/27785888/">PMID 27785888</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/34100160/">PMID 34100160</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b09">
+      <p class="q-tag">B09</p>
+      <p class="q-text">Lattante con brachicefalia, ipoplasia del terzo medio del volto e proptosi, associate a sindattilia complessa bilaterale delle mani a mano a cucchiaio e pollici larghi. Quale diagnosi guida la gestione?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Sindrome di Crouzon</button></li>
+        <li><button type="button"><span class="key">B</span>Sindrome di Treacher-Collins</button></li>
+        <li><button type="button"><span class="key">C</span>Scafocefalia non sindromica</button></li>
+        <li><button type="button"><span class="key">D</span>Sequenza di Pierre-Robin</button></li>
+        <li><button type="button" data-correct><span class="key">E</span>Sindrome di Apert</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Ipoplasia medio-facciale e proptosi con sindattilia complessa a mano a cucchiaio definiscono la sindrome di Apert (acrocefalo-sindattilia, FGFR2); Crouzon condivide i tratti craniofacciali ma risparmia gli arti. Il discriminatore è l'interessamento delle mani.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/30851747/">PMID 30851747</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/38222144/">PMID 38222144</a></p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b10">
+      <p class="q-tag">B10</p>
+      <p class="q-text">Adulto con epifora cronica, congiuntiviti ricorrenti e tumefazione molle indolore in regione del sacco, con reflusso mucoso alla digitopressione e quadro non acuto. Qual è il trattamento definitivo?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Antibiotici topici a lungo termine</button></li>
+        <li><button type="button"><span class="key">B</span>Sondaggi ripetuti delle vie lacrimali</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Dacriocistorinostomia per bypassare l'ostruzione</button></li>
+        <li><button type="button"><span class="key">D</span>Massaggio del sacco lacrimale</button></li>
+        <li><button type="button"><span class="key">E</span>Applicazione di tappi puntali</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La dacriocistite cronica con mucocele da ostruzione del dotto naso-lacrimale si risolve definitivamente bypassando l'ostacolo con la dacriocistorinostomia, esterna o endoscopica, una volta superata l'eventuale fase acuta. Il discriminatore è il bypass chirurgico contro le misure temporanee.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/38444220/">PMID 38444220</a></p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Vignette cliniche</h2>
+
+    <article class="case">
+      <p class="q-tag">V01</p>
+      <p class="vignette">Neonato di pochi giorni con difficoltà alla suzione e rigurgito di latte dal naso, scarso incremento ponderale; i genitori riferiscono rumori respiratori durante la poppata.</p>
+
+      <details class="stage">
+        <summary><span class="stage-key">An</span>Anamnesi</summary>
+        <div class="stage-body">
+          <p>Gravidanza senza ecografia morfologica conclusiva, nessuna familiarità nota. L'alimentazione è possibile solo con tettarella a flusso modificato che occlude artificialmente il difetto.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">EO</span>Esame obiettivo</summary>
+        <div class="stage-body">
+          <p>Soluzione di continuo del labbro superiore in sede paramediana a sinistra, con distorsione dell'ala nasale omolaterale. All'ispezione del cavo orale, fessura che attraversa palato molle e duro fino al forame incisivo.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Es</span>Indagini</summary>
+        <div class="stage-body">
+          <p>Valutazione audiologica per il rischio di otite media secretiva da disfunzione tubarica; impedenzometria compatibile con versamento dell'orecchio medio (glue ear), a rischio di ipoacusia trasmissiva.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">DD</span>Diagnosi differenziale</summary>
+        <div class="stage-body">
+          <p>Schisi sottomucosa isolata (ugola bifida con palato integro in superficie); sequenza con micrognazia e glossoptosi a prevalente ostruzione respiratoria; insufficienza velofaringea non malformativa.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Dx</span>Diagnosi</summary>
+        <div class="stage-body">
+          <p>Labiopalatoschisi sinistra completa, la malformazione più frequente del distretto testa-collo, con incidenza intorno a 1 su 750-800 nati vivi.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Rx</span>Gestione</summary>
+        <div class="stage-body">
+          <p>Programma multidisciplinare: correzione del labbro intorno ai 3 mesi, palatoplastica tra 6 e 9 mesi prima dell'acquisizione del linguaggio, riabilitazione logopedica, innesto osseo alveolare tra 9 e 11 anni per l'eruzione del canino. Sorveglianza audiologica costante per il glue ear.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="case">
+      <p class="q-tag">V02</p>
+      <p class="vignette">Donna di 55 anni con tumefazione dolente e arrossata in regione cantale interna, comparsa in due giorni, accompagnata da lacrimazione.</p>
+
+      <details class="stage">
+        <summary><span class="stage-key">An</span>Anamnesi</summary>
+        <div class="stage-body">
+          <p>Da mesi epifora continua dello stesso occhio, senza traumi recenti. Episodi pregressi di congiuntivite angolare ricorrente.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">EO</span>Esame obiettivo</summary>
+        <div class="stage-body">
+          <p>Tumefazione calda ed edematosa sopra il sacco lacrimale; alla digitopressione refluisce materiale mucopurulento dai puntini. Febbricola, senza proptosi né limitazione dei movimenti oculari.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Es</span>Indagini</summary>
+        <div class="stage-body">
+          <p>Emocromo con modesta leucocitosi neutrofila. La sede e il reflusso orientano la diagnosi clinicamente; imaging riservato al sospetto di estensione oltre il sacco.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">DD</span>Diagnosi differenziale</summary>
+        <div class="stage-body">
+          <p>Cellulite orbitaria (proptosi, oftalmoplegia, dolore ai movimenti); dacrioadenite (tumefazione supero-esterna a S italica); etmoidite con cellulite preseptale.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Dx</span>Diagnosi</summary>
+        <div class="stage-body">
+          <p>Dacriocistite acuta su ostruzione del dotto naso-lacrimale, con ristagno settico nel sacco.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Rx</span>Gestione</summary>
+        <div class="stage-body">
+          <p>Antibiotici sistemici e impacchi, con incisione e drenaggio in caso di ascesso. La dacriocistorinostomia, definitiva, si esegue solo dopo la risoluzione della fase acuta. Attenzione al dacrioflemmone e alla possibile tromboflebite del seno cavernoso per propagazione via vena angolare.</p>
+        </div>
+      </details>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <span><a href="./">← indice</a></span>
+    <span>argomenti del 27 giugno · generato nella notte da vigil</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var KEY = "vigil:" + document.body.dataset.date;
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+
+  var questions = document.querySelectorAll(".q");
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function apply(q, idx) {
+    var opts = q.querySelector(".opts");
+    var buttons = opts.querySelectorAll("button");
+    opts.classList.add("locked");
+    buttons.forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx) {
+        b.classList.add("chosen");
+        if (!b.hasAttribute("data-correct")) b.classList.add("ko");
+      }
+      if (b.hasAttribute("data-correct")) b.classList.add("is-correct", "revealed");
+    });
+    var r = q.querySelector(".rationale");
+    if (r) r.classList.add("open");
+  }
+
+  function refreshRail() {
+    var answered = 0, correct = 0;
+    questions.forEach(function (q) {
+      var idx = state[q.dataset.q];
+      if (idx === undefined) return;
+      answered++;
+      var b = q.querySelectorAll(".opts button")[idx];
+      if (b && b.hasAttribute("data-correct")) correct++;
+    });
+    document.getElementById("rail-progress").textContent = "risposte " + answered + "/" + questions.length;
+    document.getElementById("rail-score").textContent = "corrette " + correct;
+  }
+
+  questions.forEach(function (q) {
+    var qid = q.dataset.q;
+    var buttons = q.querySelectorAll(".opts button");
+    buttons.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (state[qid] !== undefined) return;
+        state[qid] = i;
+        save();
+        apply(q, i);
+        refreshRail();
+      });
+    });
+    if (state[qid] !== undefined) apply(q, state[qid]);
+  });
+
+  document.getElementById("rail-reset").addEventListener("click", function () {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  });
+
+  refreshRail();
+})();
+</script>
+</body>
+</html>
