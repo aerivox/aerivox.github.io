@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vigil · 30 giugno 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f3f5;
+  --ink: #15171c;
+  --muted: #5b5f6a;
+  --rule: #c7cad2;
+  --accent: #8c2332;
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --ok: #1e6b4e;
+  --ok-soft: color-mix(in srgb, var(--ok) 9%, transparent);
+  --serif: "STIX Two Text", Georgia, serif;
+  --display: "Instrument Serif", Georgia, serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.masthead          { animation: rise .7s .05s both; }
+.scorerail         { animation: rise .7s .15s both; }
+main > section:nth-of-type(1) { animation: rise .7s .25s both; }
+main > section:nth-of-type(2) { animation: rise .7s .35s both; }
+main > section:nth-of-type(3) { animation: rise .7s .45s both; }
+main > section:nth-of-type(n+4) { animation: rise .7s .55s both; }
+@media (prefers-reduced-motion: reduce) {
+  .masthead, .scorerail, main > section { animation: none; }
+  .rationale { transition: none; }
+}
+
+.masthead { padding: 3.5rem 0 1.75rem; border-bottom: 2px solid var(--ink); }
+.kicker {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--accent);
+  margin: 0 0 .9rem;
+}
+.masthead h1 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.05; margin: 0 0 1.5rem;
+}
+.topics { list-style: none; margin: 0; padding: 0; }
+.topics li {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: .55rem 0;
+}
+.topics .mod {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  flex: 0 0 11.5rem;
+}
+.topics .name { font-size: 1.15rem; }
+.topics a { color: inherit; text-decoration: none; }
+.topics a:hover { color: var(--accent); }
+
+.spark { margin-top: 2.2rem; max-width: 36em; }
+.spark::before {
+  content: "⁂"; display: block;
+  color: var(--accent); font-size: .95rem; margin-bottom: 1rem;
+}
+.spark p {
+  font-size: 1.15rem; line-height: 1.6;
+  margin: 0 0 1rem;
+}
+.spark p:last-child { margin-bottom: 0; }
+
+.scorerail {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.scorerail .wrap {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: .6rem; padding-bottom: .6rem;
+}
+.scorerail button {
+  font: inherit; color: var(--muted); background: none; border: none;
+  padding: 0; cursor: pointer; text-decoration: underline;
+  text-underline-offset: 3px; letter-spacing: inherit; text-transform: inherit;
+}
+.scorerail button:hover { color: var(--accent); }
+
+.topic-section { padding: 3rem 0 1rem; }
+.topic-head { position: relative; margin-bottom: 2rem; }
+.topic-num {
+  position: absolute; right: 0; top: -1.4rem; z-index: 0;
+  font-family: var(--display); font-size: 7rem; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px var(--rule);
+  user-select: none; pointer-events: none;
+}
+.topic-head .mod {
+  position: relative; z-index: 1;
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  margin: 0 0 .3rem;
+}
+.topic-head h2 {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0;
+}
+
+.q { border-top: 1px solid var(--rule); padding: 1.6rem 0 2.2rem; }
+.q-tag {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .18em; color: var(--accent); margin: 0 0 .6rem;
+}
+.q-text { font-size: 1.125rem; font-weight: 600; margin: 0 0 1.1rem; }
+.opts { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.opts button {
+  display: flex; align-items: baseline; gap: .85rem; width: 100%;
+  font-family: var(--serif); font-size: 1rem; line-height: 1.45;
+  text-align: left; color: var(--ink);
+  background: transparent; border: 1px solid var(--rule);
+  padding: .7rem .9rem; cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .78rem; font-weight: 500;
+  color: var(--accent); flex: 0 0 1.1rem;
+}
+.opts:not(.locked) button:hover {
+  transform: translateX(5px); border-color: var(--ink);
+}
+.opts.locked button { cursor: default; }
+.opts.locked button:not(.chosen):not(.is-correct) { opacity: .45; }
+.opts button.chosen.ko { border-color: var(--accent); background: var(--accent-soft); }
+.opts button.is-correct.revealed { border-color: var(--ok); background: var(--ok-soft); }
+.opts button.chosen.ko .key,
+.opts button.is-correct.revealed .key { font-size: 0; }
+.opts button.chosen.ko .key::after { content: "✕"; font-size: .85rem; color: var(--accent); }
+.opts button.is-correct.revealed .key::after { content: "✓"; font-size: .85rem; color: var(--ok); }
+
+.rationale {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease;
+}
+.rationale.open { grid-template-rows: 1fr; }
+.rationale > div { overflow: hidden; }
+.rationale p {
+  margin: 1.1rem 0 0; padding: .2rem 0 .2rem 1rem;
+  border-left: 2px solid var(--accent); color: var(--ink); font-size: .98rem;
+}
+
+.boards { padding: 3rem 0; }
+.boards > h2 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0 0 2rem;
+  padding-top: 1.6rem; border-top: 2px solid var(--ink);
+}
+.case { margin-bottom: 3rem; }
+.vignette { font-size: 1.1rem; margin: 0 0 1.4rem; }
+.stage { border-top: 1px solid var(--rule); }
+.stage:last-of-type { border-bottom: 1px solid var(--rule); }
+.stage summary {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .75rem .2rem; cursor: pointer; list-style: none;
+  font-weight: 600; transition: background .18s ease;
+}
+.stage summary::-webkit-details-marker { display: none; }
+.stage summary:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.stage-key {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  color: var(--accent); border: 1px solid var(--accent);
+  min-width: 1.7rem; text-align: center; padding: .15rem .3rem;
+}
+.stage summary::after {
+  content: "+"; margin-left: auto; font-family: var(--mono);
+  color: var(--muted); transition: transform .25s ease;
+}
+.stage[open] summary::after { transform: rotate(45deg); }
+.stage-body { padding: .3rem .2rem 1.3rem; animation: rise .4s ease both; }
+.stage-body p { margin: .6rem 0; }
+.refs { font-family: var(--mono); font-size: .8rem; }
+.refs a { color: var(--accent); text-underline-offset: 3px; }
+.rationale p.refs {
+  margin-top: .4rem; font-size: .8rem;
+  border-left-color: transparent; color: var(--muted);
+}
+
+.colophon {
+  border-top: 2px solid var(--ink); margin-top: 2rem;
+  padding: 1.4rem 0 3.5rem;
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.colophon .wrap {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.colophon a { color: inherit; text-underline-offset: 3px; }
+.colophon a:hover { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .topics .mod { flex-basis: 7.5rem; }
+  .topic-num { font-size: 4.5rem; top: -.8rem; }
+}
+</style>
+</head>
+<body data-date="2026-06-30">
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">vigil · consolidamento notturno</p>
+    <h1>martedì 30 giugno 2026</h1>
+    <ul class="topics">
+      <li><span class="mod">Dermatologia</span><span class="name"><a href="#t1">Reazioni cutanee ai farmaci</a></span></li>
+    </ul>
+    <div class="spark">
+      <p>Nel 1922 due medici di Boston, Albert Stevens e Frank Johnson, descrissero due ragazzini con febbre, bocche in fiamme e occhi sigillati da croste: la sindrome che porta i loro nomi nacque come un enigma pediatrico. Servì mezzo secolo per capire che dietro quei casi, e dietro la loro forma più estesa che Alan Lyell battezzò nel 1956 osservando la pelle staccarsi a lembi come dopo un'ustione, c'era quasi sempre un farmaco: un sulfamidico, un anticonvulsivante, un allopurinolo, presi per guarire. È il paradosso che ripassi stamattina: la stessa molecola che doveva curare scatena una reazione immunitaria che scolla l'epidermide dal corpo come carta da parati. Quanto deve essere severa una difesa perché il rimedio diventi la malattia?</p>
+    </div>
+  </div>
+</header>
+
+<div class="scorerail">
+  <div class="wrap">
+    <span id="rail-progress">risposte 0/18</span>
+    <span id="rail-score">corrette 0</span>
+    <button id="rail-reset" type="button">azzera</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="topic-section" id="t1">
+    <header class="topic-head">
+      <span class="topic-num" aria-hidden="true">01</span>
+      <p class="mod">Dermatologia</p>
+      <h2>Reazioni cutanee ai farmaci</h2>
+    </header>
+
+    <article class="q" data-q="q01">
+      <p class="q-tag">Q01</p>
+      <p class="q-text">Entro quanto tempo dall'assunzione compare tipicamente la lesione dell'eritema fisso da farmaci?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Entro pochi minuti dall'assunzione</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Intorno alle ventiquattro ore</button></li>
+        <li><button type="button"><span class="key">C</span>Dopo circa una settimana</button></li>
+        <li><button type="button"><span class="key">D</span>Dopo due o tre settimane</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eritema fisso insorge a circa ventiquattro ore, recidiva sempre nella stessa sede e lascia un esito iperpigmentato. Il discriminatore è la latenza: breve e fissa, distingue questa entità dalla tossidermia esantematica (giorni fino a due settimane) e dall'eritema polimorfo (circa una settimana).</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q02">
+      <p class="q-tag">Q02</p>
+      <p class="q-text">Nelle ore che precedono l'eruzione dell'eritema polimorfo maggiore, quale quadro si osserva più spesso?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Una sindrome simil-influenzale con febbricola e linfoadenopatia</button></li>
+        <li><button type="button"><span class="key">B</span>Un prurito generalizzato intenso senza alcuna febbre</button></li>
+        <li><button type="button"><span class="key">C</span>Una singola bolla tesa su base eritematosa</button></li>
+        <li><button type="button"><span class="key">D</span>Un'iperpigmentazione reticolare diffusa al tronco</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eruzione è preceduta da un prodromo sistemico simil-influenzale con febbricola e linfoadenopatia; prurito, bruciore e dolore compaiono insieme alle lesioni, non prima. Il discriminatore è la natura sistemica e anticipatoria del prodromo, distinta da un sintomo cutaneo localizzato.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q03">
+      <p class="q-tag">Q03</p>
+      <p class="q-text">Un esantema maculo-papuloso pruriginoso compare otto giorni dopo l'inizio di un antibiotico, con eosinofilia all'emocromo. Quale meccanismo lo sostiene?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Rilascio immediato di istamina per via IgE-mediata</button></li>
+        <li><button type="button"><span class="key">B</span>Attivazione del complemento da immunocomplessi circolanti</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Reazione ritardata cellulo-mediata da linfociti T</button></li>
+        <li><button type="button"><span class="key">D</span>Degranulazione diretta dei mastociti non immunologica</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La latenza di giorni, il prurito e l'eosinofilia indicano una reazione ritardata di tipo IV cellulo-mediata; la via IgE-istamina produce orticaria o angioedema entro minuti, non un esantema a settimana di distanza. Il discriminatore è l'asse temporale: giorni segnalano la via cellulare, minuti la via immediata.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q04">
+      <p class="q-tag">Q04</p>
+      <p class="q-text">Perché alla seconda esposizione allo stesso farmaco la tossidermia esantematica tende a comparire più precocemente?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Il farmaco si accumula nel derma fino a una soglia tossica</button></li>
+        <li><button type="button"><span class="key">B</span>La barriera cutanea resta indebolita dalla prima reazione</button></li>
+        <li><button type="button"><span class="key">C</span>Gli immunocomplessi circolanti attivano subito il complemento</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Preesistono linfociti T memoria specifici pronti a riattivarsi</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La prima esposizione sensibilizza generando linfociti T memoria specifici; alla riesposizione la risposta è già innescata e la latenza clinica si accorcia. Il discriminatore è la memoria immunologica preformata, non un accumulo del farmaco né un danno di barriera residuo.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q05">
+      <p class="q-tag">Q05</p>
+      <p class="q-text">Quale insieme di caratteristiche descrive meglio la tossidermia esantematica da farmaci?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Macula rosso vinoso unica che recidiva nella stessa sede</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Papule e macule pruriginose con eosinofilia, volto risparmiato</button></li>
+        <li><button type="button"><span class="key">C</span>Lesioni a bersaglio con interessamento delle mucose</button></li>
+        <li><button type="button"><span class="key">D</span>Pustole acneiformi confinate al volto e al tronco</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La tossidermia esantematica si presenta con papule e macule rosse pruriginose a pieghe, gomiti, ginocchia e tronco, con eosinofilia e risparmio del volto, e regredisce con desquamazione. Il discriminatore è il pattern esantematico diffuso e pruriginoso, distinto dalla lesione fissa, dalla coccarda mucosale e dalla pustola acneiforme.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q06">
+      <p class="q-tag">Q06</p>
+      <p class="q-text">Secondo le soglie di superficie cutanea, come si distinguono la sindrome di Stevens-Johnson e la sindrome di Lyell?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Stevens-Johnson meno del dieci per cento, Lyell oltre il trenta</button></li>
+        <li><button type="button"><span class="key">B</span>Stevens-Johnson meno del trenta per cento, Lyell oltre il cinquanta</button></li>
+        <li><button type="button"><span class="key">C</span>Stevens-Johnson risparmia le mucose, Lyell le coinvolge</button></li>
+        <li><button type="button"><span class="key">D</span>Stevens-Johnson immuno-mediata, Lyell tossica diretta</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La distinzione è puramente quantitativa di superficie: meno del dieci per cento per Stevens-Johnson, oltre il trenta per cento per Lyell; i meccanismi patogenetici sono identici ed entrambe coinvolgono le mucose. Il discriminatore sono le soglie di estensione, non la patogenesi né l'interessamento mucoso.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q07">
+      <p class="q-tag">Q07</p>
+      <p class="q-text">Quale esito caratterizza tipicamente la regressione dell'eritema fisso da farmaci?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Una desquamazione fine senza reliquati</button></li>
+        <li><button type="button"><span class="key">B</span>Una cicatrice atrofica depressa</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Un'iperpigmentazione persistente di lunga durata</button></li>
+        <li><button type="button"><span class="key">D</span>Una teleangectasia residua permanente</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eritema fisso lascia una macchia iperpigmentata persistente per deposito di melanina nel derma; la desquamazione senza reliquati è propria delle forme esantematiche. Il discriminatore è l'esito pigmentario duraturo, non cicatriziale né vascolare.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q08">
+      <p class="q-tag">Q08</p>
+      <p class="q-text">In un paziente con grave eruzione acneiforme da inibitori dell'EGFR durante chemioterapia, qual è la condotta raccomandata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Sospendere l'antineoplastico fino alla risoluzione cutanea</button></li>
+        <li><button type="button"><span class="key">B</span>Sostituire l'antineoplastico con un immunosoppressore sistemico</button></li>
+        <li><button type="button"><span class="key">C</span>Limitarsi a emollienti attendendo la guarigione spontanea</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Mantenere l'antineoplastico e associare una terapia antibiotica</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eruzione acneiforme da anti-EGFR si gestisce senza interrompere la terapia oncologica, associando un antibiotico (tipicamente una tetraciclina) per controllarla. Il discriminatore è il principio di proseguire l'oncologico trattando la cute, non di sospenderlo o sostituirlo.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q09">
+      <p class="q-tag">Q09</p>
+      <p class="q-text">Qual è il tratto distintivo tra reazione fototossica e reazione fotoallergica da farmaci?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>La fotoallergica è una reazione immuno-mediata di tipo IV</button></li>
+        <li><button type="button"><span class="key">B</span>La fototossica richiede una pregressa sensibilizzazione immunitaria</button></li>
+        <li><button type="button"><span class="key">C</span>La fototossica colpisce elettivamente le aree coperte</button></li>
+        <li><button type="button"><span class="key">D</span>La fotoallergica è indipendente dall'esposizione solare</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La fototossica è un danno diretto da fotoprodotti, senza coinvolgimento immune e possibile anche alla prima esposizione; la fotoallergica è una risposta linfocitaria di tipo IV in cui il farmaco fotoattivato funge da aptene. Il discriminatore è il coinvolgimento immunologico, presente solo nella forma fotoallergica.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q10">
+      <p class="q-tag">Q10</p>
+      <p class="q-text">Nelle reazioni cutanee da farmaci, qual è il passaggio diagnostico decisivo per identificare il responsabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La biopsia cutanea con conta degli eosinofili</button></li>
+        <li><button type="button"><span class="key">B</span>Il dosaggio delle IgE sieriche totali</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>La storia anamnestica dell'assunzione del farmaco</button></li>
+        <li><button type="button"><span class="key">D</span>Il test di provocazione orale sotto sorveglianza</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La diagnosi è clinica e l'anamnesi farmacologica, che ricostruisce la correlazione temporale tra assunzione e comparsa, è il passaggio chiave; istologia e test di provocazione restano integrativi. Il discriminatore è la priorità dell'anamnesi sui test strumentali.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Boards</h2>
+
+    <article class="q" data-q="b01">
+      <p class="q-tag">B01</p>
+      <p class="q-text">Donna di 58 anni, due settimane dopo l'inizio di allopurinolo per iperuricemia, presenta febbre elevata, lesioni eritematose confluenti dolenti e distacco epidermico su circa il quindici per cento della superficie, con erosioni del cavo orale e congiuntivali. Lo sfioramento della cute provoca scollamento (segno di Nikolsky positivo). Qual è il provvedimento prioritario?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Avviare subito antibioticoterapia sistemica ad ampio spettro</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Sospendere l'allopurinolo e gestire in ambiente intensivo da ustionato</button></li>
+        <li><button type="button"><span class="key">C</span>Somministrare un antistaminico per via endovenosa</button></li>
+        <li><button type="button"><span class="key">D</span>Eseguire patch test urgenti per confermare il farmaco</button></li>
+        <li><button type="button"><span class="key">E</span>Iniziare aciclovir endovena in attesa degli accertamenti</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il quadro è una necrolisi epidermica nello spettro Stevens-Johnson/Lyell: la sospensione precoce del farmaco causale è la misura che più riduce la mortalità, con supporto come per un grande ustionato. Il discriminatore è il riconoscimento del distacco mucocutaneo da farmaco, dove patch test e antistaminico non hanno ruolo in acuto.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/28476287/">PMID 28476287</a> · Lancet Seminar sulle reazioni cutanee gravi da farmaci.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b02">
+      <p class="q-tag">B02</p>
+      <p class="q-text">Uomo di 45 anni, sei settimane dopo l'avvio di carbamazepina, sviluppa febbre, edema del volto, esantema morbilliforme diffuso e linfoadenopatia; agli esami eosinofilia marcata e rialzo delle transaminasi. Qual è la diagnosi più probabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Tossidermia esantematica semplice</button></li>
+        <li><button type="button"><span class="key">B</span>Sindrome di Stevens-Johnson iniziale</button></li>
+        <li><button type="button"><span class="key">C</span>Eritema polimorfo maggiore</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Reazione da farmaci con eosinofilia e sintomi sistemici</button></li>
+        <li><button type="button"><span class="key">E</span>Orticaria acuta da farmaci</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La latenza lunga, l'edema del volto, l'eosinofilia e il coinvolgimento epatico configurano una reazione da farmaci con eosinofilia e sintomi sistemici; l'assenza di distacco epidermico la separa dalla necrolisi e la sistemicità dalla semplice tossidermia. Il discriminatore è la triade eosinofilia, impegno d'organo ed edema facciale a latenza protratta.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/35176506/">PMID 35176506</a> · Quadro clinico e patogenesi della DRESS.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b03">
+      <p class="q-tag">B03</p>
+      <p class="q-text">Un paziente sviluppa febbre, esantema esteso, edema del volto, eosinofilia e citolisi epatica quattro settimane dopo l'introduzione di un nuovo farmaco. Oltre alla sospensione del farmaco, quale trattamento è di prima linea nelle forme con impegno viscerale?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Corticosteroidi sistemici ridotti lentamente a scalare</button></li>
+        <li><button type="button"><span class="key">B</span>Antistaminici orali a cicli brevi</button></li>
+        <li><button type="button"><span class="key">C</span>Immunoglobuline endovena in singola somministrazione</button></li>
+        <li><button type="button"><span class="key">D</span>Antibiotici antistafilococcici per via orale</button></li>
+        <li><button type="button"><span class="key">E</span>Plasmaferesi in regime di urgenza</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nelle forme con interessamento d'organo i corticosteroidi sistemici, ridotti lentamente per evitare le recidive, sono il cardine, con sorveglianza della riattivazione di HHV-6 e dell'eventuale miocardite. Il discriminatore è lo steroide sistemico a scalare lento, non un antistaminico né una terapia depurativa estemporanea.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/37516356/">PMID 37516356</a> · DRESS: diagnosi e gestione.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b04">
+      <p class="q-tag">B04</p>
+      <p class="q-text">Uomo di 62 anni in trattamento con cetuximab per carcinoma del colon: dalla seconda settimana compare un'eruzione papulo-pustolosa di volto e tronco, moderata, senza segni sistemici. Qual è la condotta più appropriata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Sospendere definitivamente il cetuximab</button></li>
+        <li><button type="button"><span class="key">B</span>Dimezzare la frequenza delle somministrazioni</button></li>
+        <li><button type="button"><span class="key">C</span>Applicare solo un antibiotico topico fino alla guarigione</button></li>
+        <li><button type="button"><span class="key">D</span>Avviare isotretinoina orale a dose piena</button></li>
+        <li><button type="button" data-correct><span class="key">E</span>Proseguire il cetuximab e iniziare doxiciclina orale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eruzione acneiforme da anti-EGFR si gestisce senza sospendere l'oncologico, con doxiciclina orale come cardine; l'isotretinoina a basse dosi è riservata alle forme refrattarie e gli antibiotici topici non sono raccomandati. Il discriminatore è continuare il farmaco associando una tetraciclina sistemica.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/39460590/">PMID 39460590</a> · Consenso Delphi Europa/USA sulla gestione del rash da inibitori EGFR.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b05">
+      <p class="q-tag">B05</p>
+      <p class="q-text">Donna di 30 anni: a ogni assunzione di un FANS per dismenorrea compare, nello stesso punto del dorso del piede, una chiazza rotonda eritemato-violacea che poi lascia una macchia bruna persistente. Quale meccanismo spiega la ricomparsa nella medesima sede?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Deposito locale di immunocomplessi nei capillari dermici</button></li>
+        <li><button type="button"><span class="key">B</span>Reazione IgE-mediata con rilascio sistemico di istamina</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Linfociti T memoria residenti nella sede della prima reazione</button></li>
+        <li><button type="button"><span class="key">D</span>Fotosensibilizzazione da accumulo cutaneo del farmaco</button></li>
+        <li><button type="button"><span class="key">E</span>Vasculite leucocitoclasica circoscritta ricorrente</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eritema fisso recidiva perché linfociti T memoria residenti permangono nella sede della prima reazione e si riattivano localmente alla riesposizione; l'esito bruno deriva dal deposito dermico di melanina. Il discriminatore è la memoria T tissutale localizzata, non un meccanismo umorale o fototossico.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b06">
+      <p class="q-tag">B06</p>
+      <p class="q-text">Uomo di 50 anni in terapia con un diuretico tiazidico sviluppa, poche ore dopo l'esposizione solare e già alla prima esposizione, un eritema intenso simile a una scottatura limitato ad avambracci e volto, senza pregresso contatto sensibilizzante. Quale meccanismo è più probabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Reazione fotoallergica di tipo IV</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Reazione fototossica da danno diretto</button></li>
+        <li><button type="button"><span class="key">C</span>Orticaria solare IgE-mediata</button></li>
+        <li><button type="button"><span class="key">D</span>Dermatite allergica da contatto aerotrasmessa</button></li>
+        <li><button type="button"><span class="key">E</span>Lupus cutaneo subacuto indotto da farmaci</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'esordio rapido, simil-ustione, alla prima esposizione e senza sensibilizzazione pregressa indica un meccanismo fototossico da danno diretto dei fotoprodotti, mentre la fotoallergica richiede sensibilizzazione e assume aspetto eczematoso. Il discriminatore è la comparsa alla prima esposizione con morfologia da scottatura.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/27638435/">PMID 27638435</a> · Fotosensibilità da farmaci: reazioni fototossiche e fotoallergiche.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b07">
+      <p class="q-tag">B07</p>
+      <p class="q-text">Uomo di 25 anni con episodi ricorrenti di lesioni a coccarda a mani e gomiti, ognuno preceduto da un herpes labiale; gli accertamenti escludono un'origine farmacologica. Quale strategia riduce le recidive?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Corticosteroide sistemico in terapia continuativa</button></li>
+        <li><button type="button"><span class="key">B</span>Antistaminico orale a lungo termine</button></li>
+        <li><button type="button"><span class="key">C</span>Patch test seriati e dieta di eliminazione</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Profilassi antivirale continuativa</button></li>
+        <li><button type="button"><span class="key">E</span>Cicli programmati di fototerapia UVB</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nell'eritema polimorfo ricorrente associato a herpes simplex la profilassi antivirale continuativa previene gli episodi, mentre la terapia del singolo attacco resta sintomatica. Il discriminatore è il trigger erpetico ricorrente, che indirizza sull'antivirale anziché su immunosoppressione o test allergologici.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b08">
+      <p class="q-tag">B08</p>
+      <p class="q-text">Donna di 40 anni sviluppa, entro quindici minuti dalla prima dose endovenosa di un betalattamico, orticaria diffusa, angioedema delle labbra e dispnea con ipotensione. Quale meccanismo sostiene il quadro?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Ipersensibilità immediata IgE-mediata con degranulazione mastocitaria</button></li>
+        <li><button type="button"><span class="key">B</span>Reazione ritardata cellulo-mediata di tipo IV</button></li>
+        <li><button type="button"><span class="key">C</span>Tossidermia esantematica da accumulo del farmaco</button></li>
+        <li><button type="button"><span class="key">D</span>Eritema fisso da farmaci in fase iniziale</button></li>
+        <li><button type="button"><span class="key">E</span>Reazione fototossica acuta da fotoprodotti</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'esordio in minuti con orticaria, angioedema e segni anafilattici è tipico dell'ipersensibilità immediata IgE-mediata con degranulazione dei mastociti; le reazioni di tipo IV compaiono dopo giorni e danno quadri maculo-papulosi. Il discriminatore è l'asse temporale, minuti contro giorni, che separa la via immediata da quella cellulo-mediata.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Vignette cliniche</h2>
+
+    <article class="case">
+      <p class="q-tag">V01</p>
+      <p class="vignette">Uomo di 55 anni, da due giorni febbre elevata, bruciore oculare e dolore cutaneo diffuso; nelle ultime ore sono comparse chiazze eritematose dolenti al tronco che tendono a confluire.</p>
+
+      <details class="stage">
+        <summary><span class="stage-key">An</span>Anamnesi</summary>
+        <div class="stage-body">
+          <p>Dieci giorni prima ha iniziato trimetoprim-sulfametossazolo per un'infezione urinaria. Nessun episodio cutaneo analogo in passato, nessun'altra terapia recente.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">EO</span>Esame obiettivo</summary>
+        <div class="stage-body">
+          <p>Eritema dolente con bolle flaccide e ampi lembi di epidermide che si distaccano allo sfioramento (Nikolsky positivo). Erosioni delle labbra, delle congiuntive e della mucosa genitale. Il distacco interessa oltre il trenta per cento della superficie corporea.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Ind</span>Indagini</summary>
+        <div class="stage-body">
+          <p>Emocromo con linfopenia, rialzo della creatinina e squilibrio elettrolitico. La biopsia mostra necrosi epidermica a tutto spessore con scarso infiltrato infiammatorio dermico.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">DD</span>Diagnosi differenziale</summary>
+        <div class="stage-body">
+          <p>Sindrome stafilococcica della cute scottata (clivaggio superficiale subcorneo, mucose risparmiate, tipica del bambino); ustione termica (anamnesi di esposizione); pemfigo volgare (decorso più cronico, senza trigger farmacologico acuto); eritema polimorfo maggiore (lesioni a bersaglio con distacco limitato).</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Dx</span>Diagnosi</summary>
+        <div class="stage-body">
+          <p>Necrolisi epidermica tossica (sindrome di Lyell) da sulfamidico, estremo dello spettro Stevens-Johnson/necrolisi, definito dal distacco superiore al trenta per cento.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Rx</span>Gestione</summary>
+        <div class="stage-body">
+          <p>Sospensione immediata del sulfamidico e gestione come grande ustionato in ambiente intensivo: reintegro di liquidi ed elettroliti, controllo del dolore, prevenzione delle infezioni e cure oculari precoci. Il farmaco responsabile e i suoi correlati vanno evitati in modo permanente e segnalati.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <span><a href="./">← indice</a></span>
+    <span>argomenti del 29 giugno · generato nella notte da vigil</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var KEY = "vigil:" + document.body.dataset.date;
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+
+  var questions = document.querySelectorAll(".q");
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function apply(q, idx) {
+    var opts = q.querySelector(".opts");
+    var buttons = opts.querySelectorAll("button");
+    opts.classList.add("locked");
+    buttons.forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx) {
+        b.classList.add("chosen");
+        if (!b.hasAttribute("data-correct")) b.classList.add("ko");
+      }
+      if (b.hasAttribute("data-correct")) b.classList.add("is-correct", "revealed");
+    });
+    var r = q.querySelector(".rationale");
+    if (r) r.classList.add("open");
+  }
+
+  function refreshRail() {
+    var answered = 0, correct = 0;
+    questions.forEach(function (q) {
+      var idx = state[q.dataset.q];
+      if (idx === undefined) return;
+      answered++;
+      var b = q.querySelectorAll(".opts button")[idx];
+      if (b && b.hasAttribute("data-correct")) correct++;
+    });
+    document.getElementById("rail-progress").textContent = "risposte " + answered + "/" + questions.length;
+    document.getElementById("rail-score").textContent = "corrette " + correct;
+  }
+
+  questions.forEach(function (q) {
+    var qid = q.dataset.q;
+    var buttons = q.querySelectorAll(".opts button");
+    buttons.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (state[qid] !== undefined) return;
+        state[qid] = i;
+        save();
+        apply(q, i);
+        refreshRail();
+      });
+    });
+    if (state[qid] !== undefined) apply(q, state[qid]);
+  });
+
+  document.getElementById("rail-reset").addEventListener("click", function () {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  });
+
+  refreshRail();
+})();
+</script>
+</body>
+</html>
