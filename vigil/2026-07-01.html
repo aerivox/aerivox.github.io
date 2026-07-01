@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vigil · 1 luglio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f3f5;
+  --ink: #15171c;
+  --muted: #5b5f6a;
+  --rule: #c7cad2;
+  --accent: #8c2332;
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --ok: #1e6b4e;
+  --ok-soft: color-mix(in srgb, var(--ok) 9%, transparent);
+  --serif: "STIX Two Text", Georgia, serif;
+  --display: "Instrument Serif", Georgia, serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.masthead          { animation: rise .7s .05s both; }
+.scorerail         { animation: rise .7s .15s both; }
+main > section:nth-of-type(1) { animation: rise .7s .25s both; }
+main > section:nth-of-type(2) { animation: rise .7s .35s both; }
+main > section:nth-of-type(3) { animation: rise .7s .45s both; }
+main > section:nth-of-type(n+4) { animation: rise .7s .55s both; }
+@media (prefers-reduced-motion: reduce) {
+  .masthead, .scorerail, main > section { animation: none; }
+  .rationale { transition: none; }
+}
+
+.masthead { padding: 3.5rem 0 1.75rem; border-bottom: 2px solid var(--ink); }
+.kicker {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--accent);
+  margin: 0 0 .9rem;
+}
+.masthead h1 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.05; margin: 0 0 1.5rem;
+}
+.topics { list-style: none; margin: 0; padding: 0; }
+.topics li {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: .55rem 0;
+}
+.topics .mod {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  flex: 0 0 11.5rem;
+}
+.topics .name { font-size: 1.15rem; }
+.topics a { color: inherit; text-decoration: none; }
+.topics a:hover { color: var(--accent); }
+
+.spark { margin-top: 2.2rem; max-width: 36em; }
+.spark::before {
+  content: "⁂"; display: block;
+  color: var(--accent); font-size: .95rem; margin-bottom: 1rem;
+}
+.spark p {
+  font-size: 1.15rem; line-height: 1.6;
+  margin: 0 0 1rem;
+}
+.spark p:last-child { margin-bottom: 0; }
+
+.scorerail {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.scorerail .wrap {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: .6rem; padding-bottom: .6rem;
+}
+.scorerail button {
+  font: inherit; color: var(--muted); background: none; border: none;
+  padding: 0; cursor: pointer; text-decoration: underline;
+  text-underline-offset: 3px; letter-spacing: inherit; text-transform: inherit;
+}
+.scorerail button:hover { color: var(--accent); }
+
+.topic-section { padding: 3rem 0 1rem; }
+.topic-head { position: relative; margin-bottom: 2rem; }
+.topic-num {
+  position: absolute; right: 0; top: -1.4rem; z-index: 0;
+  font-family: var(--display); font-size: 7rem; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px var(--rule);
+  user-select: none; pointer-events: none;
+}
+.topic-head .mod {
+  position: relative; z-index: 1;
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  margin: 0 0 .3rem;
+}
+.topic-head h2 {
+  position: relative; z-index: 1;
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0;
+}
+
+.q { border-top: 1px solid var(--rule); padding: 1.6rem 0 2.2rem; }
+.q-tag {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .18em; color: var(--accent); margin: 0 0 .6rem;
+}
+.q-text { font-size: 1.125rem; font-weight: 600; margin: 0 0 1.1rem; }
+.opts { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.opts button {
+  display: flex; align-items: baseline; gap: .85rem; width: 100%;
+  font-family: var(--serif); font-size: 1rem; line-height: 1.45;
+  text-align: left; color: var(--ink);
+  background: transparent; border: 1px solid var(--rule);
+  padding: .7rem .9rem; cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .78rem; font-weight: 500;
+  color: var(--accent); flex: 0 0 1.1rem;
+}
+.opts:not(.locked) button:hover {
+  transform: translateX(5px); border-color: var(--ink);
+}
+.opts.locked button { cursor: default; }
+.opts.locked button:not(.chosen):not(.is-correct) { opacity: .45; }
+.opts button.chosen.ko { border-color: var(--accent); background: var(--accent-soft); }
+.opts button.is-correct.revealed { border-color: var(--ok); background: var(--ok-soft); }
+.opts button.chosen.ko .key,
+.opts button.is-correct.revealed .key { font-size: 0; }
+.opts button.chosen.ko .key::after { content: "✕"; font-size: .85rem; color: var(--accent); }
+.opts button.is-correct.revealed .key::after { content: "✓"; font-size: .85rem; color: var(--ok); }
+
+.rationale {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease;
+}
+.rationale.open { grid-template-rows: 1fr; }
+.rationale > div { overflow: hidden; }
+.rationale p {
+  margin: 1.1rem 0 0; padding: .2rem 0 .2rem 1rem;
+  border-left: 2px solid var(--accent); color: var(--ink); font-size: .98rem;
+}
+
+.boards { padding: 3rem 0; }
+.boards > h2 {
+  font-family: var(--display); font-weight: 400; font-style: italic;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin: 0 0 2rem;
+  padding-top: 1.6rem; border-top: 2px solid var(--ink);
+}
+.case { margin-bottom: 3rem; }
+.vignette { font-size: 1.1rem; margin: 0 0 1.4rem; }
+.stage { border-top: 1px solid var(--rule); }
+.stage:last-of-type { border-bottom: 1px solid var(--rule); }
+.stage summary {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .75rem .2rem; cursor: pointer; list-style: none;
+  font-weight: 600; transition: background .18s ease;
+}
+.stage summary::-webkit-details-marker { display: none; }
+.stage summary:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.stage-key {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  color: var(--accent); border: 1px solid var(--accent);
+  min-width: 1.7rem; text-align: center; padding: .15rem .3rem;
+}
+.stage summary::after {
+  content: "+"; margin-left: auto; font-family: var(--mono);
+  color: var(--muted); transition: transform .25s ease;
+}
+.stage[open] summary::after { transform: rotate(45deg); }
+.stage-body { padding: .3rem .2rem 1.3rem; animation: rise .4s ease both; }
+.stage-body p { margin: .6rem 0; }
+.refs { font-family: var(--mono); font-size: .8rem; }
+.refs a { color: var(--accent); text-underline-offset: 3px; }
+.rationale p.refs {
+  margin-top: .4rem; font-size: .8rem;
+  border-left-color: transparent; color: var(--muted);
+}
+
+.colophon {
+  border-top: 2px solid var(--ink); margin-top: 2rem;
+  padding: 1.4rem 0 3.5rem;
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.colophon .wrap {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.colophon a { color: inherit; text-underline-offset: 3px; }
+.colophon a:hover { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .topics .mod { flex-basis: 7.5rem; }
+  .topic-num { font-size: 4.5rem; top: -.8rem; }
+}
+</style>
+</head>
+<body data-date="2026-07-01">
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">vigil · consolidamento notturno</p>
+    <h1>mercoledì 1 luglio 2026</h1>
+    <ul class="topics">
+      <li><span class="mod">Dermatologia</span><span class="name"><a href="#t1">Patologie cutanee virali</a></span></li>
+      <li><span class="mod">Dermatologia</span><span class="name"><a href="#t2">Infezioni cutanee batteriche</a></span></li>
+    </ul>
+    <div class="spark">
+      <p>Nel 1884 un giovane medico tedesco, Friedrich Fehleisen, coltivò per primo lo streptococco dall'erisipela, quella placca rossa che avanza sulla pelle con un bordo netto e in rilievo, come una marea che sale sul viso. Ne trasse un'idea che oggi ci fa rabbrividire: iniettò quei batteri in malati di cancro, sperando che la febbre divorasse il tumore. Qualche regressione la vide davvero, e il testimone passò a William Coley a New York, ai suoi vaccini di germi uccisi, primo balbettio dell'immunoterapia. Tutto nato guardando un'infezione della pelle salire di guancia in guancia. La stessa pelle che oggi ripassi sa spaventare e curare con lo stesso microbo: quante volte la medicina ha trovato la cura nascosta dentro la malattia?</p>
+    </div>
+  </div>
+</header>
+
+<div class="scorerail">
+  <div class="wrap">
+    <span id="rail-progress">risposte 0/28</span>
+    <span id="rail-score">corrette 0</span>
+    <button id="rail-reset" type="button">azzera</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="topic-section" id="t1">
+    <header class="topic-head">
+      <span class="topic-num" aria-hidden="true">01</span>
+      <p class="mod">Dermatologia</p>
+      <h2>Patologie cutanee virali</h2>
+    </header>
+
+    <article class="q" data-q="q01">
+      <p class="q-tag">Q01</p>
+      <p class="q-text">Le recidive di herpes simplex ricompaiono di regola nella stessa sede della lesione primaria. Quale caratteristica biologica del virus rende conto di questo comportamento?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La produzione di anticorpi neutralizzanti specifici per la sede</button></li>
+        <li><button type="button"><span class="key">B</span>La persistenza del virus nei cheratinociti dello strato basale</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>La latenza nei gangli sensitivi con migrazione assonale centrifuga</button></li>
+        <li><button type="button"><span class="key">D</span>L'integrazione del genoma virale nel DNA dei fibroblasti dermici</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>HSV resta latente nel ganglio sensitivo (Gasser per HSV1, gangli sacrali per HSV2); alla riattivazione ripercorre in senso centrifugo l'assone fino alla cute innervata, che è la stessa della lesione primaria. Il discriminatore è la sede della latenza: gangliare, non nei cheratinociti basali (dove risiede l'HPV) né per integrazione nel DNA dell'ospite.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q02">
+      <p class="q-tag">Q02</p>
+      <p class="q-text">Nel paziente con AIDS le infezioni erpetiche assumono decorso disseminato e grave. Quale alterazione immunitaria ne è responsabile?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Il deficit dell'immunità cellulo-mediata</button></li>
+        <li><button type="button"><span class="key">B</span>La riduzione del titolo anticorpale circolante anti-HSV</button></li>
+        <li><button type="button"><span class="key">C</span>Il difetto della via alternativa del complemento</button></li>
+        <li><button type="button"><span class="key">D</span>La compromissione primitiva della barriera epidermica</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il contenimento dell'infezione erpetica dipende dai linfociti T citotossici, non dagli anticorpi circolanti: il virus latente nel neurone e la riattivazione intrassonica sono inaccessibili all'immunità umorale. Il discriminatore è la natura cellulare della risposta protettiva, per cui il crollo dei CD4 nell'AIDS apre alle forme disseminate.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q03">
+      <p class="q-tag">Q03</p>
+      <p class="q-text">Gestante alla 36a settimana con primo episodio di herpes genitale documentato. Qual è la ragione principale dell'indicazione al taglio cesareo?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Ridurre il rischio di teratogenesi fetale</button></li>
+        <li><button type="button"><span class="key">B</span>Prevenire la nevralgia post-erpetica materna</button></li>
+        <li><button type="button"><span class="key">C</span>Impedire la riattivazione virale nel post-partum</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Evitare il contatto del neonato con le lesioni nel canale del parto</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il cesareo è indicato per l'infezione insorta dopo la 34a settimana o per lesioni presenti al parto, allo scopo di sottrarre il neonato al passaggio attraverso lesioni infette e prevenire l'herpes neonatale, gravato da forme setticemiche e meningoencefaliche. Il discriminatore è la via di trasmissione perinatale: la teratogenesi riguarda invece l'infezione primaria del primo trimestre.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q04">
+      <p class="q-tag">Q04</p>
+      <p class="q-text">Un uomo con herpes labiale ricorrente sviluppa lesioni cutanee a coccarda a distribuzione acrale. Quale abbinamento tra entità e meccanismo è corretto?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Dermatite erpetiforme, complicanza dell'herpes simplex recidivante</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Eritema multiforme, frequentemente scatenato dall'infezione erpetica</button></li>
+        <li><button type="button"><span class="key">C</span>Eritema multiforme, dovuto alla diffusione ematogena del virus</button></li>
+        <li><button type="button"><span class="key">D</span>Dermatite erpetiforme, da deposito di immunocomplessi circolanti</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le lesioni a coccarda acrali dopo un herpes ricorrente configurano l'eritema multiforme, reazione da ipersensibilità scatenata da HSV o da farmaci, non da disseminazione ematica del virus. La dermatite erpetiforme, malgrado il nome che tende a trarre in inganno, è la manifestazione cutanea della celiachia con depositi granulari di IgA nelle papille, senza rapporto con l'herpes. Il discriminatore è proprio quel nome fuorviante.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q05">
+      <p class="q-tag">Q05</p>
+      <p class="q-text">Bambino con esantema vescicolare pruriginoso in cui convivono macule, vescicole a goccia di rugiada e croste. Quale reperto orienta la diagnosi?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La distribuzione dermatomerica unilaterale delle lesioni</button></li>
+        <li><button type="button"><span class="key">B</span>L'ombelicatura centrale con fuoriuscita di materiale caseoso</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>La compresenza di lesioni in stadi evolutivi diversi</button></li>
+        <li><button type="button"><span class="key">D</span>Il rispetto costante del tronco con esordio acrale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le gittate subentranti della varicella producono il quadro a cielo stellato, con macule, vescicole e croste presenti nello stesso momento. Il discriminatore è il polimorfismo temporale: la distribuzione dermatomerica appartiene allo zoster, e la varicella esordisce al tronco, non alle estremità.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q06">
+      <p class="q-tag">Q06</p>
+      <p class="q-text">La nevralgia post-erpetica è la complicanza più temuta dello zoster. Quale fattore ne aumenta maggiormente il rischio?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>L'età superiore ai 60 anni</button></li>
+        <li><button type="button"><span class="key">B</span>La localizzazione toracica dell'eruzione</button></li>
+        <li><button type="button"><span class="key">C</span>Il sesso femminile</button></li>
+        <li><button type="button"><span class="key">D</span>Il trattamento antivirale precoce</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La nevralgia post-erpetica compare in circa un quinto dei pazienti, con rischio nettamente maggiore oltre i 60 anni e negli immunodepressi. Il discriminatore è l'età: la sede toracica è la più frequente ma non predice la nevralgia, e l'antivirale precoce ne riduce anzi l'incidenza.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q07">
+      <p class="q-tag">Q07</p>
+      <p class="q-text">Quale affermazione sul sarcoma di Kaposi è corretta?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Le sedi viscerali sono metastasi ematogene del nodulo cutaneo</button></li>
+        <li><button type="button"><span class="key">B</span>La variante classica ha decorso rapido e prognosi infausta</button></li>
+        <li><button type="button"><span class="key">C</span>L'agente causale è il virus di Epstein-Barr</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Ogni lesione rappresenta malattia primaria, non una metastasi</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il sarcoma di Kaposi è una proliferazione angiomatosa multicentrica sostenuta da HHV-8: la disseminazione non è metastasi e ogni localizzazione, cutanea o viscerale, è malattia primaria. Il discriminatore è la multicentricità: la forma classica dell'anziano ha decorso lento e buona prognosi, e l'agente è HHV-8, non l'EBV.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q08">
+      <p class="q-tag">Q08</p>
+      <p class="q-text">Quale evento molecolare segna il passaggio verso la trasformazione maligna nell'infezione da HPV ad alto rischio?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La replicazione virale durante la differenziazione dei cheratinociti</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>L'integrazione del genoma virale nei cromosomi dell'ospite</button></li>
+        <li><button type="button"><span class="key">C</span>La persistenza episomiale del DNA virale nello strato basale</button></li>
+        <li><button type="button"><span class="key">D</span>La liberazione dei virioni con la desquamazione superficiale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Finché il genoma di HPV resta episomiale la lesione è benigna; l'integrazione nei cromosomi dell'ospite causa instabilità genomica, attivazione degli oncogeni e perdita del controllo proliferativo. Il discriminatore è lo stato del DNA virale: integrato contro episomiale, non la semplice replicazione o desquamazione, comuni anche alle forme benigne.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q09">
+      <p class="q-tag">Q09</p>
+      <p class="q-text">Lesione ipercheratosica dolente alla pianta del piede. Quale reperto la distingue da un callo (dattiloma)?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La conservazione dei solchi cutanei sulla superficie</button></li>
+        <li><button type="button"><span class="key">B</span>La colorazione bianco-madreperlacea uniforme</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>I punti nerastri con interruzione dei dermatoglifi</button></li>
+        <li><button type="button"><span class="key">D</span>L'assenza di dolore alla pressione diretta</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La verruca plantare mostra puntini neri da microemorragie capillari e interrompe i solchi cutanei, mentre il callo li conserva integri. Il discriminatore è l'interruzione dei dermatoglifi con i punti nerastri: la conservazione dei solchi orienta invece verso il dattiloma.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q10">
+      <p class="q-tag">Q10</p>
+      <p class="q-text">Alla compressione di una papula ombelicata translucida fuoriesce il corpo del mollusco. Da che cosa è costituito?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Da cheratinociti infettati e ripieni di inclusioni virali</button></li>
+        <li><button type="button"><span class="key">B</span>Da un aggregato di granulociti neutrofili e detriti purulenti</button></li>
+        <li><button type="button"><span class="key">C</span>Da materiale caseoso di natura necrotico-colliquativa</button></li>
+        <li><button type="button"><span class="key">D</span>Da cellule giganti multinucleate di derivazione epiteliale</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il mollusco contagioso, un Poxvirus, si replica nei cheratinociti formando voluminosi corpi di inclusione; ciò che si estrude alla compressione è l'agglomerato di questi cheratinociti infetti, non pus. Il discriminatore è la natura cheratinocitaria del materiale: non un contenuto neutrofilo, che indicherebbe una pustola batterica.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="topic-section" id="t2">
+    <header class="topic-head">
+      <span class="topic-num" aria-hidden="true">02</span>
+      <p class="mod">Dermatologia</p>
+      <h2>Infezioni cutanee batteriche</h2>
+    </header>
+
+    <article class="q" data-q="q11">
+      <p class="q-tag">Q11</p>
+      <p class="q-text">Placca eritematosa dell'arto inferiore con bordo nettamente rilevato a scalino rispetto alla cute sana. Quale piano anatomico è interessato?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>L'ipoderma e il tessuto adiposo profondo</button></li>
+        <li><button type="button"><span class="key">B</span>Le fasce muscolari profonde</button></li>
+        <li><button type="button"><span class="key">C</span>Il solo strato corneo dell'epidermide</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Il derma superficiale con i vasi linfatici</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il bordo netto a scalino dell'erisipela riflette l'interessamento del derma superficiale e dei linfatici, che confina il processo e ne demarca il margine. Il discriminatore è la profondità: l'estensione all'ipoderma darebbe i margini sfumati della cellulite, e il coinvolgimento delle fasce configurerebbe una fascite.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q12">
+      <p class="q-tag">Q12</p>
+      <p class="q-text">Circa venti giorni dopo un'impetigine streptococcica un bambino sviluppa edema, ematuria e ipertensione. Quale meccanismo sostiene il danno renale?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Azione citotossica diretta delle tossine streptococciche sul glomerulo</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Deposito glomerulare di immunocomplessi, ipersensibilità di tipo III</button></li>
+        <li><button type="button"><span class="key">C</span>Cross-reattività anticorpale con la membrana basale, tipo II</button></li>
+        <li><button type="button"><span class="key">D</span>Ipersensibilità ritardata cellulo-mediata, tipo IV</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La glomerulonefrite post-streptococcica nasce dalla formazione di immunocomplessi antigene-anticorpo che si depositano nei glomeruli, una reazione di tipo III, non da un danno tossico diretto. Il discriminatore è il tipo di ipersensibilità: il tipo II riguarderebbe un attacco anticorpale alla membrana basale, il tipo IV una risposta cellulo-mediata.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q13">
+      <p class="q-tag">Q13</p>
+      <p class="q-text">Paziente con dolore sproporzionato, edema e tossicità sistemica, sospetta fascite necrotizzante. Qual è il provvedimento risolutivo?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Lo sbrigliamento chirurgico urgente dei tessuti necrotici</button></li>
+        <li><button type="button"><span class="key">B</span>La terapia antibiotica endovenosa ad ampio spettro in monoterapia</button></li>
+        <li><button type="button"><span class="key">C</span>L'immobilizzazione dell'arto con antibiotico orale</button></li>
+        <li><button type="button"><span class="key">D</span>L'ossigenoterapia iperbarica come primo e unico intervento</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La fascite necrotizzante è un'emergenza chirurgica in cui il debridement precoce e ripetuto è il determinante della sopravvivenza; l'antibiotico è necessario ma da solo non arresta la progressione lungo le fasce. Il discriminatore è la priorità della chirurgia: l'ossigenoterapia iperbarica resta al più adiuvante.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q14">
+      <p class="q-tag">Q14</p>
+      <p class="q-text">Neonato con eritema diffuso, bolle flaccide e segno di Nikolsky positivo, gestito come un grande ustionato. Quale meccanismo è alla base del quadro?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Necrosi a tutto spessore dell'epidermide su base immunoallergica</button></li>
+        <li><button type="button"><span class="key">B</span>Deposito di immunocomplessi lungo la giunzione dermo-epidermica</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Tossina esfoliativa stafilococcica che scinde lo strato granuloso</button></li>
+        <li><button type="button"><span class="key">D</span>Invasione batterica diretta del derma profondo</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La sindrome della cute ustionata stafilococcica dipende da una tossina esfoliativa che cliva la desmogleina-1 nello strato granuloso, con scollamento intraepidermico alto e Nikolsky positivo. Il discriminatore è il livello superficiale del clivaggio: una necrosi a tutto spessore appartiene alla necrolisi epidermica tossica, non a questo quadro.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q15">
+      <p class="q-tag">Q15</p>
+      <p class="q-text">Ulcere a stampino con bordo violaceo rilevato e crosta bruno-nerastra agli arti inferiori, che guariscono con cicatrice. Cosa distingue questa entità dall'impetigine?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La localizzazione esclusivamente periorale</button></li>
+        <li><button type="button"><span class="key">B</span>La guarigione costante senza reliquati</button></li>
+        <li><button type="button"><span class="key">C</span>L'assenza di crosta in ogni fase evolutiva</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>L'interessamento del derma con esiti cicatriziali permanenti</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'ectima approfondisce la perdita di sostanza fino al derma superficiale e per questo esita sempre in cicatrice, mentre l'impetigine resta confinata all'epidermide e guarisce senza reliquati. Il discriminatore è la profondità dermica del danno, non la sede né la presenza di croste, comuni a entrambe.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q16">
+      <p class="q-tag">Q16</p>
+      <p class="q-text">Chiazza brunastra delle pieghe inguinali con fine desquamazione, fluorescente rosso corallo alla luce di Wood. Quale agente è responsabile?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Trichophyton rubrum</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Corynebacterium minutissimum</button></li>
+        <li><button type="button"><span class="key">C</span>Streptococcus pyogenes</button></li>
+        <li><button type="button"><span class="key">D</span>Candida albicans</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'eritrasma è sostenuto dal Corynebacterium minutissimum, che produce porfirine responsabili della fluorescenza rosso corallo alla luce di Wood; il colorito brunastro lo separa dal rosso brillante delle micosi delle pieghe, verdi-giallastre a quella stessa luce. Il discriminatore è la coppia colore brunastro e fluorescenza rosso corallo.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q17">
+      <p class="q-tag">Q17</p>
+      <p class="q-text">Lesione suppurativa della nuca con multipli sbocchi purulenti a testa di innaffiatoio, febbre e brividi. Di cosa si tratta?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Favo, antrace stafilococcico</button></li>
+        <li><button type="button"><span class="key">B</span>Idrosadenite suppurativa ascellare</button></li>
+        <li><button type="button"><span class="key">C</span>Erisipela bollosa del cuoio capelluto</button></li>
+        <li><button type="button"><span class="key">D</span>Follicolite superficiale dell'ostio</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La confluenza di più foruncoli in un'unica placca con molteplici tragitti fistolosi dà l'aspetto a testa di innaffiatoio del favo, sostenuto dallo stafilococco e accompagnato da sintomi sistemici. Il discriminatore è la molteplicità degli sbocchi con compromissione generale: la follicolite superficiale è invece una singola pustola centrata dal pelo, asintomatica.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q18">
+      <p class="q-tag">Q18</p>
+      <p class="q-text">Bambino con faringite, esantema puntiforme ruvido a carta vetrata, lingua a fragola e pallore periorale. Quale tossina è implicata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La tossina esfoliativa stafilococcica</button></li>
+        <li><button type="button"><span class="key">B</span>La tossina alfa del Clostridium</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>La tossina eritrogenica dello streptococco di gruppo A</button></li>
+        <li><button type="button"><span class="key">D</span>L'enterotossina stafilococcica</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La scarlattina è sostenuta dallo streptococco beta-emolitico di gruppo A che produce la tossina eritrogenica, responsabile dell'esantema a carta vetrata con lingua a fragola e risparmio periorale. Il discriminatore è la tossina eritrogenica: quella esfoliativa dello stafilococco genera invece la cute ustionata, non l'esantema scarlattiniforme.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q19">
+      <p class="q-tag">Q19</p>
+      <p class="q-text">Perionissi batterica con eritema, edema periungueale e fuoriuscita di pus alla pressione. Quale approccio è corretto?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Solo antibiotico topico per pochi giorni</button></li>
+        <li><button type="button"><span class="key">B</span>Antimicotico orale in prima istanza</button></li>
+        <li><button type="button"><span class="key">C</span>Semplice osservazione senza terapia</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Antibiotico sistemico per os protratto</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La paronichia batterica richiede un antibiotico sistemico per bocca protratto nel tempo, perché la sola terapia topica non raggiunge la piega ungueale in modo efficace. Il discriminatore è la via sistemica protratta: l'antimicotico va riservato ai casi da candida, identificati con il tampone.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="q20">
+      <p class="q-tag">Q20</p>
+      <p class="q-text">Area intensamente eritematosa con edema improntabile e margini sfumati, febbre e malessere. Quale esame orienta meglio l'eziologia per una terapia mirata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Il tampone cutaneo di superficie</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>L'emocoltura</button></li>
+        <li><button type="button"><span class="key">C</span>La radiografia del segmento osseo</button></li>
+        <li><button type="button"><span class="key">D</span>Il test di Tzanck sul fondo della lesione</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Nella cellulite l'emocoltura consente di isolare l'agente evitando i falsi positivi della flora cutanea, che inquinano il tampone di superficie. Il discriminatore è la scelta dell'emocoltura sulla coltura cutanea superficiale: il test di Tzanck serve invece alle infezioni erpetiche.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Boards</h2>
+
+    <article class="q" data-q="b01">
+      <p class="q-tag">B01</p>
+      <p class="q-text">Uomo di 68 anni con eruzione vescicolare dolorosa monolaterale su fronte e palpebra superiore. Quale reperto impone una valutazione oftalmologica urgente?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>La distribuzione bilaterale simmetrica dell'eruzione</button></li>
+        <li><button type="button"><span class="key">B</span>Il prurito localizzato senza dolore associato</button></li>
+        <li><button type="button"><span class="key">C</span>Il coinvolgimento del dermatomero mandibolare</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Le vescicole sulla punta e sull'ala del naso</button></li>
+        <li><button type="button"><span class="key">E</span>La linfoadenopatia inguinale associata</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le vescicole sulla punta e sull'ala del naso, il segno di Hutchinson, segnalano il coinvolgimento del nervo nasociliare e predicono l'interessamento oculare, dalla cheratite all'uveite: impongono valutazione oftalmologica urgente e antivirale sistemico entro 72 ore. Il discriminatore è la sede nasociliare, non l'estensione o il prurito.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/39057822/">PMID 39057822</a> · Herpes zoster and post-herpetic neuralgia, Pathogens 2024.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b02">
+      <p class="q-tag">B02</p>
+      <p class="q-text">Adulto immunocompetente con eruzione vescicolare a banda unilaterale del tronco insorta 48 ore prima, dolore intenso. Qual è l'intervento più appropriato?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Antivirale sistemico il prima possibile, entro 72 ore dall'esordio</button></li>
+        <li><button type="button"><span class="key">B</span>Sola terapia analgesica topica, gli antivirali non modificano il decorso</button></li>
+        <li><button type="button"><span class="key">C</span>Corticosteroide sistemico in monoterapia</button></li>
+        <li><button type="button"><span class="key">D</span>Attesa della comparsa di complicanze prima di trattare</button></li>
+        <li><button type="button"><span class="key">E</span>Immunoglobuline endovena come prima linea</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'antivirale sistemico avviato entro 72 ore dall'esordio riduce durata e intensità dell'eruzione e abbassa il rischio di nevralgia post-erpetica: la finestra di 48 ore è ancora utile. Il discriminatore è la precocità dell'antivirale, non l'attesa o il solo controllo del dolore.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/31951098/">PMID 31951098</a> · S2k guidelines herpes zoster, JDDG 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/39057822/">PMID 39057822</a>.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b03">
+      <p class="q-tag">B03</p>
+      <p class="q-text">Donna di 72 anni: a tre mesi da un'eruzione vescicolare a banda del tronco persiste dolore urente nella stessa area, con disturbi del sonno. Quale opzione è di prima linea?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Un ciclo prolungato di aciclovir orale</button></li>
+        <li><button type="button"><span class="key">B</span>Un antibiotico ad ampio spettro</button></li>
+        <li><button type="button"><span class="key">C</span>Un corticosteroide intramuscolo a scalare</button></li>
+        <li><button type="button"><span class="key">D</span>Un miorilassante ad azione centrale</button></li>
+        <li><button type="button" data-correct><span class="key">E</span>Gabapentin o pregabalin</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Il dolore neuropatico persistente a distanza dall'eruzione è una nevralgia post-erpetica, trattata in prima linea con gabapentinoidi come gabapentin o pregabalin, in alternativa antidepressivi triciclici o cerotti di lidocaina e capsaicina. Il discriminatore è la natura neuropatica del dolore: l'antivirale non ha più ruolo a mesi di distanza.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/39364882/">PMID 39364882</a> · Herpes zoster and post herpetic neuralgia, Pain Pract 2024.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b04">
+      <p class="q-tag">B04</p>
+      <p class="q-text">Bambino con dermatite atopica sviluppa in pochi giorni un'eruzione vescicolo-pustolosa monomorfa con erosioni a stampo confluenti su volto e collo, e febbre. Qual è la gestione appropriata?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Corticosteroide topico ad alta potenza da solo</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Aciclovir sistemico tempestivo</button></li>
+        <li><button type="button"><span class="key">C</span>Antibiotico topico e semplice osservazione</button></li>
+        <li><button type="button"><span class="key">D</span>Antistaminico orale ed emollienti</button></li>
+        <li><button type="button"><span class="key">E</span>Fototerapia UVB</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Le erosioni monomorfe a stampo su cute atopica indicano un'eruzione varicelliforme di Kaposi, cioè una disseminazione erpetica: è un'emergenza che richiede aciclovir sistemico precoce, data la mortalità non trascurabile per viremia secondaria. Il discriminatore è l'eziologia virale sovrapposta all'eczema: il corticosteroide topico da solo la aggraverebbe.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/38715890/">PMID 38715890</a> · Kaposi's varicelliform eruption, Eur J Case Rep Intern Med 2024.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b05">
+      <p class="q-tag">B05</p>
+      <p class="q-text">Uomo diabetico con dolore all'arto inferiore sproporzionato all'obiettività, poi bolle emorragiche, crepitio e ipotensione; l'antibiotico endovena non arresta la progressione. Qual è il provvedimento prioritario?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Aggiungere un secondo antibiotico e rivalutare in 24 ore</button></li>
+        <li><button type="button"><span class="key">B</span>Ossigenoterapia iperbarica isolata</button></li>
+        <li><button type="button" data-correct><span class="key">C</span>Esplorazione chirurgica con sbrigliamento immediato</button></li>
+        <li><button type="button"><span class="key">D</span>Drenaggio percutaneo ecoguidato della raccolta</button></li>
+        <li><button type="button"><span class="key">E</span>Immobilizzazione e sola terapia del dolore</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>Dolore sproporzionato, bolle emorragiche, crepitio e instabilità emodinamica configurano un'infezione necrotizzante dei tessuti molli, in cui l'esplorazione chirurgica è insieme conferma diagnostica e trattamento, e il debridement precoce determina la prognosi. Il discriminatore è il tempo alla chirurgia: attese o soluzioni percutanee peggiorano l'esito.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/36252579/">PMID 36252579</a> · Necrotising soft-tissue infections, Lancet Infect Dis 2022. <a href="https://pubmed.ncbi.nlm.nih.gov/38037890/">PMID 38037890</a>.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b06">
+      <p class="q-tag">B06</p>
+      <p class="q-text">Donna di 60 anni con comparsa acuta di placca eritematosa del volto, calda e dolente, a bordo netto rilevato, febbre a 38,5 e leucocitosi, unilaterale. Qual è la diagnosi più probabile?</p>
+      <ol class="opts">
+        <li><button type="button" data-correct><span class="key">A</span>Erisipela streptococcica</button></li>
+        <li><button type="button"><span class="key">B</span>Dermatite allergica da contatto</button></li>
+        <li><button type="button"><span class="key">C</span>Lupus eritematoso con rash a farfalla</button></li>
+        <li><button type="button"><span class="key">D</span>Angioedema del volto</button></li>
+        <li><button type="button"><span class="key">E</span>Rosacea eritemato-telangectasica</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>L'esordio acuto febbrile con placca calda, dolente, a bordo nettamente rilevato e leucocitosi identifica l'erisipela, sostenuta dallo streptococco nel derma superficiale e nei linfatici. Il discriminatore è la triade febbre, margine a scalino e flogosi sistemica: dermatite da contatto, lupus, rosacea e angioedema non riuniscono questi elementi.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/33494874/">PMID 33494874</a> · Cellulitis, Infect Dis Clin North Am 2021.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b07">
+      <p class="q-tag">B07</p>
+      <p class="q-text">Neonato con eritema diffuso e scollamento cutaneo superficiale, Nikolsky positivo, mucose risparmiate, buone condizioni dopo reidratazione. Quale elemento lo distingue dalla necrolisi epidermica tossica?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Il distacco a tutto spessore alla giunzione dermo-epidermica</button></li>
+        <li><button type="button"><span class="key">B</span>L'interessamento mucoso severo in più distretti</button></li>
+        <li><button type="button"><span class="key">C</span>L'associazione costante a un farmaco scatenante</button></li>
+        <li><button type="button" data-correct><span class="key">D</span>Il clivaggio intraepidermico superficiale con risparmio mucoso</button></li>
+        <li><button type="button"><span class="key">E</span>La biopsia con necrosi dell'intero spessore epidermico</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La tossina esfoliativa cliva la desmogleina-1 nello strato granuloso, dando uno scollamento intraepidermico alto con risparmio delle mucose e prognosi migliore. Il discriminatore è il livello del clivaggio: la necrolisi epidermica tossica separa a tutto spessore alla giunzione dermo-epidermica, coinvolge le mucose ed è tipicamente indotta da farmaci.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/39411997/">PMID 39411997</a> · Host response to staphylococcal scalded skin syndrome, Acta Paediatr 2024.</p>
+      </div></div>
+    </article>
+
+    <article class="q" data-q="b08">
+      <p class="q-tag">B08</p>
+      <p class="q-text">Bambino con impetigine crostosa estesa; la madre chiede quale complicanza tardiva temere e come prevenirla. Qual è la risposta corretta?</p>
+      <ol class="opts">
+        <li><button type="button"><span class="key">A</span>Cardite reumatica, prevenibile con profilassi antivirale</button></li>
+        <li><button type="button" data-correct><span class="key">B</span>Glomerulonefrite post-streptococcica, prevenibile con adeguata terapia antibiotica dell'infezione</button></li>
+        <li><button type="button"><span class="key">C</span>Nefropatia prevenibile solo con restrizione idrica</button></li>
+        <li><button type="button"><span class="key">D</span>Glomerulonefrite non prevenibile e indipendente dal trattamento</button></li>
+        <li><button type="button"><span class="key">E</span>Febbre reumatica, esito costante dell'impetigine non trattata</button></li>
+      </ol>
+      <div class="rationale"><div>
+        <p>La complicanza tardiva dell'impetigine streptococcica è la glomerulonefrite post-streptococcica, mediata da immunocomplessi a circa due-tre settimane, e un'adeguata terapia antibiotica dell'infezione primaria ne riduce il rischio. Il discriminatore è la coppia glomerulonefrite e prevenibilità antibiotica: la febbre reumatica segue le faringiti, non le piodermiti.</p>
+        <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/35004032/">PMID 35004032</a> · Glomerulonephritis associated with post-streptococcal infection, Cureus 2021.</p>
+      </div></div>
+    </article>
+  </section>
+
+  <section class="boards">
+    <h2>Vignette cliniche</h2>
+
+    <article class="case">
+      <p class="q-tag">V01</p>
+      <p class="vignette">Donna di 29 anni, 36 settimane di gravidanza. Da due giorni lesioni vescicolose dolorose raggruppate su vulva ed erosioni, febbre e linfoadenopatia inguinale. Riferisce che si tratta del primo episodio.</p>
+
+      <details class="stage">
+        <summary><span class="stage-key">An</span>Anamnesi</summary>
+        <div class="stage-body">
+          <p>Nessun episodio genitale precedente. Partner con storia di lesioni ricorrenti a labbro e area genitale. Gravidanza fisiologica fino a oggi, nessuna terapia in corso.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">EO</span>Esame obiettivo</summary>
+        <div class="stage-body">
+          <p>Vescicole a grappolo su base eritematosa ed erosioni dolorose ricoperte da film biancastro su vulva e mucosa vaginale. Adenopatia inguinale dolente bilaterale. Non ulcere indurite indolori, non secrezione uretrale.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Ix</span>Indagini</summary>
+        <div class="stage-body">
+          <p>Immunofluorescenza diretta e PCR sul liquido vescicolare positive per HSV-2. Citodiagnostico di Tzanck dal fondo della lesione con cheratinociti balloniformi plurinucleati. Sierologie per sifilide non reattive.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">DD</span>Diagnosi differenziale</summary>
+        <div class="stage-body">
+          <p>Sifilide primaria (ulcera singola indurita e indolore, non vescicole a grappolo); ulcera venerea da Haemophilus ducreyi (ulcere dolorose ma non precedute da vescicole raggruppate); candidosi vulvovaginale (prurito e secrezione, senza erosioni a grappolo).</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Dx</span>Diagnosi</summary>
+        <div class="stage-body">
+          <p>Prima infezione genitale da herpes simplex di tipo 2, insorta in prossimità del termine di gravidanza.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Rx</span>Gestione</summary>
+        <div class="stage-body">
+          <p>Aciclovir sistemico per contenere l'episodio e ridurre l'eliminazione virale. Taglio cesareo indicato, poiché la prima infezione insorge dopo la 34a settimana con lesioni presenti in prossimità del parto, per prevenire l'herpes neonatale, gravato da forme setticemiche e meningoencefaliche.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="case">
+      <p class="q-tag">V02</p>
+      <p class="vignette">Uomo di 58 anni, diabetico in cattivo controllo. Da circa dodici ore dolore ingravescente alla gamba, sproporzionato rispetto a un modesto eritema cutaneo, con febbre e malessere marcato.</p>
+
+      <details class="stage">
+        <summary><span class="stage-key">An</span>Anamnesi</summary>
+        <div class="stage-body">
+          <p>Piccola ferita al polpaccio pochi giorni prima, trascurata. Diabete di lunga data con emoglobina glicata elevata. Nessun trauma maggiore recente.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">EO</span>Esame obiettivo</summary>
+        <div class="stage-body">
+          <p>Eritema mal definito, cute tesa e lucida, dolore alla palpazione che si estende oltre i margini dell'eritema, aree di ipoestesia. Nelle ore successive comparsa di bolle sieroemorragiche e crepitio sottocutaneo. Tachicardia e tendenza all'ipotensione.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Ix</span>Indagini</summary>
+        <div class="stage-body">
+          <p>Leucocitosi neutrofila, PCR molto elevata, iponatriemia, lattati aumentati. Alla TC gas e imbibizione lungo i piani fasciali. All'esplorazione chirurgica i tessuti si separano dalla fascia con minima resistenza ed essudato torbido grigiastro.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">DD</span>Diagnosi differenziale</summary>
+        <div class="stage-body">
+          <p>Cellulite (dolore proporzionato all'obiettività, sensibilità conservata, assenza di crepitio); erisipela (bordo netto rilevato, processo superficiale, non tossicità sistemica precoce); trombosi venosa profonda (edema e dolore senza scollamento fasciale né bolle emorragiche).</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Dx</span>Diagnosi</summary>
+        <div class="stage-body">
+          <p>Fascite necrotizzante dell'arto inferiore, infezione necrotizzante dei tessuti molli.</p>
+        </div>
+      </details>
+      <details class="stage">
+        <summary><span class="stage-key">Rx</span>Gestione</summary>
+        <div class="stage-body">
+          <p>Rianimazione con fluidi, antibiotici endovena ad ampio spettro e, come atto decisivo, sbrigliamento chirurgico urgente di tutto il tessuto necrotico, da ripetere fino al controllo dell'infezione. Nei casi avanzati può rendersi necessaria l'amputazione. Il ritardo chirurgico è il principale determinante di mortalità.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <span><a href="./">← indice</a></span>
+    <span>argomenti del 30 giugno · generato nella notte da vigil</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var KEY = "vigil:" + document.body.dataset.date;
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+
+  var questions = document.querySelectorAll(".q");
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function apply(q, idx) {
+    var opts = q.querySelector(".opts");
+    var buttons = opts.querySelectorAll("button");
+    opts.classList.add("locked");
+    buttons.forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx) {
+        b.classList.add("chosen");
+        if (!b.hasAttribute("data-correct")) b.classList.add("ko");
+      }
+      if (b.hasAttribute("data-correct")) b.classList.add("is-correct", "revealed");
+    });
+    var r = q.querySelector(".rationale");
+    if (r) r.classList.add("open");
+  }
+
+  function refreshRail() {
+    var answered = 0, correct = 0;
+    questions.forEach(function (q) {
+      var idx = state[q.dataset.q];
+      if (idx === undefined) return;
+      answered++;
+      var b = q.querySelectorAll(".opts button")[idx];
+      if (b && b.hasAttribute("data-correct")) correct++;
+    });
+    document.getElementById("rail-progress").textContent = "risposte " + answered + "/" + questions.length;
+    document.getElementById("rail-score").textContent = "corrette " + correct;
+  }
+
+  questions.forEach(function (q) {
+    var qid = q.dataset.q;
+    var buttons = q.querySelectorAll(".opts button");
+    buttons.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (state[qid] !== undefined) return;
+        state[qid] = i;
+        save();
+        apply(q, i);
+        refreshRail();
+      });
+    });
+    if (state[qid] !== undefined) apply(q, state[qid]);
+  });
+
+  document.getElementById("rail-reset").addEventListener("click", function () {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  });
+
+  refreshRail();
+})();
+</script>
+</body>
+</html>
