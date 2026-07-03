@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 12 giugno 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-06-12">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>venerdì 12 giugno 2026</h1>
+  <div class="spark">
+    <p>Per secoli il fondo di un occhio vivo fu l'unica parte del corpo che restava al buio: la si poteva guardare solo da morti. Poi, nel dicembre del 1850, Hermann von Helmholtz mise in fila tre lastre di vetro inclinate, una candela e un foro, e annunciò a Berlino di aver visto la retina di un paziente vivo. Non era medico, era un fisico curioso di come funziona la luce, e regalò all'oculistica il suo strumento più semplice e più rivoluzionario. Bastò un decennio: nel 1859 Albrecht von Graefe, guardando dentro quel cerchio di luce, descrisse il primo caso di occlusione dell'arteria centrale della retina, un embolo che spegne la vista in pochi secondi. Da allora l'occhio è la sola finestra da cui si assiste a un ictus mentre accade. Cosa significa, davvero, poter vedere il sangue fermarsi?</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1">
+  <p class="tag">Q01 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">Quale reperto istologico è caratteristico della psoriasi volgare a placche?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ipergranulosi con ortocheratosi compatta</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ipo-agranulosi con paracheratosi dello strato corneo</button></li>
+    <li><button type="button"><span class="key">C</span>Spongiosi con vescicolazione intraepidermica</button></li>
+    <li><button type="button"><span class="key">D</span>Acantolisi soprabasale con cellule disgregate</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La maturazione accelerata dei cheratinociti non lascia il tempo di formare lo strato granuloso, che si riduce o scompare (ipo-agranulosi), e nello strato corneo persistono i nuclei (paracheratosi). Il discriminatore è il difetto di maturazione: l'ipergranulosi appartiene al lichen planus, la spongiosi all'eczema, l'acantolisi al pemfigo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1">
+  <p class="tag">Q02 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">In quanti giorni circa il cheratinocita psoriasico transita dallo strato basale alla superficie, rispetto ai circa 28 giorni fisiologici?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Circa 14 giorni</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Circa 4 giorni</button></li>
+    <li><button type="button"><span class="key">C</span>Circa 28 giorni, invariato</button></li>
+    <li><button type="button"><span class="key">D</span>Circa 60 giorni</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'iperproliferazione comprime il turnover epidermico a circa 3-4 giorni: è questo che impedisce la maturazione completa e genera ipo-agranulosi e paracheratosi. Il discriminatore è il senso dell'alterazione: la psoriasi accelera, non rallenta, il ciclo cheratinocitario.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1">
+  <p class="tag">Q03 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">La comparsa di lesioni psoriasiche lungo una cicatrice o un tatuaggio, su cute traumatizzata ma apparentemente sana, prende il nome di:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Segno di Auspitz</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Fenomeno di Koebner (isomorfismo reattivo)</button></li>
+    <li><button type="button"><span class="key">C</span>Segno di Nikolsky</button></li>
+    <li><button type="button"><span class="key">D</span>Segno di Darier</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il fenomeno di Koebner, o isomorfismo reattivo, è la comparsa della dermatosi in sede di trauma cutaneo. Il discriminatore è la sequenza trauma-lesione tipica: Auspitz è il sanguinamento puntiforme al distacco delle squame, Nikolsky è proprio delle dermatosi bollose acantolitiche, Darier della mastocitosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1">
+  <p class="tag">Q04 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">Il segno di Auspitz, sanguinamento puntiforme dopo rimozione delle squame, si spiega con:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Acantolisi degli strati profondi dell'epidermide</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Assottigliamento epidermico sopra le papille con capillari dilatati e tortuosi</button></li>
+    <li><button type="button"><span class="key">C</span>Distacco dermo-epidermico mediato da autoanticorpi</button></li>
+    <li><button type="button"><span class="key">D</span>Necrosi colliquativa dei cheratinociti basali</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Per la papillomatosi l'epidermide soprapapillare è assottigliata e i capillari delle papille sono dilatati; grattando le squame si decapitano le papille e i capillari sanguinano in modo puntiforme. Il discriminatore è l'anatomia papille-capillari, non un processo immuno-bolloso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1">
+  <p class="tag">Q05 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">Quale asse citochinico è oggi il principale bersaglio dei biologici più selettivi nella psoriasi a placche?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Asse Th2, IL-4 e IL-13</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Asse Th17, IL-17 e IL-23</button></li>
+    <li><button type="button"><span class="key">C</span>Asse IgE e istamina</button></li>
+    <li><button type="button"><span class="key">D</span>Cascata del complemento, C5</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I linfociti T attivati producono IFN-gamma, TNF-alfa e soprattutto IL-17, sostenuti da IL-23, con conseguente proliferazione cheratinocitaria; da qui i biologici anti-IL17 e anti-IL23. Il discriminatore è l'asse Th17, non il Th2 dell'atopia né le IgE dell'orticaria.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1">
+  <p class="tag">Q06 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">Paziente con interessamento psoriasico superiore al 90% della superficie corporea, edematoso, essudante, febbrile, con ipoalbuminemia e squilibrio elettrolitico. L'inquadramento gestionale ricalca quello di un:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Paziente settico da fascite necrotizzante</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Grande ustionato, per perdite idro-proteiche e termodispersione</button></li>
+    <li><button type="button"><span class="key">C</span>Paziente con pemfigo volgare in fase acuta</button></li>
+    <li><button type="button"><span class="key">D</span>Paziente con dermatite atopica lieve</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'eritrodermia psoriasica compromette la barriera sull'intera superficie: si gestisce come il grande ustionato per perdita di liquidi e proteine, dispersione termica e rischio infettivo. Il discriminatore è il coinvolgimento dell'intera superficie cutanea, non un focolaio necrotico localizzato.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1">
+  <p class="tag">Q07 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">Forma di psoriasi a piccole lesioni a goccia, tipica dell'età pediatrica, scatenata da faringite streptococcica e con la prognosi migliore:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Psoriasi inversa</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Psoriasi guttata</button></li>
+    <li><button type="button"><span class="key">C</span>Eritrodermia psoriasica</button></li>
+    <li><button type="button"><span class="key">D</span>Acrodermatite continua di Hallopeau</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma guttata insorge in modo acuto dopo infezione streptococcica, interessa tronco e radice degli arti e può autorisolversi dopo terapia antibiotica. Il discriminatore è il trigger streptococcico con prognosi favorevole, opposto al decorso grave dell'eritrodermia.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1">
+  <p class="tag">Q08 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">L'artrite psoriasica è un'artrite infiammatoria sieronegativa correlata soprattutto a quale marcatore?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>HLA-DR4</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>HLA-B27</button></li>
+    <li><button type="button"><span class="key">C</span>Anticorpi anti-CCP</button></li>
+    <li><button type="button"><span class="key">D</span>Fattore reumatoide</button></li>
+  </ol>
+  <div class="rationale">
+    <p>È sieronegativa, con fattore reumatoide e anti-CCP negativi, e si associa a HLA-B27, con dattilite (dito a salsicciotto) ed entesite, tipica del tendine d'Achille. Il discriminatore è la combinazione sieronegatività più B27, contro gli autoanticorpi dell'artrite reumatoide.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1">
+  <p class="tag">Q09 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">Riguardo alle due forme generalizzate di psoriasi pustolosa, quale affermazione è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La forma di Von Zumbusch è localizzata palmo-plantare, quella di Milian è generalizzata</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La Von Zumbusch è la forma eritrodermica grave con pustole disseminate e compromissione sistemica; la variante anulare di Milian ha pustole su chiazze rotondeggianti e minor rischio sistemico</button></li>
+    <li><button type="button"><span class="key">C</span>Entrambe interessano esclusivamente le unghie</button></li>
+    <li><button type="button"><span class="key">D</span>La forma di Milian è la più severa, la Von Zumbusch la più benigna</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La Von Zumbusch è la più severa, su base eritrodermica con interessamento sistemico importante; la variante anulare di Milian presenta pustole su elementi anulari e minor coinvolgimento generale. Il discriminatore è la gerarchia di gravità tra le due, contro la loro inversione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1">
+  <p class="tag">Q10 · Dermatologia · Psoriasi</p>
+  <h2 class="q-text">Prima di iniziare un farmaco biologico anti-TNF-alfa o anti-interleuchina nella psoriasi severa, è indispensabile escludere:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ipertensione arteriosa</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Infezioni latenti, in particolare tubercolosi ed epatiti B e C</button></li>
+    <li><button type="button"><span class="key">C</span>Dislipidemia</button></li>
+    <li><button type="button"><span class="key">D</span>Carenza di vitamina D</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I biologici sopprimono anche citochine dell'immunità di difesa: lo screening pre-trattamento mira a tubercolosi latente ed epatiti per il rischio di riattivazione. Il discriminatore è il rischio infettivo da immunosoppressione mirata, non i fattori di rischio cardiometabolici.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1">
+  <p class="tag">Q11 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">Qual è il meccanismo più frequente alla base dell'occlusione venosa retinica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Embolia di origine cardiaca</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Compressione della vena da parte di un'arteria arteriosclerotica che ne condivide l'avventizia, con turbolenza e trombosi</button></li>
+    <li><button type="button"><span class="key">C</span>Vasospasmo arteriolare diffuso</button></li>
+    <li><button type="button"><span class="key">D</span>Trazione vitreale diretta sulla parete venosa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Arteria e vena condividono la tonaca avventizia agli incroci artero-venosi; l'arteria irrigidita dall'arteriosclerosi comprime la vena, genera turbolenza, attiva l'emostasi e il trombo. Il discriminatore è il meccanismo compressivo-trombotico, contrapposto all'embolia tipica delle occlusioni arteriose.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1">
+  <p class="tag">Q12 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">Quale differenza fundoscopica distingue l'occlusione venosa di branca da quella centrale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Nella forma di branca le emorragie interessano tutti i quadranti</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Nella forma di branca le emorragie a fiamma seguono il settore del ramo occluso, nella centrale sono diffuse a tutta la retina, fino al quadro a scoppio di granata</button></li>
+    <li><button type="button"><span class="key">C</span>La forma centrale non provoca mai edema maculare</button></li>
+    <li><button type="button"><span class="key">D</span>La forma di branca causa sempre amaurosi completa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La sede del trombo, un ramo oppure la vena centrale alla lamina cribrosa, determina la distribuzione settoriale o panretinica delle emorragie. Il discriminatore è proprio l'estensione settoriale contro quella all'intera retina.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1">
+  <p class="tag">Q13 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">Quale reperto orienta verso una occlusione venosa centrale di tipo ischemico piuttosto che non ischemico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Acuità visiva conservata</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Difetto pupillare afferente marcato, essudati cotonosi estesi e numerose emorragie</button></li>
+    <li><button type="button"><span class="key">C</span>Assenza di edema maculare</button></li>
+    <li><button type="button"><span class="key">D</span>Fundus del tutto normale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma ischemica comporta maggiore sofferenza delle cellule gangliari, da cui il difetto pupillare afferente marcato, gli essudati cotonosi come infarti delle fibre nervose e le emorragie estese, con alto rischio di neovascolarizzazione. Il discriminatore è l'entità del danno ischemico, non la semplice presenza di emorragie.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1">
+  <p class="tag">Q14 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">Nell'occlusione venosa centrale ischemica il glaucoma neovascolare si instaura perché:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aumenta la produzione di umor acqueo dai corpi ciliari</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Una membrana fibrovascolare VEGF-indotta cresce sull'iride e nell'angolo irido-corneale, ostruendo il trabecolato e bloccando il deflusso</button></li>
+    <li><button type="button"><span class="key">C</span>Il cristallino si lussa in camera anteriore</button></li>
+    <li><button type="button"><span class="key">D</span>L'edema corneale occlude le vie di drenaggio lacrimale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'ischemia retinica libera VEGF, che induce rubeosi iridea e neovasi nell'angolo; la membrana fibrovascolare occlude meccanicamente il trabecolato e ostacola il deflusso, facendo salire la pressione. Il discriminatore è l'ostruzione del deflusso trabecolare da parte dei neovasi, non un aumento della secrezione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1">
+  <p class="tag">Q15 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">Quale reperto fundoscopico è tipico dell'occlusione dell'arteria centrale della retina?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Emorragie a fiamma diffuse a tutta la retina</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Macchia rosso ciliegia alla macula con retina pallida ed edematosa e arterie filiformi</button></li>
+    <li><button type="button"><span class="key">C</span>Neovascolarizzazione del disco ottico</button></li>
+    <li><button type="button"><span class="key">D</span>Essudati duri a disposizione circinata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La retina interna ischemica diventa biancastra ed edematosa, mentre la fovea sottile lascia trasparire la coroide come macchia rosso ciliegia, e le arterie appaiono filiformi. Il discriminatore è il pallore retinico con cherry red spot, opposto al quadro emorragico venoso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1">
+  <p class="tag">Q16 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">In un'occlusione arteriosa retinica preceduta da amaurosi fugace, qual è la sorgente più frequente da indagare?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Trombosi venosa profonda degli arti inferiori</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Placca ateromasica della carotide interna, con studio eco-doppler carotideo ed eventuale fonte cardioembolica</button></li>
+    <li><button type="button"><span class="key">C</span>Ipertensione polmonare</button></li>
+    <li><button type="button"><span class="key">D</span>Insufficienza venosa cronica periferica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'occlusione arteriosa è prevalentemente embolica, nell'80% da placca ateromasica carotidea e talvolta da cuore in fibrillazione atriale; l'amaurosi fugace è un attacco ischemico transitorio retinico che impone lo studio carotideo e cardiaco. Il discriminatore è l'origine embolica arteriosa, con il connesso rischio di ictus e infarto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1">
+  <p class="tag">Q17 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">La presenza di un'arteria cilioretinica, riscontrabile in circa un terzo dei soggetti, durante un'occlusione dell'arteria centrale della retina:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Peggiora sempre la prognosi visiva</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Può risparmiare la visione centrale perché irrora la regione maculare derivando dalle ciliari posteriori</button></li>
+    <li><button type="button"><span class="key">C</span>Provoca glaucoma acuto da chiusura d'angolo</button></li>
+    <li><button type="button"><span class="key">D</span>È la causa diretta del difetto pupillare afferente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cilioretinica origina dal circolo ciliare posteriore, distinto dall'arteria centrale; quando presente mantiene la perfusione del fascio papillo-maculare e quindi un residuo di visione centrale. Il discriminatore è l'origine ciliare indipendente dall'arteria centrale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1">
+  <p class="tag">Q18 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">Qual è l'evento iniziale della patogenesi della retinopatia diabetica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Proliferazione dei fotorecettori</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perdita selettiva dei periciti con ispessimento della membrana basale e rottura delle tight junctions endoteliali, e quindi alterazione della barriera emato-retinica</button></li>
+    <li><button type="button"><span class="key">C</span>Distacco posteriore di vitreo</button></li>
+    <li><button type="button"><span class="key">D</span>Opacamento progressivo del cristallino</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'iperglicemia provoca perdita selettiva dei periciti e danno endoteliale con rottura delle giunzioni serrate; ne derivano microaneurismi, edema ed essudati duri. Il discriminatore è il danno microvascolare con caduta della barriera emato-retinica, non un processo del cristallino o del vitreo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1">
+  <p class="tag">Q19 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">Il passaggio da retinopatia diabetica non proliferante a proliferante è definito dalla comparsa di:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Microaneurismi</button></li>
+    <li><button type="button"><span class="key">B</span>Essudati duri</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Neovascolarizzazione, cioè proliferazione fibrovascolare extraretinica VEGF-indotta</button></li>
+    <li><button type="button"><span class="key">D</span>Emorragie puntiformi intraretiniche</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma proliferante è definita dai neovasi che superano la membrana limitante interna ed evolvono in tessuto fibrovascolare; microaneurismi, essudati ed emorragie intraretiniche appartengono già alla non proliferante. Il discriminatore è la neovascolarizzazione extraretinica come spartiacque tra le due forme.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1">
+  <p class="tag">Q20 · Oftalmologia · Patologie vascolari retiniche</p>
+  <h2 class="q-text">La retinopatia del prematuro è favorita soprattutto da:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Macrosomia fetale</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Prematurità, basso peso alla nascita e ossigenoterapia prolungata, su una vascolarizzazione retinica periferica incompleta</button></li>
+    <li><button type="button"><span class="key">C</span>Ittero neonatale fisiologico</button></li>
+    <li><button type="button"><span class="key">D</span>Parto post-termine</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La vascolarizzazione retinica si completa solo dopo la nascita: nel pretermine la periferia resta avascolare e l'iperossia favorisce una neoangiogenesi anomala fino al distacco. Il discriminatore è l'immaturità vascolare periferica associata all'ossigeno, opposta a qualunque condizione del post-termine.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1">
+  <p class="tag">Q21 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Eversione del bordo palpebrale conseguente a paralisi del settimo nervo cranico, con lagoftalmo:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ectropion involutivo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ectropion paralitico</button></li>
+    <li><button type="button"><span class="key">C</span>Ectropion cicatriziale</button></li>
+    <li><button type="button"><span class="key">D</span>Ectropion meccanico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La paralisi del faciale abolisce il tono del muscolo orbicolare: la palpebra si everte e non chiude, dando lagoftalmo, e si gestisce con lubrificanti ed eventuale tarsorrafia. Il discriminatore è il deficit del settimo nervo, distinto dal cedimento tissutale dell'involutivo e dalla retrazione del cicatriziale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1">
+  <p class="tag">Q22 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Entropion spastico da iperfunzione dell'orbicolare in corso di flogosi: oltre alla chirurgia, quale opzione è utile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Corticosteroide sistemico</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Tossina botulinica per indebolire l'orbicolare</button></li>
+    <li><button type="button"><span class="key">C</span>Antibiotico topico continuativo</button></li>
+    <li><button type="button"><span class="key">D</span>Lente a contatto terapeutica permanente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nell'entropion spastico lo spasmo dell'orbicolare ruota il bordo verso l'interno; la tossina botulinica indebolisce il muscolo e corregge in modo transitorio il quadro. Il discriminatore è il meccanismo spastico muscolare, che la denervazione chimica bersaglia direttamente.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1">
+  <p class="tag">Q23 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">L'entropion cicatriziale da tracoma è caratterizzato da:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Cedimento tendineo puramente senile</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Cicatrici tarso-congiuntivali (stria di Arlt) con trichiasi e rischio di ulcere corneali</button></li>
+    <li><button type="button"><span class="key">C</span>Spasmo reversibile dell'orbicolare</button></li>
+    <li><button type="button"><span class="key">D</span>Lassità isolata del tendine cantale mediale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il tracoma cronico cicatrizza la congiuntiva tarsale, lasciando la stria di Arlt, retrae il tarso e inverte il bordo, con ciglia che sfregano la cornea (trichiasi) fino all'ulcera. Il discriminatore è la cicatrice tarsale post-infettiva, non un meccanismo involutivo o spastico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1">
+  <p class="tag">Q24 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Quale distinzione tra orzaiolo e calazio è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'orzaiolo è un'infiammazione granulomatosa cronica delle ghiandole di Meibomio</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'orzaiolo è un'infezione acuta suppurativa (ghiandola di Zeiss o follicolo ciliare, stafilococcica); il calazio è un'infiammazione cronica granulomatosa da ritenzione del secreto della ghiandola di Meibomio</button></li>
+    <li><button type="button"><span class="key">C</span>Sono entrambi neoplasie palpebrali</button></li>
+    <li><button type="button"><span class="key">D</span>Il calazio è acuto e dolente, l'orzaiolo cronico e indolente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'orzaiolo è acuto, suppurativo e stafilococcico, a partenza dal bordo anteriore; il calazio è cronico, granulomatoso a cellule giganti, da occlusione e ritenzione della ghiandola di Meibomio. Il discriminatore è l'asse acuto-infettivo contro cronico-ritentivo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q25" tabindex="-1">
+  <p class="tag">Q25 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Abbassamento della palpebra superiore dovuto a lassità ed eccesso della cute palpebrale, senza deficit neurologico né muscolare, definito:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ptosi neurogena</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ptosi meccanica da dermatocalasi</button></li>
+    <li><button type="button"><span class="key">C</span>Ptosi miogena</button></li>
+    <li><button type="button"><span class="key">D</span>Ptosi aponeurotica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La dermatocalasi è un eccesso e lassità della cute che grava sulla rima e simula la ptosi senza interessare innervazione, muscolo o aponeurosi dell'elevatore. Il discriminatore è la causa puramente meccanico-cutanea, distinta dalle forme neurogena, miogena e aponeurotica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q26" tabindex="-1">
+  <p class="tag">Q26 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Ptosi con buona funzione dell'elevatore ma deiscenza o rarefazione della sua aponeurosi, tipica dell'anziano o post-chirurgica:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ptosi miogena congenita</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ptosi aponeurotica</button></li>
+    <li><button type="button"><span class="key">C</span>Ptosi da sindrome di Horner</button></li>
+    <li><button type="button"><span class="key">D</span>Ptosi da paralisi del terzo nervo cranico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella ptosi aponeurotica il muscolo elevatore funziona, ma l'aponeurosi è disinserita o assottigliata, per cause involutive, traumatiche o post-operatorie, con piega palpebrale alta. Il discriminatore è il difetto dell'aponeurosi a muscolo integro, opposto al deficit muscolare della miogena.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q27" tabindex="-1">
+  <p class="tag">Q27 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Ptosi congenita unilaterale che si riduce con l'apertura della bocca o durante la masticazione:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sindrome di Horner</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ptosi sincinetica di Marcus Gunn</button></li>
+    <li><button type="button"><span class="key">C</span>Ptosi aponeurotica involutiva</button></li>
+    <li><button type="button"><span class="key">D</span>Miastenia gravis</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una connessione anomala tra l'innervazione dell'elevatore e quella dei muscoli masticatori produce un ammiccamento sincinetico legato al movimento mandibolare. Il discriminatore è proprio la sincinesia con la masticazione, assente nelle altre forme.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q28" tabindex="-1">
+  <p class="tag">Q28 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Quale triade caratterizza la sindrome di Horner?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Midriasi, esoftalmo, iperidrosi</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ptosi lieve, miosi ed enoftalmo apparente, con anidrosi omolaterale</button></li>
+    <li><button type="button"><span class="key">C</span>Ptosi, midriasi e occhio deviato in basso e fuori</button></li>
+    <li><button type="button"><span class="key">D</span>Lagoftalmo, ectropion ed epifora</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'interruzione del simpatico cervicale dà ptosi lieve, per deficit del muscolo di Müller, miosi per prevalenza parasimpatica ed enoftalmo apparente, con anidrosi se la lesione è preganglionare. Il discriminatore è la miosi associata a ptosi lieve, opposta alla midriasi con occhio in basso e fuori della paralisi del terzo nervo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q29" tabindex="-1">
+  <p class="tag">Q29 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Qual è il tumore maligno palpebrale più frequente, circa il 90%, tipico della palpebra inferiore, localmente invasivo ma con rischio metastatico bassissimo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Carcinoma squamocellulare</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Carcinoma basocellulare</button></li>
+    <li><button type="button"><span class="key">C</span>Melanoma</button></li>
+    <li><button type="button"><span class="key">D</span>Sarcoma di Kaposi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il basocellulare costituisce circa il 90% dei tumori palpebrali maligni, predilige la palpebra inferiore ed è localmente distruttivo ma metastatizza eccezionalmente. Il discriminatore è l'alta frequenza con invasività locale senza metastasi, opposto al maggior potenziale metastatico dello squamocellulare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q30" tabindex="-1">
+  <p class="tag">Q30 · Oftalmologia · Patologie delle palpebre</p>
+  <h2 class="q-text">Quale tra queste è una blefaropatia congenita correttamente definita?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Districhiasi: ciglia soprannumerarie o irregolarmente orientate verso l'interno</button></li>
+    <li><button type="button"><span class="key">B</span>Calazio</button></li>
+    <li><button type="button"><span class="key">C</span>Dacriocistite</button></li>
+    <li><button type="button"><span class="key">D</span>Pterigio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La districhiasi (ciglia in esubero o mal orientate) e la madarosi (assenza di ciglia) sono blefaropatie congenite; il calazio e la dacriocistite sono processi infiammatori acquisiti, e lo pterigio è una proliferazione congiuntivale. Il discriminatore è la natura congenita dell'anomalia ciliare contro le patologie acquisite.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Uomo di 45 anni che, dopo brusca sospensione di una terapia corticosteroidea sistemica, sviluppa in 48 ore febbre elevata, malessere e un'eruzione di pustole sterili confluenti su cute eritrodermica diffusa, con leucocitosi neutrofila; in anamnesi placche eritemato-squamose a gomiti e ginocchia. Quale opzione terapeutica mirata, di recente introduzione, è più appropriata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Antibiotico antistafilococcico sistemico</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Inibitore del recettore dell'IL-36, ad esempio spesolimab</button></li>
+    <li><button type="button"><span class="key">C</span>Isotretinoina orale</button></li>
+    <li><button type="button"><span class="key">D</span>Antistaminico ad alte dosi</button></li>
+    <li><button type="button"><span class="key">E</span>Aciclovir endovena</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è una forma pustolosa generalizzata su base eritrodermica, spesso scatenata dalla sospensione di steroidi e sostenuta dall'asse dell'IL-36; gli inibitori del recettore IL-36 controllano rapidamente la riacutizzazione. Le pustole sono sterili, quindi l'antibiotico non è risolutivo. Il discriminatore è la pustolosi sterile su base nota, non un'infezione.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/35695278/">PMID 35695278</a> · IL-36 receptor inhibitors in generalized pustular psoriasis.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Donna di 38 anni con dermatosi cronica a placche eritemato-squamose di gomiti, ginocchia e cuoio capelluto, estesa e a indice di gravità elevato, non responsiva a metotrexato e fototerapia; screening infettivo negativo. Si sceglie un biologico ad alta efficacia sulla clearance cutanea. Quale bersaglio molecolare?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>IgE</button></li>
+    <li><button type="button"><span class="key">B</span>IL-5</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>IL-17, ad esempio secukinumab o ixekizumab</button></li>
+    <li><button type="button"><span class="key">D</span>Istamina, recettore H1</button></li>
+    <li><button type="button"><span class="key">E</span>Complemento C5</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Gli inibitori dell'IL-17, come secukinumab e ixekizumab, e quelli dell'asse IL-23 raggiungono elevati tassi di clearance cutanea nelle forme moderate-severe a placche; IgE, IL-5, istamina e C5 appartengono ad altre malattie. Il discriminatore è l'asse Th17 come driver patogenetico.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/31583255/">PMID 31583255</a> · Network meta-analysis of IL-17/IL-23 inhibitors in plaque psoriasis.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">Uomo di 52 anni con dermatosi cronica a placche eritemato-squamose estesa e di lunga data, obeso e fumatore. Oltre al quadro cutaneo, quale rischio sistemico va sorvegliato attivamente per il suo peso su morbilità e mortalità?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Nessun rischio sistemico aggiuntivo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Malattia cardiovascolare e sindrome metabolica, con infarto precoce, diabete e ipertensione</button></li>
+    <li><button type="button"><span class="key">C</span>Glomerulonefrite con insufficienza renale</button></li>
+    <li><button type="button"><span class="key">D</span>Neoplasia polmonare primitiva</button></li>
+    <li><button type="button"><span class="key">E</span>Epatite autoimmune</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'infiammazione cronica sistemica si associa a sindrome metabolica e aumentato rischio cardiovascolare, con eventi in età più precoce rispetto alla popolazione generale; la sorveglianza dei fattori di rischio è parte integrante della gestione. Il discriminatore è la comorbilità cardiometabolica infiammazione-mediata.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/31491865/">PMID 31491865</a> · Systemic inflammation and cardiovascular comorbidity in psoriasis.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Uomo di 68 anni con improvvisa perdita indolore e completa della vista a un occhio da circa 3 ore; al fundus retina pallida ed edematosa con macchia rosso ciliegia. Pressione arteriosa elevata e fibrillazione atriale nota. Oltre alla gestione oculare immediata, quale percorso va attivato con urgenza?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Dimissione con collirio ipotonizzante e controllo a un mese</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Gestione come ictus ischemico acuto in centro cerebrovascolare, valutando la trombolisi endovenosa entro la finestra e la ricerca della fonte embolica</button></li>
+    <li><button type="button"><span class="key">C</span>Sola terapia antibiotica topica</button></li>
+    <li><button type="button"><span class="key">D</span>Vitrectomia in urgenza</button></li>
+    <li><button type="button"><span class="key">E</span>Fotocoagulazione panretinica immediata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'occlusione dell'arteria centrale della retina è un ictus ischemico retinico: va trattata in regime tempo-dipendente, con valutazione della trombolisi sistemica precoce e ricerca della sorgente embolica, carotide e cuore in fibrillazione, per prevenire l'ictus cerebrale. Il discriminatore è l'equivalenza con lo stroke e la finestra terapeutica, non una gestione oculare isolata.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/35105148/">PMID 35105148</a> · Intravenous thrombolysis for acute central retinal artery occlusion.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Donna di 74 anni con perdita visiva monoculare improvvisa, preceduta da episodi di offuscamento transitorio, associata a cefalea temporale, claudicatio mandibolare e dolenzia del cuoio capelluto; VES marcatamente elevata. Quale provvedimento è prioritario per salvare l'occhio controlaterale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Attendere la biopsia dell'arteria temporale prima di ogni terapia</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Corticosteroide sistemico ad alte dosi, immediato</button></li>
+    <li><button type="button"><span class="key">C</span>Anti-VEGF intravitreale</button></li>
+    <li><button type="button"><span class="key">D</span>Antiaggregante a basse dosi come unica terapia</button></li>
+    <li><button type="button"><span class="key">E</span>Nessun trattamento, prognosi ineluttabile</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è una neuropatia ottica ischemica anteriore arteritica da arterite gigantocellulare, un'emergenza che impone steroide ad alte dosi subito per prevenire la cecità controlaterale; la biopsia conferma ma non deve ritardare la terapia. Il discriminatore sono i sintomi sistemici con VES elevata, che fanno trattare prima della conferma istologica.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/19063989/">PMID 19063989</a> · Ischemic optic neuropathy, arteritic form.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Uomo di 60 anni con calo visivo unilaterale grave; al fundus marcata tortuosità venosa, emorragie diffuse a tutti i quadranti, essudati cotonosi e difetto pupillare afferente. A 3 mesi compaiono neovasi sull'iride e un rialzo pressorio. Qual è il trattamento cardine della complicanza neovascolare?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sola osservazione</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Fotocoagulazione panretinica associata ad anti-VEGF intravitreali per indurre la regressione dei neovasi</button></li>
+    <li><button type="button"><span class="key">C</span>Impacchi caldi e massaggio oculare</button></li>
+    <li><button type="button"><span class="key">D</span>Midriatici a lungo termine</button></li>
+    <li><button type="button"><span class="key">E</span>Cheratoplastica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Si tratta di un'occlusione venosa centrale ischemica complicata da glaucoma neovascolare: l'ischemia VEGF-mediata genera neovasi iridei e angolari che ostruiscono il trabecolato; la panretinica riduce lo stimolo ischemico e gli anti-VEGF fanno regredire i neovasi. Il discriminatore è la forma ischemica con rubeosi, gestita ablando la retina ischemica e bloccando il VEGF.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/38259837/">PMID 38259837</a> · Neovascular glaucoma secondary to central retinal vein occlusion.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Neonato pretermine di 25 settimane e 700 g: all'esame del fondo, in sede posteriore (zona I), si osserva una cresta con proliferazione fibrovascolare extraretinica. Quale opzione riduce il rischio di ritrattamento rispetto al laser nella malattia di zona I?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Crioterapia estesa</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Iniezione intravitreale di anti-VEGF, ad esempio bevacizumab</button></li>
+    <li><button type="button"><span class="key">C</span>Sola osservazione fino al termine</button></li>
+    <li><button type="button"><span class="key">D</span>Vitrectomia profilattica</button></li>
+    <li><button type="button"><span class="key">E</span>Cerchiaggio sclerale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella malattia di zona I gli anti-VEGF intravitreali permettono la progressione della vascolarizzazione periferica e mostrano minore necessità di ritrattamento rispetto al laser nelle forme posteriori; laser e crioterapia distruggono la retina periferica. Il discriminatore è il vantaggio dell'anti-VEGF nella localizzazione posteriore di zona I.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/35842190/">PMID 35842190</a> · Network meta-analysis of anti-VEGF versus laser in retinopathy of prematurity.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Uomo di 70 anni con nodulo perlaceo, teleangectasico e ulcerato al canto mediale della palpebra inferiore, lentamente accresciuto, con margini mal definiti in prossimità del punto lacrimale. Quale approccio chirurgico massimizza il controllo dei margini risparmiando tessuto in sede critica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Escissione marginale ampia a vista, senza esame istologico intraoperatorio</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Chirurgia micrografica di Mohs</button></li>
+    <li><button type="button"><span class="key">C</span>Sola crioterapia</button></li>
+    <li><button type="button"><span class="key">D</span>Radioterapia esclusiva di prima linea</button></li>
+    <li><button type="button"><span class="key">E</span>Enucleazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è un basalioma periorbitario al canto mediale; la chirurgia di Mohs offre controllo microscopico completo dei margini con massimo risparmio di tessuto, importante vicino alle vie lacrimali. Il discriminatore è la necessità di margini istologicamente controllati in una zona anatomicamente delicata.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/37069888/">PMID 37069888</a> · Mohs micrographic surgery for periocular basal cell carcinoma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1">
+  <p class="tag">B09 · Boards</p>
+  <h2 class="q-text">Uomo di 60 anni, fumatore, con lieve abbassamento di una palpebra superiore, pupilla più piccola dallo stesso lato e ridotta sudorazione dell'emivolto; riferisce dolore alla spalla e calo ponderale. Quale indagine è prioritaria?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Nessuna, è una ptosi di interesse estetico</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Imaging del torace per escludere un tumore dell'apice polmonare</button></li>
+    <li><button type="button"><span class="key">C</span>Prescrizione di lente correttiva</button></li>
+    <li><button type="button"><span class="key">D</span>Collirio antibiotico</button></li>
+    <li><button type="button"><span class="key">E</span>Blefaroplastica estetica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Ptosi lieve, miosi e anidrosi omolaterale configurano una compromissione del simpatico cervicale; in un fumatore con dolore alla spalla e calo ponderale impone di escludere un tumore dell'apice polmonare che comprime la catena simpatica. Il discriminatore è il corteo simpatico come spia di patologia toracica, non un problema palpebrale isolato.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b10" tabindex="-1">
+  <p class="tag">B10 · Boards</p>
+  <h2 class="q-text">Donna di 35 anni con ptosi bilaterale fluttuante che peggiora nel corso della giornata e con l'affaticamento, associata a diplopia variabile; le pupille sono normali. Qual è il sospetto diagnostico principale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sindrome di Horner</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Miastenia gravis</button></li>
+    <li><button type="button"><span class="key">C</span>Paralisi del terzo nervo cranico</button></li>
+    <li><button type="button"><span class="key">D</span>Dermatocalasi</button></li>
+    <li><button type="button"><span class="key">E</span>Ptosi aponeurotica involutiva</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La ptosi affaticabile e fluttuante con diplopia variabile e pupille risparmiate è tipica del blocco neuromuscolare della miastenia gravis; la sindrome di Horner dà miosi, la paralisi del terzo nervo coinvolge la pupilla con occhio in basso e fuori, la dermatocalasi è stabile e meccanica. Il discriminatore è la faticabilità con risparmio pupillare.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Uomo di 30 anni con chiazze eritematose desquamanti a gomiti, ginocchia e cuoio capelluto da alcuni mesi, sostanzialmente asintomatiche, e una nuova lesione comparsa lungo una cicatrice chirurgica recente.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">An</span>Anamnesi</button>
+      <p>Lesioni recidivanti da anni, con familiarità per una dermatosi analoga; fumatore. Riferisce comparsa della chiazza esattamente sul decorso di una ferita guarita, mentre la cute circostante appariva integra.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">EO</span>Esame obiettivo</button>
+      <p>Placche eritematose a margini netti ricoperte da squame biancastre, argentee; il distacco delle squame provoca un sanguinamento puntiforme. Alle unghie pitting e macchie giallastre a goccia d'olio.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ix</span>Istologia</button>
+      <p>Paracheratosi con riduzione dello strato granuloso, acantosi regolare e papillomatosi; infiltrato linfocitario dermico e capillari dilatati nelle papille; raccolte di neutrofili nello strato corneo (microascessi di Munro).</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">DD</span>Diagnosi differenziale</button>
+      <p>Dermatite seborroica (squame untuose, sedi seborroiche); eczema (spongiosi, prurito marcato); lichen planus (papule violacee, ipergranulosi); micosi (da chiarire con esame micologico).</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Dx</span>Diagnosi</button>
+      <p>Psoriasi volgare a placche, con fenomeno di Koebner sulla cicatrice e interessamento ungueale.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rx</span>Gestione</button>
+      <p>Topici nelle forme lievi: cheratolitici come acido salicilico o urea, calcipotriolo, corticosteroidi per brevi periodi. Fototerapia UVB nelle forme moderate. Sistemici e biologici, anti-IL17 o anti-IL23, nelle forme severe, previo screening per tubercolosi ed epatiti.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Uomo di 58 anni, diabetico di tipo 2 da oltre quindici anni con controllo glicemico irregolare, lamenta da settimane una visione sporca con corpi mobili e un calo visivo ingravescente in un occhio.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">An</span>Anamnesi</button>
+      <p>Diabete di lunga durata con emoglobina glicata elevata, ipertensione arteriosa, scarsa aderenza ai controlli oculistici; fumatore.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">EO</span>Esame del fondo</button>
+      <p>Microaneurismi, emorragie intraretiniche, essudati duri e cotonosi; neovasi sul disco ottico e in periferia; emorragia preretinica con iniziale invasione del vitreo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ix</span>Indagini</button>
+      <p>Fluoroangiografia con ampie aree di non perfusione capillare e neovascolarizzazione; OCT che documenta edema maculare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">DD</span>Diagnosi differenziale</button>
+      <p>Occlusione venosa retinica (emorragie settoriali o diffuse a scoppio di granata); retinopatia ipertensiva; occlusione arteriosa (pallore retinico con macchia rosso ciliegia).</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Dx</span>Diagnosi</button>
+      <p>Retinopatia diabetica proliferante con edema maculare ed emovitreo iniziale.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rx</span>Gestione</button>
+      <p>Ottimizzazione metabolica e pressoria; fotocoagulazione panretinica guidata dalla fluoroangiografia sulle aree ischemiche; anti-VEGF intravitreali per l'edema maculare e i neovasi; vitrectomia in caso di emovitreo persistente o distacco trazionale.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Uomo di 72 anni, lavoratore agricolo, con una lesione nodulare alla palpebra inferiore presente da oltre un anno, che occasionalmente sanguina e non guarisce, con perdita di alcune ciglia in corrispondenza.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">An</span>Anamnesi</button>
+      <p>Lunga esposizione solare cronica, fototipo chiaro; lesione a lento accrescimento, mai guarita, che sanguina al minimo traumatismo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">EO</span>Esame obiettivo</button>
+      <p>Nodulo perlaceo con teleangectasie superficiali e ulcerazione centrale, bordo rilevato; perdita localizzata delle ciglia (madarosi); margini mal definiti verso il canto mediale.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ix</span>Indagini</button>
+      <p>Biopsia con istologia che mostra nidi di cellule basaloidi disposte a palizzata alla periferia; valutazione dell'estensione e dei rapporti con il sistema lacrimale.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">DD</span>Diagnosi differenziale</button>
+      <p>Carcinoma squamocellulare (più cheratosico, maggior rischio metastatico); calazio (nodulo infiammatorio cronico, non ulcerato né con perdita di ciglia); nevo melanocitico; cheratosi seborroica o attinica.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Dx</span>Diagnosi</button>
+      <p>Carcinoma basocellulare della palpebra inferiore, localmente invasivo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rx</span>Gestione</button>
+      <p>Escissione con controllo dei margini, idealmente chirurgia micrografica di Mohs nella sede canto-mediale, con ricostruzione palpebrale; follow-up per le recidive locali. Il rischio metastatico è basso, ma la distruzione locale può essere grave se la lesione non viene trattata.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>

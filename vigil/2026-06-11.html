@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 11 giugno 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-06-11">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>giovedì 11 giugno 2026</h1>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1">
+  <p class="tag">Q01 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Nella palatoschisi, quale criterio distingue la forma monolaterale da quella bilaterale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il numero di incisivi che insistono sulla premaxilla</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il rapporto del vomere con le due emilamine del palato duro</button></li>
+    <li><button type="button"><span class="key">C</span>L'estensione anteriore della schisi fino al forame incisivo</button></li>
+    <li><button type="button"><span class="key">D</span>Il coinvolgimento isolato dell'ugola e del palato molle</button></li>
+    <li><button type="button"><span class="key">E</span>La presenza contestuale di una labioschisi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il vomere separa le due cavità nasali: quando resta libero, la schisi comunica con entrambe le fosse e la palatoschisi è bilaterale; quando è saldato a una delle due emilamine palatine, la comunicazione è unica e la forma è monolaterale. Il discriminatore è il rapporto del vomere, non l'estensione antero-posteriore, che invece gradua la gravità dall'ugola al forame incisivo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1">
+  <p class="tag">Q02 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">In cosa consiste il trattamento d'elezione della palatoschisi, eseguito tra il sesto e il nono mese di vita?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Innesto osseo alveolare per guidare l'eruzione del canino definitivo</button></li>
+    <li><button type="button"><span class="key">B</span>Sospensione della lingua e nutrizione con sondino naso-gastrico</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Risoluzione della continuità mucosa con riposizionamento dei muscoli mal inseriti, ricostruzione del piano nasale e chiusura della fibromucosa palatina</button></li>
+    <li><button type="button"><span class="key">D</span>Rinoplastica secondaria con correzione della distorsione dell'ala nasale</button></li>
+    <li><button type="button"><span class="key">E</span>Distrazione osteogenetica del ramo mandibolare ipoplasico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'intervento d'elezione mira al ripristino morfo-funzionale: chiude la schisi, riposiziona l'elevatore e il tensore del velo inseriti in modo anomalo, ricostruisce il piano nasale e sutura la fibromucosa palatina. Il discriminatore è il bersaglio temporale: l'innesto alveolare appartiene ai 9-11 anni per l'eruzione del canino, la rinoplastica all'adolescenza, la sospensione della lingua all'urgenza della sequenza di Pierre Robin.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1">
+  <p class="tag">Q03 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Perché la correzione della labiopalatoschisi va completata entro il primo anno di vita?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Per impedire la saldatura precoce della premaxilla alla mandibola</button></li>
+    <li><button type="button"><span class="key">B</span>Per consentire lo sviluppo dell'occlusione dentaria definitiva</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Per prevenire l'instaurarsi di una rinolalia aperta prima dell'apprendimento del linguaggio</button></li>
+    <li><button type="button"><span class="key">D</span>Perché dopo l'anno l'osso palatino perde la capacità di consolidare</button></li>
+    <li><button type="button"><span class="key">E</span>Per ridurre il rischio anestesiologico legato all'età neonatale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il palato molle deve poter occludere il rinofaringe durante la fonazione; finché la schisi persiste si genera una risonanza nasale patologica, la rinolalia aperta, che fissa un eloquio scorretto. Correggere prima che il bambino impari a parlare è il razionale del timing, distinto dall'innesto alveolare e dalla riabilitazione ortodontica, che seguono tempi più tardivi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1">
+  <p class="tag">Q04 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Qual è il meccanismo delle otiti medie ricorrenti nel bambino con palatoschisi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Reflusso diretto di latte dalla cavità orale alla cassa timpanica</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Anomala inserzione dei muscoli palatini con disfunzione dell'ostio tubarico e ristagno delle secrezioni</button></li>
+    <li><button type="button"><span class="key">C</span>Colonizzazione batterica della schisi con diffusione ematogena all'orecchio</button></li>
+    <li><button type="button"><span class="key">D</span>Ipoplasia congenita della catena ossiculare associata alla schisi</button></li>
+    <li><button type="button"><span class="key">E</span>Immunodeficit costituzionale tipico dei pazienti con schisi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'elevatore e il tensore del velo, mal inseriti, non aprono correttamente l'ostio interno della tuba di Eustachio: il drenaggio dell'orecchio medio viene meno e le secrezioni ristagnano e si ispessiscono (glue ear), favorendo otiti ricorrenti. Il discriminatore è la discinesia tubarica su base muscolare, non un passaggio meccanico di bolo né una causa infettiva sistemica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1">
+  <p class="tag">Q05 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">La fusione precoce della sutura sagittale determina quale deformità cranica, e secondo quale principio?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Brachicefalia, per crescita perpendicolare alla sutura fusa</button></li>
+    <li><button type="button"><span class="key">B</span>Trigonocefalia, per arresto di crescita della fronte</button></li>
+    <li><button type="button"><span class="key">C</span>Plagiocefalia, per fusione asimmetrica monolaterale</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Scafocefalia, per crescita compensatoria parallela alla sutura fusa secondo la legge di Virchow</button></li>
+    <li><button type="button"><span class="key">E</span>Turricefalia, per crescita verticale compensatoria</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Per la legge di Virchow una sutura fusa blocca la crescita perpendicolare e la compensa in direzione parallela: la sagittale fusa impedisce l'allargamento trasversale e allunga il cranio in senso antero-posteriore, dando la forma a scafo. È la craniosinostosi singola più frequente; il discriminatore è la direzione della crescita compensatoria, parallela e non perpendicolare alla sutura.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1">
+  <p class="tag">Q06 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Una fronte stretta e triangolare con cresta ossea mediana (trigonocefalia) consegue alla fusione precoce di quale sutura?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sagittale</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Metopica</button></li>
+    <li><button type="button"><span class="key">C</span>Coronale monolaterale</button></li>
+    <li><button type="button"><span class="key">D</span>Lambdoidea</button></li>
+    <li><button type="button"><span class="key">E</span>Squamosa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La sutura metopica decorre al centro della fronte: la sua chiusura precoce arresta lo sviluppo trasversale frontale e, per compenso parallelo, configura la trigonocefalia con fronte a chiglia e cresta mediana. Il discriminatore è la sede della sutura: la sagittale dà scafocefalia, la coronale monolaterale plagiocefalia, la lambdoidea brachicefalia.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1">
+  <p class="tag">Q07 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Quale elemento distingue concettualmente la microsomia emifacciale dalla sindrome di Treacher Collins?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La microsomia interessa la mandibola, mentre la Treacher Collins la risparmia</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La microsomia è tipicamente monolaterale e deriva da un'ipoplasia del primo e secondo arco branchiale, mentre la Treacher Collins è bilaterale, simmetrica e a trasmissione autosomica dominante</button></li>
+    <li><button type="button"><span class="key">C</span>Entrambe sono autosomiche dominanti e differiscono solo per il grado di microtia</button></li>
+    <li><button type="button"><span class="key">D</span>La Treacher Collins è unilaterale e sporadica, la microsomia bilaterale ed ereditaria</button></li>
+    <li><button type="button"><span class="key">E</span>La microsomia presenta coloboma palpebrale, assente nella Treacher Collins</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La microsomia emifacciale nasce come difetto locale e prevalentemente unilaterale dello sviluppo del primo e secondo arco branchiale, con deviazione del mento verso il lato ipoplasico; la Treacher Collins, disostosi mandibolo-facciale, è invece bilaterale, simmetrica ed ereditaria autosomica dominante, con coloboma e piega antimongolica. Il discriminatore è duplice: lateralità contro simmetria, e natura genetica contro incidente locale di sviluppo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1">
+  <p class="tag">Q08 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Quale reperto orienta verso una sindrome di Apert piuttosto che verso una sindrome di Crouzon?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La fusione di più suture craniche</button></li>
+    <li><button type="button"><span class="key">B</span>L'ipoplasia del terzo medio del volto</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>La sindattilia complessa di mani e piedi (mano a cucchiaio)</button></li>
+    <li><button type="button"><span class="key">D</span>La trasmissione autosomica dominante</button></li>
+    <li><button type="button"><span class="key">E</span>La proptosi da orbite poco profonde</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Crouzon e Apert condividono craniosinostosi multipla, ipoplasia mediofacciale, proptosi e trasmissione autosomica dominante; ciò che le separa è il coinvolgimento degli arti. La Crouzon tipicamente non dà anomalie delle estremità, mentre la Apert, o acrocefalosindattilia, associa sindattilie gravi con la caratteristica mano a cucchiaio, che è il discriminatore.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1">
+  <p class="tag">Q09 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Perché la sindattilia ossea richiede una correzione più precoce rispetto alle forme cutanee o membranose?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché comporta un rischio infettivo maggiore della commessura</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché le falangi distali fuse, di lunghezza diversa, deviano il dito più lungo verso il più corto causando clinodattilia</button></li>
+    <li><button type="button"><span class="key">C</span>Perché impedisce in modo assoluto la prensione</button></li>
+    <li><button type="button"><span class="key">D</span>Perché è invariabilmente associata alla sindrome di Apert</button></li>
+    <li><button type="button"><span class="key">E</span>Perché evolve verso la fusione anche delle articolazioni metacarpo-falangee</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella sindattilia ossea sono unite le falangi distali di dita intrinsecamente di lunghezza diversa: con la crescita la disparità aumenta e il dito più lungo viene deviato verso il più corto, configurando una clinodattilia di difficile correzione. Le forme cutanee e membranose danno disturbi funzionali minori e tollerano un trattamento differito; il discriminatore è la deformità progressiva da traino osseo distale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1">
+  <p class="tag">Q10 · Chirurgia Plastica · Malformazioni congenite esterne</p>
+  <h2 class="q-text">Un soggetto con genotipo 46,XY presenta genitali esterni femminili. Quale meccanismo lo spiega nella sindrome di Morris?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Deficit di 21-idrossilasi con iperandrogenismo surrenalico</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Insensibilità dei recettori periferici al testosterone, per cui i genitali esterni si sviluppano in senso femminile</button></li>
+    <li><button type="button"><span class="key">C</span>Mosaicismo cromosomico con linee cellulari XX e XY</button></li>
+    <li><button type="button"><span class="key">D</span>Agenesia mülleriana isolata con cariotipo conservato</button></li>
+    <li><button type="button"><span class="key">E</span>Ipersecrezione di estrogeni placentari in epoca fetale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella femminilizzazione testicolare, o sindrome di Morris, i recettori per gli androgeni sono insensibili: in assenza di un segnale androgenico efficace i genitali esterni seguono lo sviluppo femminile di default pur con cariotipo 46,XY. Il discriminatore è il livello del difetto, recettoriale e non enzimatico né cromosomico: l'iperplasia surrenalica congenita da deficit di 21-idrossilasi dà invece virilizzazione e ambiguità.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1">
+  <p class="tag">Q11 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">Nel papilledema da ipertensione endocranica, perché l'acuità visiva centrale si mantiene normale fino alle fasi terminali?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché la macula riceve un doppio apporto vascolare protettivo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché gli assoni del fascio papillo-maculare sono gli ultimi ad andare incontro ad atrofia</button></li>
+    <li><button type="button"><span class="key">C</span>Perché l'edema risparmia selettivamente il polo posteriore</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la pressione liquorale non si trasmette al nervo ottico</button></li>
+    <li><button type="button"><span class="key">E</span>Perché la perdita inizia sempre dal campo visivo centrale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il rallentamento del flusso assonico atrofizza le fibre a partire da quelle più periferiche; gli assoni del fascio papillo-maculare, responsabili della visione centrale, cedono per ultimi, perciò il visus resta sui 10/10 a lungo mentre il campo visivo si restringe. Il segno precoce è l'allargamento della macchia cieca, non un calo del visus; il discriminatore è la sequenza centripeta dell'atrofia.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1">
+  <p class="tag">Q12 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">Quale alterazione della percezione cromatica caratterizza tipicamente la neurite ottica retrobulbare?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Discromatopsia ad asse giallo/blu</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Discromatopsia ad asse rosso/verde, con colori riferiti sbiaditi nell'occhio affetto</button></li>
+    <li><button type="button"><span class="key">C</span>Acromatopsia completa a insorgenza improvvisa</button></li>
+    <li><button type="button"><span class="key">D</span>Cecità ai colori limitata al solo campo temporale</button></li>
+    <li><button type="button"><span class="key">E</span>Nessuna alterazione della percezione cromatica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La neurite ottica retrobulbare colpisce il fascio papillo-maculare e si accompagna a una discromatopsia ad asse rosso/verde, con desaturazione dei colori nell'occhio interessato; la forma ischemica anteriore e le neuriti interstiziali tendono invece a un asse giallo/blu. Il discriminatore è l'asse cromatico, rosso/verde nella retrobulbare, che insieme al dolore ai movimenti e allo scotoma centrale ne completa il quadro.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1">
+  <p class="tag">Q13 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">Quale combinazione di reperti orienta verso una neuropatia ottica ischemica anteriore non arteritica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Calo del visus doloroso con disco ottico escavato</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Deficit altitudinale del campo visivo in un disco affollato, con calo indolore spesso al risveglio</button></li>
+    <li><button type="button"><span class="key">C</span>Scotoma bitemporale associato a disfunzione endocrina</button></li>
+    <li><button type="button"><span class="key">D</span>Calo bilaterale progressivo con disco pallido a margini netti</button></li>
+    <li><button type="button"><span class="key">E</span>Amaurosi transitoria ricorrente con VES marcatamente elevata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma ipoperfusiva colpisce dischi piccoli e affollati, tipici dell'ipermetrope, con riduzione improvvisa e indolore del visus, spesso dopo il risveglio per l'ipotensione notturna, e un caratteristico deficit altitudinale che può coesistere con un'acuità centrale conservata in un terzo dei casi. Il discriminatore dal quadro arteritico è l'assenza di dolore, di sintomi sistemici e di rialzo degli indici di flogosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1">
+  <p class="tag">Q14 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">Nella neuropatia ottica ischemica anteriore arteritica, quale vaso è primariamente occluso e da quale processo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'arteria centrale della retina, per embolia cardiogena</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Le arterie ciliari posteriori brevi, per vasculite granulomatosa gigantocellulare</button></li>
+    <li><button type="button"><span class="key">C</span>La vena centrale della retina, per trombosi da iperviscosità</button></li>
+    <li><button type="button"><span class="key">D</span>L'arteria oftalmica, per dissecazione traumatica</button></li>
+    <li><button type="button"><span class="key">E</span>I capillari peripapillari, per microangiopatia diabetica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'arterite gigantocellulare è una vasculite dei grossi vasi con cellule giganti nella tonaca media che digeriscono la lamina elastica e ispessiscono la parete: a livello oculare occlude le arterie ciliari posteriori brevi, che irrorano la testa del nervo ottico, generando l'ischemia. Il discriminatore è il distretto colpito, le ciliari posteriori brevi e non l'arteria centrale della retina, dato che i due circoli restano indipendenti.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1">
+  <p class="tag">Q15 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">Quali reperti depongono per la forma arteritica piuttosto che per quella non arteritica di neuropatia ottica ischemica anteriore?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Disco affollato controlaterale e deficit altitudinale isolato</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Edema del disco pallido e gessoso, VES e PCR marcatamente elevate, claudicatio mandibolare e cefalea temporale</button></li>
+    <li><button type="button"><span class="key">C</span>Esordio indolore al risveglio senza alcun sintomo sistemico</button></li>
+    <li><button type="button"><span class="key">D</span>Buona prognosi visiva con visus medio attorno ai 4/10</button></li>
+    <li><button type="button"><span class="key">E</span>Insorgenza tipica prima dei cinquant'anni</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma arteritica si distingue per un edema del disco pallido e gessoso, per indici di flogosi marcatamente elevati e per il corredo sistemico dell'arterite di Horton: cefalea temporale, dolorabilità del cuoio capelluto, claudicatio mandibolare, polimialgia. Il discriminatore è proprio la flogosi sistemica unita a un calo visivo profondo, contro l'esordio isolato e indolore della forma ipoperfusiva, che ha prognosi migliore.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1">
+  <p class="tag">Q16 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">In un paziente che lamenta calo visivo dopo trauma cranico fronto-orbitario, quale reperto è indispensabile per sostenere la diagnosi di neuropatia ottica post-traumatica?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La presenza di un difetto pupillare afferente nell'occhio interessato</button></li>
+    <li><button type="button"><span class="key">B</span>Un fundus del tutto normale nelle prime ore</button></li>
+    <li><button type="button"><span class="key">C</span>La frattura della parete anteriore del seno frontale</button></li>
+    <li><button type="button"><span class="key">D</span>L'amaurosi insorta solo a distanza di giorni</button></li>
+    <li><button type="button"><span class="key">E</span>La conservazione di un visus di 10/10</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La sofferenza del nervo ottico determina un difetto pupillare afferente: la sua presenza è il marcatore oggettivo della lesione, e la sua assenza in un paziente che riferisce cecità deve far sospettare una simulazione a fini risarcitivi. Il discriminatore è il riflesso pupillare, segno non controllabile volontariamente, che separa un deficit reale da uno simulato.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1">
+  <p class="tag">Q17 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">In una lesione chiasmatica che produce un'emianopsia bitemporale simmetrica, come si comporta il difetto pupillare afferente?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>È sempre marcato e monolaterale</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>È tipicamente assente, perché il danno alle fibre incrociate è simmetrico nei due lati</button></li>
+    <li><button type="button"><span class="key">C</span>È bilaterale e completo, con pupille fisse</button></li>
+    <li><button type="button"><span class="key">D</span>Compare solo alla luce diretta e mai alla consensuale</button></li>
+    <li><button type="button"><span class="key">E</span>Si inverte, comparendo nell'occhio sano</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il difetto pupillare afferente relativo emerge da un'asimmetria di conduzione tra i due nervi ottici; quando la lesione chiasmatica colpisce in modo simmetrico le fibre nasali decussanti di entrambi i lati, l'input afferente resta bilanciato e il difetto non si manifesta. Il discriminatore è la simmetria: un difetto afferente in una sindrome chiasmatica segnala un coinvolgimento asimmetrico del nervo ottico, non la sola emianopsia bitemporale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1">
+  <p class="tag">Q18 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">Qual è il pattern campimetrico più frequente nella sindrome chiasmatica e la sua causa più comune?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Emianopsia omonima controlaterale da accidente vascolare del tratto ottico</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Emianopsia bitemporale eteronima da lesione mediana del chiasma, più spesso da adenoma ipofisario</button></li>
+    <li><button type="button"><span class="key">C</span>Emianopsia binasale eteronima da ectasia dei sifoni carotidei</button></li>
+    <li><button type="button"><span class="key">D</span>Quadrantopsia supero-temporale da lesione del lobo temporale</button></li>
+    <li><button type="button"><span class="key">E</span>Scotoma centrale bilaterale da neurite retrobulbare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una lesione mediana del chiasma interrompe le fibre nasali decussanti, su cui si proiettano i campi temporali, dando un'emianopsia bitemporale eteronima netta sulla linea verticale; la causa più frequente è l'adenoma ipofisario, che cresce dalla sella verso l'alto. Il discriminatore è la sede mediana e il tipo eteronimo del difetto, contro le forme omonime delle lesioni retrochiasmatiche.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1">
+  <p class="tag">Q19 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">La variabilità del pattern campimetrico nelle lesioni chiasmatiche dipende anche dalla posizione del chiasma rispetto alla sella turcica. Quale affermazione è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il chiasma è sempre fisso sul diaframma della sella, senza varianti anatomiche</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Nel 5-12% dei casi è anteposto sul tubercolo (prefisso) e nel 4% spostato indietro sul dorso della sella (postfisso)</button></li>
+    <li><button type="button"><span class="key">C</span>Nella maggioranza dei soggetti è postfisso sul dorso della sella</button></li>
+    <li><button type="button"><span class="key">D</span>La sua posizione non influenza in alcun modo i deficit campimetrici</button></li>
+    <li><button type="button"><span class="key">E</span>È costantemente anteposto rispetto all'ipofisi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il chiasma occupa di norma una posizione centrale sulla sella, ma in una quota di soggetti è prefisso, anteposto sul tubercolo (5-12%), oppure postfisso, spostato sul dorso della sella (4%); questa variabilità, insieme alle diverse modalità di crescita delle lesioni espansive, spiega perché il pattern campimetrico non sia univoco. Il discriminatore è il riconoscimento delle varianti anatomiche, non una posizione fissa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1">
+  <p class="tag">Q20 · Oftalmologia · Patologie delle vie ottiche</p>
+  <h2 class="q-text">Una lesione della corteccia visiva occipitale produce tipicamente quale difetto campimetrico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Emianopsia bitemporale eteronima</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Emianopsia omonima controlaterale congrua con risparmio maculare</button></li>
+    <li><button type="button"><span class="key">C</span>Cecità monoculare ipsilaterale</button></li>
+    <li><button type="button"><span class="key">D</span>Quadrantopsia binasale incongrua</button></li>
+    <li><button type="button"><span class="key">E</span>Scotoma centrocecale bilaterale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le lesioni occipitali danno difetti omonimi controlaterali e altamente congrui, con caratteristico risparmio maculare per meccanismi non del tutto chiariti legati alla rappresentazione corticale espansa della macula. Il discriminatore è la congruità con risparmio maculare, che separa la sede corticale dalle lesioni più anteriori, tipicamente meno congrue e prive di tale risparmio.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Neonato a termine, poche ore di vita. Micrognazia marcata, glossoptosi e palatoschisi mediana a U. In decubito supino compaiono rientramenti e desaturazioni che si attenuano in posizione prona. Suzione inefficace con rigurgito nasale durante i tentativi di alimentazione.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">A</span>Airway</button>
+      <p>L'ostruzione nasce dalla caduta posteriore della lingua, sostenuta da una mandibola ipoplasica, contro la parete faringea. Primo provvedimento, non invasivo: posizionamento prono o laterale; se insufficiente, cannula nasofaringea. Se l'ostruzione persiste si scala alla glossopessia o adesione lingua-labbro e alla distrazione osteogenetica mandibolare, riservando la tracheostomia all'insuccesso delle altre misure.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">B</span>Breathing</button>
+      <p>Monitorare la saturazione e quantificare l'ostruzione con polisonnografia, calcolando l'indice di apnea-ipopnea e distinguendo la componente ostruttiva da quella centrale. Nei casi selezionati è utile un supporto ventilatorio non invasivo a pressione positiva.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">C</span>Circulation e nutrizione</button>
+      <p>Il neonato è di norma emodinamicamente stabile; la priorità è l'idratazione e un apporto calorico adeguato. La comunicazione oro-nasale impedisce la pressione negativa della suzione: si ricorre a tettarelle dedicate, otturatore palatino o sondino naso-gastrico per garantire l'alimentazione e prevenire l'aspirazione e l'arresto di crescita.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">D</span>Diagnosi e sindromicità</button>
+      <p>Stabilire se la sequenza è isolata o sindromica: ricercare associazioni quali la sindrome di Stickler o la delezione 22q11 con valutazione genetica e audiologica, perché la forma sindromica modifica prognosi e strategia di gestione delle vie aeree.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">E</span>Esiti e percorso</button>
+      <p>Programmazione multidisciplinare: la palatoschisi a U sarà riparata più avanti, entro l'anno e prima dello sviluppo dell'eloquio; seguono il follow-up foniatrico e ortodontico e la sorveglianza otologica per le otiti medie da disfunzione tubarica.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rx</span>Gestione e decisioni</button>
+      <p>Algoritmo a gradini: prima i provvedimenti conservativi (posizione, cannula nasofaringea, ottimizzazione dell'alimentazione), poi la chirurgia delle vie aeree (glossopessia o adesione lingua-labbro, distrazione mandibolare), infine la tracheostomia solo se le altre misure falliscono. La maggior parte dei neonati con sequenza di Pierre Robin si gestisce senza ricorrere alla tracheostomia.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">≡</span>Riferimenti</button>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/39616138/">PMID 39616138</a> — Van Heest et al. Robin Sequence: Neonatal Management. NeoReviews 2024.</p>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/40381449/">PMID 40381449</a> — Saravanamuthu et al. Multidisciplinary approach to airway management in Pierre Robin sequence: beyond tracheostomy. Int J Pediatr Otorhinolaryngol 2025.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Donna di 74 anni con improvvisa e profonda perdita visiva indolore all'occhio destro, preceduta da episodi di annebbiamento transitorio. Da alcune settimane riferisce cefalea temporale, dolorabilità del cuoio capelluto e dolore alla masticazione.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">1</span>Anamnesi</button>
+      <p>Indagare il corredo sistemico dell'arterite gigantocellulare: claudicatio mandibolare, cefalea temporale di nuova insorgenza, dolorabilità del cuoio capelluto, calo ponderale, febbricola, sudorazioni notturne e dolore ai cingoli da polimialgia reumatica. Episodi di amaurosi fugace o fosfeni possono precedere il calo visivo definitivo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">2</span>Esame</button>
+      <p>Acuità ridotta fino al moto-mano, con difetto pupillare afferente nell'occhio colpito. Al fundus, edema del disco diffuso e pallido, gessoso; il disco controlaterale è sano e di dimensioni normali, a differenza del disco piccolo e affollato tipico della forma non arteritica.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">3</span>Indagini</button>
+      <p>VES e PCR marcatamente elevate sostengono il sospetto. La biopsia dell'arteria temporale, con cellule giganti nella media e frammentazione della lamina elastica interna, conferma la diagnosi, ma una biopsia negativa non la esclude per la natura segmentaria delle lesioni; l'ecografia dell'arteria temporale può mostrare il segno dell'alone. La terapia non va ritardata in attesa della biopsia.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rx</span>Gestione e decisioni</button>
+      <p>Emergenza neuroftalmologica: corticosteroide ad alte dosi per via endovenosa immediato (metilprednisolone), poi prednisone orale a scalare guidato dalla VES. Il trattamento previene il coinvolgimento dell'occhio adelfo, atteso entro pochi giorni in una quota elevata di casi, e protegge cuore ed encefalo; gli agenti risparmiatori di steroide come il tocilizumab trovano spazio secondo le raccomandazioni.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">DD</span>Discriminatore</button>
+      <p>Contro la forma non arteritica: questa è indolore, priva di sintomi sistemici, con indici di flogosi normali, disco affollato e deficit altitudinale. La confusione tra le due è pericolosa, perché l'arteritica non trattata acceca rapidamente anche il secondo occhio.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">≡</span>Riferimenti</button>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/34235871/">PMID 34235871</a> — Maz et al. 2021 ACR/Vasculitis Foundation Guideline for the Management of Giant Cell Arteritis. Arthritis Care Res 2021.</p>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/32183689/">PMID 32183689</a> — Mollan et al. European Headache Federation recommendations for neurologists managing giant cell arteritis. J Headache Pain 2020.</p>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/37126919/">PMID 37126919</a> — Issa et al. Incidence of giant cell arteritis mimicking non-arteritic anterior optic neuropathy. J Neurol Sci 2023.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>

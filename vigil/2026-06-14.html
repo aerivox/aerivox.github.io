@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 14 giugno 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-06-14">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>domenica 14 giugno 2026</h1>
+  <div class="spark">
+    <p>Nel 1888 un chirurgo di Zurigo, Rudolf Ulrich Krönlein, fece una cosa che sembrava un azzardo: aprì la parete laterale dell'orbita, asportò la massa che la abitava e rimise tutto a posto lasciando l'occhio dov'era, vedente. Fino ad allora un'orbita malata significava spesso perdere il bulbo; lui dimostrò che si poteva entrare in quella scatola ossea, profonda pochi centimetri e fitta di muscoli, nervi e vasi, senza svuotarla. La sua orbitotomia laterale porta ancora il suo nome.</p>
+    <p>L'orbita, del resto, è un cono rigido: tutto ciò che vi cresce, sangue, infiammazione, un tumore, non ha dove espandersi e spinge l'occhio in fuori. L'esoftalmo è la prima cosa che vedi, ed è già una domanda. Cosa sta occupando uno spazio che non ne ha?</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1">
+  <p class="tag">Q01 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Invitando un paziente con oftalmopatia tiroidea a seguire un bersaglio che si abbassa, la palpebra superiore resta indietro rispetto al bulbo e scopre una rima di sclera. Quale segno descrive questo reperto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Segno di Dalrymple</button></li>
+    <li><button type="button"><span class="key">B</span>Segno di Stellwag</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Segno di von Graefe</button></li>
+    <li><button type="button"><span class="key">D</span>Segno di Möbius</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il segno di von Graefe è il ritardo della palpebra superiore nello sguardo verso il basso: il muscolo di Muller ipertonico trattiene la palpebra, che non accompagna il bulbo. Il discriminatore è la dinamica nello sguardo in basso: il segno di Dalrymple è la retrazione palpebrale visibile già nello sguardo primario, mentre Stellwag (rarità dell'ammiccamento) e Möbius (insufficienza di convergenza) sono altri reperti basedowiani.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1">
+  <p class="tag">Q02 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">In un paziente con esoftalmo basedowiano, quale meccanismo rende ragione della cheratopatia da esposizione?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La chiusura incompleta delle palpebre lascia scoperta la cornea, che si disidrata</button></li>
+    <li><button type="button"><span class="key">B</span>La retrazione palpebrale comprime il bulbo e ne altera la curvatura corneale</button></li>
+    <li><button type="button"><span class="key">C</span>L'infiltrato infiammatorio orbitario aggredisce direttamente l'epitelio della cornea</button></li>
+    <li><button type="button"><span class="key">D</span>La compressione del nervo ottico riduce la sensibilità e il trofismo corneale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lagoftalmo è l'incompleta chiusura delle palpebre: proptosi e retrazione impediscono l'ammiccamento completo, la cornea resta esposta, si disidrata e va incontro a ulcerazione, la complicanza che minaccia il visus. Il discriminatore è la mancata copertura corneale, non un danno flogistico diretto né la compressione del nervo, che danno altri quadri.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1">
+  <p class="tag">Q03 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Nell'oftalmopatia di Basedow, da che cosa dipende principalmente l'aumento di volume del contenuto orbitario nel meccanismo tireotropo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Dall'iperplasia dell'epitelio della ghiandola lacrimale</button></li>
+    <li><button type="button"><span class="key">B</span>Dall'emorragia all'interno dei muscoli extraoculari</button></li>
+    <li><button type="button"><span class="key">C</span>Dalla trombosi delle vene orbitarie con stasi a monte</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Dall'accumulo di glicosamminoglicani che richiamano acqua nei tessuti</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Gli stessi anticorpi anti-recettore del TSH stimolano i fibroblasti orbitari a produrre glicosamminoglicani, molecole fortemente idrofile che richiamano acqua e gonfiano i tessuti; si aggiungono adipogenesi e ipertrofia dei muscoli retti. Il discriminatore è la natura osmotica dell'edema mixedematoso, non un evento vascolare acuto né un interessamento ghiandolare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1">
+  <p class="tag">Q04 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">La protrusione del bulbo misurata con l'esoftalmometro di Hertel si considera patologica oltre quale soglia?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Oltre 12 mm</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Oltre 18 mm</button></li>
+    <li><button type="button"><span class="key">C</span>Oltre 24 mm</button></li>
+    <li><button type="button"><span class="key">D</span>Oltre 30 mm</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La protrusione normale è di circa 16-18 mm; oltre 18 mm, o con una differenza superiore a 2 mm tra i due occhi, si parla di esoftalmo. Il discriminatore è la soglia dei 18 mm: valori inferiori rientrano nella norma, mentre 24 e 30 mm indicano forme marcate ma non rappresentano il limite diagnostico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1">
+  <p class="tag">Q05 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Nell'oftalmopatia tiroidea, quale situazione impone un trattamento attivo immediato anziché la sola osservazione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La retrazione isolata della palpebra superiore</button></li>
+    <li><button type="button"><span class="key">B</span>La presenza di gozzo e tachicardia</button></li>
+    <li><button type="button"><span class="key">C</span>L'asimmetria estetica della rima palpebrale</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La neuropatia ottica compressiva con calo del visus</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La malattia è in genere autolimitante e gestita in modo sintomatico, ma la minaccia per la vista, neuropatia ottica compressiva o grave cheratopatia da esposizione, impone steroidi sistemici ed eventuale decompressione orbitaria. Il discriminatore è il rischio per il visus: retrazione, segni sistemici e disagio estetico non costituiscono urgenza.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1">
+  <p class="tag">Q06 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Che cosa distingue la cellulite orbitaria dalla cellulite presettale?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La cellulite orbitaria interessa i tessuti posteriori al setto orbitario</button></li>
+    <li><button type="button"><span class="key">B</span>La cellulite orbitaria è sempre causata da un trauma penetrante</button></li>
+    <li><button type="button"><span class="key">C</span>La cellulite orbitaria colpisce solo la cute e il sottocute palpebrale</button></li>
+    <li><button type="button"><span class="key">D</span>La cellulite orbitaria non si associa mai a febbre</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il setto orbitario è lo spartiacque: la cellulite presettale resta anteriore ad esso e interessa palpebra e cute, mentre la cellulite orbitaria è posteriore al setto e dà proptosi, oftalmoplegia dolorosa e possibile sofferenza del nervo ottico. Il discriminatore è il piano anatomico rispetto al setto, non l'eziologia né la presenza di febbre.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1">
+  <p class="tag">Q07 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Qual è la causa più frequente di cellulite orbitaria?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La diffusione ematogena di un'infezione a distanza</button></li>
+    <li><button type="button"><span class="key">B</span>L'inoculazione diretta da un morso di animale</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'estensione di una sinusite, in particolare etmoidale</button></li>
+    <li><button type="button"><span class="key">D</span>La complicanza di un intervento di cataratta</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La via più frequente è l'estensione per contiguità da una sinusite, soprattutto dell'etmoide, separato dall'orbita dalla sottile lamina papiracea; trauma, diffusione ematogena e cause post-chirurgiche sono possibili ma meno comuni. Il discriminatore è la contiguità con i seni paranasali.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1">
+  <p class="tag">Q08 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Lo pseudotumor orbitario infiammatorio, nelle forme gravi e protratte, può evolvere verso quale quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La degenerazione maligna in linfoma orbitario</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La fibrosi dei tessuti con «orbita congelata»</button></li>
+    <li><button type="button"><span class="key">C</span>La calcificazione diffusa dei muscoli extraoculari</button></li>
+    <li><button type="button"><span class="key">D</span>La risoluzione completa senza alcun esito</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'infiammazione cronica e prolungata porta a fibrosi dei tessuti orbitari e dei muscoli extraoculari, con immobilità del bulbo, l'«orbita congelata». Il discriminatore è l'esito fibrotico: lo pseudotumor è non neoplastico e non degenera in linfoma, e le forme lievi possono regredire, ma non è questo l'esito delle forme gravi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1">
+  <p class="tag">Q09 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Quale reperto è più caratteristico della fistola carotido-cavernosa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un esoftalmo bilaterale lentamente progressivo</button></li>
+    <li><button type="button"><span class="key">B</span>Un enoftalmo associato a miosi e ptosi</button></li>
+    <li><button type="button"><span class="key">C</span>Una proptosi riducibile e non dolente</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Un esoftalmo pulsante con soffio sincrono al polso</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La comunicazione tra carotide e seno cavernoso trasmette la pulsazione arteriosa al circolo venoso orbitario: ne derivano esoftalmo pulsante e un soffio sincrono al battito, auscultabile in regione temporale. Il discriminatore è la pulsatilità con soffio; l'enoftalmo con miosi e ptosi appartiene alla sindrome di Horner e la massa riducibile non pulsante orienta verso altre lesioni orbitarie.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1">
+  <p class="tag">Q10 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Qual è il tumore orbitario benigno più frequente nell'adulto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il glioma del nervo ottico</button></li>
+    <li><button type="button"><span class="key">B</span>Il rabdomiosarcoma</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'emangioma cavernoso</button></li>
+    <li><button type="button"><span class="key">D</span>L'emangioma capillare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'emangioma cavernoso è il tumore orbitario benigno più frequente dell'adulto, tipico della donna intorno ai 40-50 anni, con esoftalmo assiale lentamente progressivo e indolore da massa intraconica. Il discriminatore è l'età adulta: l'emangioma capillare è dell'infanzia, mentre rabdomiosarcoma e glioma del nervo ottico sono neoplasie tipiche dell'età pediatrica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Bambino di 6 anni, da due giorni febbre e raffreddore. Da stamattina la palpebra dell'occhio destro è gonfia, calda e arrossata, l'occhio appare spinto in avanti e i movimenti oculari sono dolorosi e limitati. Riferisce visione offuscata. Qual è il provvedimento prioritario?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Impacchi caldi e rivalutazione ambulatoriale a 48 ore</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ricovero, TC di orbite e seni e antibioticoterapia endovenosa</button></li>
+    <li><button type="button"><span class="key">C</span>Collirio antibiotico e dimissione con terapia orale</button></li>
+    <li><button type="button"><span class="key">D</span>Antistaminico sistemico per sospetta reazione allergica</button></li>
+    <li><button type="button"><span class="key">E</span>Drenaggio chirurgico immediato dell'orbita</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Proptosi, oftalmoplegia dolorosa e calo del visus indicano un interessamento postsettale (cellulite orbitaria), non una semplice forma presettale: servono ricovero, imaging TC di orbite e seni e antibiotici endovenosi ad ampio spettro. Il discriminatore sono i segni orbitari; la chirurgia si riserva all'ascesso o alla mancata risposta, e la gestione ambulatoriale è propria della sola forma presettale.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/29859573/">PMID 29859573</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/35438766/">PMID 35438766</a> · gestione della cellulite orbitaria pediatrica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Bambina di 3 anni con cellulite orbitaria da sinusite etmoidale, in trattamento antibiotico endovenoso. La TC mostra un piccolo ascesso subperiosteo mediale. Visus conservato, motilità solo lievemente ridotta, nessun segno di sofferenza del nervo ottico. Qual è l'approccio più appropriato?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Exenteratio orbitae in urgenza</button></li>
+    <li><button type="button"><span class="key">B</span>Sospensione degli antibiotici e sola osservazione</button></li>
+    <li><button type="button"><span class="key">C</span>Drenaggio chirurgico immediato per ogni ascesso subperiosteo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Proseguire gli antibiotici endovenosi con monitoraggio clinico stretto</button></li>
+    <li><button type="button"><span class="key">E</span>Radioterapia orbitaria a basse dosi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nei bambini piccoli un ascesso subperiosteo mediale di piccole dimensioni, senza compromissione del visus o del nervo ottico, può essere gestito con i soli antibiotici endovenosi e monitoraggio stretto, riservando la chirurgia all'ascesso voluminoso, al deterioramento visivo o alla mancata risposta. Il discriminatore è che non ogni ascesso subperiosteo impone il drenaggio immediato.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/29859573/">PMID 29859573</a> · revisione sistematica sulla gestione per stadio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">Donna di 50 anni con malattia di Graves nota e oftalmopatia. Da una settimana riferisce annebbiamento progressivo e colori «slavati» all'occhio sinistro. All'esame: difetto pupillare afferente relativo, riduzione del visus e, alla TC, muscoli retti ingrossati con apice orbitario affollato. Qual è il trattamento di prima linea?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Metilprednisolone endovena ad alte dosi</button></li>
+    <li><button type="button"><span class="key">B</span>Sola lubrificazione corneale e osservazione</button></li>
+    <li><button type="button"><span class="key">C</span>Iodio radioattivo per la tiroide</button></li>
+    <li><button type="button"><span class="key">D</span>Antibiotici endovenosi ad ampio spettro</button></li>
+    <li><button type="button"><span class="key">E</span>Beta-bloccante sistemico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il difetto pupillare afferente, la discromatopsia e l'affollamento dell'apice orbitario configurano una neuropatia ottica distiroidea, urgenza il cui primo trattamento è il metilprednisolone endovena ad alte dosi, con decompressione orbitaria se la risposta è insufficiente. Il discriminatore è la sofferenza del nervo: la sola lubrificazione è inadeguata e lo iodio radioattivo può peggiorare l'orbitopatia.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/29927882/">PMID 29927882</a> · Saeed et al., Dysthyroid Optic Neuropathy.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Uomo di 45 anni con oftalmopatia tiroidea in fase attiva da pochi mesi: esoftalmo in peggioramento, diplopia e dolore retrobulbare, indice di attività clinica elevato. Funzione visiva conservata, nessun segno di neuropatia ottica. Quale trattamento è indicato come terapia mirata della fase attiva moderata-grave?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ciclosporina collirio per la superficie oculare</button></li>
+    <li><button type="button"><span class="key">B</span>Decompressione orbitaria ossea in urgenza</button></li>
+    <li><button type="button"><span class="key">C</span>Tiroidectomia totale, risolutiva sull'orbita</button></li>
+    <li><button type="button"><span class="key">D</span>Pilocarpina, per ridurre la pressione oculare</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Teprotumumab, inibitore del recettore dell'IGF-1</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella fase attiva moderata-grave la terapia mirata è il teprotumumab, anticorpo monoclonale che inibisce il recettore dell'IGF-1 e riduce proptosi e diplopia; la decompressione si riserva alla malattia inattiva o alla minaccia visiva e la tiroidectomia non risolve l'orbitopatia, che ha decorso autonomo. Il discriminatore è il bersaglio molecolare attivo sulla malattia orbitaria, non un rimedio sintomatico né chirurgico.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/31971679/">PMID 31971679</a> · Douglas et al., trial OPTIC, NEJM 2020.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Uomo di 30 anni, tre settimane dopo un grave trauma cranico, sviluppa arrossamento e protrusione dell'occhio destro. I vasi congiuntivali appaiono dilatati e tortuosi, l'occhio è lievemente pulsante e si apprezza un soffio all'auscultazione della tempia. Pressione intraoculare aumentata. Qual è la diagnosi più probabile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Cellulite orbitaria post-traumatica</button></li>
+    <li><button type="button"><span class="key">B</span>Emangioma cavernoso dell'orbita</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Fistola carotido-cavernosa diretta</button></li>
+    <li><button type="button"><span class="key">D</span>Pseudotumor orbitario infiammatorio</button></li>
+    <li><button type="button"><span class="key">E</span>Oftalmopatia tiroidea</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il trauma cranico che lacera la carotide interna nel seno cavernoso crea uno shunt artero-venoso: ne derivano esoftalmo pulsante, soffio sincrono al battito, vasi episclerali dilatati a «testa di medusa» e aumento della pressione oculare. Il discriminatore è la combinazione di pulsatilità e soffio dopo un trauma, assente nelle altre cause di proptosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Donna di 47 anni con lenta e indolore sporgenza dell'occhio sinistro comparsa nell'arco di anni. La proptosi è assiale, il bulbo non è dolente e la massa non pulsa; la TC mostra una lesione intraconica ben delimitata. Nessun segno infiammatorio né sistemico. Qual è la diagnosi più probabile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Rabdomiosarcoma orbitario</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Emangioma cavernoso dell'orbita</button></li>
+    <li><button type="button"><span class="key">C</span>Cellulite orbitaria</button></li>
+    <li><button type="button"><span class="key">D</span>Fistola carotido-cavernosa</button></li>
+    <li><button type="button"><span class="key">E</span>Glioma del nervo ottico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'esoftalmo assiale lentamente progressivo e indolore, con massa intraconica ben delimitata in una donna di mezza età, è il quadro tipico dell'emangioma cavernoso, il tumore orbitario benigno più frequente dell'adulto. Il discriminatore è la lentezza indolente e l'assenza di infiammazione, pulsatilità o esordio pediatrico che orienterebbero verso le altre diagnosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Bambino di 7 anni con proptosi dell'occhio sinistro comparsa e progredita in poche settimane, con dislocazione del bulbo verso il basso e l'esterno ed edema palpebrale. Nessuna febbre. La TC mostra una massa nel quadrante supero-mediale dell'orbita. Quale passo è prioritario per la diagnosi e l'impostazione terapeutica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Terapia antibiotica empirica e attesa</button></li>
+    <li><button type="button"><span class="key">B</span>Osservazione con controlli seriati per regressione spontanea</button></li>
+    <li><button type="button"><span class="key">C</span>Corticosteroidi sistemici per ridurre la massa</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Biopsia della lesione per la conferma istologica</button></li>
+    <li><button type="button"><span class="key">E</span>Esoftalmometria seriata come unico accertamento</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una massa orbitaria a rapida insorgenza nel quadrante supero-mediale di un bambino è un rabdomiosarcoma fino a prova contraria: la priorità è la biopsia per la conferma istologica, cui seguono chemioterapia e radioterapia, con sopravvivenza superiore al 90%. Il discriminatore è la rapidità di crescita in età pediatrica, che esclude attesa, antibiotici o terapia steroidea empirica.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/27018885/">PMID 27018885</a> · gestione del rabdomiosarcoma orbitario.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Lattante di 4 mesi con una tumefazione rossastra della palpebra superiore destra, comparsa nelle prime settimane di vita e in lento accrescimento. La massa abbassa parzialmente la palpebra e copre l'asse visivo. Per il resto l'esame è nella norma. Qual è il trattamento di prima scelta quando è minacciato lo sviluppo visivo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Propranololo orale</button></li>
+    <li><button type="button"><span class="key">B</span>Exenteratio orbitae</button></li>
+    <li><button type="button"><span class="key">C</span>Radioterapia locale</button></li>
+    <li><button type="button"><span class="key">D</span>Sola osservazione fino alla pubertà</button></li>
+    <li><button type="button"><span class="key">E</span>Antibioticoterapia endovenosa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'emangioma capillare infantile regredisce spontaneamente, ma quando ostruisce l'asse visivo rischia l'ambliopia e va trattato: la prima scelta è il propranololo orale, un beta-bloccante che accelera l'involuzione. Il discriminatore è la minaccia allo sviluppo visivo, che impone il trattamento attivo invece dell'attesa, mentre chirurgia e radioterapia restano per casi selezionati.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/21730838/">PMID 21730838</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/34321816/">PMID 34321816</a> · propranololo nell'emangioma perioculare.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Donna di 46 anni lamenta da alcuni mesi una progressiva sporgenza di entrambi gli occhi, con sensazione di sabbia, lacrimazione e visione doppia quando guarda verso l'alto.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">An</span>Anamnesi</button>
+      <p>Da qualche mese cardiopalmo, calo di peso nonostante l'appetito conservato, intolleranza al caldo e nervosismo. Fuma circa quindici sigarette al giorno.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">EO</span>Esame obiettivo</button>
+      <p>Retrazione delle palpebre superiori con ritardo nello sguardo verso il basso, esoftalmo assiale bilaterale, congestione dei vasi sopra i muscoli retti, incompleta chiusura palpebrale con punteggiatura corneale inferiore. Limitazione dell'elevazione di entrambi i bulbi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esami</button>
+      <p>Esoftalmometria di Hertel 23 mm in entrambi gli occhi. TSH soppresso, FT4 elevato, anticorpi anti-recettore del TSH positivi. TC delle orbite: ingrossamento fusiforme dei muscoli retti con risparmio dei tendini.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">DD</span>Diagnosi differenziale</button>
+      <p>Miosite orbitaria (di solito monolaterale, dolore ai movimenti, coinvolgimento dei tendini muscolari); cellulite orbitaria (esordio acuto, febbre, sinusite); fistola carotido-cavernosa (esoftalmo pulsante con soffio); massa orbitaria (proptosi monolaterale lentamente progressiva).</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Dx</span>Diagnosi</button>
+      <p>Oftalmopatia tiroidea in fase attiva, di grado moderato, associata a malattia di Graves. Il risparmio dei tendini muscolari alla TC e la bilateralità con segni sistemici di tireotossicosi orientano contro la miosite e le altre cause.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rx</span>Gestione</button>
+      <p>Astensione dal fumo, lubrificazione e protezione corneale, controllo dell'ipertiroidismo. Nella fase attiva moderata-grave steroidi endovena ad alte dosi, con teprotumumab come terapia mirata; decompressione orbitaria urgente se compare neuropatia ottica distiroidea. La chirurgia riabilitativa, decompressione, muscoli e palpebre in quest'ordine, si esegue a malattia inattiva.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 20 giugno 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-06-20">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>sabato 20 giugno 2026</h1>
+  <div class="spark">
+    <p>Nel 1922 due medici americani, Albert Stevens e Frank Johnson, descrissero in due ragazzi una febbre con eruzione e mucose in fiamme, e diedero un nome a ciò che oggi sappiamo nascere quasi sempre da un farmaco: un antibiotico, un anticonvulsivante, un allopurinolo presi per qualcosa di banale. È la beffa della tossicodermia: la cura che si rivolta contro chi l'ha presa, la pelle che si stacca a lembi come dopo un'ustione, e il colpevole nascosto in un'anamnesi che nessuno ha avuto il tempo di raccogliere. Per questo il primo strumento non è un esame ma una domanda: cosa ha iniziato a prendere, e quando? Quanti giorni passano tra la prima compressa e la prima bolla?</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1">
+  <p class="tag">Q01 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Una tossidermia esantematica si manifesta tipicamente con quale lesione elementare prevalente?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Vescicole tese raggruppate a contenuto sieroso</button></li>
+    <li><button type="button"><span class="key">B</span>Pomfi migranti a risoluzione rapida</button></li>
+    <li><button type="button"><span class="key">C</span>Pustole amicrobiche delle grandi pieghe</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Papule e macule eritematose tendenti a confluire</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La tossidermia esantematica è morbilliforme o roseoliforme, con papule e macule rosse che confluiscono e risolvono con lieve desquamazione, mentre il prurito ne è il sintomo guida. Il discriminatore è la natura papulo-maculare della lesione: i pomfi appartengono all'orticaria, le pustole alle forme pustolose, le vescicole ad altri quadri bollosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1">
+  <p class="tag">Q02 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Quale caratteristica definisce l'eritema fisso da farmaci?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Compare in sedi diverse a ogni nuova assunzione</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Recidiva nella stessa sede a ogni riassunzione del farmaco</button></li>
+    <li><button type="button"><span class="key">C</span>Guarisce senza lasciare alcuna pigmentazione</button></li>
+    <li><button type="button"><span class="key">D</span>Si accompagna sempre a esteso distacco epidermico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'eritema fisso ricompare nella medesima sede a ogni riesposizione, come chiazza rotondeggiante rosso-violacea simile a una moneta, talora con bolla centrale, e regredisce lasciando un esito pigmentario duraturo. Il discriminatore è la fissità della sede nel tempo: le lesioni restano poche e l'esito è proprio iperpigmentato, non assente.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1">
+  <p class="tag">Q03 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">La distinzione tra eritema polimorfo minore e maggiore si fonda su quale elemento?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Il coinvolgimento delle mucose</button></li>
+    <li><button type="button"><span class="key">B</span>La presenza di lesioni a bersaglio</button></li>
+    <li><button type="button"><span class="key">C</span>Il numero di farmaci assunti</button></li>
+    <li><button type="button"><span class="key">D</span>La comparsa di prurito</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le lesioni a coccarda sono comuni a entrambe le forme; si parla di minore quando è interessata solo la cute e di maggiore quando sono coinvolte le mucose, orale, congiuntivale e genitale. Il discriminatore è il coinvolgimento mucoso, non la morfologia targettoide che le due forme condividono.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1">
+  <p class="tag">Q04 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">In base alla superficie corporea con distacco epidermico, quali soglie separano la sindrome di Stevens-Johnson dalla necrolisi epidermica tossica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Stevens-Johnson sotto il 5%, necrolisi tossica oltre il 15%</button></li>
+    <li><button type="button"><span class="key">B</span>Stevens-Johnson sotto il 20%, necrolisi tossica oltre il 40%</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Stevens-Johnson sotto il 10%, necrolisi tossica oltre il 30%</button></li>
+    <li><button type="button"><span class="key">D</span>Stevens-Johnson sotto il 30%, necrolisi tossica oltre il 60%</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le due sindromi condividono la patogenesi e differiscono per estensione del distacco: meno del 10% nella Stevens-Johnson, oltre il 30% nella necrolisi epidermica tossica, con la fascia intermedia come forma di sovrapposizione. Il discriminatore sono le soglie del 10 e del 30 per cento.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1">
+  <p class="tag">Q05 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Nella necrolisi epidermica tossica, l'impostazione gestionale del paziente ricalca quella del:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Paziente con vasculite leucocitoclasica</button></li>
+    <li><button type="button"><span class="key">B</span>Paziente con pemfigo volgare</button></li>
+    <li><button type="button"><span class="key">C</span>Paziente con shock settico da Gram negativi</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Grande ustionato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La necrosi e il distacco esteso dell'epidermide dal derma fanno perdere la barriera cutanea, con dispersione di liquidi e rischio infettivo, per cui il malato viene trattato come un grande ustionato. Il discriminatore è la perdita di barriera su ampia superficie, non un meccanismo infettivo o vasculitico primario.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1">
+  <p class="tag">Q06 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Quali classi di farmaci sono più tipicamente implicate nelle reazioni orticarioidi e nell'induzione o aggravamento della psoriasi?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>FANS, ACE-inibitori e beta-bloccanti</button></li>
+    <li><button type="button"><span class="key">B</span>Inibitori di pompa protonica e procinetici</button></li>
+    <li><button type="button"><span class="key">C</span>Eparine a basso peso molecolare</button></li>
+    <li><button type="button"><span class="key">D</span>Antistaminici di seconda generazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Tra le forme orticarioidi i FANS sono i più coinvolti, seguiti da ACE-inibitori e beta-bloccanti, gli stessi implicati nella psoriasi indotta da farmaci. Il discriminatore è questa triade: gli antistaminici sono semmai parte della terapia, non agenti scatenanti.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1">
+  <p class="tag">Q07 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Gli inibitori dell'EGFR impiegati nei tumori solidi inducono caratteristicamente quale quadro cutaneo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un eritema fisso pigmentato con bolla alle estremità</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Un'eruzione acneiforme papulo-pustolosa di volto e tronco, con possibile onicocriptosi</button></li>
+    <li><button type="button"><span class="key">C</span>Una porpora palpabile degli arti con artralgie</button></li>
+    <li><button type="button"><span class="key">D</span>Una fotodermatite bollosa delle zone coperte</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Gli anti-EGFR provocano un'eruzione acneiforme papulo-pustolosa di viso e tronco, gestita con antibiotici per non sospendere l'oncologico, e possono dare onicocriptosi con perionissi e granuloma reattivo, spesso bilaterale. Il discriminatore è l'associazione tra forma acneica e patologia ungueale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1">
+  <p class="tag">Q08 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Una fotodermatite da farmaci interessa elettivamente quali sedi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le grandi pieghe e le aree intertriginose</button></li>
+    <li><button type="button"><span class="key">B</span>Il cuoio capelluto e le regioni retroauricolari</button></li>
+    <li><button type="button"><span class="key">C</span>Il palmo delle mani e la pianta dei piedi</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Le zone fotoesposte come viso, collo e avambracci</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le reazioni da fotosensibilità colpiscono le zone fotoesposte, viso, collo e avambracci, e risparmiano cuoio capelluto, regioni retroauricolari e zona sottomentoniera, protette da capelli, orecchie e mento. Il discriminatore è la topografia fotoesposta, che orienta verso una causa luminosa anziché da contatto o sistemica diffusa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1">
+  <p class="tag">Q09 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Rispetto al meccanismo, come si distingue una reazione fototossica da una fotoallergica da farmaci?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La fototossica è una reazione immunologica di tipo IV, la fotoallergica un danno tossico diretto</button></li>
+    <li><button type="button"><span class="key">B</span>Entrambe richiedono una pregressa sensibilizzazione immunologica</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>La fototossica è un danno chimico diretto non immunologico, la fotoallergica una reazione immuno-mediata di tipo IV</button></li>
+    <li><button type="button"><span class="key">D</span>Entrambe risparmiano costantemente le zone fotoesposte</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella fototossica il farmaco, attivato dalla luce, danneggia direttamente le membrane cellulari senza coinvolgimento immunitario; nella fotoallergica si instaura una reazione immuno-mediata di tipo IV. Il discriminatore è la presenza o assenza della componente immunologica, non la sede, fotoesposta in entrambe.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1">
+  <p class="tag">Q10 · Dermatologia · Reazioni cutanee ai farmaci</p>
+  <h2 class="q-text">Quale gruppo di farmaci va considerato fototossico, da escludere prima di una fototerapia o di un'esposizione solare intensa?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Numerosi antifungini e l'isotretinoina</button></li>
+    <li><button type="button"><span class="key">B</span>I corticosteroidi sistemici</button></li>
+    <li><button type="button"><span class="key">C</span>Gli antistaminici anti-H1</button></li>
+    <li><button type="button"><span class="key">D</span>I comuni inibitori di pompa protonica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Molti antifungini sono fototossici e l'isotretinoina, derivato della vitamina A, è insieme teratogena e fototossica, quindi va sospesa prima della PUVA o di una forte esposizione solare. Il discriminatore è che i corticosteroidi non sono fotosensibilizzanti: ascriverli a questa categoria è proprio l'errore da evitare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Uomo di 58 anni, da dieci giorni in terapia con allopurinolo per iperuricemia. Febbre e malessere, poi chiazze eritemato-violacee dolenti che confluiscono, erosioni del cavo orale e delle congiuntive, segno di Nikolsky positivo con distacco epidermico a lembi. Qual è il provvedimento prioritario?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Avviare un antibiotico sistemico ad ampio spettro</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Sospendere immediatamente l'allopurinolo</button></li>
+    <li><button type="button"><span class="key">C</span>Applicare un corticosteroide topico sulle erosioni</button></li>
+    <li><button type="button"><span class="key">D</span>Somministrare un antistaminico per via orale</button></li>
+    <li><button type="button"><span class="key">E</span>Proseguire la terapia e rivalutare a 48 ore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è una necrolisi epidermica con interessamento mucoso multiplo: il riconoscimento precoce e la sospensione immediata del farmaco responsabile, qui l'allopurinolo, riducono morbilità e mortalità, mentre il supporto ricalca quello del grande ustionato. Il discriminatore è che nessuna misura aggiuntiva conta quanto rimuovere l'agente causale, e proseguirlo peggiora la prognosi.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/35369946/">PMID 35369946</a> · Shields et al, Crit Care Clin 2022.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Donna di 40 anni, in terapia anticonvulsivante iniziata cinque settimane prima. Esantema morbilliforme esteso, edema del volto, febbre e linfoadenopatia diffusa; agli esami eosinofilia marcata e rialzo delle transaminasi. Quale elemento orienta verso una reazione grave piuttosto che verso una banale tossidermia esantematica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il prurito associato all'esantema</button></li>
+    <li><button type="button"><span class="key">B</span>La distribuzione dell'esantema al tronco</button></li>
+    <li><button type="button"><span class="key">C</span>La latenza di poche ore dall'inizio del farmaco</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>L'eosinofilia con edema del volto e coinvolgimento epatico</button></li>
+    <li><button type="button"><span class="key">E</span>La risoluzione con lieve desquamazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Esantema con edema facciale, febbre, linfoadenopatia, eosinofilia e interessamento viscerale epatico a distanza di settimane configura una reazione da farmaco con eosinofilia e sintomi sistemici, ben oltre la semplice tossidermia: si sospende il farmaco e si imposta corticoterapia sistemica. Il discriminatore è il corteo sistemico, eosinofilia, organo coinvolto e lunga latenza, non il prurito né la sede, comuni anche alle forme benigne.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/37966824/">PMID 37966824</a> · Brüggen et al, JAMA Dermatol 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/37516356/">PMID 37516356</a> · Wei et al, J Am Acad Dermatol 2023.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">Uomo di 30 anni, da una settimana in trattamento con un antimicotico sistemico, dopo la prima giornata di mare sviluppa su viso, dorso delle mani e avambracci un eritema intenso con bruciore simile a una scottatura grave, mentre le aree coperte e il cuoio capelluto sono risparmiati. Qual è l'interpretazione e la condotta corrette?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Reazione fototossica da farmaco: sospendere o sostituire il farmaco e fotoproteggere</button></li>
+    <li><button type="button"><span class="key">B</span>Dermatite atopica riacutizzata: avviare emollienti</button></li>
+    <li><button type="button"><span class="key">C</span>Reazione fototossica da corticosteroidi assunti in precedenza</button></li>
+    <li><button type="button"><span class="key">D</span>Ustione solare comune senza ruolo del farmaco: nessuna modifica terapeutica</button></li>
+    <li><button type="button"><span class="key">E</span>Eritema fisso da farmaci: attendere l'esito pigmentario</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La topografia fotoesposta con risparmio delle zone coperte e una reazione tipo scottatura sproporzionata a una modesta esposizione indicano una fototossicità da farmaco, frequente con molti antimicotici; la condotta è sospendere o sostituire l'agente e fotoproteggere. Il discriminatore è il nesso luce-farmaco sulle sedi esposte: i corticosteroidi non sono fotosensibilizzanti e attribuire tutto a una banale scottatura ignora il ruolo del farmaco.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/27149132/">PMID 27149132</a> · Zuba et al, Acta Dermatovenerol Croat 2016.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Uomo di 45 anni: poche chiazze rotondeggianti, ben demarcate, rosso-violacee scure, alcune con bolla centrale, sul dorso delle mani e ai genitali; riferisce un episodio identico nelle stesse sedi mesi prima, ogni volta dopo un antinfiammatorio per cefalea. Mucose sostanzialmente indenni, condizioni generali buone. Qual è la diagnosi più probabile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sindrome di Stevens-Johnson iniziale</button></li>
+    <li><button type="button"><span class="key">B</span>Eritema polimorfo post-erpetico</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Eruzione fissa da farmaci</button></li>
+    <li><button type="button"><span class="key">D</span>Pemfigo volgare</button></li>
+    <li><button type="button"><span class="key">E</span>Vasculite orticarioide</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La ricomparsa nelle stesse sedi a ogni assunzione del medesimo farmaco, con poche lesioni rotonde rosso-violacee a impronta di moneta, talora bollose ed esito pigmentato, definisce l'eruzione fissa da farmaci; la variante bollosa estesa può simulare una necrolisi epidermica, ma qui le lesioni sono poche, fisse e ricorrenti, le mucose indenni e le condizioni buone. Il discriminatore è la fissità della sede nel tempo, assente nello Stevens-Johnson.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/34577848/">PMID 34577848</a> · Anderson e Lee, Medicina (Kaunas) 2021.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Donna di 55 anni, due giorni dopo l'inizio di un'aminopenicillina sviluppa febbre e, su un eritema edematoso delle grandi pieghe e del tronco, decine di piccole pustole non follicolari sterili, con neutrofilia marcata. Nessuna storia personale o familiare di psoriasi. Il quadro regredisce con desquamazione alla sospensione del farmaco. Qual è la diagnosi più probabile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Psoriasi pustolosa generalizzata di von Zumbusch</button></li>
+    <li><button type="button"><span class="key">B</span>Follicolite batterica diffusa</button></li>
+    <li><button type="button"><span class="key">C</span>Necrolisi epidermica tossica in fase iniziale</button></li>
+    <li><button type="button"><span class="key">D</span>Impetigine bollosa</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Pustolosi esantematica acuta generalizzata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'esordio rapido pochi giorni dopo un farmaco, tipicamente un'aminopenicillina, con numerose pustole amicrobiche non follicolari su eritema delle pieghe, febbre e neutrofilia, e risoluzione desquamativa alla sospensione, configura una pustolosi esantematica acuta generalizzata. Il discriminatore dalla psoriasi pustolosa è il nesso temporale col farmaco e l'assenza di storia psoriasica; la sterilità delle pustole esclude follicolite e impetigine.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/38483432/">PMID 38483432</a> · Yamanaka-Takaichi et al, J Am Acad Dermatol 2024.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Paziente in terapia con un inibitore dell'EGFR per carcinoma del colon sviluppa, dopo due settimane, un'eruzione papulo-pustolosa del volto, del torace e del dorso, di grado lieve-moderato, senza compromissione delle condizioni generali. Qual è la condotta più appropriata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sospendere definitivamente l'inibitore dell'EGFR</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Trattare con antibiotici, topici e doxiciclina sistemica, proseguendo l'oncologico</button></li>
+    <li><button type="button"><span class="key">C</span>Avviare corticosteroidi sistemici ad alte dosi</button></li>
+    <li><button type="button"><span class="key">D</span>Iniziare isotretinoina orale come nell'acne grave</button></li>
+    <li><button type="button"><span class="key">E</span>Somministrare un antistaminico e attendere</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'eruzione papulo-pustolosa acneiforme da anti-EGFR si gestisce con antibiotici topici e doxiciclina sistemica, oltre a emollienti, così da completare la chemioterapia senza sospenderla nelle forme lievi-moderate. Il discriminatore è che la reazione è attesa e correlata all'effetto del farmaco: si tratta la cute, non si interrompe l'oncologico, e l'isotretinoina non è indicata in questo contesto.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/33028137/">PMID 33028137</a> · Agirgol et al, Cutan Ocul Toxicol 2020.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Uomo di 26 anni, da due giorni lesioni cutanee simmetriche al dorso delle mani e agli avambracci, alcune con il centro più scuro; nei giorni precedenti malessere e febbricola.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">An</span>Anamnesi</button>
+      <p>Pochi giorni prima un episodio di vescicole crostose al labbro, recidiva che ritorna alcune volte l'anno. Nessun farmaco nuovo assunto di recente, nessuna terapia in corso.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">EO</span>Esame obiettivo</button>
+      <p>Lesioni eritematose rotondeggianti a coccarda, con anello periferico netto e centro violaceo, alcune con bolla centrale; erosioni dolorose della mucosa orale. Cute per il resto indenne, condizioni generali buone.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ix</span>Indagini</button>
+      <p>Diagnosi essenzialmente clinica; un'eventuale biopsia mostrerebbe alterazioni compatibili ma non patognomoniche. L'anamnesi è mirata a separare il fattore scatenante farmacologico da quello infettivo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">DD</span>Diagnosi differenziale</button>
+      <p>Orticaria (pomfi fugaci e pruriginosi, senza esito); tossidermia esantematica (papulo-maculare confluente, prurito, eosinofilia); necrolisi epidermica tossica (distacco esteso, mucose multiple, condizioni compromesse).</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Dx</span>Diagnosi</button>
+      <p>Eritema polimorfo maggiore, qui innescato dalla recidiva di herpes simplex più che da un farmaco, come suggerisce l'anamnesi di lesioni labiali ricorrenti che precedono ogni episodio.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rx</span>Gestione</button>
+      <p>Terapia sintomatica delle lesioni cutanee e mucose; nelle forme post-erpetiche prevale la terapia antivirale, con profilassi antierpetica continuativa per diradare le recidive e con esse gli episodi di eritema polimorfo.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
