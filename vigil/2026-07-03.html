@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 3 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+#next:hover { color: var(--sub); }
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-03">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>venerdì 3 luglio 2026</h1>
+  <div class="spark">
+    <p>Nell'estate del 1950, nella mensa di Los Alamos, Enrico Fermi interruppe una chiacchierata sui dischi volanti con una domanda buttata lì: «Dove sono tutti quanti?». Non parlava degli alieni dei giornali, ma di un conto.</p>
+    <p>La galassia ha dieci miliardi di anni, e per attraversarla tutta a una civiltà basterebbe un millesimo di quel tempo: se qualcuno fosse partito, sarebbe già qui. Messa così, l'assenza smette di essere un vuoto e diventa un dato che pretende una spiegazione. Settant'anni più tardi c'è chi ha risposto che le civiltà non mancano, dormono, in attesa di un universo abbastanza freddo da far pensare a minor costo. Quanto silenzio serve prima di poterlo chiamare una scelta?</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1">
+  <p class="tag">Q01 · Cosmologia · Paradosso di Fermi</p>
+  <h2 class="q-text">Nell'argomento di Hart-Tipler, che cosa trasforma il silenzio osservativo in una vera e propria evidenza sull'assenza di civiltà espansive?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'assenza di segnali radio nella riga dell'idrogeno neutro a 21 cm</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il divario tra i tempi di colonizzazione della galassia e la sua età</button></li>
+    <li><button type="button"><span class="key">C</span>La scarsità stimata di pianeti rocciosi in zona abitabile</button></li>
+    <li><button type="button"><span class="key">D</span>L'ampia incertezza sui fattori dell'equazione di Drake</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Un fronte di colonizzazione attraversa la galassia in 10⁶-10⁸ anni, tre o quattro ordini di grandezza sotto i circa 10¹⁰ anni della sua età: una sola civiltà espansiva avrebbe già saturato il disco, quindi la sua assenza qui pesa come un dato. Il discriminatore è il divario tra i due tempi, non il radiosilenzio, che ammette molte scuse tecniche, né le incertezze statistiche a monte.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1">
+  <p class="tag">Q02 · Termodinamica dell'informazione · Ipotesi dell'estivazione</p>
+  <h2 class="q-text">Su quale principio poggia il vantaggio termodinamico che l'ipotesi dell'estivazione attribuisce all'attesa di un universo più freddo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Cancellare un bit dissipa un'energia minima proporzionale alla temperatura</button></li>
+    <li><button type="button"><span class="key">B</span>La frequenza massima di calcolo cresce al diminuire della temperatura</button></li>
+    <li><button type="button"><span class="key">C</span>L'entropia di un sistema isolato non può diminuire nel tempo</button></li>
+    <li><button type="button"><span class="key">D</span>Il rumore termico fissa l'energia minima di un segnale rilevabile</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Per il principio di Landauer ogni cancellazione logicamente irreversibile costa almeno k_B·T·ln 2: il costo per bit scala linearmente con la temperatura, quindi a 10⁻³⁰ K la stessa energia libera comprerebbe fino a 10³⁰ operazioni in più. Il discriminatore è il legame fra costo di cancellazione e temperatura, non un limite di velocità né l'enunciato generico del secondo principio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Una civiltà capace di ingegneria su scala cosmica vuole rinviare tutta la propria computazione a un'era in cui il fondo cosmico sarà molto più freddo, per estrarre dalla stessa energia un numero enormemente maggiore di operazioni. Quale obiezione annulla alla radice il vantaggio atteso?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il fondo cosmico non scenderà mai sotto la soglia richiesta dal calcolo</button></li>
+    <li><button type="button"><span class="key">B</span>L'orizzonte cosmologico cancella l'informazione prima dell'era fredda</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Il calcolo reversibile evita del tutto il costo di cancellazione, senza doverlo rinviare</button></li>
+    <li><button type="button"><span class="key">D</span>La finitezza della velocità della luce impedisce di coordinare un calcolo così esteso</button></li>
+    <li><button type="button"><span class="key">E</span>Il secondo principio vieta di reimpiegare l'energia già dissipata dalle stelle</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il costo di Landauer grava solo sulle operazioni logicamente irreversibili: una civiltà che computa in modo reversibile evita le cancellazioni invece di rinviarle al freddo, quindi l'attesa non aumenta la computazione totale estraibile dalle stesse risorse. Il discriminatore è la reversibilità logica, non una soglia di temperatura né un limite di coordinazione. Si aggiunge il costo-opportunità: le stelle disperdono ora energia libera irrecuperabile.</p>
+    <p class="refs"><a href="https://arxiv.org/abs/1902.06730">arXiv 1902.06730</a> · Bennett, Hanson, Riedel, comment on the aestivation hypothesis.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Una civiltà tecnologicamente matura constata che il costo di ogni cancellazione logica dipende dalla temperatura dell'ambiente. Decide di sospendere ogni attività e attendere un'era cosmica molto più fredda, convinta che così, dalle stesse riserve di energia, otterrà un numero incomparabilmente maggiore di operazioni.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Il fondo cosmico oggi sta attorno a 3 K; l'orizzonte del futuro remoto si assesta vicino a 10⁻³⁰ K. A parità di energia libera, il rapporto fra le due temperature promette fino a 10³⁰ volte più operazioni.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ct</span>Il conto</button>
+      <p>Per il principio di Landauer cancellare un bit dissipa almeno k_B·T·ln 2, un costo che scala linearmente con la temperatura: da qui l'idea che rimandare l'elaborazione al freddo la renda quasi gratuita.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Hp</span>Ipotesi a confronto</button>
+      <p>Rinviare il calcolo (dormire) contro raccogliere ora e spendere dopo; computazione irreversibile, su cui pesa Landauer, contro computazione reversibile, che il costo lo aggira anziché rinviarlo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il costo di Landauer grava solo sulle cancellazioni irreversibili: computando in modo reversibile le si rinvia al freddo senza dormire, quindi l'attesa non aumenta la computazione totale. In più le stelle disperdono ora energia libera irrecuperabile, e ogni anno di sonno è capitale bruciato.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Un estivatore razionale dovrebbe prima ristrutturare visibilmente il cielo raggiungibile, raccogliendo le stelle e sopprimendo le perdite: un fronte di raccolta sarebbe appariscente quanto una colonizzazione. Il silenzio che l'ipotesi voleva spiegare resta così inspiegato.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
