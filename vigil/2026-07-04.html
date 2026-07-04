@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 4 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-04">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>sabato 4 luglio 2026</h1>
+  <div class="spark">
+    <p>Nel 1872, a Vienna, Moritz Kaposi descrisse un tumore raro e lento: chiazze violacee sulla pelle di uomini anziani, quasi tutti mediterranei o ebrei dell'Europa orientale, una malattia che ai suoi portatori concedeva ancora molti anni. Per un secolo restò una curiosità da manuale, indolente e circoscritta, il genere di lesione che si impara a riconoscere e poi si dimentica.</p>
+    <p>Poi, nell'estate del 1981, quello stesso disegno di macchie ricomparve su corpi giovani a New York e in California, e stavolta correva veloce. La medesima lesione, cambiando vittima, smetteva di essere una nota a margine per diventare il primo volto visibile di un'epidemia che non aveva ancora un nome. Ci vollero altri tredici anni prima che Yuan Chang e Patrick Moore, nel 1994, scovassero il colpevole annidato in quelle chiazze, un herpesvirus fino ad allora ignoto. Cosa deve cambiare, perché la stessa malattia sulla pelle diventi tutt'altra cosa?</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1">
+  <p class="tag">Q01 · Dermatologia · Sarcoma di Kaposi e linfomi cutanei</p>
+  <h2 class="q-text">Quale caratteristica del sarcoma di Kaposi giustifica la definizione di malattia multicentrica anziché metastatica?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Ciascuna localizzazione è un focolaio primitivo indipendente, non una metastasi</button></li>
+    <li><button type="button"><span class="key">B</span>Le lesioni derivano da un unico clone che dissemina per via ematica</button></li>
+    <li><button type="button"><span class="key">C</span>La diffusione avviene per contiguità lungo i vasi linfatici afferenti</button></li>
+    <li><button type="button"><span class="key">D</span>I focolai viscerali sono sempre secondari alla lesione cutanea iniziale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il sarcoma di Kaposi non è un vero sarcoma: le sedi multiple sono lesioni primarie indipendenti sostenute dall'infezione di cloni distinti, non la disseminazione di un clone unico. Il discriminatore è l'indipendenza dei focolai, che esclude sia la via ematica da clone singolo sia la contiguità linfatica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1">
+  <p class="tag">Q02 · Dermatologia · Sarcoma di Kaposi e linfomi cutanei</p>
+  <h2 class="q-text">Perché l'infezione da HHV-8 è considerata necessaria ma non sufficiente per lo sviluppo del sarcoma di Kaposi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il virus infetta esclusivamente soggetti con immunodepressione già conclamata</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Molti sieropositivi per HHV-8 non sviluppano il sarcoma senza HLA predisponenti e immunodepressione</button></li>
+    <li><button type="button"><span class="key">C</span>Il virus determina la malattia solo dopo essersi integrato nel genoma dei cheratinociti</button></li>
+    <li><button type="button"><span class="key">D</span>In assenza di HHV-8 il sarcoma insorge comunque su base genetica e ambientale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La triade richiede predisposizione genetica (HLA-DR5), immunodepressione e HHV-8 insieme; lo studio sui sardi emigrati mostra che, a parità di genetica e virus, un ambiente diverso abbatte l'incidenza. Il discriminatore è che il virus da solo non basta ma resta indispensabile (chi ha il sarcoma ha sempre HHV-8), il che esclude sia la sieronegatività sia il solo terreno immunitario.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1">
+  <p class="tag">Q03 · Dermatologia · Sarcoma di Kaposi e linfomi cutanei</p>
+  <h2 class="q-text">Attraverso quale meccanismo molecolare HHV-8 promuove la proliferazione angioproliferativa del sarcoma di Kaposi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perdita di E-caderina con transizione epitelio-mesenchimale delle cellule squamose</button></li>
+    <li><button type="button"><span class="key">B</span>Inibizione di p53 con blocco dell'apoptosi dei cheratinociti basali</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Attivazione di NF-κB e della via PI3K/Akt/mTOR con aumento di VEGF e comparsa di cellule fusate</button></li>
+    <li><button type="button"><span class="key">D</span>Amplificazione di HER2 con iperproliferazione dell'endotelio linfatico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>HHV-8 infetta l'endotelio a fenotipo linfatico e attiva NF-κB, PI3K/Akt/mTOR e HIF-1α, inducendo VEGF e PDGF che sostengono le cellule fusate. Il discriminatore è la via angiogenica endoteliale; le altre opzioni descrivono meccanismi di tumori epiteliali o HER2-dipendenti, estranei al sarcoma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1">
+  <p class="tag">Q04 · Dermatologia · Sarcoma di Kaposi e linfomi cutanei</p>
+  <h2 class="q-text">Quale variante del sarcoma di Kaposi regredisce tipicamente con la sola terapia antiretrovirale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La forma classica mediterranea degli anziani</button></li>
+    <li><button type="button"><span class="key">B</span>La forma africana dei giovani e dei bambini</button></li>
+    <li><button type="button"><span class="key">C</span>La forma iatrogena dei pazienti trapiantati</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La forma AIDS-correlata dei soggetti HIV-positivi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella forma AIDS-correlata il ripristino immunitario indotto dagli antiretrovirali sottrae il terreno permissivo all'angioproliferazione e le lesioni regrediscono. Il discriminatore è la reversibilità con il controllo dell'HIV; la iatrogena dipende dal bilancio del dosaggio immunosoppressivo, la classica e l'africana non rispondono agli antiretrovirali.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1">
+  <p class="tag">Q05 · Dermatologia · Sarcoma di Kaposi e linfomi cutanei</p>
+  <h2 class="q-text">Quale elemento distingue la sindrome di Sézary dalla micosi fungoide fin dall'esordio?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'evoluzione lenta attraverso chiazza, placca e nodulo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'eritrodermia diffusa con cellule circolanti a nucleo cerebriforme</button></li>
+    <li><button type="button"><span class="key">C</span>La localizzazione preferenziale a tronco e glutei</button></li>
+    <li><button type="button"><span class="key">D</span>La sopravvivenza a cinque anni prossima al cento per cento</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La sindrome di Sézary è aggressiva ab initio, con eritrodermia, linfoadenopatia e cellule di Sézary oltre 1000/µL nel sangue; la micosi fungoide progredisce lentamente per stadi. Il discriminatore è la presentazione leucemico-eritrodermica immediata, non lo stadio cutaneo né la prognosi favorevole propri della micosi fungoide cutanea.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1">
+  <p class="tag">Q06 · Dermatologia · Sarcoma di Kaposi e linfomi cutanei</p>
+  <h2 class="q-text">Nella micosi fungoide in fase iniziale di chiazza e placca, quale trattamento rappresenta la prima linea?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Fototerapia ed eventuali corticosteroidi o citotossici topici</button></li>
+    <li><button type="button"><span class="key">B</span>Polichemioterapia sistemica come nei linfomi nodali</button></li>
+    <li><button type="button"><span class="key">C</span>Trapianto allogenico di cellule staminali emopoietiche</button></li>
+    <li><button type="button"><span class="key">D</span>Radioterapia total-body cutanea ad alte dosi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nelle fasi iniziali la micosi fungoide resta confinata alla cute e si controlla con terapie dirette alla cute (eliofototerapia, steroidi o mecloretamina topici), riservando i sistemici alle forme refrattarie o avanzate. Il discriminatore è la malattia ancora localizzata, che rende sproporzionata la chemioterapia o il trapianto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1">
+  <p class="tag">Q07 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Che cosa distingue in linea di principio la chirurgia estetica da quella ricostruttiva?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'estetica interviene su alterazioni post-traumatiche, la ricostruttiva su difetti congeniti</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'estetica opera su caratteri morfologici non patologici che causano disagio</button></li>
+    <li><button type="button"><span class="key">C</span>L'estetica non richiede consenso informato né documentazione fotografica</button></li>
+    <li><button type="button"><span class="key">D</span>L'estetica si esegue sempre in anestesia locale e in regime ambulatoriale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'estetica agisce su morfologie non patologiche, con indicazione fondata sul nesso tra difetto oggettivabile e disagio psicologico reale; la ricostruttiva ripristina difetti patologici. Il discriminatore è la natura non patologica del bersaglio, non la sede del difetto né il setting anestesiologico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1">
+  <p class="tag">Q08 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Perché la dismorfofobia costituisce una controindicazione assoluta alla chirurgia estetica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aumenta in modo proibitivo il rischio anestesiologico dell'intervento</button></li>
+    <li><button type="button"><span class="key">B</span>Impedisce la guarigione delle ferite chirurgiche cutanee</button></li>
+    <li><button type="button"><span class="key">C</span>Controindica l'uso di anestetici locali associati ad adrenalina</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Il disagio non nasce da un difetto reale correggibile chirurgicamente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella dismorfofobia manca l'equilibrio tra difetto oggettivo e disagio: l'alterazione percepita non corrisponde a un difetto reale, quindi l'intervento non risolve la sofferenza e serve un trattamento psichiatrico. Il discriminatore è l'assenza di un substrato anatomico correggibile, non un problema tecnico o anestesiologico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1">
+  <p class="tag">Q09 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Perché nell'otoplastica non basta piegare la cartilagine per correggere l'orecchio ad ansa?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La cartilagine elastica ha memoria di forma e ritorna alla posizione originaria</button></li>
+    <li><button type="button"><span class="key">B</span>La cartilagine auricolare è priva di pericondrio nutritizio</button></li>
+    <li><button type="button"><span class="key">C</span>Il rimodellamento richiede sempre un innesto di cartilagine costale</button></li>
+    <li><button type="button"><span class="key">D</span>La cute retroauricolare impedisce meccanicamente la piegatura</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cartilagine auricolare è elastica e recupera la forma d'origine, perciò occorre alterare l'equilibrio di forze tra le facce (anterior scoring, rinforzo posteriore) per una correzione stabile. Il discriminatore è la memoria elastica del tessuto, non la vascolarizzazione né la necessità di innesti.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1">
+  <p class="tag">Q10 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Qual è la funzione della cantopessi laterale associata alla blefaroplastica inferiore?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Rimuovere le borse adipose per via transcongiuntivale</button></li>
+    <li><button type="button"><span class="key">B</span>Correggere la dermatocalasi della palpebra superiore</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Tendere la palpebra inferiore per prevenire l'ectropion</button></li>
+    <li><button type="button"><span class="key">D</span>Ridurre lo scleral show sollevando il sopracciglio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cantopessi rinforza il canto laterale e tende la palpebra inferiore, prevenendo l'ectropion post-operatorio da lassità. Il discriminatore è il sostegno cantale della palpebra inferiore, distinto dall'asportazione delle borse o dalla correzione della palpebra superiore.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1">
+  <p class="tag">Q11 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Di quali conseguenze va informata la paziente candidata a mastoplastica riduttiva?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Contrattura capsulare e sostituzione protesica a 10-12 anni</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Cicatrici estese, ipoestesia del complesso areola-capezzolo e possibile impossibilità di allattare</button></li>
+    <li><button type="button"><span class="key">C</span>Recidiva costante della ptosi entro il primo anno post-operatorio</button></li>
+    <li><button type="button"><span class="key">D</span>Migrazione del materiale di riempimento e granulomi cronici</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La riduttiva comporta cicatrici lunghe (T rovesciata, verticale, J/L), ipoestesia del complesso areola-capezzolo e possibile compromissione dell'allattamento; la contrattura capsulare riguarda le protesi dell'additiva e la migrazione i filler. Il discriminatore è che il difetto deriva da resezione ghiandolare e reimpianto del complesso, non da un impianto protesico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1">
+  <p class="tag">Q12 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Perché il fumo va sospeso 2-4 settimane prima di un face lift?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Riduce l'efficacia dell'anestesia locale impiegata nell'intervento</button></li>
+    <li><button type="button"><span class="key">B</span>Aumenta il sanguinamento intraoperatorio a carico dello SMAS</button></li>
+    <li><button type="button"><span class="key">C</span>Accelera il riassorbimento del lipofilling associato al lifting</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La vasocostrizione del microcircolo espone il lembo scollato a necrosi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il fumo, attraverso la nicotina, provoca vasocostrizione che compromette la perfusione del lembo cutaneo scollato, aumentando molto il rischio di necrosi e cicatrici anomale. Il discriminatore è il danno perfusionale al lembo, non un effetto sull'anestesia, sull'emostasi o sul lipofilling.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1">
+  <p class="tag">Q13 · Chirurgia plastica · Espansioni biologiche</p>
+  <h2 class="q-text">Su quale proprietà biologica si fonda l'uso degli espansori tissutali?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La capacità dei tessuti di rispondere alla tensione meccanica con adattamento</button></li>
+    <li><button type="button"><span class="key">B</span>La rigenerazione cutanea a partire dai margini di una ferita</button></li>
+    <li><button type="button"><span class="key">C</span>La retrazione miofibroblastica che riduce la superficie cicatriziale</button></li>
+    <li><button type="button"><span class="key">D</span>L'angiogenesi indotta dall'ipossia del lembo peduncolato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'espansione sfrutta la risposta adattativa alla tensione, la stessa della cute addominale in gravidanza; l'espansore la induce in modo controllato. Il discriminatore è la reazione alla tensione, non la riepitelizzazione dei margini né i meccanismi di guarigione o di vitalità del lembo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1">
+  <p class="tag">Q14 · Chirurgia plastica · Espansioni biologiche</p>
+  <h2 class="q-text">Quale insieme di modificazioni istologiche caratterizza la cute espansa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Atrofia epidermica, ispessimento dermico e perdita dei melanociti</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Iperplasia epidermica, fibroplasia dermica e aumento della vascolarizzazione</button></li>
+    <li><button type="button"><span class="key">C</span>Metaplasia squamosa con cheratinizzazione degli annessi cutanei</button></li>
+    <li><button type="button"><span class="key">D</span>Riduzione della vascolarizzazione con necrosi lipocitaria centrale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'espansione produce iperplasia dell'epidermide, assottigliamento dermico con fibroplasia e riallineamento del collagene, aumento della vascolarizzazione e capsula periprotesica, mentre annessi e melanociti restano invariati. Il discriminatore è l'iperplasia epidermica con neovascolarizzazione, opposta all'atrofia e alla perdita melanocitaria delle altre opzioni.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1">
+  <p class="tag">Q15 · Chirurgia plastica · Espansioni biologiche</p>
+  <h2 class="q-text">Perché il lembo di cute espansa offre un risultato migliore di un innesto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché è più sottile e consente un miglior controllo delle recidive</button></li>
+    <li><button type="button"><span class="key">B</span>Perché attecchisce per imbibizione plasmatica indipendente dal letto</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché conserva annessi, melanociti e vascolarizzazione della sede adiacente</button></li>
+    <li><button type="button"><span class="key">D</span>Perché non richiede la formazione di alcuna capsula fibrosa di sostegno</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cute espansa mantiene annessi, melanociti e una vascolarizzazione aumentata e proviene dall'area adiacente, quindi colore e texture combaciano con la zona ricevente. Il discriminatore è la conservazione degli annessi e del colore locale, che un innesto non garantisce.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1">
+  <p class="tag">Q16 · Chirurgia plastica · Espansioni biologiche</p>
+  <h2 class="q-text">Perché il riempimento dell'espansore deve procedere gradualmente in alcuni mesi?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Per consentire il completamento delle variazioni istologiche del tessuto</button></li>
+    <li><button type="button"><span class="key">B</span>Per ridurre il volume complessivo di soluzione fisiologica necessario</button></li>
+    <li><button type="button"><span class="key">C</span>Per evitare la formazione della capsula fibrosa periprotesica</button></li>
+    <li><button type="button"><span class="key">D</span>Per impedire l'atrofia reversibile del muscolo sottostante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La gradualità (100 cc iniziali, poi circa 40 cc ogni 7-10 giorni fino a circa 300 cc) dà tempo alla biologia tissutale, iperplasia, fibroplasia, neovascolarizzazione, di realizzarsi; la fretta compromette l'espansione. Il discriminatore è il tempo biologico, non il risparmio di volume né l'evitare la capsula, che è un esito atteso e utile.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1">
+  <p class="tag">Q17 · Chirurgia plastica · Espansioni biologiche</p>
+  <h2 class="q-text">Perché anche una bassa carica batterica può infettare un espansore tissutale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché il silicone rilascia mediatori che attirano i batteri</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché sul materiale non biologico manca la difesa immunitaria locale e si forma un biofilm</button></li>
+    <li><button type="button"><span class="key">C</span>Perché l'espansore comprime i linfatici bloccando la risposta immunitaria</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la soluzione di riempimento è di per sé un terreno di coltura ideale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Sul silicone manca la sorveglianza immunitaria locale e i batteri aderiscono formando un biofilm protetto da difese e antibiotici, per cui bastano cariche minime; ulcere e batteriemie transitorie aggravano il rischio. Il discriminatore è l'assenza di difesa locale con biofilm, non un chemiotattismo del silicone né la compressione linfatica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1">
+  <p class="tag">Q18 · Chirurgia plastica · Espansioni biologiche</p>
+  <h2 class="q-text">Quale sede richiede un'espansione più lenta e dolorosa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'addome, per l'ampiezza della superficie da espandere</button></li>
+    <li><button type="button"><span class="key">B</span>Il dorso, per lo spessore del pannicolo adiposo sottostante</button></li>
+    <li><button type="button"><span class="key">C</span>La regione mammaria, per la posizione sottomuscolare dell'espansore</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Il cuoio capelluto, per l'elevata tensione cutanea di base</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cuoio capelluto è aderente ai piani profondi e già in tensione, quindi oppone maggiore resistenza e impone incrementi piccoli e tempi lunghi; addome e dorso, con cute lassa, si espandono più rapidamente. Il discriminatore è la tensione cutanea basale, non l'ampiezza o lo spessore del sito.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1">
+  <p class="tag">Q19 · Chirurgia plastica · Carcinoma spinocellulare</p>
+  <h2 class="q-text">Quale caratteristica differenzia il carcinoma spinocellulare dal basocellulare?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'origine dai cheratinociti dello strato basale dell'epidermide</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La reale capacità di metastatizzare per via linfatica</button></li>
+    <li><button type="button"><span class="key">C</span>La crescita esclusivamente locale senza infiltrazione dei tessuti</button></li>
+    <li><button type="button"><span class="key">D</span>La comparsa costante del bordino perlaceo periferico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Lo spinocellulare origina dallo strato spinoso e metastatizza per via linfatica (2-5%, fino al 50% in sedi a cute sottile), mentre il basocellulare dà metastasi eccezionali e cresce localmente col bordino perlaceo. Il discriminatore è la capacità metastatica linfatica, assente nel basocellulare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1">
+  <p class="tag">Q20 · Chirurgia plastica · Carcinoma spinocellulare</p>
+  <h2 class="q-text">Perché il carcinoma spinocellulare del padiglione auricolare metastatizza più di quello del dorso?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché il padiglione è meno esposto alla radiazione ultravioletta</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il dorso possiede una fitta rete di linfatici superficiali</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché l'epidermide sottile e la ricca vascolarizzazione facilitano l'accesso ai vasi</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la cute del dorso contiene più annessi cheratinizzanti</button></li>
+  </ol>
+  <div class="rationale">
+    <p>In sedi come orecchio, pene e mucosa orale l'epidermide sottile e la ricca vascolarizzazione offrono minore barriera e vie di disseminazione, portando il rischio metastatico fino al 50%; il dorso, con epidermide spessa, metastatizza raramente. Il discriminatore è lo spessore epidermico e la vascolarizzazione della sede.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1">
+  <p class="tag">Q21 · Chirurgia plastica · Carcinoma spinocellulare</p>
+  <h2 class="q-text">Che cosa distingue le precancerosi obbligate da quelle facoltative?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le obbligate insorgono soltanto su cute cronicamente fotoesposta</button></li>
+    <li><button type="button"><span class="key">B</span>Le obbligate regrediscono spontaneamente con maggiore frequenza</button></li>
+    <li><button type="button"><span class="key">C</span>Le facoltative mostrano già displasia a tutto spessore dell'epidermide</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Le obbligate presentano displasia a tutto spessore ed evolvono inevitabilmente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le obbligate (morbo di Bowen, eritroplasia di Queyrat) sono carcinomi in situ con displasia a tutto spessore che progrediscono se non trattate; le facoltative (cheratosi attiniche, leucoplachia) hanno atipie non a tutto spessore ed evoluzione solo possibile. Il discriminatore è la displasia a tutto spessore con evoluzione inevitabile.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1">
+  <p class="tag">Q22 · Chirurgia plastica · Carcinoma spinocellulare</p>
+  <h2 class="q-text">Quale reperto istologico è proprio del carcinoma spinocellulare e non del basocellulare?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Le perle cornee da differenziazione squamosa</button></li>
+    <li><button type="button"><span class="key">B</span>La palizzata periferica dei nidi cellulari</button></li>
+    <li><button type="button"><span class="key">C</span>Il bordino perlaceo percorso da teleangectasie</button></li>
+    <li><button type="button"><span class="key">D</span>La retrazione dello stroma attorno agli aggregati cellulari</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Lo spinocellulare forma perle cornee (globi cheratosici), espressione della differenziazione squamosa dei cheratinociti dello strato spinoso; la palizzata periferica e la retrazione stromale sono tipiche del basocellulare. Il discriminatore è la cheratinizzazione in perle cornee, non l'architettura basaloide.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1">
+  <p class="tag">Q23 · Chirurgia plastica · Carcinoma spinocellulare</p>
+  <h2 class="q-text">Dove va eseguito il prelievo bioptico in un carcinoma spinocellulare ulcerato?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Nel fondo dell'ulcera, dove la cellularità appare massima</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Ai bordi della lesione, sul fronte di avanzamento vitale</button></li>
+    <li><button type="button"><span class="key">C</span>Nel linfonodo satellite più vicino alla lesione cutanea</button></li>
+    <li><button type="button"><span class="key">D</span>A distanza, sulla cute sana perilesionale indenne</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il fondo ulcerato contiene tessuto necrotico e di granulazione non diagnostico, mentre i bordi mostrano il fronte tumorale vitale con i rapporti col tessuto sano. Il discriminatore è la vitalità del margine avanzante, non la sede necrotica né la cute sana.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1">
+  <p class="tag">Q24 · Chirurgia plastica · Carcinoma spinocellulare</p>
+  <h2 class="q-text">Quale trattamento sistemico è indicato nel carcinoma spinocellulare localmente avanzato non operabile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un inibitore di SMO della via Hedgehog, come nel basocellulare</button></li>
+    <li><button type="button"><span class="key">B</span>La linfoadenectomia profilattica delle stazioni regionali</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Il cemiplimab, anticorpo anti-PD-1</button></li>
+    <li><button type="button"><span class="key">D</span>La sola radioterapia total-skin a scopo adiuvante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cemiplimab è un anti-PD-1 (checkpoint immunitario) efficace nello spinocellulare avanzato non aggredibile con chirurgia o radioterapia; gli inibitori di SMO/Hedgehog appartengono al basocellulare e la linfoadenectomia profilattica non è raccomandata data la bassa incidenza metastatica. Il discriminatore è il bersaglio immunologico PD-1, distinto dalla via oncogenica Hedgehog.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Un uomo di 34 anni con infezione da HIV non trattata presenta multiple lesioni maculo-nodulari violacee su volto, tronco e palato; la biopsia mostra cellule fusate, vasi irregolari e stravaso di eritrociti, con positività per HHV-8. Non vi è malattia viscerale sintomatica. Qual è il primo provvedimento terapeutico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Doxorubicina liposomiale sistemica in monoterapia immediata</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Avvio della terapia antiretrovirale combinata</button></li>
+    <li><button type="button"><span class="key">C</span>Escissione chirurgica sequenziale di tutte le lesioni cutanee</button></li>
+    <li><button type="button"><span class="key">D</span>Radioterapia locale sulle sole lesioni del volto</button></li>
+    <li><button type="button"><span class="key">E</span>Interferone alfa ad alte dosi in monoterapia prolungata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella forma AIDS-correlata senza malattia viscerale estesa la terapia antiretrovirale è la prima linea: il ripristino immunitario induce spesso regressione, e la chemioterapia sistemica (doxorubicina liposomiale) si riserva alle forme estese o alla sindrome infiammatoria da immunoricostituzione. Il discriminatore è la malattia limitata in HIV non trattato, dove il controllo virale precede la citotossica.</p>
+    <p class="refs"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0959804919301364">Lebbé et al., EDF/EADO/EORTC Kaposi sarcoma guideline</a> · terapia antiretrovirale come prima linea nella forma HIV-associata.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Un uomo di 68 anni presenta eritrodermia pruriginosa diffusa, linfoadenopatia generalizzata e cheratodermia palmo-plantare; lo striscio periferico mostra 2500/µL linfociti a nucleo cerebriforme, con clone T identico in cute e sangue. Quale affermazione è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La sopravvivenza attesa a cinque anni supera il novanta per cento</button></li>
+    <li><button type="button"><span class="key">B</span>È semplicemente la fase leucemica terminale di una micosi fungoide</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Il quadro richiede terapia sistemica e non solo skin-directed</button></li>
+    <li><button type="button"><span class="key">D</span>La sola fototerapia UVB a banda stretta è di norma risolutiva</button></li>
+    <li><button type="button"><span class="key">E</span>La conta cellulare riscontrata è insufficiente per la diagnosi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è una sindrome di Sézary (eritrodermia, linfoadenopatia, cellule di Sézary oltre 1000/µL con clone circolante), entità leucemica distinta dalla micosi fungoide che impone terapia sistemica; la sopravvivenza a cinque anni è circa il 25%. Il discriminatore è il coinvolgimento ematico, che rende insufficienti le sole terapie cutanee.</p>
+    <p class="refs"><a href="https://www.ejcancer.com/article/S0959-8049(23)00645-7/fulltext">Latzka et al., EORTC consensus micosi fungoide/Sézary, update 2023</a> · terapia sistemica nella malattia eritrodermica ed ematica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">Una donna di 55 anni fumatrice di venti sigarette al giorno chiede un lifting cervico-facciale con ampio scollamento cutaneo e plicatura dello SMAS. Quale condotta riduce meglio il rischio di necrosi del lembo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Programmare l'intervento senza modificare le abitudini voluttuarie</button></li>
+    <li><button type="button"><span class="key">B</span>Ridurre lo scollamento mantenendo invariato il consumo di sigarette</button></li>
+    <li><button type="button"><span class="key">C</span>Sostituire le sigarette con cerotti alla nicotina nel perioperatorio</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Sospendere ogni fonte di nicotina 2-4 settimane prima e dopo</button></li>
+    <li><button type="button"><span class="key">E</span>Aumentare la concentrazione di adrenalina nell'infiltrazione sottocutanea</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La nicotina, anche da cerotti o gomme, provoca vasocostrizione che compromette la perfusione del lembo scollato: gli studi riportano necrosi cutanea fino a oltre dieci volte più frequente nei fumatori, per cui serve la cessazione completa, non la sostituzione né la sola riduzione dello scollamento. Il discriminatore è l'eliminazione della nicotina in sé.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7068184/">Facial skin necrosis after facelift surgery (PMC)</a> · rischio di necrosi del lembo marcatamente aumentato nei fumatori.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Una paziente presenta noduli infiammatori dolenti e migrazione di materiale al solco nasogenieno, comparsi due anni dopo l'iniezione di un riempitivo permanente a base di silicone liquido. Quale affermazione è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>L'infiammazione granulomatosa cronica può essere irreversibile</button></li>
+    <li><button type="button"><span class="key">B</span>La reazione si risolve spontaneamente sospendendo i trattamenti estetici</button></li>
+    <li><button type="button"><span class="key">C</span>La rimozione chirurgica completa garantisce la restitutio ad integrum</button></li>
+    <li><button type="button"><span class="key">D</span>Il quadro è tipico dei filler riassorbibili a base di acido ialuronico</button></li>
+    <li><button type="button"><span class="key">E</span>La tossina botulinica locale risolve la migrazione del materiale iniettato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il silicone liquido non viene degradato, migra nei tessuti e innesca una reazione granulomatosa cronica che può persistere anche dopo l'asportazione, a differenza dei filler riassorbibili le cui complicanze si autolimitano nel tempo. Il discriminatore è l'irreversibilità legata al materiale permanente, non riproducibile con i riassorbibili.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Tre settimane dopo il posizionamento sottomuscolare di un espansore per ricostruzione, la paziente presenta eritema, dolore e febbre, con raccolta periprotesica all'ecografia. Quale principio guida la gestione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Proseguire il riempimento per accelerare la seconda fase ricostruttiva</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il biofilm sul silicone riduce l'efficacia dei soli antibiotici sistemici</button></li>
+    <li><button type="button"><span class="key">C</span>Il materiale dell'espansore, biologico, resiste alla colonizzazione batterica</button></li>
+    <li><button type="button"><span class="key">D</span>L'infezione si tratta con soli impacchi locali e stretta osservazione</button></li>
+    <li><button type="button"><span class="key">E</span>La bassa carica colturale esclude un'infezione clinicamente rilevante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Sul dispositivo non biologico i batteri formano un biofilm che li protegge da difese e antibiotici sistemici, per cui bastano cariche minime e la sola terapia sistemica spesso non basta: il salvataggio richiede disgregazione del biofilm (irrigazione, antimicrobici anti-biofilm) o l'espianto. Il discriminatore è il biofilm come barriera terapeutica.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4995695/">Improving antimicrobial regimens for breast tissue expander infections (PMC)</a> · necessità di coprire gli organismi in biofilm.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">In un'espansione del cuoio capelluto per alopecia cicatriziale, durante il riempimento il paziente lamenta dolore intenso e la cute sovrastante appare tesa e pallida. Quale condotta è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Rimuovere subito l'espansore e interrompere il programma ricostruttivo</button></li>
+    <li><button type="button"><span class="key">B</span>Aumentare il volume per seduta così da concludere prima il ciclo</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Ridurre gli incrementi e dilatare gli intervalli di riempimento</button></li>
+    <li><button type="button"><span class="key">D</span>Sostituire l'espansore con un modello di volume maggiore</button></li>
+    <li><button type="button"><span class="key">E</span>Trasferire l'espansione alla regione addominale adiacente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cuoio capelluto ha alta tensione basale e tollera solo incrementi piccoli e distanziati; il pallore e il dolore segnalano una sofferenza perfusionale che impone di rallentare, non di accelerare né di rimuovere subito il dispositivo. Il discriminatore è l'adattamento del ritmo alla tensione tissutale, che preserva la vitalità cutanea.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Un uomo di 62 anni, trapiantato di rene in terapia immunosoppressiva, presenta un carcinoma spinocellulare del cuoio capelluto rapidamente recidivante dopo escissione. Oltre al trattamento locale, quale strategia è appropriata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aumentare l'immunosoppressione per ridurre il rischio di rigetto d'organo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Considerare la riduzione dell'immunosoppressione col team trapianti</button></li>
+    <li><button type="button"><span class="key">C</span>Sospendere la sorveglianza dermatologica dopo l'exeresi radicale</button></li>
+    <li><button type="button"><span class="key">D</span>Escludere a priori i checkpoint inhibitor come del tutto inefficaci</button></li>
+    <li><button type="button"><span class="key">E</span>Rinunciare al controllo strumentale delle stazioni linfonodali regionali</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I trapiantati hanno rischio di spinocellulare decine di volte maggiore e forme più aggressive e recidivanti; la riduzione o modulazione dell'immunosoppressione concordata col team ne riduce incidenza e progressione. I checkpoint inhibitor sono un'opzione ma comportano rischio di rigetto d'organo, quindi non vanno esclusi a priori né usati senza cautela. Il discriminatore è la modulazione immunosoppressiva come leva causale.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11394667/">Cutaneous SCC in solid-organ-transplant immunosuppression (PMC)</a> · riduzione dell'immunosoppressione e cautela con i checkpoint inhibitor.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Un anziano presenta un voluminoso carcinoma spinocellulare della guancia, localmente avanzato, non aggredibile chirurgicamente senza demolizione maggiore e non candidabile a radioterapia radicale. Quale opzione sistemica è oggi di prima scelta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un inibitore di SMO della via Hedgehog</button></li>
+    <li><button type="button"><span class="key">B</span>Chemioterapia con cisplatino in monoterapia</button></li>
+    <li><button type="button"><span class="key">C</span>Vismodegib, come nel basocellulare avanzato</button></li>
+    <li><button type="button"><span class="key">D</span>Interferone alfa sistemico a lungo termine</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Cemiplimab, inibitore del checkpoint PD-1</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cemiplimab (anti-PD-1) è approvato come prima linea sistemica nel carcinoma spinocellulare cutaneo localmente avanzato o metastatico non operabile né irradiabile, con risposte obiettive intorno al 45-50% e durature; gli inibitori di SMO/Hedgehog (vismodegib) appartengono al basocellulare. Il discriminatore è il bersaglio immunologico PD-1, distinto dalla via Hedgehog.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/31952975/">Migden et al., cemiplimab nel cSCC localmente avanzato, studio di fase 2</a> · risposte obiettive durature nella malattia non operabile.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Un uomo di 36 anni, da poco risultato positivo a un test virologico, sviluppa in poche settimane chiazze violacee su volto, dorso e mucosa del palato, alcune confluenti in placche, senza dolore né sanguinamento. Un collega propone di asportare chirurgicamente ogni lesione, una per una.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Ct</span>Contesto</button>
+      <p>La biopsia di una lesione mostra proliferazione di cellule fusate, vasi irregolari e incompleti, stravaso di eritrociti e infiltrato linfoplasmacellulare; l'immunoistochimica è positiva per un gamma-herpesvirus. Le lesioni sono comparse in sedi diverse quasi simultaneamente.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Ragionamento</button>
+      <p>Sedi multiple che insorgono insieme non si spiegano come metastasi di un unico focolaio: ciascuna si comporta come primitiva. La comparsa dopo la sieroconversione virale orienta verso un terreno immunodepresso permissivo per il virus, non verso una disseminazione clonale.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Neoplasia unica che dissemina, che giustificherebbe l'exeresi radicale, contro processo angioproliferativo multicentrico virus-indotto, in cui asportare le singole lesioni non tocca la causa. Terapia locale aggressiva contro ripristino della competenza immunitaria.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Si tratta di un processo multicentrico: controllare il virus e recuperare l'immunità, trattando l'infezione di base, induce spesso la regressione delle lesioni, mentre la chirurgia lesione-per-lesione lascerebbe intatto il motore della malattia. La citotossica sistemica si riserva alle forme estese o viscerali.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cn</span>Conseguenza</button>
+      <p>Riconoscere la multicentricità sposta l'obiettivo dalla singola lesione alla causa: ripristinare l'immunità cambia la prognosi più di qualunque asportazione, e trasforma un intervento ripetuto e inutile in una strategia eziologica.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Una donna di 55 anni chiede una procedura di ringiovanimento del volto che prevede un ampio scollamento della cute e la plicatura dello strato fibromuscolare profondo. Fuma venti sigarette al giorno e vorrebbe operarsi tra due settimane senza cambiare abitudini.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Ct</span>Contesto</button>
+      <p>La tecnica richiesta solleva un lembo cutaneo esteso, la cui sopravvivenza dipende dalla perfusione del microcircolo sottodermico. In alternativa alla sospensione, la paziente propone di passare ai cerotti alla nicotina nel perioperatorio.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Ragionamento</button>
+      <p>Il lembo scollato perde le connessioni vascolari profonde e vive del solo plesso sottodermico: qualunque fattore che riduca quella perfusione avvicina alla necrosi. La nicotina è un vasocostrittore, indipendentemente dalla via di somministrazione.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Ridurre l'estensione dello scollamento, che mitiga ma non elimina il rischio, contro azzerare la nicotina, che rimuove la causa vasocostrittiva. Cerotti come compromesso apparente contro cessazione completa di ogni fonte.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il fattore correggibile decisivo è la nicotina in sé: i cerotti non riducono il rischio perché la molecola resta, mentre la sospensione completa 2-4 settimane prima e dopo ripristina la perfusione. I dati riportano necrosi cutanea molte volte più frequente nei fumatori. Il timing va spostato, non forzato.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cn</span>Conseguenza</button>
+      <p>La condotta corretta non è tecnica ma comportamentale: rinviare finché la nicotina è azzerata protegge il lembo più di qualsiasi accorgimento chirurgico, e un compromesso apparente come i cerotti riproduce esattamente il danno che si voleva evitare.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Per coprire un'ampia area di cute cicatriziale si inserisce, sotto la cute sana adiacente, un dispositivo gonfiabile che verrà riempito nel tempo. Il paziente, impaziente, chiede di riempirlo il più in fretta possibile per concludere prima.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Ct</span>Contesto</button>
+      <p>Il dispositivo va riempito con boli di soluzione a intervalli. La cute sovrastante, per adattarsi, deve andare incontro a modificazioni microscopiche che richiedono tempo; in una zona ad alta tensione appare tesa e pallida se si esagera col volume.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Ragionamento</button>
+      <p>L'aumento di superficie non è uno stiramento passivo ma una risposta biologica: l'epidermide prolifera, il derma si rimodella, nascono nuovi vasi. Questi processi hanno una cinetica propria che non si può comprimere a piacere.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Riempimento rapido per accorciare i tempi, che rischia sofferenza cutanea e fallimento, contro riempimento graduale che rispetta la biologia: 100 cc iniziali, poi piccoli incrementi ogni 7-10 giorni. Pallore da ascoltare contro pallore da ignorare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>La gradualità non è prudenza eccessiva ma la condizione perché avvengano le variazioni istologiche che rendono utile il tessuto espanso; accelerare compromette la vascolarizzazione e la vitalità, con rischio di necrosi ed esposizione del dispositivo. Il pallore impone di ridurre gli incrementi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cn</span>Conseguenza</button>
+      <p>Il tempo è parte del meccanismo, non un costo da tagliare: rispettare la cinetica biologica produce un lembo vitale con annessi e colore propri, mentre la fretta trasforma il vantaggio dell'espansione nel suo opposto.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V04 · Caso ragionato</p>
+  <p class="scenario">Un uomo anziano, forte fumatore, presenta al labbro inferiore un nodulo duro ipercheratosico che si è ulcerato e cresce da qualche settimana. Un collega propone di biopsiare il fondo dell'ulcera, dove il tessuto sembra più abbondante, e di programmare solo controlli clinici.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Ct</span>Contesto</button>
+      <p>Il labbro inferiore è cronicamente fotoesposto e, nel fumatore, somma più fattori di rischio che agiscono in modo moltiplicativo. Il fondo dell'ulcera è ricoperto da tessuto molle e sanguinante; i bordi sono rilevati e induriti.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Ragionamento</button>
+      <p>Il fondo ulcerato è fatto di necrosi e granulazione, materiale che non conserva l'architettura del tumore. Il fronte vitale della lesione, con i suoi rapporti col tessuto sano, sta ai margini rilevati.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Biopsia nel fondo, comoda ma non diagnostica, contro biopsia ai bordi, rappresentativa del fronte di avanzamento. Follow-up solo clinico contro follow-up anche strumentale delle stazioni linfonodali.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il prelievo va eseguito ai bordi, dove le cellule sono vitali; il fondo darebbe un campione non diagnostico. E poiché questa neoplasia, a differenza della sua parente a sola crescita locale, metastatizza per via linfatica, in sede a rischio fino a percentuali elevate, il follow-up deve includere il controllo strumentale dei linfonodi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cn</span>Conseguenza</button>
+      <p>Due errori speculari, dove prelevare e cosa sorvegliare, nascono dallo stesso equivoco: scambiare la parte più vistosa per la più informativa. Il bordo vitale e il linfonodo silente contano più del cratere ulcerato.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
