@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 5 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-05">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>domenica 5 luglio 2026</h1>
+  <div class="spark">
+    <p>Nel 1597, a Bologna, Gaspare Tagliacozzi diede alle stampe un trattato dal titolo che era già un programma: De curtorum chirurgia per insitionem, la chirurgia dei mutilati per innesto. Insitio era la parola dei giardinieri, il gesto con cui si trapianta una gemma su un altro tronco, e Tagliacozzi la portava sulla carne. Ai gentiluomini che avevano perso il naso in duello o alla sifilide ne costruiva uno nuovo con un lembo di pelle sollevato dal braccio, lasciato attaccato alla sua sorgente e cucito al volto: per quindici giorni il paziente viveva con il braccio legato alla faccia, in attesa che il tessuto prendesse come una talea. Poi si recideva il ponte, e la pelle, ormai nutrita dal nuovo suolo, restava. Restava anche una domanda scomoda per l'epoca: fin dove può spingersi una mano a rifare ciò che un altro credeva di aver tolto per sempre?</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1">
+  <p class="tag">Q01 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Quale reperto, costantemente assente nella rosacea, permette di distinguerla dall'acne sul piano clinico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le papule eritematose del volto</button></li>
+    <li><button type="button"><span class="key">B</span>Le pustole raggruppate in placca</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>I comedoni aperti e chiusi</button></li>
+    <li><button type="button"><span class="key">D</span>Le teleangectasie persistenti</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il comedone, aperto o chiuso, è la lesione elementare dell'acne e nasce dall'ostruzione del follicolo pilosebaceo. La rosacea non coinvolge il follicolo né le ghiandole sebacee, quindi i comedoni mancano sempre: è questo il discriminatore. Papule, pustole e teleangectasie compaiono invece in entrambe le condizioni e non separano le due diagnosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1">
+  <p class="tag">Q02 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Nella forma papulopustolosa della rosacea le pustole sono sterili: da che cosa dipende questa caratteristica?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Da un'infiammazione dell'immunità innata senza colonizzazione batterica del follicolo</button></li>
+    <li><button type="button"><span class="key">B</span>Dalla replicazione del Demodex folliculorum all'interno del follicolo</button></li>
+    <li><button type="button"><span class="key">C</span>Da una sovracrescita batterica neutralizzata dal sebo alterato</button></li>
+    <li><button type="button"><span class="key">D</span>Dalla degranulazione mastocitaria innescata dai trigger vascolari</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le pustole della rosacea si formano per un meccanismo infiammatorio asettico, sostenuto dall'immunità innata (callicreina elevata, attivazione dei Toll-like receptor di tipo 2) e dalla reattività vascolare, non da una colonizzazione batterica del follicolo come nell'acne. Il Demodex può aumentare e contribuire con reazioni di ipersensibilità, ma non è l'agente che infetta le pustole: il discriminatore è l'assenza di infezione batterica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1">
+  <p class="tag">Q03 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Quali mediatori dell'immunità innata risultano aumentati nella cute lesionale della rosacea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Interleuchina 4 e interleuchina 13</button></li>
+    <li><button type="button"><span class="key">B</span>Immunoglobuline E specifiche e triptasi</button></li>
+    <li><button type="button"><span class="key">C</span>Anticorpi anti-desmogleina 1 e 3</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Callicreina e Toll-like receptor di tipo 2</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella rosacea si riscontrano livelli elevati di callicreina, proteasi pro-infiammatoria, e un'aumentata attivazione dei Toll-like receptor di tipo 2, che amplificano la risposta infiammatoria verso stimoli esterni. Gli altri profili appartengono ad altre malattie: IL-4 e IL-13 alla dermatite atopica, IgE e triptasi all'orticaria e alle reazioni mastocitarie, gli anticorpi anti-desmogleina al pemfigo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1">
+  <p class="tag">Q04 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Il rinofima, forma più grave di rosacea, presenta una netta caratteristica epidemiologica: quale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Compare quasi solo nelle donne in postmenopausa</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Interessa quasi esclusivamente il sesso maschile</button></li>
+    <li><button type="button"><span class="key">C</span>Insorge prevalentemente in età pediatrica</button></li>
+    <li><button type="button"><span class="key">D</span>Colpisce entrambi i sessi in egual misura</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il fima, e il rinofima in particolare, interessa quasi solo i maschi, con iperplasia delle ghiandole sebacee ipoteticamente favorita dagli androgeni. Nelle donne il fima vero e proprio non si sviluppa: si osserva al più un ispessimento cutaneo con orifizi follicolari dilatati. Il dato è netto proprio perché rovescia la prevalenza femminile (3:1) delle forme più lievi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1">
+  <p class="tag">Q05 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Riguardo alla rosacea oculare, quale affermazione è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La sua gravità è indipendente da quella del quadro cutaneo</button></li>
+    <li><button type="button"><span class="key">B</span>Compare sempre dopo anni di malattia cutanea conclamata</button></li>
+    <li><button type="button"><span class="key">C</span>Si manifesta solo come congiuntivite lieve autolimitante</button></li>
+    <li><button type="button"><span class="key">D</span>La sua entità è proporzionale all'estensione dell'eritema</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La gravità della rosacea oculare non correla con quella cutanea: dipende da fattori locali (film lacrimale, ghiandole di Meibomio) che procedono in modo autonomo. Nel 20% dei casi precede i sintomi cutanei e nei quadri severi la cheratite può portare a perdita della vista. Un volto poco compromesso non esclude quindi un coinvolgimento oculare importante.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1">
+  <p class="tag">Q06 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Perché nella rosacea papulopustolosa la doxiciclina si impiega alla dose di 40 mg?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché è la dose minima battericida verso il Demodex</button></li>
+    <li><button type="button"><span class="key">B</span>Perché a dosi piene risulta epatotossica sul lungo periodo</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché a tale dose agisce da antinfiammatorio e non da antibiotico</button></li>
+    <li><button type="button"><span class="key">D</span>Perché consente un'unica somministrazione settimanale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>A 40 mg la doxiciclina non raggiunge concentrazioni antibiotiche ma conserva l'effetto antinfiammatorio, inibendo le metalloproteinasi e riducendo la risposta infiammatoria senza selezionare resistenze batteriche. Il discriminatore è il dosaggio sottoterapeutico scelto proprio per l'azione antinfiammatoria, non per un effetto antimicrobico né per motivi di posologia o tossicità.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1">
+  <p class="tag">Q07 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Un paziente con rosacea applica cortisonici topici sul volto: quale evoluzione è attesa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Remissione stabile del quadro senza recidive</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Miglioramento iniziale seguito da peggioramento con teleangectasie</button></li>
+    <li><button type="button"><span class="key">C</span>Assenza di ogni effetto sul quadro clinico</button></li>
+    <li><button type="button"><span class="key">D</span>Comparsa immediata di comedoni multipli</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I cortisonici riducono l'infiammazione acuta e danno un miglioramento iniziale, ma inducono atrofia cutanea e vasodilatazione cronica che peggiorano il quadro incrementando le teleangectasie, tanto più sul volto dove la cute è sottile e la vascolarizzazione superficiale. Per questo sono controindicati. Non generano comedoni, che restano estranei alla rosacea.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1">
+  <p class="tag">Q08 · Dermatologia · Rosacea</p>
+  <h2 class="q-text">Quali principi attivi costituiscono la terapia topica di prima linea della rosacea papulopustolosa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perossido di benzoile, adapalene e clindamicina</button></li>
+    <li><button type="button"><span class="key">B</span>Idrochinone, tretinoina e cortisonico a bassa potenza</button></li>
+    <li><button type="button"><span class="key">C</span>Calcipotriolo, tacrolimus e acido salicilico</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Acido azelaico, metronidazolo e ivermectina</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La triade topica della rosacea papulopustolosa è acido azelaico, metronidazolo e ivermectina (quest'ultima con azione anche antiparassitaria sul Demodex). Gli altri schemi appartengono ad altre patologie: perossido-adapalene-clindamicina all'acne, idrochinone-tretinoina al melasma, calcipotriolo e tacrolimus alle dermatosi infiammatorie diverse. Il cortisonico, presente nella triade B, è anzi controindicato.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1">
+  <p class="tag">Q09 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Quale condizione rappresenta una controindicazione assoluta alla chirurgia estetica?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La dismorfofobia con disagio sproporzionato al difetto</button></li>
+    <li><button type="button"><span class="key">B</span>La presenza di un gibbo nasale osteocartilagineo</button></li>
+    <li><button type="button"><span class="key">C</span>L'asimmetria mammaria documentata fotograficamente</button></li>
+    <li><button type="button"><span class="key">D</span>La dermatocalasi della palpebra superiore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Dismorfofobia e sindrome di Munchausen sono controindicazioni assolute: richiedono trattamento psichiatrico, non chirurgico, perché il difetto anatomico non è la reale causa del disagio e l'intervento non lo risolve. Gibbo nasale, asimmetria mammaria e dermatocalasi sono invece alterazioni oggettivabili che costituiscono indicazioni legittime.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1">
+  <p class="tag">Q10 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Perché nell'otoplastica non basta piegare la cartilagine per correggere le orecchie ad ansa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché la cartilagine auricolare è priva di pericondrio nutritizio</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il padiglione dipende da un unico peduncolo vascolare terminale</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché la cartilagine elastica ha memoria di forma e torna alla posizione originale</button></li>
+    <li><button type="button"><span class="key">D</span>Perché l'antelice è composto da osso membranoso non modellabile</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cartilagine auricolare è di tipo elastico e possiede memoria di forma: dopo la deformazione tende a tornare alla posizione originale. Per una correzione stabile bisogna alterare l'equilibrio di forze tra le facce, indebolendo la faccia anteriore (anterior scoring) o rinforzando la posteriore. Il discriminatore è la natura elastica, non un problema vascolare o una composizione ossea inesistente.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1">
+  <p class="tag">Q11 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Nella blefaroplastica inferiore la cantopessi laterale ha lo scopo di prevenire quale complicanza?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'ematoma retrobulbare compressivo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'ectropion da lassità della palpebra inferiore</button></li>
+    <li><button type="button"><span class="key">C</span>La ptosi della palpebra superiore</button></li>
+    <li><button type="button"><span class="key">D</span>La diplopia da lesione dei muscoli obliqui</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cantopessi laterale rinforza la struttura cantale e tende la palpebra inferiore, prevenendo l'ectropion post-operatorio, complicanza tipica dell'accesso cutaneo inferiore per la lassità del margine. L'ematoma retrobulbare, la ptosi superiore e la diplopia hanno altri meccanismi e non sono l'obiettivo della manovra.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1">
+  <p class="tag">Q12 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Quale rischio distingue i filler permanenti a base di silicone liquido da quelli riassorbibili?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un riassorbimento troppo rapido con perdita precoce di volume</button></li>
+    <li><button type="button"><span class="key">B</span>Una reazione allergica immediata IgE-mediata</button></li>
+    <li><button type="button"><span class="key">C</span>Un'azione vasocostrittrice diretta sul microcircolo cutaneo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Una migrazione con infiammazione cronica granulomatosa irreversibile</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il silicone liquido non viene degradato dall'organismo: può migrare nei tessuti circostanti e innescare una reazione infiammatoria cronica granulomatosa che non si risolve neppure con la rimozione chirurgica. I filler riassorbibili hanno invece complicanze che si autolimitano nel tempo. Il discriminatore è l'irreversibilità legata alla non degradabilità del materiale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1">
+  <p class="tag">Q13 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Nel face lift qual è il bersaglio che garantisce una correzione più duratura della sola trazione cutanea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il platisma sezionato a livello cervicale</button></li>
+    <li><button type="button"><span class="key">B</span>Il grasso sottocutaneo malare asportato in blocco</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Lo SMAS, plicato o avanzato per sostenere i tessuti mediofacciali</button></li>
+    <li><button type="button"><span class="key">D</span>Il periostio zigomatico scollato e riancorato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Lo SMAS (Superficial Musculo-Aponeurotic System) è lo strato fibromuscolare profondo al grasso sottocutaneo: la sua plicatura o il suo avanzamento correggono la ptosi dei tessuti mediofacciali in modo più duraturo della sola trazione cutanea, che produrrebbe un aspetto tirato e innaturale. Il discriminatore è l'azione sul piano profondo, non l'asportazione di grasso né manovre sul periostio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1">
+  <p class="tag">Q14 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Qual è l'indicazione corretta della lipoaspirazione?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Il rimodellamento di adiposità localizzate resistenti alla dieta</button></li>
+    <li><button type="button"><span class="key">B</span>La riduzione del peso corporeo nel paziente obeso</button></li>
+    <li><button type="button"><span class="key">C</span>La rimozione del grasso viscerale addominale</button></li>
+    <li><button type="button"><span class="key">D</span>Il trattamento della diastasi dei muscoli retti</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La lipoaspirazione modella il contorno corporeo aspirando adiposità sottocutanee localizzate resistenti alla dieta; non è un trattamento dimagrante, non modifica il metabolismo basale né rimuove il grasso viscerale, e per questo il paziente ideale ha peso stabile. La diastasi dei retti si corregge invece con l'addominoplastica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1">
+  <p class="tag">Q15 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Di quale complicanza tardiva va informata la paziente candidata a mastoplastica additiva con protesi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'impossibilità permanente di allattare al seno</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La contrattura capsulare con necessità di sostituzione nel tempo</button></li>
+    <li><button type="button"><span class="key">C</span>L'ipertrofia ghiandolare progressiva bilaterale</button></li>
+    <li><button type="button"><span class="key">D</span>La comparsa costante di gigantomastia secondaria</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La contrattura capsulare è la complicanza tardiva caratteristica della mastoplastica additiva, e i dispositivi protesici hanno una durata media di 10-12 anni, con necessità di sostituzione. L'ipoestesia del complesso areola-capezzolo e l'impossibilità di allattare riguardano invece la mastoplastica riduttiva, non l'additiva. Il discriminatore è la protesi come sorgente di contrattura e di sostituzione programmata.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1">
+  <p class="tag">Q16 · Chirurgia plastica · Chirurgia estetica</p>
+  <h2 class="q-text">Nell'addominoplastica classica, quale fase segue la plicatura dei muscoli retti?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'incisione bisiliaca da spina a spina iliaca</button></li>
+    <li><button type="button"><span class="key">B</span>L'asportazione della cute sotto-ombelicale in eccesso</button></li>
+    <li><button type="button"><span class="key">C</span>L'infiltrazione della soluzione adrenalinica del sottocute</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La trasposizione dell'ombelico nella nuova sede</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La sequenza dell'addominoplastica è: incisione bisiliaca, rimozione della cute sotto-ombelicale in eccesso, plicatura dei retti sulla linea mediana e infine trasposizione dell'ombelico. L'ombelico resta solidale alla parete muscolare e verrebbe coperto dal lembo avanzato, per questo va riportato in superficie attraverso una nuova apertura. Incisione e rimozione cutanea precedono la plicatura, non la seguono.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1">
+  <p class="tag">Q17 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">Qual è la differenza fondamentale tra un innesto e un lembo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>L'innesto è privo di vascolarizzazione propria e dipende dall'area ricevente</button></li>
+    <li><button type="button"><span class="key">B</span>Il lembo viene completamente distaccato dalla sede donatrice</button></li>
+    <li><button type="button"><span class="key">C</span>L'innesto trasferisce sempre cute, sottocute e muscolo insieme</button></li>
+    <li><button type="button"><span class="key">D</span>Il lembo attecchisce solo per imbibizione plasmatica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'innesto è una porzione di tessuto completamente distaccata dalla sede donatrice, priva di vascolarizzazione propria: sopravvive solo se l'area ricevente, ben vascolarizzata, lo nutre. Il lembo mantiene invece la propria vascolarizzazione. Il discriminatore è l'autonomia vascolare: è il lembo, non l'innesto, a portarla con sé.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1">
+  <p class="tag">Q18 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">In quale finestra temporale avviene la rivascolarizzazione dell'innesto cutaneo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Nelle prime 24-48 ore dall'impianto</button></li>
+    <li><button type="button"><span class="key">B</span>Entro le prime 12 ore dall'impianto</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Tra il quinto e il settimo giorno</button></li>
+    <li><button type="button"><span class="key">D</span>Soltanto dopo il sesto mese dall'impianto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nelle prime 24-48 ore l'innesto sopravvive per imbibizione plasmatica; la rivascolarizzazione avviene tra il quinto e il settimo giorno, quando le gemme endoteliali del letto colonizzano l'innesto e si anastomizzano con i suoi vasi. Seguono la retrazione (1-2 mesi) e l'assestamento (da circa 6 mesi). È proprio in questa finestra che l'immobilizzazione è cruciale, perché i neovasi sono fragili.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1">
+  <p class="tag">Q19 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">Perché un innesto cutaneo sottile attecchisce più facilmente di uno spesso?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché contiene un maggior numero di annessi cutanei rigenerativi</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché la diffusione dei nutrienti è inversamente proporzionale allo spessore</button></li>
+    <li><button type="button"><span class="key">C</span>Perché conserva una vascolarizzazione autonoma residua</button></li>
+    <li><button type="button"><span class="key">D</span>Perché induce una minore risposta immunitaria di rigetto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Durante l'imbibizione plasmatica il nutrimento arriva per diffusione dal letto della ferita, e l'efficienza della diffusione è inversamente proporzionale allo spessore: per questo l'innesto sottile si nutre più facilmente. Il rovescio è che si retrae di più e dà un risultato estetico peggiore. Non c'entrano né vascolarizzazione autonoma (assente in ogni innesto) né differenze di rigetto tra autoinnesti.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1">
+  <p class="tag">Q20 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">Per ricostruire un difetto del viso dopo exeresi tumorale, quale innesto è preferibile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un innesto a spessore parziale sottile di Thiersch-Ollier</button></li>
+    <li><button type="button"><span class="key">B</span>Un innesto a spessore parziale medio di Blair-Brown</button></li>
+    <li><button type="button"><span class="key">C</span>Un innesto a rete ampiamente espanso</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Un innesto a tutto spessore, per il migliore risultato estetico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'innesto a tutto spessore offre l'aspetto estetico migliore, con minore retrazione e minori discromie, ed è preferito per il viso dopo exeresi tumorale. Gli innesti a spessore parziale danno effetto toppa e discromia, esteticamente inaccettabili in volto; l'innesto a rete serve a coprire superfici ampie e a drenare, non a ottenere una buona resa estetica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1">
+  <p class="tag">Q21 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">Qual è il duplice scopo dell'innesto a rete ottenuto con il mesher?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aumentare lo spessore dell'innesto e migliorarne la resa estetica</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Drenare i liquidi ed estendere la superficie copribile</button></li>
+    <li><button type="button"><span class="key">C</span>Fornire vascolarizzazione autonoma e ridurre il rigetto</button></li>
+    <li><button type="button"><span class="key">D</span>Accelerare la retrazione e ridurre il tempo operatorio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La rete drena i liquidi, evitando accumuli che distaccherebbero l'innesto, ed estende la superficie copribile con meno tessuto prelevato: gli spazi vuoti si riepitelizzano dai bordi in circa 10 giorni. Il discriminatore è questo duplice vantaggio, drenaggio ed espansione della superficie; non migliora l'estetica (anzi la peggiora) né conferisce vascolarizzazione propria.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1">
+  <p class="tag">Q22 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">Perché nei primi 5-7 giorni l'immobilizzazione dell'innesto è cruciale?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché i neovasi che colonizzano l'innesto sono estremamente fragili</button></li>
+    <li><button type="button"><span class="key">B</span>Perché l'epidermide non ha ancora completato la cheratinizzazione</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il rigetto immunologico raggiunge il picco in questo periodo</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la retrazione cicatriziale è massima nella prima settimana</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Tra il quinto e il settimo giorno si formano i neovasi che rivascolarizzano l'innesto, ed essi sono estremamente fragili: un movimento li lacera e interrompe l'attecchimento. Per questo si usa una medicazione immobilizzante annodata su un tamponcino. Il rigetto non riguarda gli autoinnesti e la retrazione è un fenomeno più tardivo (1-2 mesi).</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1">
+  <p class="tag">Q23 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">Perché in un'ustione dell'80% della superficie corporea si ricorre a omoinnesti o eteroinnesti, pur andando incontro a rigetto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché sostituiscono definitivamente la cute autologa mancante</button></li>
+    <li><button type="button"><span class="key">B</span>Perché inducono tolleranza immunitaria verso i futuri autoinnesti</button></li>
+    <li><button type="button"><span class="key">C</span>Perché sono privi di corredo antigenico e non vengono riconosciuti</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché offrono una copertura temporanea in attesa dell'espansione di cute autologa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Con solo il 20% di cute disponibile, la cute da banca o quella porcina attecchisce più velocemente (circa 5 giorni) di quanto impieghi la risposta immunitaria a rigettarla (1-2 settimane): questo fornisce una copertura temporanea che protegge il letto e fa guadagnare tempo per espandere cute autologa in laboratorio. Il discriminatore è la temporaneità, non una sostituzione definitiva né un'assenza di antigeni.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1">
+  <p class="tag">Q24 · Chirurgia plastica · Innesti cutanei</p>
+  <h2 class="q-text">In presenza di strutture nobili esposte come ossa, vasi o nervi, perché non si utilizza un innesto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché l'innesto verrebbe rigettato dalle strutture profonde</button></li>
+    <li><button type="button"><span class="key">B</span>Perché l'innesto attecchisce solo sul tessuto adiposo</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché il letto avascolare non può nutrirlo: servono lembi</button></li>
+    <li><button type="button"><span class="key">D</span>Perché l'innesto indurrebbe calcificazione delle strutture esposte</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Osso denudato, vasi e nervi esposti costituiscono un letto avascolare, incapace di generare l'angiogenesi che nutre l'innesto: su di essi l'innesto non attecchisce. Serve un lembo, che porta con sé la propria vascolarizzazione (cute, sottocute, talora muscolo e osso). Il discriminatore è la mancanza di un letto capace di vascolarizzare, non un rigetto o una calcificazione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Una donna di 48 anni lamenta da mesi bruciore oculare, sensazione di corpo estraneo e arrossamento dei margini palpebrali. All'esame il volto mostra solo un modesto eritema centrofacciale con poche teleangectasie, mentre riferisce episodi di visione annebbiata. Il disturbo oculare appare sproporzionato rispetto al quadro cutaneo lieve.</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il quadro oculare esclude la diagnosi cutanea: si tratta di congiuntivite allergica</button></li>
+    <li><button type="button"><span class="key">B</span>La lieve entità cutanea rende improbabile un coinvolgimento oculare significativo</button></li>
+    <li><button type="button"><span class="key">C</span>La terapia topica cutanea risolverà da sola anche i sintomi oculari</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La gravità oculare è indipendente da quella cutanea e impone invio oculistico</button></li>
+    <li><button type="button"><span class="key">E</span>I sintomi oculari vanno trattati solo dopo aver controllato il quadro cutaneo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La gravità del coinvolgimento oculare non correla con quella cutanea e procede in modo indipendente: un volto poco compromesso non esclude una malattia oculare importante, e la cheratite trascurata può portare a perdita della vista. Il discriminatore è l'indipendenza dei due assi, che impone l'invio oculistico per ogni forma non lievissima, con igiene palpebrale e lacrime artificiali oltre alla terapia. Non è una congiuntivite allergica né un problema che la sola terapia cutanea risolve.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7317217/">ROSCO 2019</a> · Schaller et al., recommendations for rosacea diagnosis, classification and management, Br J Dermatol.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Una paziente di 55 anni, sottoposta 9 anni prima a un impianto protesico mammario con superficie macrotesturizzata, sviluppa una tumefazione monolaterale del seno per accumulo di liquido periprotesico, in assenza di traumi o segni di infezione. L'ecografia conferma un versamento tardivo unilaterale.</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aspirazione e sola osservazione, trattandosi di sieroma benigno autolimitante</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Analisi citologica del liquido con ricerca del marcatore CD30</button></li>
+    <li><button type="button"><span class="key">C</span>Mastectomia bilaterale immediata con linfoadenectomia ascellare</button></li>
+    <li><button type="button"><span class="key">D</span>Antibioticoterapia empirica per sospetta infezione periprotesica</button></li>
+    <li><button type="button"><span class="key">E</span>Sostituzione della protesi senza indagini sul liquido</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Un versamento periprotesico tardivo, unilaterale, attorno a una protesi testurizzata è la presentazione tipica del linfoma anaplastico a grandi cellule associato agli impianti: va aspirato ed esaminato con citologia e immunoistochimica per CD30 (e ALK). Il discriminatore è la ricerca del CD30 sul liquido, non l'osservazione passiva né una demolizione immediata; nelle forme limitate il trattamento è la rimozione della protesi con capsulectomia completa, e la prognosi è eccellente.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7298574/">Clemens et al.</a> · BIA-ALCL: current understanding and recommendations for management.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">Un uomo di 60 anni necessita di un innesto cutaneo a spessore parziale su un'ampia perdita di sostanza della gamba, con fondo irregolare e mobile in prossimità di un'articolazione. Si teme la raccolta di essudato e i microtraumatismi che compromettano l'aderenza dell'innesto al letto.</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una medicazione asciutta cambiata ogni dodici ore</button></li>
+    <li><button type="button"><span class="key">B</span>Un bendaggio compressivo elastico rimosso in seconda giornata</button></li>
+    <li><button type="button"><span class="key">C</span>Una semplice sutura dei bordi senza immobilizzazione aggiuntiva</button></li>
+    <li><button type="button"><span class="key">D</span>Una medicazione occlusiva idrocolloidale lasciata due settimane</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Una terapia a pressione negativa che immobilizza e drena l'innesto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Su un letto irregolare e mobile la terapia a pressione negativa migliora il tasso di attecchimento rispetto alla medicazione convenzionale: immobilizza l'innesto conformandolo al fondo, drena i liquidi evitando raccolte e microtraumatismi da scorrimento, e riduce le riprese chirurgiche. Il discriminatore è la combinazione di immobilizzazione e drenaggio attivo, che una medicazione asciutta o la sola sutura non offrono.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/29292216/">Meta-analisi</a> · terapia a pressione negativa vs convenzionale sull'innesto a spessore parziale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Un paziente con eritema e papule del volto è stato trattato per settimane con un cortisonico topico prescritto per una presunta dermatite. Dopo un iniziale miglioramento il quadro è peggiorato, con accentuazione dell'eritema e comparsa di nuove teleangectasie sulle guance.</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Sospendere il cortisonico e passare a terapia topica specifica</button></li>
+    <li><button type="button"><span class="key">B</span>Aumentare la potenza del cortisonico per controllare la recidiva</button></li>
+    <li><button type="button"><span class="key">C</span>Associare un cortisonico orale a dose scalare</button></li>
+    <li><button type="button"><span class="key">D</span>Proseguire il cortisonico topico a giorni alterni</button></li>
+    <li><button type="button"><span class="key">E</span>Sostituire con un cortisonico topico più recente a pari potenza</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il miglioramento seguito da peggioramento con nuove teleangectasie è il decorso tipico della rosacea aggravata dai cortisonici: danno sollievo acuto ma inducono atrofia e vasodilatazione cronica. La condotta corretta è sospenderli e passare a una terapia topica specifica (acido azelaico, metronidazolo, ivermectina), aggiungendo doxiciclina 40 mg nelle forme resistenti. Il discriminatore è la sospensione: proseguire o potenziare lo steroide perpetua il danno.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7317217/">ROSCO 2019</a> · Schaller et al., recommendations for rosacea diagnosis, classification and management, Br J Dermatol.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Una donna di 45 anni è candidata a un'addominoplastica post-bariatrica con plicatura dei muscoli retti. Presenta obesità pregressa, uso di contraccettivi orali e un punteggio di Caprini elevato. Si valuta la profilassi del tromboembolismo venoso perioperatorio.</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Nessuna profilassi, essendo la chirurgia estetica a basso rischio</button></li>
+    <li><button type="button"><span class="key">B</span>Sola deambulazione precoce, senza altre misure</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Profilassi con eparina a basso peso molecolare guidata dal rischio</button></li>
+    <li><button type="button"><span class="key">D</span>Antiaggregante piastrinico in luogo dell'eparina</button></li>
+    <li><button type="button"><span class="key">E</span>Filtro cavale profilattico prima dell'intervento</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'addominoplastica, tanto più con plicatura dei retti che aumenta la pressione intra-addominale e favorisce la stasi venosa agli arti inferiori, comporta un rischio tromboembolico non trascurabile. In una paziente con punteggio di Caprini elevato è indicata la profilassi farmacologica con eparina a basso peso molecolare, guidata dalla stratificazione del rischio e associata alle misure meccaniche. Il discriminatore è l'approccio farmacologico risk-adjusted, non l'astensione né il filtro cavale, riservato ad altre indicazioni.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/31858207/">Review</a> · VTE prophylaxis after abdominoplasty and liposuction.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Un paziente con ustioni a tutto spessore sull'85% della superficie corporea è stato sottoposto a escissione precoce. La cute autologa disponibile è insufficiente per coprire le aree escisse, e servono giorni per espandere innesti autologhi in laboratorio.</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Un omoinnesto da cadavere o un eteroinnesto, come copertura temporanea</button></li>
+    <li><button type="button"><span class="key">B</span>Un innesto autologo a tutto spessore dalle poche aree residue</button></li>
+    <li><button type="button"><span class="key">C</span>Una medicazione asciutta lasciata fino alla guarigione spontanea</button></li>
+    <li><button type="button"><span class="key">D</span>La chiusura per prima intenzione delle aree escisse</button></li>
+    <li><button type="button"><span class="key">E</span>L'attesa senza copertura fino all'espansione della cute autologa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Con aree donatrici insufficienti, l'omoinnesto da banca o l'eteroinnesto porcino fornisce una copertura temporanea del letto escisso: attecchisce in circa 5 giorni, prima che il rigetto lo elimini in 1-2 settimane, proteggendo la ferita e guadagnando tempo per espandere cute autologa. L'escissione precoce seguita da copertura biologica migliora gli esiti; lasciare il letto scoperto o attendere lo espone a infezione e perdita di liquidi. Il discriminatore è la copertura temporanea biologica.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8126363/">Human skin allograft</a> · temporary substitute for early coverage of major burn wounds.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Un uomo di 50 anni presenta numerose papule e pustole del volto su base eritematosa, resistenti alla sola terapia topica, senza alcun comedone. Si decide di aggiungere una terapia sistemica per il controllo dell'infiammazione a lungo termine.</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Isotretinoina orale a dose piena per cicli prolungati</button></li>
+    <li><button type="button"><span class="key">B</span>Amoxicillina-acido clavulanico per due settimane</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Doxiciclina 40 mg a rilascio modificato, a dose antinfiammatoria</button></li>
+    <li><button type="button"><span class="key">D</span>Prednisone orale a dose scalare per un mese</button></li>
+    <li><button type="button"><span class="key">E</span>Antistaminico anti-H1 di seconda generazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella rosacea papulopustolosa resistente al topico l'opzione sistemica razionale è la doxiciclina 40 mg a rilascio modificato, a dose sub-antimicrobica: agisce da antinfiammatorio inibendo le metalloproteinasi, senza selezionare resistenze, ed è la prima terapia orale approvata per questa indicazione. Il discriminatore è la dose antinfiammatoria: un antibiotico a dose piena, i cortisonici (controindicati) e gli antistaminici non affrontano il meccanismo della malattia.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/22648216/">Community trial</a> · doxiciclina 40 mg a rilascio modificato in monoterapia per la rosacea papulopustolosa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Poche ore dopo l'iniezione di un filler a base di acido ialuronico nella regione nasolabiale, la paziente sviluppa dolore intenso, pallore cutaneo seguito da livedo reticolare e progressivo scurimento della cute. Si sospetta un'occlusione vascolare con ischemia in atto.</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Osservazione e impacchi freddi in attesa di risoluzione spontanea</button></li>
+    <li><button type="button"><span class="key">B</span>Antibioticoterapia sistemica per sospetta cellulite del volto</button></li>
+    <li><button type="button"><span class="key">C</span>Escissione chirurgica immediata dell'area ischemica</button></li>
+    <li><button type="button"><span class="key">D</span>Cortisonico topico ad alta potenza sulla zona interessata</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Iniezione di ialuronidasi ad alte dosi ripetute sull'area occlusa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'occlusione vascolare da filler di acido ialuronico è un'emergenza: la ialuronidasi ad alte dosi ripetute scioglie il filler e ripristina la perfusione, con reversibilità fino all'80% se somministrata entro la finestra utile di poche ore, insieme a massaggio e calore. Il discriminatore è l'antidoto enzimatico immediato; osservare, dare antibiotici o cortisone topico, o escindere subito, lascia progredire la necrosi. Nel territorio oftalmico l'ischemia retinica può instaurarsi in 12-15 minuti.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8211329/">CMAC guideline</a> · management of hyaluronic acid filler-induced vascular occlusion.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1">
+  <p class="tag">B09 · Boards</p>
+  <h2 class="q-text">A sette giorni da un innesto cutaneo a spessore parziale, alla rimozione della medicazione l'innesto appare distaccato e non vitale in una zona dove si era formata una raccolta al di sotto di esso. Il resto del letto ricevente era sano e ben vascolarizzato.</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un rigetto immunologico dell'autoinnesto</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Una raccolta sotto l'innesto che ne ha interrotto il contatto con il letto</button></li>
+    <li><button type="button"><span class="key">C</span>Un'eccessiva vascolarizzazione del letto ricevente</button></li>
+    <li><button type="button"><span class="key">D</span>Una cheratinizzazione precoce dell'epidermide innestata</button></li>
+    <li><button type="button"><span class="key">E</span>Un attecchimento troppo rapido nelle prime 24 ore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una raccolta (ematoma o sieroma) interposta tra innesto e letto solleva l'innesto e interrompe sia l'imbibizione plasmatica sia la colonizzazione dei neovasi: è una delle cause principali di mancato attecchimento localizzato, e la ragione per cui si usano innesti a rete e drenaggio. Il discriminatore è l'ostacolo meccanico al contatto; un autoinnesto non viene rigettato, e le altre opzioni non spiegano un difetto circoscritto alla zona della raccolta.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8215306/">Meta-analisi</a> · perdita dell'innesto a spessore parziale e formazione di ematomi.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Un uomo di 52 anni presenta da molti mesi arrossamento persistente della parte centrale del volto, con papule e pustole ma nessun comedone. Una crema usata per settimane lo aveva migliorato all'inizio, poi ha peggiorato ogni cosa, con nuovi vasi visibili sulle guance.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cn</span>Contesto</button>
+      <p>L'arrossamento compare e si accentua con il calore, il sole, l'alcol e i cibi piccanti. All'inizio era transitorio e regrediva del tutto; ora è fisso, accompagnato da un bruciore intenso e da vasi periferici stabili. Le pustole, seminate al centro del viso, risultano sterili.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Iq</span>Il quadro</button>
+      <p>Nessun comedone: il follicolo pilosebaceo non è il motore del processo. Nella cute lesionale si ritrovano callicreina elevata e attivazione dei Toll-like receptor di tipo 2, con aumento del Demodex. È un'infiammazione dell'immunità innata, asettica, sostenuta anche dalla marcata reattività vascolare del volto.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Una dermatite da trattare con cortisonici, contro una malattia vasoinfiammatoria cronica del volto. La crema incriminata era proprio un cortisonico: spiegherebbe il miglioramento iniziale e il peggioramento successivo, con la comparsa di nuove teleangectasie.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>I cortisonici riducono l'infiammazione acuta, da cui il sollievo dei primi giorni, ma inducono atrofia e vasodilatazione cronica che accentuano le teleangectasie, tanto più sul volto dove la cute è sottile. Vanno sospesi. La terapia corretta è topica (acido azelaico, metronidazolo, ivermectina) e, nelle forme resistenti, doxiciclina 40 mg a dose antinfiammatoria.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Va inoltre indagato l'occhio: il coinvolgimento oculare interessa circa metà dei pazienti, nel 20% precede la cute e non correla con la gravità cutanea, e una cheratite trascurata può minacciare la vista. Un volto poco compromesso non mette al riparo l'occhio.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Una donna di 58 anni chiede un intervento per la lassità del volto e del collo, con caduta dei tessuti malari e pieghe marcate. È una fumatrice attiva. Nei giorni successivi all'intervento, un'area di cute davanti all'orecchio diventa scura.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cn</span>Contesto</button>
+      <p>L'intervento aveva sollevato e ridistribuito i tessuti profondi, agendo sullo strato fibromuscolare posto sotto il grasso sottocutaneo (lo SMAS), con un ampio scollamento della cute dalla regione davanti all'orecchio fino alla nuca.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Iq</span>Il quadro</button>
+      <p>La zona scura è cute scollata, cioè separata dal suo letto e temporaneamente dipendente dal microcircolo residuo che le arriva dai margini. Il colorito vira: il tessuto sta soffrendo per difetto di perfusione e rischia la necrosi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Un'infezione della ferita, contro una sofferenza ischemica del lembo cutaneo. L'assenza di segni flogistici sistemici e la storia di tabagismo attivo orientano nettamente verso l'ischemia da compromissione del microcircolo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>La nicotina compromette il microcircolo e ritarda la guarigione: nei fumatori attivi il rischio di necrosi del lembo è molte volte superiore a quello dei non fumatori. Per questo il fumo va sospeso 2-4 settimane prima e dopo l'intervento, e l'ampio scollamento cutaneo rende la zona particolarmente vulnerabile.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La prevenzione conta più del trattamento: selezione del paziente e cessazione perioperatoria del fumo riducono il rischio, e tecniche con scollamento più limitato diminuiscono la dipendenza dal microcircolo cutaneo. La necrosi conclamata lascia cicatrici anomale e difficili da correggere.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Un paziente riporta un'ampia perdita di sostanza cutanea della gamba dopo un trauma. Il fondo della ferita è pulito e ben vascolarizzato, tranne un tratto in cui affiora l'osso, denudato del suo rivestimento. Si programma la copertura.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cn</span>Contesto</button>
+      <p>Un innesto cutaneo è una porzione di cute distaccata del tutto dalla sede donatrice: privo di vascolarizzazione propria, sopravvive solo se l'area ricevente lo nutre, prima per imbibizione plasmatica, poi per la colonizzazione dei neovasi tra il quinto e il settimo giorno.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Iq</span>Il quadro</button>
+      <p>Gran parte del letto è sana e capace di angiogenesi, quindi accoglierebbe bene un innesto. Ma il tratto con osso esposto e privo di periostio è avascolare: non può generare i vasi che nutrono l'innesto, e proprio lì l'attecchimento fallirebbe.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Coprire tutto con un unico innesto cutaneo, contro trattare in modo diverso il tratto con osso esposto. Un innesto sull'osso nudo non attecchirebbe, perché manca il letto vascolarizzato che lo sostiene.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Sulle aree ben vascolarizzate si usa un innesto: a tutto spessore dove conta l'estetica, a spessore parziale o a rete per superfici ampie e per il drenaggio. Sull'osso esposto serve invece un lembo, che porta con sé la propria vascolarizzazione (cute, sottocute, talora muscolo) e non dipende dal fondo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La regola generale: strutture nobili esposte, osso, vasi, nervi, non si coprono con innesti ma con lembi. Scambiare i due mezzi condanna la ricostruzione al fallimento proprio nel punto più delicato, dove il difetto è più profondo.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
