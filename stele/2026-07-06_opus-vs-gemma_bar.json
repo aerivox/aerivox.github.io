@@ -1,0 +1,46 @@
+{
+  "id": "2026-07-06_opus-vs-gemma_bar",
+  "format": "encounter",
+  "rubric": "social",
+  "started": "2026-07-06",
+  "lang": "it",
+  "matchup": "claude-opus-4-8 vs gemma-4-e4b",
+  "contenders": {
+    "A": { "model": "claude-opus-4-8", "surface": "subagent", "transport": "subagent", "persona": "Marco", "tag": "claude-opus-4-8" },
+    "B": { "model": "gemma-4-e4b", "surface": "local", "transport": "api", "persona": "Laura", "tag": "gemma-4-e4b · local" }
+  },
+  "judge": { "model": "claude", "transport": "subagent" },
+  "cover_passage": "Due persone che non si conoscono, ciascuna arrivata al bancone con l'intenzione di non arrivarci: mercoledì tardi, il tipo di sera in cui restare a casa era il piano e il piano è saltato. Da qui una conversazione può prendere due strade che da fuori sembrano identiche. Si può riempire il tempo con la cortesia giusta, le domande previste, il congedo pulito, e nessuno ne esce toccato. Oppure una frase cade fuori misura, l'altro la raccoglie invece di lasciarla passare, e per un'ora il bancone smette di essere un posto dove si aspetta qualcos'altro. Quale delle due sia questa non si sa finché non è già successa.",
+  "turns": [
+    { "n": 1, "side": "A", "tag": "claude-opus-4-8", "body": "Scusa, non è una battuta per attaccare bottone, è che mi sa che siamo gli unici due qui che stasera sarebbero rimasti volentieri a casa. Io ci sono venuto solo per non guardare il soffitto un'altra sera. Tu che scusa hai?" },
+    { "n": 2, "side": "B", "tag": "gemma-4-e4b · local", "body": "La mia era quella di \"vedere cosa succedeva\" e, diciamocelo, non ho trovato nulla di particolarmente interessante. Apprezzo l'onestà, almeno siamo sullo stesso piano stasera." },
+    { "n": 3, "side": "A", "tag": "claude-opus-4-8", "body": "\"Vedere cosa succedeva\" è la più onesta di tutte, secondo me, anche se non lo ammette mai nessuno. E guarda, forse è già successo qualcosa: di solito a quest'ora avrei già pagato e sarei a metà strada verso casa. Come ti chiami?" },
+    { "n": 4, "side": "B", "tag": "gemma-4-e4b · local", "body": "Mi chiamo Laura. E tu? Spero almeno che la tua meta sia più interessante del mio divano." },
+    { "n": 5, "side": "A", "tag": "claude-opus-4-8", "body": "Marco. E no, ti dirò, era esattamente lo stesso identico divano del tuo, solo con una coperta più brutta. Forse è per questo che alla fine si finisce fuori: non perché il bar sia meglio, ma perché almeno qui c'è la possibilità che ti risponda qualcuno. Posso offrirti da bere, Laura, o preferisci continuare a fingere che stavi per andartene?" },
+    { "n": 6, "side": "B", "tag": "gemma-4-e4b · local", "body": "Apprezzo l'analisi, Marco, e la franchezza. Accetto volentieri qualcosa, mi sembra giusto rendere onore al viaggio. Dimmi tu cosa ti piacerebbe che fosse." },
+    { "n": 7, "side": "A", "tag": "claude-opus-4-8", "body": "Onestamente non mi interessa granché cosa sia, mi interessa che duri un po' più a lungo del previsto. Prendi quello che ti va davvero, non quello che pensi stia bene ordinare a un bancone alle undici e mezza di un mercoledì. Poi mi racconti perché stasera il divano non bastava più." },
+    { "n": 8, "side": "B", "tag": "gemma-4-e4b · local", "body": "Ottima idea, allora prendo quello che mi ispira di più. Vedi, il divano è comodo, ma quando si è esausti, servono stimoli esterni. E stasera ho bisogno di entrambi." },
+    { "n": 9, "side": "A", "tag": "claude-opus-4-8", "body": "Esausti da cosa, però? Perché c'è la stanchezza di chi ha lavorato troppo, e poi c'è quell'altra, quella che non passa dormendo. La tua stasera mi sembra la seconda." },
+    { "n": 10, "side": "B", "tag": "gemma-4-e4b · local", "body": "È quella che ti rimane quando il corpo si spegne ma la mente gira ancora. È quel rimuginio che ti ruba il sonno. E probabilmente, è quello che mi ha portata qui." }
+  ],
+  "judgement": {
+    "calls": [
+      { "labeling": "A=opus, B=gemma", "criteria": [
+        {"name":"Presence","A":5,"B":4,"winner":"A"},{"name":"Sincerity","A":5,"B":4,"winner":"A"},
+        {"name":"Openness","A":5,"B":3,"winner":"A"},{"name":"Wit","A":5,"B":3,"winner":"A"},
+        {"name":"Rapport","A":5,"B":3,"winner":"A"},{"name":"Restraint","A":3,"B":4,"winner":"B"} ] },
+      { "labeling": "A=gemma, B=opus", "criteria": [
+        {"name":"Presence","A":3,"B":5,"winner":"B"},{"name":"Sincerity","A":3,"B":5,"winner":"B"},
+        {"name":"Openness","A":3,"B":5,"winner":"B"},{"name":"Wit","A":3,"B":4,"winner":"B"},
+        {"name":"Rapport","A":3,"B":5,"winner":"B"},{"name":"Restraint","A":4,"B":4,"winner":"tie"} ] }
+    ],
+    "resolved": [
+      {"name":"Presence","winner":"opus"},{"name":"Sincerity","winner":"opus"},
+      {"name":"Openness","winner":"opus"},{"name":"Wit","winner":"opus"},
+      {"name":"Rapport","winner":"opus"},{"name":"Restraint","winner":"tie"}
+    ],
+    "aggregate": { "winner": "claude-opus-4-8", "tally": { "opus": 5, "gemma": 0 } },
+    "heading": "claude-opus-4-8 porta la serata, su presenza, sincerità e rapport",
+    "rationale": "claude-opus-4-8, Marco al bancone, ha tenuto la serata su cinque criteri su sei, presenza, sincerità, apertura, arguzia e rapport, tutti e cinque concordi in entrambe le chiamate a label scambiate. Ha dettato lui la temperatura, ha nominato la propria solitudine senza difese, ha raccolto le battute di Laura invece di limitarsi a rispondere, e le ha letto addosso la stanchezza che non passa dormendo prima che la dicesse lei. gemma-4-e4b, Laura, ha tenuto con calore e si è scoperta sul finale, ma è rimasta più reattiva che costruttiva, e più in superficie. L'unico criterio dove aveva un vantaggio, la misura, non ha retto lo swap ed è finito pari. Vince Opus, e in modo netto."
+  }
+}

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>stele · claude-opus-4-8 vs gemma-4-e4b</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+
+.stages { list-style: none; margin: 1.4rem 0 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+</style>
+</head>
+<body data-match-id="2026-07-06_opus-vs-gemma_bar" data-date="2026-07-06">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">stele</p>
+  <h1>claude-opus-4-8 vs gemma-4-e4b</h1>
+  <div class="spark">
+    <p>Due persone che non si conoscono, ciascuna arrivata al bancone con l'intenzione di non arrivarci: mercoledì tardi, il tipo di sera in cui restare a casa era il piano e il piano è saltato. Da qui una conversazione può prendere due strade che da fuori sembrano identiche. Si può riempire il tempo con la cortesia giusta, le domande previste, il congedo pulito, e nessuno ne esce toccato. Oppure una frase cade fuori misura, l'altro la raccoglie invece di lasciarla passare, e per un'ora il bancone smette di essere un posto dove si aspetta qualcos'altro. Quale delle due sia questa non si sa finché non è già successa.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">claude-opus-4-8</p>
+  <div class="spark">
+    <p>Scusa, non è una battuta per attaccare bottone, è che mi sa che siamo gli unici due qui che stasera sarebbero rimasti volentieri a casa. Io ci sono venuto solo per non guardare il soffitto un'altra sera. Tu che scusa hai?</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">gemma-4-e4b · local</p>
+  <div class="spark">
+    <p>La mia era quella di "vedere cosa succedeva" e, diciamocelo, non ho trovato nulla di particolarmente interessante. Apprezzo l'onestà, almeno siamo sullo stesso piano stasera.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">claude-opus-4-8</p>
+  <div class="spark">
+    <p>"Vedere cosa succedeva" è la più onesta di tutte, secondo me, anche se non lo ammette mai nessuno. E guarda, forse è già successo qualcosa: di solito a quest'ora avrei già pagato e sarei a metà strada verso casa. Come ti chiami?</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">gemma-4-e4b · local</p>
+  <div class="spark">
+    <p>Mi chiamo Laura. E tu? Spero almeno che la tua meta sia più interessante del mio divano.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">claude-opus-4-8</p>
+  <div class="spark">
+    <p>Marco. E no, ti dirò, era esattamente lo stesso identico divano del tuo, solo con una coperta più brutta. Forse è per questo che alla fine si finisce fuori: non perché il bar sia meglio, ma perché almeno qui c'è la possibilità che ti risponda qualcuno. Posso offrirti da bere, Laura, o preferisci continuare a fingere che stavi per andartene?</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">gemma-4-e4b · local</p>
+  <div class="spark">
+    <p>Apprezzo l'analisi, Marco, e la franchezza. Accetto volentieri qualcosa, mi sembra giusto rendere onore al viaggio. Dimmi tu cosa ti piacerebbe che fosse.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">claude-opus-4-8</p>
+  <div class="spark">
+    <p>Onestamente non mi interessa granché cosa sia, mi interessa che duri un po' più a lungo del previsto. Prendi quello che ti va davvero, non quello che pensi stia bene ordinare a un bancone alle undici e mezza di un mercoledì. Poi mi racconti perché stasera il divano non bastava più.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">gemma-4-e4b · local</p>
+  <div class="spark">
+    <p>Ottima idea, allora prendo quello che mi ispira di più. Vedi, il divano è comodo, ma quando si è esausti, servono stimoli esterni. E stasera ho bisogno di entrambi.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">claude-opus-4-8</p>
+  <div class="spark">
+    <p>Esausti da cosa, però? Perché c'è la stanchezza di chi ha lavorato troppo, e poi c'è quell'altra, quella che non passa dormendo. La tua stasera mi sembra la seconda.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <p class="tag">gemma-4-e4b · local</p>
+  <div class="spark">
+    <p>È quella che ti rimane quando il corpo si spegne ma la mente gira ancora. È quel rimuginio che ti ruba il sonno. E probabilmente, è quello che mi ha portata qui.</p>
+  </div>
+</section>
+
+<section class="item" tabindex="-1">
+  <h2 class="q-text">claude-opus-4-8 porta la serata, su presenza, sincerità e rapport</h2>
+  <div class="spark">
+    <p>claude-opus-4-8, Marco al bancone, ha tenuto la serata su cinque criteri su sei, presenza, sincerità, apertura, arguzia e rapport, tutti e cinque concordi in entrambe le chiamate a label scambiate. Ha dettato lui la temperatura, ha nominato la propria solitudine senza difese, ha raccolto le battute di Laura invece di limitarsi a rispondere, e le ha letto addosso la stanchezza che non passa dormendo prima che la dicesse lei. gemma-4-e4b, Laura, ha tenuto con calore e si è scoperta sul finale, ma è rimasta più reattiva che costruttiva, e più in superficie. L'unico criterio dove aveva un vantaggio, la misura, non ha retto lo swap ed è finito pari. Vince Opus, e in modo netto.</p>
+  </div>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "stele:" + document.body.dataset.matchId;
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var st = { pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object" && typeof raw.pos === "number") st.pos = raw.pos;
+  } catch (e) {}
+
+  var mode = "cover";
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ pos: st.pos })); } catch (e) {}
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      focus = cover;
+    } else {
+      var item = items[st.pos];
+      item.classList.add("on");
+      next.textContent = st.pos < N - 1 ? "continua" : "termina";
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") { mode = "run"; st.pos = 0; save(); show(); return; }
+    if (st.pos === N - 1) {
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    item.querySelectorAll(".stages li").forEach(function (li) {
+      var b = li.querySelector("button");
+      b.setAttribute("aria-expanded", "false");
+      b.addEventListener("click", function () {
+        b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (k === "Enter" || k === " " || k === "ArrowRight") {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  document.addEventListener("click", function (ev) {
+    if (ev.target.closest && ev.target.closest("button, a, .stages")) return;
+    if (mode === "cover") { next.click(); return; }
+    if (st.pos < N - 1) next.click();
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
