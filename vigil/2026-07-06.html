@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 6 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-06">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>lunedì 6 luglio 2026</h1>
+  <div class="spark">
+    <p>Durante la guerra i piloti della RAF tornavano con schegge di Perspex conficcate nell'occhio, frammenti di calotta di cabina che l'organismo, stranamente, tollerava senza infiammarsi. Harold Ridley, oftalmologo a Londra, notò ciò che gli altri liquidavano come fortuna: quel polimero, il polimetilmetacrilato, l'occhio non lo riconosceva come nemico. Da lì gli venne l'idea che i colleghi giudicarono assurda, sostituire il cristallino reso opaco dalla cataratta con una lente artificiale dello stesso materiale. Il 29 novembre 1949, al St Thomas's Hospital, ne impiantò la prima nell'occhio di una sua paziente. Per vent'anni fu deriso: la cataratta si toglie, non ci si infila dentro un pezzo di plastica. Oggi quella stessa operazione, ripetuta milioni di volte l'anno, è la più diffusa al mondo, e ogni lente intraoculare discende da una scheggia di aereo che si era rifiutata di fare del male.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="colloca l'abbozzo oculare oltre il giorno 22 o lo identifica con una struttura più tardiva della fossetta ottica">
+  <p class="tag">Q01 · Oftalmologia · Introduzione oftalmologia</p>
+  <h2 class="q-text">Quando compare il primo abbozzo dell'occhio nell'embrione e sotto quale forma?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>A 22 giorni, come fossetta ottica pari ai lati del proencefalo</button></li>
+    <li><button type="button"><span class="key">B</span>A 33 giorni, come vescicola ottica gemmata dal mesencefalo</button></li>
+    <li><button type="button"><span class="key">C</span>A 28 giorni, come calice ottico già a doppia parete</button></li>
+    <li><button type="button"><span class="key">D</span>A 45 giorni, come placode del cristallino ormai invaginato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il primo accenno dell'occhio è la fossetta ottica bilaterale, che compare a 22 giorni ai lati del cervello anteriore, prima della chiusura del tubo neurale; solo dopo la chiusura si formano le vescicole ottiche, poi il calice a doppia parete e infine il placode del cristallino. Il discriminatore è la coppia giorno 22 e fossetta ottica: le altre opzioni spostano in avanti l'epoca e nominano strutture successive, e la vescicola ottica nasce dal proencefalo, non dal mesencefalo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="non individua nella vascolarizzazione autonoma del peduncolo il carattere che distingue il lembo dall'innesto">
+  <p class="tag">Q02 · Chirurgia plastica · Lembi</p>
+  <h2 class="q-text">Che cosa distingue in modo sostanziale un lembo da un innesto cutaneo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'innesto ha uno spessore maggiore e comprende sempre il derma profondo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il lembo porta con sé una vascolarizzazione autonoma nel peduncolo</button></li>
+    <li><button type="button"><span class="key">C</span>L'innesto guarisce per prima intenzione mentre il lembo attecchisce</button></li>
+    <li><button type="button"><span class="key">D</span>Il lembo è privo di un asse vascolare e dipende dal letto ricevente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lembo possiede una vascolarizzazione propria che decorre nel peduncolo ed è indipendente dal letto ricevente; l'innesto, privo di vasi propri, dipende interamente dal letto per l'attecchimento. Il discriminatore è l'autonomia vascolare del peduncolo: l'opzione C inverte guarigione e attecchimento, mentre D descrive esattamente la condizione dell'innesto, non del lembo. Lo spessore non entra nella definizione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="confonde l'endoftalmite postoperatoria con la cataratta secondaria, scambiando l'emergenza infettiva necrotica per la semplice opacizzazione capsulare">
+  <p class="tag">Q03 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Tra le complicanze della chirurgia della cataratta, quale è l'emergenza infettiva che può portare a necrosi dei tessuti e perdita della funzione visiva?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La cataratta secondaria, opacizzazione tardiva della capsula posteriore</button></li>
+    <li><button type="button"><span class="key">B</span>La dislocazione della IOL in camera vitrea o anteriore</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'endoftalmite postoperatoria, infezione a rapida evoluzione necrotica</button></li>
+    <li><button type="button"><span class="key">D</span>L'edema maculare cistoide che riduce il visus centrale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'endoftalmite postoperatoria è rara (circa 1 su 1000) ma devastante: infezione intraoculare che necrotizza i tessuti e impone antibiotici intravitreali immediati e vitrectomia. La cataratta secondaria è invece una banale opacizzazione della capsula posteriore risolta con YAG laser. Il discriminatore è la natura infettiva e necrotica dell'evento: dislocazione della IOL ed edema maculare cistoide non sono infezioni, e scambiare l'endoftalmite per cataratta secondaria confonde un'emergenza con una complicanza minore.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="affida la conferma del lichen all'immunofluorescenza anziché all'istologia con infiltrato lichenoide a banda">
+  <p class="tag">Q04 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">In un lichen cutaneo dal quadro clinico dubbio, quale accertamento conferma la diagnosi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'immunofluorescenza diretta con depositi intercellulari di IgG a rete</button></li>
+    <li><button type="button"><span class="key">B</span>Il dosaggio degli autoanticorpi circolanti anti-membrana basale</button></li>
+    <li><button type="button"><span class="key">C</span>Lo striscio citologico di Tzanck sul fondo della lesione</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La biopsia con istologia che mostra l'infiltrato lichenoide a banda</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La diagnosi di lichen è clinica; nei casi dubbi si ricorre alla biopsia con istologia, che mostra i cinque reperti tipici, tra cui l'infiltrato linfocitario a banda a delimitazione netta. Il discriminatore è lo strumento diagnostico: i depositi intercellulari di IgG all'immunofluorescenza appartengono al pemfigo, gli anticorpi anti-membrana basale al pemfigoide e il Tzanck alle lesioni bollose o erpetiche, non al lichen.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="descrive l'origine del cristallino senza risalire al placode ectodermico, attribuendola a una struttura neuroectodermica">
+  <p class="tag">Q05 · Oftalmologia · Introduzione oftalmologia</p>
+  <h2 class="q-text">Da quale struttura prende avvio la formazione del cristallino?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Dalla vescicola ottica, che si invagina su se stessa</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Dal placode del cristallino, ispessimento dell'ectoderma superficiale</button></li>
+    <li><button type="button"><span class="key">C</span>Dal calice ottico, nella sua parete interna neurale</button></li>
+    <li><button type="button"><span class="key">D</span>Dalla fessura coroidea, lungo il margine ventrale del calice in chiusura</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le cellule dell'ectoderma superficiale a contatto con la vescicola ottica si ispessiscono nel placode del cristallino, che si invagina nella vescicola del cristallino e alla quinta settimana perde contatto con l'ectoderma. Il discriminatore è il placode di origine ectodermica superficiale, la stessa della pelle: vescicola ottica, calice e fessura coroidea sono strutture neuroectodermiche e non danno origine al cristallino.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="basa il lembo addominale sull'epigastrica superiore col sacrificio del muscolo, invece che sulle perforanti dell'epigastrica inferiore col risparmio del retto">
+  <p class="tag">Q06 · Chirurgia plastica · Lembi</p>
+  <h2 class="q-text">Per una ricostruzione mammaria autologa si vuole risparmiare il muscolo retto dell'addome. Su quale principio si costruisce il lembo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Si preleva il muscolo retto con la cute basandosi sull'epigastrica superiore</button></li>
+    <li><button type="button"><span class="key">B</span>Si trasferisce la cute come lembo random di vicinanza addominale</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Si isolano le perforanti dell'epigastrica inferiore risparmiando il retto</button></li>
+    <li><button type="button"><span class="key">D</span>Si allestisce un lembo fasciocutaneo sul setto intermuscolare addominale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lembo a perforanti isola le arterie perforanti dell'epigastrica inferiore risalendo fino al vaso maggiore, ottenendo cute e sottocute con il proprio peduncolo e lasciando integro il retto. Il discriminatore è la coppia epigastrica inferiore e risparmio del muscolo: il lembo muscolocutaneo tradizionale preleva invece il retto come carrier, e basarlo sull'epigastrica superiore col sacrificio muscolare è proprio ciò che il lembo a perforanti evita.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="riconduce l'uveite facoanafilattica a un meccanismo meccanico anziché alla reazione immunitaria contro le masse cristalline riassorbite come antigeni">
+  <p class="tag">Q07 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">In una cataratta ipermatura non operata compare un'infiammazione intraoculare. Quale meccanismo la sostiene?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le masse lenticolari ostruiscono il trabecolato aumentando la pressione oculare</button></li>
+    <li><button type="button"><span class="key">B</span>Il cristallino intumescente blocca l'angolo iridocorneale</button></li>
+    <li><button type="button"><span class="key">C</span>Il materiale acrilico della lente attira le proteine sulla capsula</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Le masse cristalline riassorbite fungono da antigeni e scatenano la reazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nell'uveite facoanafilattica le masse cristalline riassorbite, un tempo sequestrate dal sistema immunitario, fungono da antigeni e innescano una reazione infiammatoria. Il discriminatore è la natura immunitaria: l'ostruzione del trabecolato dà il glaucoma facolitico e il blocco d'angolo il facomorfico, entrambi meccanici, mentre la carica del materiale acrilico riguarda la cataratta secondaria dopo impianto di IOL, situazione qui assente perché non c'è stato intervento.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="scambia l'ortocheratosi del lichen con la paracheratosi psoriasica, attribuendo allo strato corneo del lichen frammenti nucleari residui">
+  <p class="tag">Q08 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">All'istologia il lichen mostra ipercheratosi ortocheratosica. Quale dettaglio la distingue dall'ipercheratosi della psoriasi?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Nel lichen lo strato corneo ispessito è privo di nuclei residui</button></li>
+    <li><button type="button"><span class="key">B</span>Nel lichen lo strato corneo conserva frammenti di nuclei cellulari</button></li>
+    <li><button type="button"><span class="key">C</span>Nel lichen manca del tutto l'ispessimento dello strato granuloso</button></li>
+    <li><button type="button"><span class="key">D</span>Nel lichen l'ispessimento corneo risparmia l'ambito delle papule</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'ortocheratosi del lichen è un ispessimento regolare dello strato corneo con cheratinociti privi di nucleo; la psoriasi mostra invece paracheratosi, cioè persistenza di frammenti nucleari nel corneo. Il discriminatore è l'assenza di nuclei residui: l'opzione B descrive proprio la paracheratosi psoriasica, mentre nel lichen lo strato granuloso è ispessito in modo focale (ipergranulosi) e l'acantosi, non l'ipercheratosi, è quella limitata alle papule.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="attribuisce la vascolarizzazione della testa del nervo ottico all'arteria centrale della retina invece che alle ciliari posteriori brevi del circolo di Zinn-Haller">
+  <p class="tag">Q09 · Oftalmologia · Introduzione oftalmologia</p>
+  <h2 class="q-text">La testa del nervo ottico riceve il proprio apporto arterioso principalmente da:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'arteria centrale della retina appena prima della sua biforcazione</button></li>
+    <li><button type="button"><span class="key">B</span>Le arterie ciliari anteriori attraverso il circolo limbare</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Le arterie ciliari posteriori brevi tramite il circolo di Zinn-Haller</button></li>
+    <li><button type="button"><span class="key">D</span>Le vene vorticose invertite in senso nutritizio verso il disco ottico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La testa del nervo ottico non è irrorata dall'arteria centrale della retina ma dal circolo di Zinn-Haller, formato dalle arterie ciliari posteriori brevi, rami dell'oftalmica che emergono prima dell'arteria centrale. Il discriminatore è questa sorgente ciliare posteriore: la sua alterazione causa la neuropatia ottica ischemica anteriore. Le ciliari anteriori irrorano il segmento anteriore e le vene vorticose sono un sistema di deflusso, non di nutrimento.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="nega al lembo libero la vascolarizzazione autonoma ripristinata per via microchirurgica, assimilandolo all'innesto o legandolo ancora all'area donatrice">
+  <p class="tag">Q10 · Chirurgia plastica · Lembi</p>
+  <h2 class="q-text">Un lembo libero viene staccato completamente dall'area donatrice e rianastomizzato ai vasi del collo. Perché non è un innesto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché include sempre una componente muscolare che ne fa da carrier vascolare</button></li>
+    <li><button type="button"><span class="key">B</span>Perché resta collegato all'area donatrice da un ponte cutaneo</button></li>
+    <li><button type="button"><span class="key">C</span>Perché viene rivascolarizzato dal solo letto ricevente come un comune innesto</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché conserva un peduncolo proprio, ripristinato per via microchirurgica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella definizione moderna il peduncolo non deve restare ancorato all'area donatrice: nel lembo libero i vasi vengono staccati e rianastomizzati ai vasi riceventi, ripristinando la vascolarizzazione autonoma. Il discriminatore è proprio questo peduncolo proprio ricollegato per via microchirurgica: l'innesto, privo di vasi, si affiderebbe al solo letto ricevente (opzione C), e il lembo libero non richiede muscolo né un ponte con la donatrice.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="non identifica la rosolia materna del primo trimestre come causa principale di cataratta congenita, o ne sbaglia la finestra di rischio">
+  <p class="tag">Q11 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Qual è la causa principale di cataratta congenita e in quale finestra il danno è più grave?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La rosolia materna, con embriopatia nel primo trimestre</button></li>
+    <li><button type="button"><span class="key">B</span>La toxoplasmosi materna, con danno massimo nel terzo trimestre</button></li>
+    <li><button type="button"><span class="key">C</span>La galattosemia neonatale, indipendente dall'epoca gestazionale</button></li>
+    <li><button type="button"><span class="key">D</span>Il citomegalovirus materno, con rischio massimo al termine</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La rosolia materna è la causa principale di cataratta congenita: contratta nel primo trimestre dà l'embriopatia rubeolica, con sindrome malformativa nel 90% dei casi, mentre oltre le 20 settimane il rischio cala nettamente. Il discriminatore è la coppia rosolia e primo trimestre: toxoplasmosi, galattosemia e CMV rientrano tra le cause possibili, ma nessuna è la principale e le finestre di rischio proposte sono errate.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="riconduce il lichen a un meccanismo anticorpale o IgE anziché all'aggressione citotossica CD8+ dei cheratinociti basali">
+  <p class="tag">Q12 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">Quale meccanismo immunitario sostiene il danno tissutale nel lichen planus?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Anticorpi contro la desmogleina che dissolvono i desmosomi</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Linfociti T CD8+ citotossici contro i cheratinociti basali</button></li>
+    <li><button type="button"><span class="key">C</span>Immunocomplessi depositati lungo la giunzione dermo-epidermica</button></li>
+    <li><button type="button"><span class="key">D</span>Degranulazione mastocitaria IgE-mediata nel derma papillare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lichen è sostenuto da linfociti T CD8+ ad attività citotossica che aggrediscono i cheratinociti dello strato basale, e a seconda della forma anche follicoli e matrice ungueale. Il discriminatore è la citotossicità cellulo-mediata: gli anticorpi anti-desmogleina caratterizzano il pemfigo, gli immunocomplessi le vasculiti e il lupus, la degranulazione IgE l'orticaria. Nessuno di questi rende conto dell'attacco selettivo allo strato basale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="fa passare le fibre del riflesso fotomotore per il corpo genicolato laterale invece dei nuclei pretettali">
+  <p class="tag">Q13 · Oftalmologia · Introduzione oftalmologia</p>
+  <h2 class="q-text">Le fibre del riflesso fotomotore si separano dalla via visiva perché:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Fanno sinapsi nel corpo genicolato laterale prima della corteccia</button></li>
+    <li><button type="button"><span class="key">B</span>Raggiungono direttamente la corteccia calcarina controlaterale</button></li>
+    <li><button type="button"><span class="key">C</span>Terminano nel collicolo superiore per generare le saccadi</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Non si fermano al genicolato e proseguono ai nuclei pretettali</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Gli stimoli del riflesso pupillare non fanno sinapsi nel corpo genicolato laterale: proseguono ai nuclei pretettali del mesencefalo, da cui raggiungono i nuclei di Edinger-Westphal, poi il III nervo, il ganglio ciliare e lo sfintere irideo. Il discriminatore è proprio questo scavalcamento del genicolato verso i pretettali: la via genicolo-calcarina è quella della percezione visiva strutturata, non del riflesso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="valuta un lembo random con i criteri di un lembo a peduncolo noto (calibro dell'arteria, microsutura) invece che con larghezza, orientamento e sede">
+  <p class="tag">Q14 · Chirurgia plastica · Lembi</p>
+  <h2 class="q-text">Da quali fattori dipende la sopravvivenza di un lembo random?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Larghezza del peduncolo, orientamento prossimo-distale e sede</button></li>
+    <li><button type="button"><span class="key">B</span>Calibro dell'arteria assiale identificata e lunghezza del peduncolo</button></li>
+    <li><button type="button"><span class="key">C</span>Numero delle perforanti muscolari isolate e risparmio del muscolo</button></li>
+    <li><button type="button"><span class="key">D</span>Diametro dei vasi rianastomizzati e tenuta della microsutura</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lembo random non ha un peduncolo vascolare definito e si affida alla probabilità statistica di irrorazione: contano la larghezza del peduncolo (direttamente proporzionale), l'orientamento prossimo-distale e la sede (migliore al volto, peggiore agli arti). Il discriminatore è questa natura statistica: calibro dell'arteria, perforanti isolate e vasi rianastomizzati descrivono lembi a peduncolo noto e liberi, cioè proprio ciò che il random non possiede.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="non collega la seconda visione alla cataratta nucleare e all'aumento dell'indice di refrazione">
+  <p class="tag">Q15 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Un presbite torna a leggere senza occhiali. Quale cataratta e quale meccanismo spiegano il fenomeno?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La sottocapsulare posteriore, per opacamento dell'asse visivo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La nucleare, per aumento dell'indice di refrazione del cristallino</button></li>
+    <li><button type="button"><span class="key">C</span>La corticale, per alterazione della curvatura anteriore della lente</button></li>
+    <li><button type="button"><span class="key">D</span>La totale, per diffusione uniforme della luce sulla retina</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cosiddetta seconda visione è una miopia da indice: la cataratta nucleare aumenta la densità e quindi l'indice di refrazione del cristallino, spostando il fuoco in avanti e inducendo una miopia che compensa la presbiopia. Il discriminatore è la coppia nucleare e indice di refrazione: le forme sottocapsulare, corticale e totale non producono questo spostamento miopico e la totale annulla del tutto la visione utile.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="non riconosce nella trasformazione in carcinoma spinocellulare la complicanza che impone il follow-up del lichen orale erosivo">
+  <p class="tag">Q16 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">Quale complicanza impone un follow-up prolungato nel lichen erosivo cronico della mucosa orale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La diffusione del lichen alle mucose vescicale e laringea</button></li>
+    <li><button type="button"><span class="key">B</span>La sovrainfezione da Candida delle erosioni persistenti</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>La trasformazione in carcinoma spinocellulare</button></li>
+    <li><button type="button"><span class="key">D</span>La comparsa di una cheilite licheniena delle labbra</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La complicanza più temuta del lichen orale cronico è l'evoluzione in carcinoma spinocellulare, con incidenza tra lo 0,5 e il 5,5%; anzianità della malattia, fumo e forma erosiva ne aumentano il rischio, e le lesioni vegetanti o infiltrate vanno biopsiate. Il discriminatore è la trasformazione neoplastica: diffusione ad altre mucose, sovrainfezione candidosica e cheilite non giustificano da soli un follow-up oncologico a lungo termine.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="non spiega l'avascolarità foveale con l'ombra che i vasi proietterebbero sui fotorecettori">
+  <p class="tag">Q17 · Oftalmologia · Introduzione oftalmologia</p>
+  <h2 class="q-text">Perché la fovea deve restare priva di vasi sanguigni?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché ogni vaso proietterebbe la sua ombra sui fotorecettori</button></li>
+    <li><button type="button"><span class="key">B</span>Perché i vasi consumerebbero l'ossigeno necessario ai coni della periferia retinica</button></li>
+    <li><button type="button"><span class="key">C</span>Perché la coroide sottostante non tollera un doppio circolo vascolare</button></li>
+    <li><button type="button"><span class="key">D</span>Perché il sangue assorbirebbe la luce prima che raggiunga l'epitelio pigmentato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La fovea è avascolare perché un vaso interposto proietterebbe la propria ombra sui fotorecettori sottostanti, degradando la risoluzione massima; il nutrimento le arriva per diffusione dalla coriocapillare attraverso la membrana di Bruch. Il discriminatore è l'ombra sui fotorecettori: non è questione di consumo di ossigeno dei coni periferici né di intolleranza coroideale, e la neoangiogenesi maculare, come nella degenerazione umida, riduce infatti la vista.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="riduce il vantaggio del lembo nell'osteomielite a copertura o volume, ignorando l'apporto di vascolarizzazione che supera la barriera fibrotica">
+  <p class="tag">Q18 · Chirurgia plastica · Lembi</p>
+  <h2 class="q-text">In un'osteomielite cronica l'innesto fallisce mentre il lembo può risolvere la patologia. Perché?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché l'innesto non copre in superficie l'osso esposto</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il lembo apporta un volume maggiore di tessuto molle</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché il lembo porta vascolarizzazione superando la barriera fibrotica</button></li>
+    <li><button type="button"><span class="key">D</span>Perché l'innesto viene rigettato dall'osso infetto per una reazione immunitaria</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nell'osteomielite cronica il tessuto fibrotico attorno all'osso impedisce l'arrivo di antibiotici e cellule immunocompetenti; l'innesto dipende da questo letto scadente e non può modificarlo, mentre il lembo porta vascolarizzazione autonoma, elimina la barriera fibrotica e ripristina l'apporto ematico, bonificando l'osso. Il discriminatore è l'apporto di vascolarizzazione: non basta coprire in superficie o aggiungere volume, e non c'è alcun rigetto immunitario dell'innesto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="confonde la funzione del viscoelastico (mantenere la camera e proteggere l'endotelio) con l'idrodissezione o altre fasi della facoemulsificazione">
+  <p class="tag">Q19 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Nella facoemulsificazione, perché si inietta il viscoelastico prima della capsuloressi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Per staccare il cristallino dalla capsula prima dell'aspirazione</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Per mantenere la camera anteriore espansa e proteggere l'endotelio</button></li>
+    <li><button type="button"><span class="key">C</span>Per frantumare il nucleo riducendo l'energia degli ultrasuoni</button></li>
+    <li><button type="button"><span class="key">D</span>Per fissare la lente pieghevole nel sacco capsulare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il viscoelastico mantiene la camera anteriore espansa e protegge l'endotelio corneale dal trauma degli strumenti, permettendo l'apertura circolare controllata della capsula; senza di esso la camera collasserebbe. Il discriminatore è questa funzione di sostegno e protezione: lo stacco del cristallino dalla capsula è l'idrodissezione, la frammentazione del nucleo spetta alla punta a ultrasuoni e l'ancoraggio della IOL avviene solo a fine intervento.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="interpreta il fenomeno di Koebner come contagio o sovrainfezione invece che come prova della diffusione subclinica dell'infiammazione">
+  <p class="tag">Q20 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">La comparsa di papule lichenoidi lungo una lesione da grattamento su cute sana dimostra che:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il lichen si trasmette per contatto diretto tra aree cutanee contigue</button></li>
+    <li><button type="button"><span class="key">B</span>Il grattamento introduce dall'esterno l'antigene che scatena il lichen</button></li>
+    <li><button type="button"><span class="key">C</span>La cute lesa perde la barriera e si sovrainfetta facilmente</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>L'infiammazione è diffusa anche nella cute apparentemente sana</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il fenomeno di Koebner è la comparsa di lesioni tipiche lungo le aree traumatizzate anche su cute apparentemente sana: dimostra che l'infiltrato infiammatorio è presente in modo diffuso in tutto l'ambito cutaneo, e il trauma ne supera localmente la soglia di attivazione. Il discriminatore è questa diffusione subclinica: non si tratta di contagio tra aree, di introduzione esterna dell'antigene né di banale sovrainfezione della cute lesa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="attribuisce l'acuità centrale alla convergenza o alla sensibilità dei recettori invece che al rapporto uno a uno cono-bipolare-ganglionare">
+  <p class="tag">Q21 · Oftalmologia · Introduzione oftalmologia</p>
+  <h2 class="q-text">Su cosa si fonda l'elevata acuità visiva della visione centrale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sulla convergenza di molti recettori su un'unica cellula bipolare</button></li>
+    <li><button type="button"><span class="key">B</span>Sull'altissima sensibilità dei recettori alla luce debole</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Sul rapporto uno a uno tra cono, cellula bipolare e ganglionare</button></li>
+    <li><button type="button"><span class="key">D</span>Sulla prevalenza numerica dei coni sui bastoncelli nella retina</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'acuità centrale nasce dal rapporto uno a uno tra cono, cellula bipolare e cellula ganglionare, una linea privata che invia al nervo ottico una fibra dedicata per ogni cono maculare. Il discriminatore è questa mancata convergenza: la convergenza di 15-30 recettori su una bipolare e l'altissima sensibilità appartengono ai bastoncelli, e i coni sono in netta minoranza numerica (7 milioni contro 100 milioni di bastoncelli).</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="non riconosce il muscolo come carrier vascolare della cute nel lembo muscolocutaneo, giustificandone il prelievo solo col volume o con l'accesso">
+  <p class="tag">Q22 · Chirurgia plastica · Lembi</p>
+  <h2 class="q-text">In un lembo muscolocutaneo classico perché il muscolo va prelevato insieme alla cute?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché funge da carrier dei vasi che irrorano la cute sovrastante</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la cute da sola non fornisce volume alla ricostruzione</button></li>
+    <li><button type="button"><span class="key">C</span>Perché va comunque asportato per accedere al peduncolo profondo</button></li>
+    <li><button type="button"><span class="key">D</span>Perché senza muscolo il lembo diventa un innesto a tutto spessore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel lembo muscolocutaneo il muscolo è il carrier vascolare della cute: i vasi lo attraversano e, perforando il piano fasciale, raggiungono la cute sovrastante, che senza muscolo perderebbe l'irrorazione. Il discriminatore è questa funzione di trasporto vascolare: il volume è un vantaggio accessorio ma non la ragione dell'obbligo, e proprio il superamento di questo vincolo, isolando le perforanti, distingue i lembi a perforanti dai muscolocutanei.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="non associa la cataratta sottocapsulare posteriore al diabete e al cortisone, scegliendo una forma morfologica diversa">
+  <p class="tag">Q23 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Quale forma di cataratta è caratteristica del diabete e dell'uso prolungato di cortisone?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La cataratta nucleare, con miopizzazione progressiva e stabile del visus</button></li>
+    <li><button type="button"><span class="key">B</span>La cataratta corticale anteriore, a raggi verso la periferia</button></li>
+    <li><button type="button"><span class="key">C</span>La cataratta totale, con opacamento dell'intera lente</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La cataratta sottocapsulare posteriore, davanti alla capsula posteriore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cataratta sottocapsulare posteriore, situata davanti alla capsula posteriore sull'asse visivo, è la forma caratteristica del diabete e dell'uso prolungato di cortisone. Il discriminatore è questa sede sottocapsulare posteriore: la nucleare dà la miopizzazione da indice, la corticale disegna raggi periferici e la totale rappresenta uno stadio evolutivo terminale, nessuna delle quali lega specificamente diabete e steroidi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="non riconosce la controindicazione dell'etretinato nell'epatopatia, trattandolo come gli altri sistemici privi di metabolismo epatico critico">
+  <p class="tag">Q24 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">In un lichen orale erosivo con epatite cronica da HCV, quale trattamento sistemico è controindicato?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>I corticosteroidi sistemici, cardine terapeutico della forma erosiva</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'etretinato, retinoide sistemico a metabolismo epatico</button></li>
+    <li><button type="button"><span class="key">C</span>La ciclosporina, in alternanza con gli steroidi nel lichen orale</button></li>
+    <li><button type="button"><span class="key">D</span>Gli antistaminici, impiegati come sintomatici del prurito</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'etretinato, derivato sistemico dell'acido retinoico, è metabolizzato a livello epatico ed è controindicato nelle epatopatie, oltre a essere teratogeno e fotosensibilizzante; poiché il lichen orale si associa spesso a HBV e HCV, la controindicazione ricorre di frequente. Il discriminatore è il metabolismo epatico del retinoide: corticosteroidi, ciclosporina e antistaminici restano impiegabili, il primo anzi come cardine della forma erosiva.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="attribuisce il calo altitudinale con disco edematoso a un'occlusione retinica o a una forma arteritica, non all'ipoperfusione delle ciliari posteriori brevi">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Un uomo di 68 anni, iperteso, si sveglia con un calo indolore della vista in un occhio e percepisce mancante la metà inferiore del campo. Il disco ottico appare edematoso e pallido nel settore superiore; l'arteria temporale non è dolente e la VES è normale. Quale meccanismo rende conto del quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Occlusione dell'arteria centrale della retina con biancore ischemico interno</button></li>
+    <li><button type="button"><span class="key">B</span>Trombosi della vena centrale della retina con emorragie a fiamma diffuse</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Ipoperfusione delle ciliari posteriori brevi alla testa del nervo ottico</button></li>
+    <li><button type="button"><span class="key">D</span>Demielinizzazione infiammatoria del nervo ottico retrobulbare</button></li>
+    <li><button type="button"><span class="key">E</span>Arterite gigantocellulare delle ciliari con occlusione infiammatoria</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il calo altitudinale indolore con edema del disco e indici infiammatori normali configura una neuropatia ottica ischemica anteriore non arteritica: l'ipoperfusione delle arterie ciliari posteriori brevi, che irrorano la testa del nervo ottico, e i loro due semicerchi superiore e inferiore spiegano il difetto che rispetta il meridiano orizzontale. Il discriminatore è la sede ischemica del disco: l'occlusione arteriosa retinica dà biancore e macchia rosso ciliegia senza questo edema settoriale, la trombosi venosa emorragie a fiamma, la neurite retrobulbare un disco normale in un paziente più giovane, e la forma arteritica avrebbe VES elevata e arteria temporale dolente.</p>
+    <p class="refs"><a href="https://eyewiki.org/Non-Arteritic_Anterior_Ischemic_Optic_Neuropathy_(NAION)">EyeWiki</a> · Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION).</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1"
+  data-tid="27f28251-9c2c-8074-ad38-cc0b57d3991b" data-topic="Introduzione oftalmologia"
+  data-note="confonde l'isola di visione centrale risparmiata da una ciliaretina con la macchia rosso ciliegia o con una presunta resistenza dei coni all'ischemia">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Una donna di 72 anni ha una perdita visiva improvvisa e indolore in un occhio. Il fondo mostra un biancore retinico diffuso, ma una piccola area attorno alla fovea resta rosea e le conserva la lettura di qualche riga. Come si spiega l'isola di visione risparmiata?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Una ciliaretina che, nata dal circolo ciliare, irrora il fascio papillo-maculare</button></li>
+    <li><button type="button"><span class="key">B</span>La macchia rosso ciliegia dovuta alla coroide vista attraverso la fovea assottigliata</button></li>
+    <li><button type="button"><span class="key">C</span>La maggiore resistenza dei coni maculari all'ischemia rispetto ai bastoncelli</button></li>
+    <li><button type="button"><span class="key">D</span>Il drenaggio venoso preservato che mantiene vitale il tessuto maculare</button></li>
+    <li><button type="button"><span class="key">E</span>La doppia vascolarizzazione retinica dell'arteria centrale a livello foveale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è un'occlusione dell'arteria centrale della retina in un occhio dotato di arteria ciliaretina: questo vaso nasce dal circolo ciliare, non dalla centrale, quindi resta pervio quando la centrale si occlude e continua a irrorare il fascio papillo-maculare, preservando un'isola di visione centrale con acuità spesso pari a 20/50 o migliore. Il discriminatore è l'origine ciliare del vaso risparmiato: la macchia rosso ciliegia è il segno dell'occlusione stessa, non del risparmio, i coni non sono più resistenti all'ischemia e la fovea non ha alcun doppio circolo retinico.</p>
+    <p class="refs"><a href="https://www.aao.org/eyenet/article/diagnosis-and-management-of-crao">AAO EyeNet</a> · Diagnosis and Management of Central Retinal Artery Occlusion.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="giustifica il lembo a perforanti con vantaggi vascolari o operatori inesistenti invece che con la ridotta morbilità della parete addominale">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">In una ricostruzione mammaria autologa si preferisce il lembo che risparmia il retto isolando le sole perforanti, rispetto al muscolocutaneo tradizionale con peduncolo epigastrico superiore. Qual è il vantaggio principale documentato di questa scelta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un tempo operatorio più breve grazie a una dissezione semplificata</button></li>
+    <li><button type="button"><span class="key">B</span>Un apporto vascolare intrinsecamente più affidabile del muscolocutaneo</button></li>
+    <li><button type="button"><span class="key">C</span>L'assenza di anastomosi microchirurgiche nel trasferimento del lembo</button></li>
+    <li><button type="button"><span class="key">D</span>La possibilità di un lembo peduncolato che evita i vasi del torace</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Una minore morbilità della parete addominale con meno ernie e bulging</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Isolando le perforanti dell'epigastrica inferiore si conserva l'integrità del muscolo retto e dei suoi nervi motori, riducendo la morbilità della parete addominale rispetto al muscolocutaneo con sacrificio muscolare. Il discriminatore è proprio la morbilità della zona donatrice: la dissezione a perforanti è anzi più lunga e delicata, l'affidabilità vascolare non è superiore, e trattandosi di un lembo libero richiede anastomosi microchirurgiche, quindi non è né senza microsutura né peduncolato.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/24005365/">PubMed</a> · Comprehensive analysis of donor-site morbidity in abdominally based free flap breast reconstruction.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1"
+  data-tid="27f28251-9c2c-806d-af16-ca6fb95a1825" data-topic="Lembi"
+  data-note="ritarda la copertura del difetto attendendo granulazione o guarigione ossea, ignorando che la copertura precoce riduce infezione e fallimento del lembo">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Una frattura esposta di gamba con ampia perdita dei tessuti molli e osso deperiostato viene stabilizzata; resta da coprire il difetto con un lembo. Rispetto agli esiti di infezione, guarigione e sopravvivenza del lembo, quando conviene eseguire la copertura?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Dopo la completa granulazione del letto, per un attecchimento più sicuro</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Precocemente, entro pochi giorni, per ridurre infezione e fallimento del lembo</button></li>
+    <li><button type="button"><span class="key">C</span>Solo dopo la consolidazione ossea, per non disturbare il callo di frattura</button></li>
+    <li><button type="button"><span class="key">D</span>In differita di alcune settimane, per lasciare delimitare la necrosi</button></li>
+    <li><button type="button"><span class="key">E</span>Mai con lembo libero, preferendo sempre un innesto a tutto spessore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nelle fratture esposte gravi con osso deperiostato la copertura precoce con lembo, secondo il principio di Godina e la strategia fix and flap, riduce nettamente infezione, fallimento del lembo e pseudoartrosi: oltre le prime 72 ore la sopravvivenza del lembo cala e la copertura entro una settimana abbatte l'infezione rispetto alla differita. Il discriminatore è la tempestività: attendere granulazione, consolidazione o delimitazione della necrosi peggiora gli esiti, e l'osso deperiostato è proprio l'indicazione al lembo, non all'innesto.</p>
+    <p class="refs"><a href="https://journals.healio.com/doi/10.3928/01477447-20190723-01">Orthopedics (Healio)</a> · Timing of Soft Tissue Coverage in Type IIIB Open Tibia Fractures.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="affida la prevenzione dell'endoftalmite ad antibiotici sistemici o steroidi invece che al cefuroxime intracamerulare validato da trial randomizzato">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Al termine di una facoemulsificazione si vuole ridurre il rischio della complicanza infettiva più temuta dell'intervento. Quale misura ha la migliore evidenza da trial randomizzato multicentrico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La profilassi antibiotica sistemica endovenosa nel perioperatorio</button></li>
+    <li><button type="button"><span class="key">B</span>Il bendaggio compressivo prolungato dell'occhio operato</button></li>
+    <li><button type="button"><span class="key">C</span>I colliri cortisonici ad alte dosi nelle prime ore postoperatorie</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>L'iniezione intracamerulare di cefuroxime a fine intervento</button></li>
+    <li><button type="button"><span class="key">E</span>La scelta di una IOL in PMMA rigido al posto di quella acrilica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Lo studio randomizzato multicentrico ESCRS ha mostrato che il cefuroxime intracamerulare a fine intervento riduce di circa cinque volte l'endoftalmite postoperatoria, e la sua assenza è risultata l'unico fattore di rischio significativo. Il discriminatore è la profilassi intracamerulare mirata: gli antibiotici sistemici non raggiungono efficacemente la camera, bendaggio e steroidi non prevengono l'infezione, e il materiale della IOL non incide sul rischio infettivo.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/17531690/">PubMed</a> · ESCRS study of prophylaxis of postoperative endophthalmitis after cataract surgery.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="tratta l'ambliopia da deprivazione come reversibile o rinvia la chirurgia della cataratta congenita densa oltre la finestra di plasticità corticale">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Un neonato presenta una cataratta congenita monolaterale densa. Il tempismo dell'intervento pesa in modo decisivo sull'esito visivo. Quale principio guida la decisione?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Operare entro le prime settimane, nella finestra di plasticità corticale</button></li>
+    <li><button type="button"><span class="key">B</span>Attendere che l'occhio cresca a sufficienza per impiantare una IOL definitiva</button></li>
+    <li><button type="button"><span class="key">C</span>Rimandare l'intervento oltre l'anno, poiché l'ambliopia resta recuperabile</button></li>
+    <li><button type="button"><span class="key">D</span>Intervenire soltanto se compaiono strabismo o nistagmo associati</button></li>
+    <li><button type="button"><span class="key">E</span>Preferire la sola correzione con occhiali, rinviando la chirurgia</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una cataratta congenita densa priva la corteccia visiva degli stimoli nel periodo critico dello sviluppo: senza intervento precoce l'ambliopia da deprivazione diventa irreversibile, per cui la forma avanzata monolaterale è un'urgenza e si opera nelle prime settimane, quando la plasticità è massima. Il discriminatore è il rispetto di questa finestra: attendere la crescita, superare l'anno o aspettare strabismo e nistagmo la lascia chiudere, e la sola correzione ottica non basta finché l'asse visivo resta occluso.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5018898/">PMC</a> · Timing of surgery for congenital cataracts and visual outcome.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="gestisce una placca infiltrata su lichen orale cronico con terapia o attesa invece della biopsia per escludere il carcinoma spinocellulare">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Un paziente con lichen orale erosivo da molti anni, forte fumatore, mostra una placca che nel tempo diventa vegetante e infiltrata rispetto alle striature reticolari circostanti. Qual è la condotta corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Intensificare il cortisone topico e rivalutare la lesione fra sei mesi</button></li>
+    <li><button type="button"><span class="key">B</span>Attribuire la lesione a una candidosi sovrapposta e trattarla come tale</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Eseguire una biopsia della placca per escludere un carcinoma spinocellulare</button></li>
+    <li><button type="button"><span class="key">D</span>Sospendere ogni terapia, poiché il lichen tende comunque a risolversi</button></li>
+    <li><button type="button"><span class="key">E</span>Prescrivere etretinato sistemico come riducente della placca ipercheratosica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lichen orale erosivo cronico, potenziato da fumo e anzianità della malattia, può trasformarsi in carcinoma spinocellulare; una lesione che diventa vegetante o infiltrata rompe l'uniformità reticolare e va biopsiata per escludere una neoplasia iniziale, prima che metastatizzi. Il discriminatore è la biopsia mirata: aumentare gli steroidi, presumere una candidosi o sospendere le cure rimanda una diagnosi tempo-dipendente, e l'etretinato è per giunta controindicato nelle frequenti epatopatie associate.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10177058/">PMC</a> · Malignant transformation rates in oral lichenoid conditions, meta-analysis.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="non riconosce il fibrinogeno a banda sulla giunzione come reperto immunofluorescente del lichen, confondendolo con i pattern del pemfigo o del pemfigoide">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Una lesione bianca del cavo orale pone il dubbio tra lichen, lesione lichenoide e una malattia bollosa autoimmune. Si invia tessuto per immunofluorescenza diretta. Quale reperto orienta verso il lichen?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Depositi intercellulari di IgG a rete tra i cheratinociti dello strato spinoso</button></li>
+    <li><button type="button"><span class="key">B</span>Deposito lineare di IgG e C3 lungo la membrana basale</button></li>
+    <li><button type="button"><span class="key">C</span>Depositi granulari di IgA all'apice delle papille dermiche</button></li>
+    <li><button type="button"><span class="key">D</span>Assenza completa di qualsiasi deposito immunoreattivo</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Deposito di fibrinogeno a banda irregolare sulla giunzione dermo-epidermica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>All'immunofluorescenza diretta il lichen mostra un deposito irregolare a banda di fibrinogeno lungo la giunzione dermo-epidermica, spesso con IgM sui corpi colloidi, in assenza di un pattern immunoglobulinico specifico. Il discriminatore è proprio il fibrinogeno alla giunzione: i depositi intercellulari di IgG appartengono al pemfigo, il deposito lineare di IgG e C3 al pemfigoide e i granuli di IgA papillari alla dermatite erpetiforme, mentre l'immunofluorescenza del lichen non è mai del tutto muta.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4576637/">PMC</a> · Direct Immunofluorescence in Oral Lichen Planus.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">In una patologia dell'occhio adulto due foglietti che nell'embrione si erano formati aderenti tornano a separarsi, e tra loro si raccoglie del liquido. Il piano di clivaggio non è casuale: ricalca esattamente uno spazio che c'era stato molto tempo prima e che si riteneva scomparso.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Durante lo sviluppo la vescicola ottica si invagina in un calice ottico a doppia parete. La parete interna e quella esterna sono separate da uno spazio, che con la crescita si obblitera quando i due strati si sovrappongono.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Il ragionamento</button>
+      <p>Da quei due strati derivano, nell'adulto, la neuroretina (interna) e l'epitelio pigmentato retinico (esterno). Restano contigui ma non saldati: fra loro c'è la traccia virtuale dello spazio embrionale originario.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Il liquido potrebbe raccogliersi in un piano qualunque della retina, oppure seguire proprio la vecchia linea di separazione tra i due foglietti del calice. Le due ipotesi predicono piani di clivaggio diversi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il distacco avviene esattamente tra neuroretina ed epitelio pigmentato: è la riapertura dello spazio inter-retinico embrionale. L'epitelio pigmentato resta adeso alla coroide, mentre la neuroretina si solleva.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La retina non si strappa a caso: cede lungo una sutura mai davvero cicatrizzata. Capire quel piano spiega perché il distacco separa proprio quei due strati e orienta dove agire per riaccostarli.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Sopra un osso spogliato del suo rivestimento, con un'infezione che dura da mesi, si tenta più volte una copertura sottile prelevata altrove. Ogni volta il tessuto non prende e si perde. Il chirurgo cambia strategia e porta lì un tessuto con i propri vasi: non solo copre, ma la vecchia infezione comincia a spegnersi.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>L'osso è deperiostato e sede di infezione cronica. Attorno si è formata una guaina fibrotica avascolare che chiude il distretto: antibiotici e cellule immunitarie faticano a raggiungerlo attraverso il sangue.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Il ragionamento</button>
+      <p>La copertura sottile prelevata altrove dipende, per sopravvivere, dalla qualità del letto su cui viene posata. Un letto fibrotico e avascolare non la nutre, e quel letto la copertura non è in grado di cambiarlo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Il fallimento potrebbe dipendere solo dalla mancata copertura superficiale, oppure dal fatto che al distretto manca alla radice la vascolarizzazione. Le due letture portano a soluzioni opposte: coprire meglio, o rivascolarizzare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il tessuto con peduncolo proprio porta una vascolarizzazione autonoma, indipendente dal letto: elimina la barriera fibrotica, ripristina l'apporto ematico e apre la strada ad anticorpi, cellule immunocompetenti e antibiotici.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La scelta si decide su una domanda sola: il letto è in grado di nutrire? Se no, non serve una copertura che dipende da quel letto, ma un tessuto che porti con sé il proprio sangue e bonifichi la sede.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Un anziano che da anni leggeva solo con gli occhiali racconta, contento, di riuscire di nuovo a leggere il giornale senza. Nelle settimane seguenti, però, la vista da lontano si vela e i colori si spengono. La ritrovata capacità di leggere non era un ringiovanimento.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Con l'età il cristallino perde elasticità e chi ne è affetto necessita di occhiali per vicino: è la presbiopia. Qui, all'improvviso, quella necessità sembra regredire, mentre il resto della visione peggiora.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Il ragionamento</button>
+      <p>Il nucleo del cristallino si sta opacizzando e la sua densità aumenta. Con la densità cresce l'indice di refrazione, e una lente più convergente sposta il fuoco in avanti: compare una miopia dove prima non c'era.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Due spiegazioni: un recupero reale dell'accomodazione, che restituirebbe elasticità al cristallino, oppure una miopia indotta dall'aumento dell'indice, che compensa per caso la presbiopia senza guarirla.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>È una miopia da indice, la cosiddetta seconda visione: il cristallino catarattoso induce una miopia che annulla temporaneamente la presbiopia. Non è accomodazione recuperata, ma un effetto ottico dell'opacamento in corso.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Il ritorno a leggere senza occhiali non è un dono ma un segnale: la cataratta nucleare avanza. Riconoscerlo evita di scambiare per miglioramento un peggioramento, e colloca il paziente sulla strada dell'intervento.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V04 · Caso ragionato</p>
+  <p class="scenario">La stessa malattia infiammatoria lascia esiti opposti in due sedi dello stesso paziente: sulla pelle le lesioni guariscono senza traccia, mentre sull'unghia e sul cuoio capelluto ciò che si perde non torna più. La differenza non è nella gravità dell'attacco, ma in dove colpisce.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Linfociti T CD8+ citotossici aggrediscono i cheratinociti dello strato basale. A seconda della forma, lo stesso infiltrato può colpire anche la matrice ungueale e i follicoli piliferi, non solo l'epidermide.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Rg</span>Il ragionamento</button>
+      <p>Sulla cute lo strato basale conserva la capacità di rigenerarsi: superata l'infiammazione, l'epidermide si ricostituisce con restitutio ad integrum. La sede dell'attacco decide se il tessuto potrà ripartire.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Se il danno permanente dipendesse dall'intensità, basterebbe spegnere prima l'infiammazione ovunque. Se invece dipende dalla struttura colpita, allora certe sedi sono irreversibili per natura, non per ritardo di cura.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Quando l'aggressione distrugge la matrice ungueale o il follicolo, elimina la struttura germinativa stessa: la lamina e il pelo non possono più riformarsi. È la sede, non la violenza dell'attacco, a rendere il danno definitivo.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Sugli annessi la finestra utile si chiude presto: trattare prima che la matrice sia demolita è l'unico modo di conservarla. Ciò che il linfocita citotossico smantella in quelle sedi, la guarigione non lo restituisce.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  var ENDPOINT = "https://notion-442027153948.europe-west1.run.app/vigil";
+  var PENDING = "vigil:pending";
+  var sent = false;
+
+  function collect() {
+    var per = {};
+    var order = [];
+    items.forEach(function (item) {
+      var qid = item.dataset.q;
+      var tid = item.dataset.tid;
+      if (qid === undefined || tid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      if (!per[tid]) {
+        per[tid] = { id: tid, name: item.dataset.topic || "", total: 0, wrong: 0, notes: [] };
+        order.push(tid);
+      }
+      per[tid].total++;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) {
+        per[tid].wrong++;
+        if (item.dataset.note) per[tid].notes.push(item.dataset.note);
+      }
+    });
+    return order.map(function (k) { return per[k]; });
+  }
+
+  function pendingStore() {
+    try { return JSON.parse(localStorage.getItem(PENDING) || "{}") || {}; } catch (e) { return {}; }
+  }
+
+  function flush() {
+    var token = "";
+    try { token = localStorage.getItem("vigil:token") || ""; } catch (e) {}
+    if (!token) return;
+    var store = pendingStore();
+    Object.keys(store).forEach(function (date) {
+      fetch(ENDPOINT, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token, date: date, topics: store[date] })
+      }).then(function (r) {
+        if (!r.ok) return;
+        var s = pendingStore();
+        delete s[date];
+        try { localStorage.setItem(PENDING, JSON.stringify(s)); } catch (e) {}
+      }).catch(function () {});
+    });
+  }
+
+  function send() {
+    if (sent) return;
+    sent = true;
+    var topics = collect();
+    if (!topics.length) return;
+    var store = pendingStore();
+    store[document.body.dataset.date] = topics;
+    try { localStorage.setItem(PENDING, JSON.stringify(store)); } catch (e) {}
+    flush();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      send();
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (location.hash.indexOf("#t=") === 0) {
+    try { localStorage.setItem("vigil:token", location.hash.slice(3)); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+  flush();
+})();
+</script>
+</body>
+</html>
