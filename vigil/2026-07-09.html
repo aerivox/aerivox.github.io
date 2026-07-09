@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 9 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-09">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>giovedì 9 luglio 2026</h1>
+  <div class="spark">
+    <p>Durante la Battaglia d'Inghilterra, i piloti degli Spitfire tornavano a volte con schegge trasparenti conficcate nell'occhio: frammenti del tettuccio di Perspex, la plastica acrilica delle cabine. Harold Ridley, oculista al St Thomas' di Londra, notò una cosa che nessuno aveva pensato di cercare: quelle schegge stavano lì da anni senza infiammare nulla, tollerate come se l'occhio non le riconoscesse estranee. Ne trasse un'idea che ai colleghi parve un'eresia: sostituire il cristallino reso opaco dalla cataratta con una lente dello stesso materiale, impiantata dentro l'occhio. Il primo intervento, nel 1949, gli valse anni di derisione dalle società oftalmologiche, certe che nulla di artificiale potesse restare in pace là dentro. Ridley fu fatto baronetto a novantatré anni, quando ogni giorno nel mondo milioni di occhi tornavano a vedere grazie a una scheggia d'aereo perfezionata.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="confonde i fattori eziologici scatenanti con l'effettore citotossico del danno tissutale">
+  <p class="tag">Q01 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">Nel lichen planus, quale evento costituisce il meccanismo patogenetico diretto del danno tissutale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La colonizzazione cronica della mucosa da parte di HCV con replicazione locale</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'aggressione dei cheratinociti basali da parte dei linfociti T CD8+ citotossici</button></li>
+    <li><button type="button"><span class="key">C</span>Il deposito di immunocomplessi circolanti lungo la membrana basale</button></li>
+    <li><button type="button"><span class="key">D</span>La degranulazione dei mastociti indotta dal contatto con amalgame dentarie</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lichen è sostenuto da linfociti CD8+ citotossici che distruggono lo strato basale: questa è la patogenesi. HBV/HCV, amalgame e farmaci sono fattori eziologici scatenanti, non l'effettore del danno, e gli immunocomplessi appartengono ad altre dermatosi. Il discriminatore è la separazione tra l'agente causale a monte e l'effettore citotossico che produce la lesione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="non oppone l'ipercheratosi ortocheratosica del lichen alla paracheratosi psoriasica come criterio istologico">
+  <p class="tag">Q02 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">All'esame istologico, quale reperto dello strato corneo distingue il lichen planus dalla psoriasi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Acantosi regolare con allungamento uniforme delle creste epidermiche</button></li>
+    <li><button type="button"><span class="key">B</span>Paracheratosi con persistenza di frammenti nucleari nello strato corneo</button></li>
+    <li><button type="button"><span class="key">C</span>Microascessi di granulociti neutrofili all'interno dello strato corneo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Ipercheratosi ortocheratosica con cheratinociti privi di nucleo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel lichen lo strato corneo si ispessisce in modo ortocheratosico, con cheratinociti che perdono regolarmente il nucleo. Nella psoriasi persiste la paracheratosi con frammenti nucleari e compaiono i microascessi di Munro. Il discriminatore è la presenza o l'assenza di nuclei nel corneo ispessito.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="non riconduce le strie di Wickham all'ipergranulosi focale dello strato granuloso">
+  <p class="tag">Q03 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">Le strie di Wickham visibili sulla superficie delle papule del lichen cutaneo sono determinate da quale alterazione?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>L'ispessimento multifocale dello strato granuloso dell'epidermide</button></li>
+    <li><button type="button"><span class="key">B</span>Il deposito di melanina lungo la giunzione dermo-epidermica</button></li>
+    <li><button type="button"><span class="key">C</span>La confluenza delle papule in placche a superficie desquamante</button></li>
+    <li><button type="button"><span class="key">D</span>La dilatazione dei capillari del derma papillare superficiale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le strie di Wickham nascono dall'ipergranulosi focale, cioè dall'ispessimento multifocale dello strato granuloso, che crea una variazione ottica biancastra sulla papula. Non dipendono da pigmento, vascolarizzazione o desquamazione. Il discriminatore è l'origine granulosa del segno.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="estende la reversibilità del lichen cutaneo agli annessi, la cui distruzione è invece definitiva">
+  <p class="tag">Q04 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">Quale conseguenza del lichen planus persiste in modo permanente anche dopo la guarigione della malattia?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le chiazze brunastre post-infiammatorie lasciate dalle papule cutanee</button></li>
+    <li><button type="button"><span class="key">B</span>Le erosioni dolorose della mucosa orale nella forma erosiva</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>La perdita della lamina ungueale per distruzione della matrice</button></li>
+    <li><button type="button"><span class="key">D</span>Il prurito intenso che accompagna le lesioni papulose degli arti</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'aggressione della matrice ungueale e dei follicoli piliferi è irreversibile: la lamina persa e l'alopecia non tornano. Il lichen cutaneo invece guarisce con restitutio ad integrum, e iperpigmentazione, erosioni e prurito sono transitori. Il discriminatore è la distruzione degli annessi contro il danno epidermico reversibile.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="non legge il fenomeno di Koebner come prova della diffusione subclinica dell'infiltrato">
+  <p class="tag">Q05 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">La comparsa di papule lichenoidi lungo una linea di grattamento su cute clinicamente sana indica che:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La malattia sta evolvendo verso una forma bollosa generalizzata</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il processo infiammatorio è diffuso anche nella cute apparentemente indenne</button></li>
+    <li><button type="button"><span class="key">C</span>È in atto una sovrainfezione batterica delle lesioni preesistenti</button></li>
+    <li><button type="button"><span class="key">D</span>Il paziente si è sensibilizzato per contatto agli steroidi topici applicati</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il fenomeno di Koebner mostra che il traumatismo fa emergere lesioni tipiche dove la cute sembrava sana: l'infiltrato è quindi diffuso e non limitato alle sedi visibili. Non segnala evoluzione bollosa, infezione o sensibilizzazione da contatto. Il discriminatore è la diffusione subclinica del processo infiammatorio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="tratta l'etretinato come i sistemici privi di metabolismo epatico critico nel paziente epatopatico">
+  <p class="tag">Q06 · Dermatologia · Lichen planus</p>
+  <h2 class="q-text">In un paziente con lichen orale erosivo e nota epatite cronica da HCV, quale scelta terapeutica è controindicata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Corticosteroidi sistemici nelle fasi di peggioramento delle erosioni</button></li>
+    <li><button type="button"><span class="key">B</span>Ciclosporina in formulazione topica in alternanza con gli steroidi</button></li>
+    <li><button type="button"><span class="key">C</span>Acido retinoico topico applicato sulle lesioni leucocheratosiche</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Etretinato sistemico per la sua azione riducente più potente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'etretinato è metabolizzato dal fegato ed è controindicato nelle epatopatie, frequenti nel lichen orale per l'associazione con HCV. Steroidi, ciclosporina e retinoide topico restano praticabili. Il discriminatore è il metabolismo epatico del retinoide sistemico su un fegato già compromesso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="non identifica la rosolia del primo trimestre come causa principale legata alla finestra organogenetica">
+  <p class="tag">Q07 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Qual è la causa principale di cataratta congenita e in quale finestra il rischio malformativo è massimo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Rosolia materna contratta nel primo trimestre di gravidanza</button></li>
+    <li><button type="button"><span class="key">B</span>Diabete gestazionale diagnosticato nel corso del terzo trimestre</button></li>
+    <li><button type="button"><span class="key">C</span>Galattosemia del neonato rilevata nei giorni dopo la nascita</button></li>
+    <li><button type="button"><span class="key">D</span>Toxoplasmosi materna acquisita in prossimità del parto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La rosolia materna è la prima causa di cataratta congenita, e l'infezione nel primo trimestre produce embriopatia con malformazioni nel 90% dei casi, perché colpisce l'organogenesi. Le altre cause esistono ma non hanno lo stesso peso, e oltre il primo trimestre il danno è tissutale, non malformativo. Il discriminatore è l'infezione rubeolica nella fase organogenetica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="non collega la seconda visione alla miopizzazione da aumento dell'indice di refrazione nucleare">
+  <p class="tag">Q08 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Un paziente presbite torna a leggere senza occhiali; l'esame mostra opacità nucleare del cristallino. Come si spiega il fenomeno?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'opacità sottocapsulare posteriore ha ridotto l'abbagliamento da vicino</button></li>
+    <li><button type="button"><span class="key">B</span>La cataratta ha ridotto la lunghezza assiale del bulbo oculare</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'aumento dell'indice di refrazione del nucleo induce una miopizzazione</button></li>
+    <li><button type="button"><span class="key">D</span>La riduzione del diametro pupillare ha aumentato la profondità di fuoco</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cataratta nucleare aumenta l'indice di refrazione del cristallino e quindi il suo potere convergente, spostando il fuoco in avanti: è una miopizzazione che compensa la presbiopia, la cosiddetta seconda visione. Non entrano in gioco lunghezza assiale né diametro pupillare. Il discriminatore è l'indice di refrazione del nucleo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="scambia il meccanismo trabecolare del glaucoma facolitico con il blocco d'angolo facomorfico o la flogosi facoanafilattica">
+  <p class="tag">Q09 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">In una cataratta ipermatura non operata, quale meccanismo sostiene il glaucoma facolitico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il cristallino intumescente spinge in avanti l'iride e chiude l'angolo</button></li>
+    <li><button type="button"><span class="key">B</span>Le masse cristalline riassorbite fungono da antigeni e scatenano flogosi</button></li>
+    <li><button type="button"><span class="key">C</span>La trazione del vitreo sulla retina periferica solleva il corpo ciliare</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Il materiale cristallino fuoriuscito dalla capsula ostruisce il trabecolato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel glaucoma facolitico il materiale lenticolare esce dalla capsula e ostruisce meccanicamente il trabecolato, alzando la pressione. L'occlusione dell'angolo da cristallino intumescente è il facomorfico, la reazione agli antigeni riassorbiti è l'uveite facoanafilattica. Il discriminatore è la sede dell'ostacolo al deflusso, il trabecolato.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="etichetta l'opacizzazione capsulare tardiva indolore come endoftalmite anziché cataratta secondaria">
+  <p class="tag">Q10 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">A un anno dall'intervento di cataratta un paziente ha un calo visivo lento e indolore; la capsula posteriore appare opacata. Di quale complicanza si tratta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Endoftalmite cronica a insorgenza tardiva con placche sulla IOL</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Cataratta secondaria da opacizzazione della capsula posteriore</button></li>
+    <li><button type="button"><span class="key">C</span>Dislocazione della IOL dal sacco capsulare verso la camera vitrea</button></li>
+    <li><button type="button"><span class="key">D</span>Edema maculare cistoide del segmento posteriore post-chirurgico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il calo lento e indolore con capsula posteriore opaca è la cataratta secondaria, trattata con capsulotomia YAG, e colpisce circa metà degli operati. L'endoftalmite è un quadro infettivo-infiammatorio, non una semplice opacità capsulare; dislocazione ed edema maculare danno segni diversi. Il discriminatore è l'opacità capsulare non infiammatoria.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="non attribuisce al viscoelastico il mantenimento della camera e la protezione endoteliale prima della capsuloressi">
+  <p class="tag">Q11 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Durante la facoemulsificazione, perché si inietta una sostanza viscoelastica in camera anteriore prima della capsuloressi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Per frantumare il nucleo del cristallino con le vibrazioni a ultrasuoni</button></li>
+    <li><button type="button"><span class="key">B</span>Per staccare il cristallino dalla capsula mediante un piano di liquido</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Per mantenere espansa la camera e proteggere l'endotelio corneale</button></li>
+    <li><button type="button"><span class="key">D</span>Per ancorare stabilmente la IOL pieghevole all'interno del sacco capsulare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il viscoelastico mantiene la camera anteriore espansa e protegge l'endotelio dal trauma degli strumenti, condizione necessaria per una capsuloressi controllata. La frantumazione spetta agli ultrasuoni, il distacco dalla capsula all'idrodissezione. Il discriminatore è la protezione dello spazio e dell'endotelio prima dell'apertura capsulare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="tratta l'ambliopia da deprivazione come recuperabile oltre la finestra di plasticità corticale">
+  <p class="tag">Q12 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Perché una cataratta congenita bilaterale densa impone l'intervento entro le prime settimane di vita?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Oltre il periodo critico la deprivazione visiva causa un'ambliopia irreversibile</button></li>
+    <li><button type="button"><span class="key">B</span>Il cristallino neonatale si indurisce presto rendendone impossibile l'aspirazione</button></li>
+    <li><button type="button"><span class="key">C</span>Il rischio di endoftalmite aumenta con l'età del paziente pediatrico</button></li>
+    <li><button type="button"><span class="key">D</span>La IOL si impianta solo prima che il bulbo raggiunga dimensioni adulte</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel periodo critico la corteccia visiva ha bisogno di stimoli luminosi per maturare; una cataratta densa che li blocca produce un'ambliopia da deprivazione irreversibile se non rimossa in tempo. Non si tratta di durezza del cristallino, rischio infettivo o dimensioni del bulbo. Il discriminatore è la plasticità corticale a finestra temporale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="generalizza il meccanismo IgE-mediato a tutta l'orticaria, ignorando la degranulazione diretta pseudoallergica prevalente">
+  <p class="tag">Q13 · Dermatologia · Orticaria</p>
+  <h2 class="q-text">Nell'orticaria, quale affermazione descrive correttamente il meccanismo della degranulazione mastocitaria?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La maggioranza dei casi dipende da immunocomplessi che attivano il complemento</button></li>
+    <li><button type="button"><span class="key">B</span>La forma pseudoallergica è mediata da IgE specifiche verso gli additivi alimentari</button></li>
+    <li><button type="button"><span class="key">C</span>Tutte le forme richiedono una pregressa sensibilizzazione allergica IgE-mediata</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Solo circa il 15% è IgE-mediato, il resto degranula per stimoli diretti</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Solo circa il 15% delle orticarie è immunologico da cross-linking delle IgE sui mastociti; la maggior parte degrana per stimoli fisici, nervosi o pseudoallergici che attivano direttamente il mastocita senza IgE. Non è mediata da immunocomplessi né richiede sempre sensibilizzazione. Il discriminatore è la minoranza IgE-dipendente contro la degranulazione diretta.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="colloca il confine acuta/cronica a tre mesi anziché alle sei settimane">
+  <p class="tag">Q14 · Dermatologia · Orticaria</p>
+  <h2 class="q-text">Quale criterio temporale definisce l'orticaria cronica rispetto alla forma acuta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Persistenza dei pomfi per oltre tre mesi di manifestazioni continue</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Comparsa di pomfi quasi quotidiani per oltre sei settimane</button></li>
+    <li><button type="button"><span class="key">C</span>Ricorrenza degli episodi per almeno dodici mesi consecutivi</button></li>
+    <li><button type="button"><span class="key">D</span>Durata del singolo pomfo superiore alle ventiquattro ore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'orticaria è cronica quando i pomfi ricorrono quasi ogni giorno per oltre sei settimane; sotto questa soglia è acuta. Non sono tre mesi né dodici mesi, e la durata del singolo pomfo, fugace e di poche ore, è un altro parametro. Il discriminatore è il cut-off delle sei settimane.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="attribuisce al pomfo la persistenza o l'erosione da grattamento, negandone la fugacità migrante">
+  <p class="tag">Q15 · Dermatologia · Orticaria</p>
+  <h2 class="q-text">Qual è la caratteristica clinica che definisce il pomfo dell'orticaria?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>È una lesione fugace che scompare e ricompare in sedi diverse</button></li>
+    <li><button type="button"><span class="key">B</span>È una vescicola che si erode al grattamento lasciando esiti crostosi</button></li>
+    <li><button type="button"><span class="key">C</span>È una placca desquamante persistente a bordi netti e stabili</button></li>
+    <li><button type="button"><span class="key">D</span>È un nodulo sottocutaneo duro che permane per diverse settimane</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il pomfo è per definizione fugace: compare, svanisce in poche ore e ricompare altrove, senza lasciare esiti. Non è una vescicola che si erode né una placca desquamante stabile, e l'assenza di lesioni da grattamento lo distingue dall'eczema. Il discriminatore è la fugacità migrante della lesione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="non distingue l'angioedema dal pomfo per profondità dell'edema e assenza di eritema">
+  <p class="tag">Q16 · Dermatologia · Orticaria</p>
+  <h2 class="q-text">In un paziente con edema di labbra e palpebre, cute di colore normale e bruciore, quale elemento orienta verso l'angioedema anziché il pomfo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il prurito intenso che precede la comparsa della tumefazione</button></li>
+    <li><button type="button"><span class="key">B</span>La sede delle lesioni esclusivamente agli arti e al tronco</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'interessamento del derma profondo con cute non eritematosa</button></li>
+    <li><button type="button"><span class="key">D</span>La risoluzione della tumefazione entro pochi minuti dall'esordio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'angioedema interessa il derma profondo o il sottocute: la cute resta di colore normale, prevale il bruciore e la durata è maggiore. Il pomfo è superficiale, eritematoso e pruriginoso, e le sedi tipiche dell'angioedema sono labbra, palpebre e mucose. Il discriminatore è la profondità dell'edema con assenza di eritema.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="confonde la reattività immediata allo sfregamento con le forme da pressione ritardata o termiche">
+  <p class="tag">Q17 · Dermatologia · Orticaria</p>
+  <h2 class="q-text">Quale orticaria fisica si evoca sfregando la cute e si manifesta con una striscia rilevata pochi minuti dopo lo stimolo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Orticaria da pressione ritardata con edema doloroso a distanza di ore</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Orticaria dermografica, la più frequente tra le forme fisiche</button></li>
+    <li><button type="button"><span class="key">C</span>Orticaria colinergica scatenata dall'aumento della temperatura corporea</button></li>
+    <li><button type="button"><span class="key">D</span>Orticaria da freddo evocata dal contatto con un cubetto di ghiaccio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'orticaria dermografica è la più frequente delle forme fisiche: lo sfregamento evoca subito una striscia rilevata. L'orticaria da pressione compare ore dopo, la colinergica risponde al calore corporeo, quella da freddo al ghiaccio. Il discriminatore è la reattività immediata allo sfregamento lineare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="non attribuisce la preferenza per gli antistaminici di nuova generazione al mancato passaggio della barriera ematoencefalica">
+  <p class="tag">Q18 · Dermatologia · Orticaria</p>
+  <h2 class="q-text">Perché nell'orticaria si preferiscono gli antistaminici di nuova generazione come prima linea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché stabilizzano la membrana del mastocita impedendone la degranulazione</button></li>
+    <li><button type="button"><span class="key">B</span>Perché sopprimono la sintesi di anticorpi IgG nelle forme autoimmuni</button></li>
+    <li><button type="button"><span class="key">C</span>Perché sostituiscono i corticosteroidi nell'angioedema della glottide</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché non attraversano la barriera ematoencefalica e sedano meno</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Gli antistaminici di nuova generazione non passano la barriera ematoencefalica, mantenendo l'efficacia periferica sui recettori H1 con minore sedazione: per questo sono la prima linea. Non sono stabilizzatori di membrana come i cromoni né immunosoppressori, e non gestiscono l'urgenza della glottide. Il discriminatore è il mancato passaggio centrale del farmaco.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="non oppone il substrato biologico intrinseco dell'ulcera al trauma estrinseco della piaga">
+  <p class="tag">Q19 · Chirurgia plastica · Ferite arto inferiore</p>
+  <h2 class="q-text">Nella terminologia chirurgica classica, che cosa distingue un'ulcera da una piaga?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'ulcera è superficiale mentre la piaga interessa i piani muscolari profondi</button></li>
+    <li><button type="button"><span class="key">B</span>L'ulcera è sempre infetta mentre la piaga è per definizione sterile</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'ulcera dipende dal substrato biologico del paziente, la piaga da un trauma esterno</button></li>
+    <li><button type="button"><span class="key">D</span>L'ulcera guarisce per prima intenzione, la piaga solo per seconda intenzione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'ulcera nasce da condizioni intrinseche del paziente che ritardano la guarigione; la piaga deriva da un fattore esterno e tende a guarire spontaneamente in un soggetto in buone condizioni. Non è questione di profondità, infezione o tipo di intenzione. Il discriminatore è l'asse fattore intrinseco contro trauma estrinseco.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="altera l'ordine del protocollo TIME anteponendo essudato, margine o infezione alla vitalità del tessuto">
+  <p class="tag">Q20 · Chirurgia plastica · Ferite arto inferiore</p>
+  <h2 class="q-text">Nel protocollo TIME per la preparazione del letto della ferita, quale parametro va affrontato per primo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La vitalità del tessuto, rimuovendo escare e slough dal fondo</button></li>
+    <li><button type="button"><span class="key">B</span>Il bilancio dell'essudato, correggendo l'eccesso di umidità del letto</button></li>
+    <li><button type="button"><span class="key">C</span>L'avanzamento del margine epiteliale verso il centro della lesione</button></li>
+    <li><button type="button"><span class="key">D</span>Il controllo dell'infezione con antimicrobici topici ad ampio spettro</button></li>
+  </ol>
+  <div class="rationale">
+    <p>TIME impone una sequenza: prima T, la vitalità del tessuto con il debridement, poi I (infezione), M (essudato) ed E (margine). Correggere umidità, margine o infezione prima di rimuovere il tessuto non vitale salta il primo gradino. Il discriminatore è l'ordine che pone il debridement all'inizio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="attribuisce al debridement una sterilizzazione o uno stimolo diretto, non la rimozione del substrato batterico-meccanico">
+  <p class="tag">Q21 · Chirurgia plastica · Ferite arto inferiore</p>
+  <h2 class="q-text">Perché il debridement è considerato l'intervento singolo più efficace nella gestione della ferita cronica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché sterilizza definitivamente il letto eliminando ogni batterio presente</button></li>
+    <li><button type="button"><span class="key">B</span>Perché sostituisce la necessità di correggere i parametri sistemici del paziente</button></li>
+    <li><button type="button"><span class="key">C</span>Perché stimola direttamente la sintesi di collagene da parte dei fibroblasti</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché rimuove il substrato che nasconde i batteri e ostacola la granulazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il tessuto non vitale è insieme rifugio per i batteri e barriera alla granulazione: rimuoverlo agisce su due fattori patogenetici contemporaneamente. Non sterilizza in assoluto, non sostituisce l'ottimizzazione sistemica e non è uno stimolo diretto ai fibroblasti. Il discriminatore è la rimozione del substrato batterico-meccanico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="considera la NPWT un sostituto della copertura anziché un ponte che protegge e prepara il letto">
+  <p class="tag">Q22 · Chirurgia plastica · Ferite arto inferiore</p>
+  <h2 class="q-text">In una frattura esposta della gamba con osso scoperto in attesa di copertura, quale ruolo svolge la terapia a pressione negativa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sostituisce definitivamente la ricostruzione con lembo dell'area esposta</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Isola l'osso dall'esterno e stimola la granulazione fino alla copertura</button></li>
+    <li><button type="button"><span class="key">C</span>Riduce la frattura allineando i monconi ossei sotto aspirazione continua</button></li>
+    <li><button type="button"><span class="key">D</span>Sterilizza l'osso esposto rendendo superflua la profilassi antibiotica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La NPWT, a tenuta stagna, isola l'osso dai contaminanti e con la pressione negativa stimola flusso e granulazione, preparando il letto alla copertura: è un ponte, non un sostituto della ricostruzione. Non riduce la frattura né rende superflua la profilassi. Il discriminatore è la doppia funzione di barriera e stimolo in attesa del lembo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="affida il controllo del biofilm ai soli antimicrobici, ignorando la rimozione fisica ripetuta della matrice">
+  <p class="tag">Q23 · Chirurgia plastica · Ferite arto inferiore</p>
+  <h2 class="q-text">Un'ulcera colonizzata da biofilm non risponde ai soli antimicrobici topici. Quale strategia è determinante per contrastarlo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La rimozione fisica ripetuta con debridement e irrigazione del letto</button></li>
+    <li><button type="button"><span class="key">B</span>Il passaggio a una medicazione occlusiva che isola completamente la ferita</button></li>
+    <li><button type="button"><span class="key">C</span>La somministrazione di un ciclo di antibiotici sistemici a domicilio</button></li>
+    <li><button type="button"><span class="key">D</span>L'applicazione di un idrogel per cedere umidità al fondo della lesione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il glicocalice del biofilm protegge i batteri da antimicrobici e difese immunitarie, per cui la rimozione fisica ripetuta con debridement, irrigazione o ultrasuoni è la strategia determinante, associata ad antimicrobici topici. Un'occlusione, un antibiotico sistemico o un idrogel da soli non disgregano la matrice. Il discriminatore è la disgregazione meccanica della matrice protettiva.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="non fonda l'attecchimento passivo dell'innesto su imbibizione e inosculazione dal letto vascolarizzato">
+  <p class="tag">Q24 · Chirurgia plastica · Ferite arto inferiore</p>
+  <h2 class="q-text">Un letto granuleggiante e vascolarizzato permette l'attecchimento di un innesto cutaneo perché:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'innesto porta con sé un proprio peduncolo vascolare autonomo</button></li>
+    <li><button type="button"><span class="key">B</span>La contrazione dei margini avvicina i bordi fino alla chiusura diretta</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'innesto si nutre per imbibizione plasmatica e poi per inosculazione dal letto</button></li>
+    <li><button type="button"><span class="key">D</span>Il tessuto di granulazione rende superflua ogni vascolarizzazione del letto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'innesto è una ricostruzione passiva: sopravvive prima per imbibizione plasmatica e poi per inosculazione dei vasi dal letto ricevente, quindi richiede un fondo vascolarizzato. Il peduncolo autonomo appartiene ai lembi, la ricostruzione attiva necessaria su osso o tendine esposti. Il discriminatore è la dipendenza dell'innesto dalla vascolarizzazione del letto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="affida la conferma diagnostica all'immunofluorescenza diretta invece che all'istologia con infiltrato lichenoide a banda">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Una donna di 50 anni presenta strie biancastre reticolari e aree erose sulla mucosa geniena, con papule violacee pruriginose ai polsi. Si vuole confermare il sospetto ed escludere altre lesioni bianche del cavo orale. Quale accertamento fornisce la conferma diagnostica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Immunofluorescenza diretta per depositi lineari di IgG sulla membrana basale</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Biopsia con istologia che mostri infiltrato lichenoide a banda e degenerazione basale</button></li>
+    <li><button type="button"><span class="key">C</span>Tampone micologico per la ricerca di ife di Candida sulle lesioni bianche</button></li>
+    <li><button type="button"><span class="key">D</span>Sierologia per la ricerca di anticorpi anti-desmogleina 1 e 3 circolanti</button></li>
+    <li><button type="button"><span class="key">E</span>Citologia esfoliativa con striscio delle lesioni reticolari della guancia</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La conferma poggia sulla biopsia con quadro istologico lichenoide: infiltrato a banda, degenerazione liquefattiva basale e ipercheratosi ortocheratosica. L'immunofluorescenza diretta serve semmai a escludere le dermatosi bollose autoimmuni, non a confermare la diagnosi, e gli anti-desmogleina orientano al pemfigo. Il discriminatore è l'istologia lichenoide come standard, con la immunofluorescenza in ruolo di esclusione.</p>
+    <p class="refs"><a href="https://doi.org/10.3390/jcm13175280">J Clin Med 2024;13:5280</a> · Nukaly et al., diagnosi su base clinica, istopatologica e immunofluorescenza.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1"
+  data-tid="27f28251-9c2c-80fb-97b8-d62133f65cc3" data-topic="Lichen planus"
+  data-note="non riconosce nella placca indurita del lichen erosivo il segnale di trasformazione spinocellulare che impone biopsia">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Un uomo di 60 anni, fumatore, è seguito da anni per lesioni erosive croniche della mucosa orale. A un controllo una placca appare indurita e vegetante, con margini rilevati. Qual è la condotta corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aumentare il dosaggio del corticosteroide topico e rivalutare fra sei mesi</button></li>
+    <li><button type="button"><span class="key">B</span>Prescrivere un antimicotico sistemico presumendo una sovrainfezione da Candida</button></li>
+    <li><button type="button"><span class="key">C</span>Rassicurare il paziente poiché le lesioni croniche tendono a stabilizzarsi</button></li>
+    <li><button type="button"><span class="key">D</span>Sospendere ogni terapia per non mascherare l'evoluzione delle lesioni</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Eseguire una biopsia della lesione indurita per escludere un carcinoma spinocellulare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma erosiva orale è un disordine potenzialmente maligno: anzianità della lesione, fumo e forma erosiva aumentano il rischio, e una placca indurita o vegetante impone la biopsia per escludere il carcinoma spinocellulare. Rimandare, rassicurare o trattare empiricamente ritarda una diagnosi tempo-dipendente. Il discriminatore è il cambiamento morfologico che segnala possibile trasformazione.</p>
+    <p class="refs"><a href="https://doi.org/10.1016/j.oraloncology.2019.104550">Oral Oncol 2020;102:104550</a> · Warnakulasuriya, disordini orali potenzialmente maligni · <a href="https://doi.org/10.3390/jcm13175280">J Clin Med 2024;13:5280</a>.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="affida la prevenzione dell'endoftalmite ad antibiotici sistemici o steroidi anziché al cefuroxime intracamerulare">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">Al termine di una facoemulsificazione senza complicanze si vuole ridurre al minimo il rischio di endoftalmite postoperatoria acuta. Quale misura ha la maggiore evidenza da trial randomizzato?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Iniezione intracamerulare di cefuroxime al termine dell'intervento</button></li>
+    <li><button type="button"><span class="key">B</span>Ciclo di antibiotico sistemico per via orale nella settimana postoperatoria</button></li>
+    <li><button type="button"><span class="key">C</span>Collirio corticosteroideo ad alte dosi nelle prime ore dopo la chirurgia</button></li>
+    <li><button type="button"><span class="key">D</span>Bendaggio occlusivo compressivo dell'occhio per le prime quarantotto ore</button></li>
+    <li><button type="button"><span class="key">E</span>Lavaggio della camera anteriore con soluzione salina bilanciata riscaldata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La profilassi dell'endoftalmite con la più solida evidenza è l'iniezione intracamerulare di cefuroxime a fine intervento, validata dal trial randomizzato multicentrico ESCRS; l'antibiotico sistemico e lo steroide topico non hanno dimostrato pari efficacia. Il discriminatore è la via intracamerulare mirata rispetto a coperture sistemiche o antinfiammatorie.</p>
+    <p class="refs"><a href="https://doi.org/10.1097/j.jcrs.0000000000000559">J Cataract Refract Surg 2021;47:150</a> · Chang, ESCRS intracameral cefuroxime.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-note="considera differibile la chirurgia della cataratta congenita densa oltre la finestra di plasticità corticale">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Un neonato di quattro settimane presenta cataratta densa bilaterale con leucocoria. I genitori chiedono se l'intervento possa attendere che il bambino sia più grande e più robusto. Qual è la risposta corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Si può attendere il primo anno, quando il bulbo raggiunge dimensioni operabili</button></li>
+    <li><button type="button"><span class="key">B</span>L'intervento va rimandato finché non compaiono strabismo o nistagmo manifesti</button></li>
+    <li><button type="button"><span class="key">C</span>La priorità è impiantare subito una IOL di potere adulto in entrambi gli occhi</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>L'intervento va eseguito entro poche settimane, prima che la deprivazione diventi irreversibile</button></li>
+    <li><button type="button"><span class="key">E</span>La correzione con occhiali ad alto potere può sostituire la chirurgia precoce</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una cataratta densa bilaterale blocca gli stimoli nella finestra di massima plasticità corticale: rimandare oltre poche settimane consolida un'ambliopia da deprivazione irreversibile. Aspettare segni come lo strabismo, puntare sulla IOL adulta o sugli occhiali non sostituisce la rimozione precoce dell'opacità; l'impianto della lente può semmai attendere se il bulbo è piccolo. Il discriminatore è la finestra temporale della plasticità visiva.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="salta l'omalizumab di seconda linea ricorrendo a steroide cronico o direttamente alla ciclosporina">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Una paziente con pomfi pruriginosi quotidiani da tre mesi non risponde all'antistaminico di seconda generazione neppure a dosaggio quadruplicato. Si vogliono evitare cicli ripetuti di steroide orale. Qual è il passo raccomandato dalle linee guida?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sospendere l'antistaminico e passare a un sedativo di prima generazione serale</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Aggiungere l'anticorpo monoclonale anti-IgE omalizumab come seconda linea</button></li>
+    <li><button type="button"><span class="key">C</span>Avviare subito la ciclosporina come terapia di prima scelta nel resistente</button></li>
+    <li><button type="button"><span class="key">D</span>Impostare un corticosteroide orale a giorni alterni come mantenimento prolungato</button></li>
+    <li><button type="button"><span class="key">E</span>Limitarsi a una dieta di eliminazione degli alimenti istamino-liberatori</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Dopo l'antistaminico di seconda generazione, anche quadruplicato, la linea guida internazionale 2022 pone l'omalizumab come seconda linea, prima della ciclosporina, e lo steroide orale cronico va evitato. Il discriminatore è la posizione dell'anti-IgE nella scala terapeutica, non un salto all'immunosoppressore o allo steroide di mantenimento.</p>
+    <p class="refs"><a href="https://doi.org/10.1001/jama.2024.15568">JAMA 2024;332:1464</a> · Kolkhir et al., omalizumab seconda linea, ciclosporina terza.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1"
+  data-tid="27f28251-9c2c-8084-9d47-edca5fde127a" data-topic="Orticaria"
+  data-note="tratta l'angioedema bradichininico come istaminergico, con adrenalina o steroide anziché C1-inibitore o icatibant">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Un uomo giovane ha episodi ricorrenti di edema di labbra e laringe senza pomfi né prurito, con anamnesi familiare positiva. Gli attacchi non rispondono ad antistaminici, corticosteroidi e adrenalina. Quale meccanismo e trattamento sono corretti?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Reazione IgE-mediata da trattare con adrenalina intramuscolare ripetuta</button></li>
+    <li><button type="button"><span class="key">B</span>Orticaria colinergica da trattare con antistaminici a dosaggio aumentato</button></li>
+    <li><button type="button"><span class="key">C</span>Angioedema istaminergico da trattare con corticosteroide sistemico ad alte dosi</button></li>
+    <li><button type="button"><span class="key">D</span>Anafilassi alimentare da gestire con osservazione e antistaminico orale</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Angioedema bradichininico da deficit di C1-inibitore, da trattare con C1-inibitore o icatibant</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'edema ricorrente senza pomfi, familiare e refrattario ad antistaminici, steroidi e adrenalina è bradichininico da deficit di C1-inibitore, non istaminergico: risponde al C1-inibitore concentrato o all'antagonista del recettore B2 della bradichinina, l'icatibant. Il discriminatore è il mediatore bradichinina contro istamina, che ridefinisce diagnosi e terapia.</p>
+    <p class="refs"><a href="https://doi.org/10.1016/j.alit.2020.07.008">Allergol Int 2021;70:45</a> · Hide et al., agenti on-demand WAO/EAACI: C1-inibitore, ecallantide, icatibant.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="cerca la guarigione dell'ulcera neuropatica plantare nelle medicazioni invece che nello scarico del carico pressorio">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Un paziente diabetico ha un'ulcera neuropatica plantare all'avampiede, con letto deterso e ben granuleggiante ma senza tendenza alla chiusura nonostante medicazioni avanzate. Quale intervento incide di più sulla guarigione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sostituire la medicazione avanzata con un alginato ad alta assorbenza</button></li>
+    <li><button type="button"><span class="key">B</span>Prescrivere un ciclo di antibiotico sistemico anche in assenza di infezione</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Scaricare il carico pressorio con un dispositivo inamovibile fino al ginocchio</button></li>
+    <li><button type="button"><span class="key">D</span>Applicare ossigenoterapia iperbarica come trattamento di prima scelta</button></li>
+    <li><button type="button"><span class="key">E</span>Programmare una rivascolarizzazione dell'arto prima di ogni altra misura</button></li>
+  </ol>
+  <div class="rationale">
+    <p>In un'ulcera neuropatica plantare lo stress meccanico è il motore che impedisce la chiusura: la linea guida IWGDF 2023 pone come prima scelta lo scarico con dispositivo inamovibile fino al ginocchio. Medicazioni, antibiotico non indicato, ossigenoterapia o rivascolarizzazione, utile nell'arto ischemico ma non qui, non sostituiscono l'offloading. Il discriminatore è la rimozione del carico pressorio.</p>
+    <p class="refs"><a href="https://doi.org/10.1002/dmrr.3647">Diabetes Metab Res Rev 2023;40:e3647</a> · Bus et al., IWGDF, scarico inamovibile di prima scelta.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1"
+  data-tid="27f28251-9c2c-802e-b9c7-e6b3d1096660" data-topic="Ferite acute e croniche dell'arto inferiore"
+  data-note="applica la compressione dell'ulcera venosa all'arto arterioso ischemico, ignorando la rivascolarizzazione come cardine">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Un'ulcera alla gamba è dolorosa, a margini netti, su un arto freddo con polsi periferici assenti e indice caviglia-braccio ridotto. Prima di impostare il trattamento locale, quale scelta è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Avviare la valutazione per la rivascolarizzazione, cardine dell'ulcera arteriosa</button></li>
+    <li><button type="button"><span class="key">B</span>Applicare un bendaggio compressivo ad alta pressione come nell'ulcera venosa</button></li>
+    <li><button type="button"><span class="key">C</span>Iniziare subito un debridement chirurgico esteso del letto dell'ulcera</button></li>
+    <li><button type="button"><span class="key">D</span>Impostare la terapia a pressione negativa come prima misura sull'arto ischemico</button></li>
+    <li><button type="button"><span class="key">E</span>Prescrivere elevazione dell'arto e riposo a letto come trattamento risolutivo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Polsi assenti, arto freddo e indice caviglia-braccio ridotto indicano un'ulcera arteriosa, il cui cardine è la rivascolarizzazione; la compressione ad alta pressione, corretta nell'ulcera venosa, è pericolosa sull'arto ischemico. Debridement aggressivo, pressione negativa ed elevazione da soli non correggono l'ipoperfusione. Il discriminatore è l'eziologia arteriosa che riordina le priorità terapeutiche.</p>
+    <p class="refs"><a href="https://doi.org/10.12968/jowc.2022.31.11.969">J Wound Care 2022;31:969</a> · John et al., cardine dell'ulcera arteriosa la rivascolarizzazione.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Una donna di 52 anni lamenta da mesi bruciore al cavo orale, peggiorato da cibi acidi e piccanti. La mucosa delle guance mostra un fine reticolo biancastro non removibile con l'abbassalingua, e ai polsi si notano alcune papule violacee pruriginose. Riferisce inoltre unghie che si sfaldano.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">An</span>Anamnesi</button>
+      <p>Lo screening sierologico rivela una positività per HCV, associazione nota nelle forme mucose orali. Le papule ai polsi hanno superficie piatta e, osservate alla lente, sottili striature biancastre. Lo stress recente e la scarsa igiene orale accompagnano il quadro.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Re</span>Reperti</button>
+      <p>Il materiale bianco non si stacca con l'abbassalingua, a differenza del mughetto che lascerebbe una mucosa rosso brillante; l'aspetto è a reticolo, e altrove la mucosa è erosa e dolente. La coesistenza di forma reticolare ed erosiva è tipica.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Si confrontano candidosi (materiale rimovibile), leucoplachia (lesione bianca con paracheratosi, entità distinta), reazione lichenoide da amalgame o farmaci, e una dermatosi infiammatoria a banda linfocitaria che aggredisce lo strato basale.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Co</span>Conferma</button>
+      <p>La biopsia mostra ipercheratosi ortocheratosica, ipergranulosi focale, degenerazione liquefattiva basale e infiltrato a banda: quadro lichenoide. L'immunofluorescenza diretta serve solo a escludere una malattia bollosa, non a porre la diagnosi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La forma erosiva cronicizza e impone un follow-up per il rischio di carcinoma spinocellulare; la terapia è rotazionale con steroidi, evitando il retinoide sistemico epatotossico nel fegato già colpito da HCV. Ogni placca che si indurisce va biopsiata: il traumatismo continuo della masticazione mantiene il ciclo di danno e riparazione da cui nasce il rischio.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Ai controlli dei tre mesi un lattante mostra un riflesso biancastro alla pupilla di un occhio. La madre ha avuto un episodio febbrile con esantema nel primo trimestre di gravidanza. Il piccolo tende a non fissare con quell'occhio.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Se</span>Segno</button>
+      <p>Il riflesso biancastro impone una diagnosi differenziale obbligata con il retinoblastoma e la retinopatia del prematuro, prima di attribuirlo a un'opacità del mezzo diottrico. È la priorità che precede ogni altra considerazione.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">An</span>Anamnesi</button>
+      <p>L'esantema febbrile nel primo trimestre orienta a un'embriopatia rubeolica, prima causa di opacità congenita del cristallino, con malformazioni nel 90% dei casi contratti in fase organogenetica. Si richiedono il complesso TORCH e la valutazione di cuore e udito.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ri</span>Rischio</button>
+      <p>L'occhio che non fissa è a rischio di diventare pigro: la deprivazione monoculare nella finestra critica dello sviluppo porta ad ambliopia, perché la corteccia visiva non riceve gli stimoli necessari a maturare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Te</span>Tempi</button>
+      <p>La rimozione va programmata precocemente, entro poche settimane per le forme dense, perché la plasticità corticale ha una finestra breve; l'impianto della lente può attendere se il bulbo è ancora piccolo, purché si garantisca la correzione ottica.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Ritardare consolida un deficit irreversibile; dopo l'intervento occorre una correzione ottica costante con occhiali o lenti per stimolare la corteccia. La distinzione dal retinoblastoma resta la priorità clinica, perché una leucocoria trascurata può nascondere una neoplasia che mette a rischio la vita.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Un uomo di 35 anni presenta da due mesi pomfi pruriginosi quasi ogni giorno, fugaci, che compaiono e scompaiono in poche ore in sedi diverse, senza lesioni da grattamento. Nega nuovi farmaci e alimenti particolari.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Le</span>Lesione</button>
+      <p>Il pomfo è fugace e migrante, e l'assenza di erosioni da grattamento lo separa dall'eczema; la ricorrenza quasi quotidiana per oltre sei settimane definisce la forma cronica, non l'acuta.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Me</span>Meccanismo</button>
+      <p>Solo una minoranza dei casi è IgE-mediata; molte forme croniche sono autoimmuni, da autoanticorpi contro il recettore delle IgE, o restano idiopatiche, con degranulazione diretta del mastocita indipendente dalle IgE.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ri</span>Ricerca</button>
+      <p>Si indaga per farmaci ed eccipienti, infezioni subcliniche e autoimmunità tiroidea, facendo tenere al paziente un diario che correli episodi e trigger; nonostante ciò, spesso la causa non emerge e la forma resta idiopatica.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Te</span>Terapia</button>
+      <p>Prima linea è l'antistaminico di seconda generazione, all'occorrenza quadruplicato; se resistente si sale all'anti-IgE omalizumab e poi alla ciclosporina, evitando i corticosteroidi cronici e le loro complicanze.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La forma cronica pesa sulla qualità di vita quanto una cardiopatia grave. Riconoscere che la diagnosi è clinica e che la vera sfida è eziologica evita indagini inutili e cicli ripetuti di steroide: il pomfo si riconosce a colpo d'occhio, ma il colpevole raramente si lascia trovare.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V04 · Caso ragionato</p>
+  <p class="scenario">Un uomo di 68 anni, diabetico ed ex fumatore, ha da mesi una perdita di sostanza al dorso del piede che non guarisce. Il fondo è coperto da tessuto giallastro fibrinoso e un'area mostra un tendine scoperto. I margini non avanzano.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">In</span>Inquadramento</button>
+      <p>La lesione resiste da mesi in un paziente con fattori intrinseci: è un'ulcera cronica, non una piaga. La prima mossa non è locale ma sistemica: correggere glicemia, stato nutrizionale e fumo, che riduce la vascolarizzazione.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Te</span>Tessuto</button>
+      <p>Il tessuto giallastro non vitale va rimosso per primo, secondo la sequenza TIME: nasconde i batteri e il biofilm e blocca la granulazione. Il debridement è ripetuto, non un gesto unico, e si associa ad antimicrobici topici come argento o cadexomero iodato.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Essudato</button>
+      <p>Controllato l'essudato con medicazioni avanzate scelte sulla quantità di secrezione, o con la pressione negativa, si valuta l'avanzamento del margine fino a ottenere un letto roseo, granuleggiante e sano, pronto alla ricostruzione.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ri</span>Ricostruzione</button>
+      <p>Sul tendine scoperto un innesto non attecchirebbe, perché manca la vascolarizzazione che lo nutre per imbibizione plasmatica e inosculazione: serve un lembo con apporto ematico proprio, oppure una matrice dermica acellulare come scaffold prima di coprirla con un innesto.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Programmare un innesto su una struttura nobile scoperta significa vederlo fallire. Riconoscere quando il letto impone un lembo, e non un innesto, è ciò che separa una chiusura stabile da una recidiva: senza preparazione del letto e senza vascolarizzazione adeguata nessuna ricostruzione tiene.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  var ENDPOINT = "https://notion-442027153948.europe-west1.run.app/vigil";
+  var PENDING = "vigil:pending";
+  var sent = false;
+
+  function collect() {
+    var per = {};
+    var order = [];
+    items.forEach(function (item) {
+      var qid = item.dataset.q;
+      var tid = item.dataset.tid;
+      if (qid === undefined || tid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      if (!per[tid]) {
+        per[tid] = { id: tid, name: item.dataset.topic || "", total: 0, wrong: 0, notes: [] };
+        order.push(tid);
+      }
+      per[tid].total++;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) {
+        per[tid].wrong++;
+        if (item.dataset.note) per[tid].notes.push(item.dataset.note);
+      }
+    });
+    return order.map(function (k) { return per[k]; });
+  }
+
+  function pendingStore() {
+    try { return JSON.parse(localStorage.getItem(PENDING) || "{}") || {}; } catch (e) { return {}; }
+  }
+
+  function flush() {
+    var token = "";
+    try { token = localStorage.getItem("vigil:token") || ""; } catch (e) {}
+    if (!token) return;
+    var store = pendingStore();
+    Object.keys(store).forEach(function (date) {
+      fetch(ENDPOINT, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token, date: date, topics: store[date] })
+      }).then(function (r) {
+        if (!r.ok) return;
+        var s = pendingStore();
+        delete s[date];
+        try { localStorage.setItem(PENDING, JSON.stringify(s)); } catch (e) {}
+      }).catch(function () {});
+    });
+  }
+
+  function send() {
+    if (sent) return;
+    sent = true;
+    var topics = collect();
+    if (!topics.length) return;
+    var store = pendingStore();
+    store[document.body.dataset.date] = topics;
+    try { localStorage.setItem(PENDING, JSON.stringify(store)); } catch (e) {}
+    flush();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      send();
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (location.hash.indexOf("#t=") === 0) {
+    try { localStorage.setItem("vigil:token", location.hash.slice(3)); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+  flush();
+})();
+</script>
+</body>
+</html>
