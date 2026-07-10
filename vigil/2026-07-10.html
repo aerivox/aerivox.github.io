@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 10 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-10">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>venerdì 10 luglio 2026</h1>
+  <div class="spark">
+    <p>Il paradosso della miopia lo capì per primo un uomo che vedeva benissimo da vicino. Johannes Kepler, nel 1604, fu il primo a spiegare correttamente perché l'occhio miope sfoca il mondo lontano: l'immagine si forma davanti alla retina, non su di essa, e la lente che corregge il difetto deve spostarla indietro. Prima di lui si credeva che la vista nascesse sul cristallino; Kepler capì che il cristallino è solo un obiettivo e che l'immagine vera si dipinge, rovesciata, sul fondo dell'occhio. Restava un dettaglio scomodo: se la retina riceve il mondo capovolto, perché lo vediamo diritto. Kepler lo lasciò aperto onestamente, dicendo che la questione riguardava ormai la mente e non più l'ottica. Passarono due secoli prima che si smettesse di cercare, dentro l'occhio, un secondo raddrizzatore che non è mai esistito: l'immagine resta rovesciata, ed è il cervello ad averci fatto l'abitudine.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="confonde il determinante del tempo ischemico, che è la massa muscolare del segmento e non il calibro dei vasi">
+  <p class="tag">Q01 · Chirurgia plastica · Mano e arto superiore</p>
+  <h2 class="q-text">In un trauma con segmenti amputati dell'arto superiore, quale fattore determina soprattutto quanto tempo resta per ripristinare la circolazione prima del danno irreversibile?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La quantità di massa muscolare contenuta nel segmento</button></li>
+    <li><button type="button"><span class="key">B</span>Il calibro dei vasi arteriosi sezionati dal trauma</button></li>
+    <li><button type="button"><span class="key">C</span>La distanza del segmento dalla radice dell'arto</button></li>
+    <li><button type="button"><span class="key">D</span>Il tempo trascorso dall'ultima profilassi antitetanica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il muscolo scheletrico è il tessuto più sensibile all'anossia: un dito, fatto soprattutto di tendini, connettivo e cute, tollera l'ischemia fino a circa 12 ore, mentre un segmento ricco di muscolo non supera le 4-6 ore. Il discriminatore è la massa muscolare, che rende il tempo utile inversamente proporzionale, non il calibro dei vasi né la distanza dalla radice.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="non riconosce l'ipotrofia tenar come denervazione avanzata del ramo motore del mediano che impone chirurgia precoce">
+  <p class="tag">Q02 · Chirurgia plastica · Mano e arto superiore</p>
+  <h2 class="q-text">Nella sindrome del tunnel carpale, la comparsa di ipotrofia dell'eminenza tenar con difetto di opposizione del pollice indica soprattutto:</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una compressione lieve, ancora reversibile con i soli tutori notturni</button></li>
+    <li><button type="button"><span class="key">B</span>Un interessamento primitivo e concomitante del nervo ulnare al polso</button></li>
+    <li><button type="button"><span class="key">C</span>Una tenosinovite dei tendini flessori del pollice nel canale carpale</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La denervazione avanzata del ramo motore del nervo mediano al polso</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'ipotrofia tenar con deficit di opposizione segnala una denervazione avanzata del ramo motore del nervo mediano, quindi uno stadio in cui il conservativo ha fallito e occorre una decompressione precoce per evitare il danno irreversibile. Il discriminatore è la natura motoria e avanzata del segno, non una compressione reversibile né un problema ulnare o tendineo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="non collega il peggioramento prognostico del coinvolgimento dell'IFP all'accorciamento dei legamenti collaterali">
+  <p class="tag">Q03 · Chirurgia plastica · Mano e arto superiore</p>
+  <h2 class="q-text">Nel morbo di Dupuytren, perché il coinvolgimento dell'interfalangea prossimale peggiora la prognosi chirurgica rispetto al solo interessamento metacarpo-falangeo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché le corde pretendinee a quel livello inglobano il nervo digitale</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la fibromatosi si estende alle fibre trasversali profonde dell'aponeurosi</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché i legamenti collaterali si accorciano e la correzione resta incompleta</button></li>
+    <li><button type="button"><span class="key">D</span>Perché l'articolazione sviluppa una anchilosi ossea irreversibile</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Quando la deformità in flessione si fissa all'interfalangea prossimale, i legamenti collaterali si accorciano adattandosi alla posizione: rimosse le corde, l'accorciamento legamentoso impedisce comunque l'estensione completa, perché il danno è diventato articolare. Il discriminatore è l'adattamento dei collaterali, non un coinvolgimento nervoso, delle fibre trasversali (mai interessate) o una vera anchilosi ossea.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="non identifica la fascectomia limitata come gold standard, confondendola con l'aponeurosectomia radicale o la fasciotomia">
+  <p class="tag">Q04 · Chirurgia plastica · Mano e arto superiore</p>
+  <h2 class="q-text">Qual è il trattamento considerato gold standard per il morbo di Dupuytren con deformità in flessione che coinvolge più raggi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'aponeurosectomia radicale con asportazione completa dell'aponeurosi palmare</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La fascectomia limitata, che rimuove le sole fibre longitudinali malate</button></li>
+    <li><button type="button"><span class="key">C</span>La fasciotomia percutanea ad ago come prima linea in ogni paziente</button></li>
+    <li><button type="button"><span class="key">D</span>La sola infiltrazione ripetuta di corticosteroidi nella corda fibrosa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La fascectomia limitata è il gold standard: asporta le fibre longitudinali patologiche preservando quelle trasversali sane. L'aponeurosectomia radicale è sconsigliata perché crea scompensi funzionali, la fasciotomia ad ago è riservata ai pazienti molto anziani o come gesto rapido, e i corticosteroidi non sono un trattamento della corda. Il discriminatore è l'estensione mirata dell'exeresi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="inverte l'ordine ricostruttivo nei reimpianti, non vedendo che la sintesi ossea prima protegge le anastomosi vascolari">
+  <p class="tag">Q05 · Chirurgia plastica · Mano e arto superiore</p>
+  <h2 class="q-text">Nel reimpianto di un segmento dell'arto superiore, perché la stabilizzazione scheletrica precede la rivascolarizzazione?</h2>
+    <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché le manovre di sintesi ossea rischiano di lacerare le anastomosi vascolari</button></li>
+    <li><button type="button"><span class="key">B</span>Perché l'osso guarisce più lentamente dei vasi e va quindi avviato per primo</button></li>
+    <li><button type="button"><span class="key">C</span>Perché la sintesi ossea garantisce da sola l'emostasi dei vasi midollari</button></li>
+    <li><button type="button"><span class="key">D</span>Perché senza un asse osseo stabile il nervo non potrebbe essere coaptato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le manovre di allineamento e fissazione dello scheletro sono grossolane, con trazioni e rotazioni del segmento: se le anastomosi vascolari fossero già pronte, potrebbero lacerarsi o trombizzarsi. Per questo, nel reimpianto, si stabilizza prima e si rivascolarizza dopo. Il discriminatore è la protezione delle anastomosi, non la cinetica di guarigione dell'osso né la coaptazione nervosa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="confonde il compartimento della De Quervain (primo dorsale, APL ed EPB) con la puleggia A1 del dito a scatto">
+  <p class="tag">Q06 · Chirurgia plastica · Mano e arto superiore</p>
+  <h2 class="q-text">La tenosinovite di De Quervain si distingue dal dito a scatto perché interessa:</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La puleggia A1 dei flessori, con blocco in flessione del dito</button></li>
+    <li><button type="button"><span class="key">B</span>La guaina del flessore lungo del pollice a livello del canale carpale</button></li>
+    <li><button type="button"><span class="key">C</span>I tendini estensori comuni al passaggio sul polso dorsale</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>I tendini del primo compartimento dorsale, con segno di Finkelstein positivo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La De Quervain colpisce il primo compartimento dorsale, dove decorrono l'abduttore lungo e l'estensore breve del pollice, e si evoca con la manovra di Finkelstein; il dito a scatto è invece un conflitto tra nodulo tendineo e puleggia A1 dei flessori, con lo scatto in estensione. Il discriminatore è il compartimento e i tendini coinvolti.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="cerca il difetto pupillare afferente in un'opacità dei media o in una lesione efferente anziché nella sofferenza della via afferente">
+  <p class="tag">Q07 · Oftalmologia · Vizi di refrazione</p>
+  <h2 class="q-text">In quale delle seguenti condizioni ci si attende un difetto pupillare afferente relativo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una cataratta nucleare densa monolaterale</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Una neurite ottica retrobulbare monolaterale</button></li>
+    <li><button type="button"><span class="key">C</span>Una paralisi isolata del terzo nervo cranico</button></li>
+    <li><button type="button"><span class="key">D</span>Una uveite anteriore con sinechie iridee</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il difetto pupillare afferente nasce da una sofferenza della via afferente: neurite ottica, distacco di retina, occlusioni vascolari ischemiche. Una cataratta è solo un'opacità dei media e non riduce il segnale afferente; la paralisi del terzo nervo è un difetto efferente; le sinechie sono un ostacolo meccanico. Il discriminatore è la sede afferente della lesione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="non riconosce gli stafilococchi coagulasi-negativi (S. epidermidis) come germe più frequente dell'endoftalmite post-cataratta">
+  <p class="tag">Q08 · Oftalmologia · Vizi di refrazione</p>
+  <h2 class="q-text">Qual è l'agente eziologico più frequente dell'endoftalmite acuta dopo chirurgia della cataratta?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Pseudomonas aeruginosa, gram-negativo di provenienza ambientale</button></li>
+    <li><button type="button"><span class="key">B</span>Streptococcus pneumoniae, di provenienza respiratoria acuta</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Stafilococchi coagulasi-negativi, in particolare S. epidermidis</button></li>
+    <li><button type="button"><span class="key">D</span>Candida albicans, lievito commensale della cute periooculare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La causa più frequente sono gli stafilococchi coagulasi-negativi, soprattutto S. epidermidis, che provengono dalla flora di palpebre, congiuntiva e vie lacrimali del paziente. I gram-negativi come Pseudomonas sono rari, i miceti eccezionali nel post-cataratta acuto. Il discriminatore è la provenienza dalla flora periooculare del paziente e la predominanza dei coagulasi-negativi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="definisce la miopia patologica per il valore diottrico invece che per le complicanze del fondo da allungamento assiale">
+  <p class="tag">Q09 · Oftalmologia · Vizi di refrazione</p>
+  <h2 class="q-text">Che cosa distingue la miopia patologica dalla semplice miopia elevata?</h2>
+    <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Le complicanze del fondo legate all'allungamento assiale del bulbo</button></li>
+    <li><button type="button"><span class="key">B</span>Un difetto refrattivo costantemente superiore alle dieci diottrie</button></li>
+    <li><button type="button"><span class="key">C</span>La comparsa esclusivamente in età adulta e non in età scolare</button></li>
+    <li><button type="button"><span class="key">D</span>La correggibilità con le sole lenti a contatto rigide gas-permeabili</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La miopia patologica si definisce per le complicanze strutturali del fondo dovute all'eccessivo allungamento assiale (oltre 26 mm): stafiloma posteriore, maculopatia miopica, rischio di distacco. Il fattore determinante è l'allungamento, non un valore diottrico soglia, tanto che le complicanze possono comparire anche senza miopia estrema. Il discriminatore è la presenza di alterazioni del segmento posteriore.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="tratta l'astigmatismo come ametropia sferica con un unico fuoco anziché come conoide di Sturm a due linee focali">
+  <p class="tag">Q10 · Oftalmologia · Vizi di refrazione</p>
+  <h2 class="q-text">Nell'astigmatismo regolare, perché un punto oggetto non forma mai un punto immagine sulla retina?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché il fuoco cade uniformemente davanti alla retina, come nella miopia</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il cristallino ha perso del tutto la capacità di accomodare</button></li>
+    <li><button type="button"><span class="key">C</span>Perché l'asse antero-posteriore del bulbo oculare risulta troppo ridotto</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché i meridiani corneali principali hanno un potere diverso tra loro</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La superficie corneale torica ha meridiani principali perpendicolari con potere diverso: un punto oggetto proietta non un punto ma due linee focali separate da un intervallo, la conoide di Sturm. È questo a distinguere l'astigmatismo dalle ametropie sferiche, in cui il punto immagine esiste ma è mal collocato. Il discriminatore è la doppia focale da toricità corneale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="non collega l'afachia alla ipermetropia refrattiva da perdita del potere diottrico del cristallino">
+  <p class="tag">Q11 · Oftalmologia · Vizi di refrazione</p>
+  <h2 class="q-text">Un paziente afachico, per assenza del cristallino dopo chirurgia o trauma, presenta tipicamente:</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una miopia elevata per l'aumento del potere diottrico totale</button></li>
+    <li><button type="button"><span class="key">B</span>Un astigmatismo irregolare con conoide di Sturm accentuata</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Una ipermetropia refrattiva elevata per perdita del cristallino</button></li>
+    <li><button type="button"><span class="key">D</span>Una presbiopia isolata, senza alcun difetto per la visione lontana</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cristallino fornisce 15-20 diottrie convergenti: rimosso, il potere totale crolla e il fuoco cade dietro la retina, configurando una ipermetropia refrattiva elevata (afachia). Non è una miopia, che richiederebbe un eccesso di potere. Il discriminatore è il nesso tra perdita del cristallino e ipermetropia di tipo refrattivo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="davanti a un fondo inesplorabile non sceglie l'ecografia per escludere un distacco di retina sottostante">
+  <p class="tag">Q12 · Oftalmologia · Vizi di refrazione</p>
+  <h2 class="q-text">In un paziente con emovitreo denso che rende il fondo inesplorabile, quale esame è prioritario e perché?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'angiografia con fluoresceina, per mappare i neovasi retinici</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'ecografia oculare, per escludere un distacco di retina sottostante</button></li>
+    <li><button type="button"><span class="key">C</span>La tomografia computerizzata orbitaria, per quantificare il sanguinamento</button></li>
+    <li><button type="button"><span class="key">D</span>La gonioscopia, per valutare l'angolo irido-corneale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Quando il sangue rende il fondo inesplorabile, l'ecografia oculare è l'esame chiave per escludere un distacco di retina nascosto dietro l'emorragia; angiografia e OCT richiedono mezzi trasparenti, la TC non serve alla diagnosi e la gonioscopia guarda l'angolo. Il discriminatore è la capacità dell'ecografia di vedere oltre il mezzo opaco.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="non nomina il Propionibacterium acnes come agente centrale né il meccanismo delle lipasi e degli acidi grassi liberi">
+  <p class="tag">Q13 · Dermatologia · Acne</p>
+  <h2 class="q-text">Quale microrganismo follicolare ha il ruolo centrale nell'innesco dell'infiammazione acneica, e con quale meccanismo?</h2>
+    <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Propionibacterium acnes, con le sue lipasi e gli acidi grassi liberi</button></li>
+    <li><button type="button"><span class="key">B</span>Malassezia furfur, tramite idrolisi dei trigliceridi nell'acro-infundibolo</button></li>
+    <li><button type="button"><span class="key">C</span>Staphylococcus epidermidis, con tossine esfoliative della porzione media</button></li>
+    <li><button type="button"><span class="key">D</span>Staphylococcus aureus, tramite superantigeni della porzione profonda</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il Propionibacterium acnes staziona nella parte profonda del follicolo, dove sebo e cheratinociti accumulati lo alimentano: le sue lipasi scindono i lipidi in acidi grassi liberi con doppia azione, chemiotattica e comedogenica. Malassezia e S. epidermidis occupano strati più superficiali e non hanno questo ruolo. Il discriminatore è l'accoppiata batterio profondo più lipasi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="davanti all'acne fulminans non riconosce i corticosteroidi sistemici come terapia efficace, confondendoli con antibiotici o isotretinoina in monoterapia">
+  <p class="tag">Q14 · Dermatologia · Acne</p>
+  <h2 class="q-text">Una forma severissima di acne, con lesioni ulcerative e reazione febbrile, non risponde alla terapia antibiotica. Quale trattamento è indicato?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le tetracicline sistemiche a dose piena come terapia di prima linea</button></li>
+    <li><button type="button"><span class="key">B</span>La sola terapia topica cheratinolitica, intensificata e prolungata</button></li>
+    <li><button type="button"><span class="key">C</span>L'isotretinoina ad alte dosi in monoterapia immediata da subito</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>I corticosteroidi sistemici, cui risponde a differenza delle altre forme</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro descrive l'acne fulminans, che non risponde agli antibiotici e trova risposta nei corticosteroidi sistemici, normalmente non indicati nelle altre forme di acne. Le tetracicline e i topici sono inefficaci, e l'isotretinoina ad alte dosi in monoterapia può innescare o peggiorare la fulminans. Il discriminatore è la risposta paradossa agli steroidi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="attribuisce alle tetracicline un'azione sulla secrezione sebacea invece dell'effetto antinfiammatorio e antilipasico">
+  <p class="tag">Q15 · Dermatologia · Acne</p>
+  <h2 class="q-text">Perché le tetracicline sono l'antibiotico di prima scelta nell'acne pustolosa e nodulo-cistica, più di altri antibatterici?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché riducono direttamente la secrezione sebacea androgeno-dipendente</button></li>
+    <li><button type="button"><span class="key">B</span>Perché sono le uniche molecole prive di rischio di fotosensibilizzazione</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché aggiungono azione antinfiammatoria e antilipasica al battericida</button></li>
+    <li><button type="button"><span class="key">D</span>Perché agiscono in modo selettivo sulla Malassezia dell'acro-infundibolo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le tetracicline aggiungono al battere un'azione antinfiammatoria (inibizione di chemiotassi e fagocitosi) e antilipasica, contrastando la produzione di acidi grassi liberi: questa triplice azione le rende più complete di un semplice antibatterico. Non riducono però la secrezione sebacea, che resta appannaggio della terapia ormonale e dell'isotretinoina. Il discriminatore è la tripla azione senza effetto sul sebo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="non riconosce che l'isotretinoina agisce su tutti i fattori patogenetici, inclusa la secrezione sebacea">
+  <p class="tag">Q16 · Dermatologia · Acne</p>
+  <h2 class="q-text">Che cosa rende l'isotretinoina distinta dalle tetracicline e dalla terapia ormonale nel trattamento dell'acne?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>È l'unico trattamento privo di controindicazioni durante la gravidanza</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Agisce su tutti i fattori patogenetici, sebo e comedogenesi inclusi</button></li>
+    <li><button type="button"><span class="key">C</span>Ha un'azione esclusivamente antibatterica diretta contro il P. acnes</button></li>
+    <li><button type="button"><span class="key">D</span>Va sospesa non appena compaiono le prime pustole infiammatorie del volto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'isotretinoina è l'unico farmaco che interviene su tutti i fattori patogenetici, agendo in modo diretto e duraturo su secrezione sebacea e comedogenesi, cosa che le tetracicline non fanno. È però fortemente teratogena, quindi tutt'altro che sicura in gravidanza. Il discriminatore è l'azione completa su tutti i fattori, sebo compreso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="attribuisce il colore del comedone aperto a sporcizia o batteri invece che all'ossidazione della melanina">
+  <p class="tag">Q17 · Dermatologia · Acne</p>
+  <h2 class="q-text">Il colore nerastro del comedone aperto, il cosiddetto punto nero, è dovuto a:</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Ossidazione della melanina nel materiale cheratinico esposto all'aria</button></li>
+    <li><button type="button"><span class="key">B</span>Deposito di sporcizia e particolato ambientale nell'ostio follicolare</button></li>
+    <li><button type="button"><span class="key">C</span>Colonizzazione da parte di batteri anaerobi pigmentati</button></li>
+    <li><button type="button"><span class="key">D</span>Necrosi emorragica del contenuto sebaceo del follicolo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il colore scuro non deriva da sporco o da batteri, ma dai fenomeni ossidativi che interessano la melanina presente nel materiale cheratinico affiorante all'apertura del comedone. Il discriminatore è l'ossidazione della melanina, che smonta la lettura ingenua del punto nero come accumulo di sporcizia.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="sbaglia l'asse androgenico dell'acne, non attribuendo alla 5-alfa-reduttasi la conversione in diidrotestosterone">
+  <p class="tag">Q18 · Dermatologia · Acne</p>
+  <h2 class="q-text">Attraverso quale meccanismo il controllo androgenico determina l'ipersecrezione sebacea nell'acne?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Gli estrogeni stimolano direttamente i lobuli sebacei durante la pubertà</button></li>
+    <li><button type="button"><span class="key">B</span>Il DHEA-S blocca la lipasi del P. acnes riducendo l'infiammazione locale</button></li>
+    <li><button type="button"><span class="key">C</span>Il testosterone libero, metà del circolante, agisce senza conversione</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La 5-alfa-reduttasi converte il testosterone in diidrotestosterone</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Solo l'1-2% del testosterone circola libero: la quota legata è convertita dalla 5-alfa-reduttasi di tipo 1 in diidrotestosterone, che nel nucleo induce l'ipersecrezione sebacea, e questo spiega la comparsa puberale. Gli estrogeni, al contrario, sono sfruttati in terapia per il loro effetto anti-androgeno. Il discriminatore è la via 5-alfa-reduttasi verso il diidrotestosterone.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="considera la differenza prima/seconda intenzione qualitativa o come rigenerazione anziché quantitativa">
+  <p class="tag">Q19 · Chirurgia plastica · Introduzione plastica</p>
+  <h2 class="q-text">In che cosa consiste la differenza tra guarigione per prima e per seconda intenzione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>È qualitativa: la seconda intenzione impiega un tessuto di riparazione diverso</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>È quantitativa: cambia la quantità di tessuto cicatriziale, non il meccanismo biologico</button></li>
+    <li><button type="button"><span class="key">C</span>La prima avviene per rigenerazione, la seconda per cicatrizzazione</button></li>
+    <li><button type="button"><span class="key">D</span>La seconda intenzione non lascia mai alcun esito cicatriziale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il meccanismo biologico è identico: la differenza è solo quantitativa. Nella prima intenzione i margini sono accostati senza perdita di sostanza e la cicatrice è minima; nella seconda i margini sono distanti, serve tessuto di granulazione e la cicatrice è maggiore. Entrambe sono cicatrizzazione, non rigenerazione. Il discriminatore è la natura quantitativa, non qualitativa, della differenza.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="non individua il macrofago come regista della transizione tra fase infiammatoria e proliferativa della guarigione">
+  <p class="tag">Q20 · Chirurgia plastica · Introduzione plastica</p>
+  <h2 class="q-text">Quale cellula è considerata il regista della transizione tra la fase infiammatoria e quella proliferativa della guarigione?</h2>
+    <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Il macrofago, che con le sue citochine orchestra entrambe le fasi</button></li>
+    <li><button type="button"><span class="key">B</span>Il neutrofilo polimorfonucleato, che avvia da solo la fibroplasia</button></li>
+    <li><button type="button"><span class="key">C</span>Il miofibroblasto, che innesca l'infiammazione iniziale della ferita</button></li>
+    <li><button type="button"><span class="key">D</span>Il cheratinocita dei bordi, che regola la neoangiogenesi del fondo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il macrofago è il punto centrale tra la prima e la seconda fase: produce i fattori che stimolano il rilascio di citochine e guida il passaggio all'infiammazione alla proliferazione. Il neutrofilo bonifica i detriti, il miofibroblasto contrae la ferita più tardi, il cheratinocita riepitelizza. Il discriminatore è il ruolo registico del macrofago.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="confonde cheloide e cicatrice ipertrofica semplice sui confini della lesione e sulla tendenza alla maturazione">
+  <p class="tag">Q21 · Chirurgia plastica · Introduzione plastica</p>
+  <h2 class="q-text">Quale criterio distingue la cicatrice cheloidea da quella ipertrofica semplice?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il cheloide regredisce spontaneamente entro due o tre anni dalla ferita</button></li>
+    <li><button type="button"><span class="key">B</span>Il cheloide resta sempre confinato entro i margini della ferita originaria</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Il cheloide invade i tessuti sani e non tende alla maturazione</button></li>
+    <li><button type="button"><span class="key">D</span>Il cheloide risponde in modo ottimale alla sola escissione chirurgica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cheloide oltrepassa i margini del trauma invadendo i tessuti sani e non matura mai, mentre la cicatrice ipertrofica semplice resta nei confini della lesione e regredisce lentamente in due o tre anni. Proprio perché non matura, l'escissione isolata non lo risolve. Il discriminatore è la coppia invasione oltre il trauma più assenza di maturazione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="non sa che l'escissione isolata del cheloide ne provoca la recidiva più estesa della lesione iniziale">
+  <p class="tag">Q22 · Chirurgia plastica · Introduzione plastica</p>
+  <h2 class="q-text">Perché l'asportazione chirurgica isolata di un cheloide è controindicata?</h2>
+    <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché riavvia il processo e la recidiva sarà più estesa dell'originale</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il cheloide contiene vasi che sanguinano in modo incoercibile</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il tessuto cheloideo è premaligno e va irradiato in anticipo</button></li>
+    <li><button type="button"><span class="key">D</span>Perché l'anestesia locale è inefficace sul tessuto metacromatico denso</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Rimuovere il cheloide con la sola chirurgia riaccende il processo cicatriziale, e il risultato è un cheloide più grande di prima: per questo l'unica strada è la riduzione parziale associata a corticosteroide intralesionale o ad altre terapie adiuvanti. Non si tratta di un tessuto premaligno né di un problema anestesiologico. Il discriminatore è la recidiva amplificata dall'escissione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="sbaglia la cinetica della forza tensile, non sapendo che si ferma all'80% dopo 40 giorni senza mai raggiungere il 100%">
+  <p class="tag">Q23 · Chirurgia plastica · Introduzione plastica</p>
+  <h2 class="q-text">Quale affermazione sulla forza tensile della cicatrice cutanea è corretta?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Recupera il cento per cento della resistenza entro tre settimane dalla chiusura</button></li>
+    <li><button type="button"><span class="key">B</span>Resta costante dal momento della sutura fino alla maturazione finale</button></li>
+    <li><button type="button"><span class="key">C</span>Dipende unicamente dal materiale di sutura e dalla tecnica impiegata</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Raggiunge circa l'ottanta per cento dopo 40 giorni, mai il cento per cento</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cicatrice raggiunge circa l'80% della forza tensile della cute normale dopo 40 giorni e non recupera mai il 100%; a tre settimane è ancora fragile e può riaprirsi se messa in tensione. Il valore cresce nel tempo con l'impilamento del collagene, quindi non è costante né dettato dal solo filo di sutura. Il discriminatore è la cinetica 80% a 40 giorni, mai completa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="limita il ruolo del chirurgo plastico nei tumori cutanei alla sola ricostruzione, ignorando la fase demolitiva">
+  <p class="tag">Q24 · Chirurgia plastica · Introduzione plastica</p>
+  <h2 class="q-text">Nel trattamento dei tumori cutanei, di quale fase si occupa il chirurgo plastico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Solo della ricostruzione del difetto, mai dell'exeresi della lesione</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Sia della fase demolitiva sia della ricostruzione del difetto residuo</button></li>
+    <li><button type="button"><span class="key">C</span>Solo della diagnosi istologica preoperatoria</button></li>
+    <li><button type="button"><span class="key">D</span>Solo della sorveglianza oncologica a lungo termine</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nei tumori della cute e dei tessuti molli il chirurgo plastico si occupa sia della chirurgia demolitiva sia della ricostruzione, dovendo asportare una porzione di cute più ampia della lesione e poi ripararla. È diverso dal tumore della mammella, dove la demolizione spetta ad altri e il plastico interviene solo nella ricostruzione. Il discriminatore è la doppia competenza sui tumori cutanei.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="per la minima recidiva a distanza sceglie un'opzione mininvasiva invece della fascectomia limitata">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Un uomo di 58 anni presenta una corda di Dupuytren a un singolo raggio con deformità in flessione della metacarpo-falangea. Chiede quale opzione offra la minore probabilità di recidiva a distanza di anni, accettando un recupero più lungo. Quale trattamento è più coerente con questa priorità?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Fascectomia limitata (aponeurosectomia regionale selettiva)</button></li>
+    <li><button type="button"><span class="key">B</span>Iniezione di collagenasi di Clostridium histolyticum</button></li>
+    <li><button type="button"><span class="key">C</span>Fasciotomia percutanea ad ago</button></li>
+    <li><button type="button"><span class="key">D</span>Infiltrazione isolata di corticosteroide nella corda</button></li>
+    <li><button type="button"><span class="key">E</span>Tutore statico in estensione da indossare di notte</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Quando la priorità dichiarata è la durabilità, la fascectomia limitata è l'opzione con la minore recidiva a distanza, al prezzo di un recupero più lungo; un recente trial controllato la mostra superiore alla collagenasi sul controllo a distanza della recidiva. La fasciotomia ad ago recidiva di più, mentre steroide e tutore non correggono la corda. Il discriminatore è il compromesso tra invasività e durata del risultato.</p>
+    <p class="refs"><a href="https://doi.org/10.1056/NEJMoa2312631">NEJM 2024</a> · Collagenase Injection versus Limited Fasciectomy for Dupuytren's Contracture.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1"
+  data-tid="27f28251-9c2c-80e3-875c-e92ac7c83c3c" data-topic="Mano e arto superiore"
+  data-note="davanti a segni di denervazione motoria nel tunnel carpale insiste sul conservativo invece di indicare la decompressione">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Una donna con sindrome del tunnel carpale, trattata per mesi con tutori notturni, sviluppa ipotrofia dell'eminenza tenar e deficit di opposizione del pollice. Qual è la condotta più appropriata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Prolungare i tutori notturni per altri sei mesi</button></li>
+    <li><button type="button"><span class="key">B</span>Ripetere infiltrazioni di corticosteroidi nel canale</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Decompressione chirurgica del tunnel senza ulteriore ritardo</button></li>
+    <li><button type="button"><span class="key">D</span>Passaggio a FANS orali a ciclo continuo</button></li>
+    <li><button type="button"><span class="key">E</span>Sola rieducazione con esercizi di scorrimento tendineo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'atrofia tenar con deficit di opposizione è un segno di denervazione motoria e di fallimento del trattamento conservativo: le linee guida indicano la decompressione chirurgica tempestiva per prevenire un danno irreversibile. Insistere su tutori, steroidi o FANS lascia progredire la denervazione. Il discriminatore è che i segni motori spostano l'indicazione dalla gestione conservativa alla chirurgia.</p>
+    <p class="refs"><a href="https://doi.org/10.1016/j.pmr.2015.04.003">Phys Med Rehabil Clin N Am 2015</a> · Carpal Tunnel Syndrome: Diagnosis and Treatment Guideline.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="nell'endoftalmite acuta rimanda la terapia all'antibiogramma o si limita al topico e al sistemico invece dell'intravitreale immediato">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">A tre giorni da un intervento di cataratta un paziente sviluppa dolore acuto, ipopion e brusco calo visivo. Si sospetta endoftalmite acuta post-operatoria. Qual è la condotta iniziale corretta?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Attendere l'esito dell'antibiogramma prima di iniziare ogni terapia</button></li>
+    <li><button type="button"><span class="key">B</span>Impostare la sola terapia antibiotica topica, intensiva e ravvicinata</button></li>
+    <li><button type="button"><span class="key">C</span>Somministrare un antibiotico sistemico orale come unico trattamento</button></li>
+    <li><button type="button"><span class="key">D</span>Rimuovere in urgenza la lente intraoculare appena impiantata</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Iniezione intravitreale immediata di antibiotici ad ampio spettro</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'endoftalmite acuta è un'emergenza: si iniettano subito antibiotici intravitreali ad ampio spettro, che coprano gram-positivi e gram-negativi, riservando la vitrectomia ai casi più gravi o a acuità molto ridotta. Attendere l'antibiogramma spreca la finestra terapeutica, mentre topico e sistemico da soli non raggiungono concentrazioni utili nel vitreo. Il discriminatore è la via intravitreale immediata.</p>
+    <p class="refs"><a href="https://doi.org/10.1159/000534650">Ophthalmic Res 2023</a> · Early Vitrectomy for Endophthalmitis: Are EVS Guidelines Still Valid?</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1"
+  data-tid="27f28251-9c2c-80e2-ae53-c39b99d89347" data-topic="Vizi di refrazione"
+  data-note="tratta la neovascolarizzazione coroideale miopica con laser o vitrectomia invece degli anti-VEGF intravitreali">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Un paziente con miopia patologica lamenta la comparsa improvvisa di metamorfopsie e scotoma centrale; l'OCT documenta una neovascolarizzazione coroideale a sede maculare. Qual è il trattamento di prima linea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Fotocoagulazione laser panretinica</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Iniezioni intravitreali di anti-VEGF</button></li>
+    <li><button type="button"><span class="key">C</span>Vitrectomia con peeling della membrana limitante interna</button></li>
+    <li><button type="button"><span class="key">D</span>Sola supplementazione con integratori antiossidanti</button></li>
+    <li><button type="button"><span class="key">E</span>Correzione refrattiva con una lente divergente più potente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La neovascolarizzazione coroideale miopica si tratta in prima linea con anti-VEGF intravitreali, che arrestano l'essudazione dei neovasi. Il laser panretinico appartiene alla retinopatia proliferante, la vitrectomia alla maculopatia trazionale, e la correzione refrattiva non incide sulla membrana neovascolare. Il discriminatore è il bersaglio neovascolare che chiama l'anti-VEGF.</p>
+    <p class="refs"><a href="https://doi.org/10.1080/14712598.2021.1830969">Expert Opin Biol Ther 2021</a> · Ranibizumab for myopic choroidal neovascularization.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="non pone la contraccezione e il monitoraggio come precauzione cardine per la teratogenicità dell'isotretinoina">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Una donna in età fertile con acne nodulo-cistica cicatriziale, resistente alle terapie precedenti, è candidata all'isotretinoina orale. Quale precauzione è imprescindibile prima e durante il trattamento?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sospendere ogni fotoprotezione cutanea per tutta la durata della cura</button></li>
+    <li><button type="button"><span class="key">B</span>Associare obbligatoriamente una tetraciclina sistemica in parallelo</button></li>
+    <li><button type="button"><span class="key">C</span>Limitare la somministrazione alla sola fase mestruale del ciclo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Contraccezione efficace e monitoraggio, per il rischio teratogeno</button></li>
+    <li><button type="button"><span class="key">E</span>Eseguire un test allergologico cutaneo preliminare al retinoide</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'isotretinoina è fortemente teratogena e la sua azione persiste oltre la sospensione: la contraccezione efficace con monitoraggio, prima, durante e dopo, è la precauzione cardine. L'associazione con una tetraciclina è anzi da evitare per il rischio di ipertensione endocranica, e la fotoprotezione va mantenuta. Il discriminatore è la gestione del rischio teratogeno.</p>
+    <p class="refs"><a href="https://doi.org/10.1007/s40257-020-00508-0">Am J Clin Dermatol 2020</a> · Optimizing Isotretinoin Treatment of Acne.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1"
+  data-tid="27f28251-9c2c-803f-998c-d75bf1919f32" data-topic="Acne"
+  data-note="nell'acne fulminans indotta da isotretinoina non introduce i corticosteroidi sistemici, aumentando il retinoide o attendendo">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Un adolescente sviluppa un peggioramento esplosivo dell'acne, con lesioni ulcerate, febbre e artralgie, poche settimane dopo l'avvio dell'isotretinoina. Qual è l'approccio raccomandato?</h2>
+    <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Corticosteroidi sistemici, riducendo temporaneamente l'isotretinoina</button></li>
+    <li><button type="button"><span class="key">B</span>Aumentare subito la dose di isotretinoina per spegnere la flogosi acuta</button></li>
+    <li><button type="button"><span class="key">C</span>Passare a una tetraciclina sistemica in monoterapia prolungata</button></li>
+    <li><button type="button"><span class="key">D</span>Sospendere ogni terapia e attendere la risoluzione spontanea del quadro</button></li>
+    <li><button type="button"><span class="key">E</span>Iniziare una terapia ormonale con anti-androgeni ed estroprogestinici</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è un'acne fulminans indotta dal retinoide: si introducono corticosteroidi sistemici e si sospende o riduce l'isotretinoina, reintroducendola a basso dosaggio sotto copertura steroidea. Aumentare l'isotretinoina peggiora, gli antibiotici sono inefficaci e la sola attesa lascia progredire l'ulcerazione. Il discriminatore è la coppia steroidi più modulazione del retinoide.</p>
+    <p class="refs"><a href="https://doi.org/10.1016/j.jaad.2016.11.028">JAAD 2017</a> · Evidence-based recommendations for the management of acne fulminans.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="per il cheloide recidivo ripropone l'escissione isolata invece dell'escissione associata a terapia adiuvante">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Un cheloide del lobo auricolare recidiva, più esteso, dopo una precedente asportazione chirurgica isolata. Quale strategia riduce meglio il rischio di ulteriore recidiva?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ripetere una asportazione chirurgica isolata, questa volta più ampia</button></li>
+    <li><button type="button"><span class="key">B</span>Limitarsi all'osservazione clinica accompagnata da massoterapia</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Escissione associata a corticosteroide intralesionale perioperatorio</button></li>
+    <li><button type="button"><span class="key">D</span>Radioterapia estesa a tutto il padiglione auricolare coinvolto</button></li>
+    <li><button type="button"><span class="key">E</span>Applicazione di sole lamine di silicone sul cheloide conclamato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cheloide recidiva dopo l'escissione isolata, che riavvia il processo cicatriziale: associare all'escissione un corticosteroide intralesionale perioperatorio, o un'altra terapia adiuvante, abbatte nettamente il rischio di recidiva. Ripetere la sola chirurgia recidiva ancora, e il silicone da solo non basta su un cheloide conclamato. Il discriminatore è l'accoppiata escissione più adiuvante.</p>
+    <p class="refs"><a href="https://doi.org/10.4103/JCAS.JCAS_186_20">J Cutan Aesthet Surg 2021</a> · Recurrent Auricular Keloid Treatment with Surgical Excision and Perioperative Corticosteroid Injection.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1"
+  data-tid="27f28251-9c2c-802a-929e-d5f21a7fc54f" data-topic="Introduzione plastica"
+  data-note="per prevenire la cicatrice patologica ignora l'orientamento lungo le linee di Langer e il silicone, scegliendo tensione o seconda intenzione">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">In un paziente con pregresse cicatrici ipertrofiche si pianifica un'escissione elettiva in una sede soggetta a tensione. Quale misura riduce meglio il rischio di cicatrice patologica?</h2>
+    <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Chiudere la ferita in tensione per accelerare la maturazione del collagene</button></li>
+    <li><button type="button"><span class="key">B</span>Prescrivere corticosteroidi sistemici per l'intero decorso post-operatorio</button></li>
+    <li><button type="button"><span class="key">C</span>Lasciare guarire la ferita per seconda intenzione, senza sutura</button></li>
+    <li><button type="button"><span class="key">D</span>Irradiare in modo preventivo la sede chirurgica prima dell'incisione</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Orientare l'incisione lungo le linee di Langer, poi gel di silicone</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La prevenzione della cicatrice patologica passa da una chiusura senza tensione orientata lungo le linee di Langer e dal gel o dalle lamine di silicone come misura non invasiva di prima linea. La tensione e la guarigione per seconda intenzione favoriscono l'ipertrofia, mentre steroidi sistemici e radioterapia profilattica non sono misure preventive standard. Il discriminatore è la combinazione orientamento più silicone.</p>
+    <p class="refs"><a href="https://doi.org/10.1016/j.bjps.2014.04.011">J Plast Reconstr Aesthet Surg 2014</a> · Updated scar management practical guidelines.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Un operaio arriva in pronto soccorso dopo un incidente con un macchinario: un segmento di avambraccio è quasi completamente amputato a metà, e un dito della stessa mano è amputato di netto e conservato a parte. Entrambi i segmenti sono stati raffreddati. Bisogna decidere la priorità e la sequenza degli interventi.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>L'avambraccio è ricco di ventri muscolari; il dito contiene soprattutto tendini, tessuto connettivo e cute. Il muscolo scheletrico è il tessuto più sensibile all'anossia, e questa asimmetria pesa più della raffinatezza tecnica del gesto.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ct</span>Il conto</button>
+      <p>Un dito ben conservato può restare avascolare fino a circa 12 ore prima del reimpianto; un segmento con abbondante muscolatura difficilmente supera le 4-6 ore senza necrosi muscolare irreversibile. Il tempo utile è inversamente proporzionale alla massa muscolare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Hp</span>Ipotesi a confronto</button>
+      <p>Trattare per primo il dito, tecnicamente più fine e apparentemente più urgente, oppure dare precedenza all'avambraccio, il cui orologio ischemico corre molto più in fretta perché il muscolo va incontro a danno in poche ore.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>La priorità va al segmento muscolare, la cui finestra è la più stretta. Nel reimpianto la stabilizzazione scheletrica precede la rivascolarizzazione, perché le manovre di allineamento osseo potrebbero lacerare o trombizzare anastomosi già confezionate.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Ripristinata la circolazione, la ricostruzione prosegue con copertura dei tessuti molli, coaptazione nervosa, mobilizzazione e restauro tendineo. Un edema prolungato favorirebbe fibrosi e aderenze, riducendo la motilità finale, l'unico parametro che davvero conta nella mano.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Un paziente riferisce un calo visivo improvviso e indolore a un occhio. Con il test della luce alternante si osserva che, illuminando l'occhio colpito, entrambe le pupille si dilatano invece di restringersi, mentre illuminando l'occhio sano si restringono normalmente da entrambi i lati.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Lo stimolo luminoso condivide con la via visiva il primo tratto, nervo ottico, chiasma e tratto ottico, ma prosegue al nucleo pretettale e da qui ai nuclei di Edinger-Westphal di entrambi i lati: per questo la luce in un occhio fa contrarre entrambe le pupille.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ct</span>Il conto</button>
+      <p>Illuminando l'occhio sano si ha costrizione bilaterale, segno che la via efferente è integra. Illuminando l'occhio malato la costrizione manca da entrambi i lati: l'informazione afferente non arriva ai centri, pur essendo intatti i nervi che comandano la pupilla.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Hp</span>Ipotesi a confronto</button>
+      <p>Un difetto della via efferente, per esempio una paralisi del terzo nervo, darebbe una pupilla fissa da quel lato in qualunque condizione. Qui invece la risposta cambia a seconda di quale occhio si illumina, il che punta a un difetto della via afferente.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Si tratta di un difetto pupillare afferente relativo, che indica sofferenza della via afferente: distacco di retina, occlusione vascolare ischemica o neurite ottica. Una semplice opacità dei media, come una cataratta, non lo produce.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Il segno impone di esplorare il fondo e la funzione del nervo ottico dell'occhio colpito, perché orienta verso una causa retinica o neurottica potenzialmente grave, a volte reversibile se riconosciuta e trattata in tempo.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Un adolescente presenta al volto e al dorso una eruzione polimorfa: comedoni chiusi e aperti, papule e pustole dolenti, qualche nodulo profondo con esiti cicatriziali iniziali. Si vuole ricostruire perché la lesione nasce e come impostare la terapia.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>La lesione primitiva è il comedone: l'ipercheratinizzazione dell'infra-infundibolo, povero di strato granuloso, forma un tappo cheratinico che ostruisce il follicolo prima ancora che compaia l'infiammazione visibile.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ct</span>Il conto</button>
+      <p>Nel follicolo ostruito e ricco di sebo, sotto controllo androgenico via 5-alfa-reduttasi e diidrotestosterone, prolifera un batterio anaerobio le cui lipasi liberano acidi grassi pro-infiammatori e comedogenici, chiudendo un circolo che si autoalimenta.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Hp</span>Ipotesi a confronto</button>
+      <p>La flogosi giustifica da sola un antibiotico, oppure il quadro nodulo-cistico con cicatrici iniziali impone una strategia che tocchi tutti i fattori patogenetici, secrezione sebacea compresa.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>La scala è stadiata: topici cheratinolitici nelle forme comedoniche, antibatterici topici nelle papulo-pustolose, tetracicline sistemiche nelle forme pustolose e nodulari per la loro azione anche antinfiammatoria e antilipasica. L'isotretinoina, unico farmaco attivo su tutti i fattori, si riserva alle forme gravi o resistenti.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La scelta non segue solo la gravità clinica: l'impatto cicatriziale e psicosociale può giustificare un approccio più aggressivo. Nella donna la teratogenicità dell'isotretinoina impone contraccezione, e il rischio di cicatrici a scodella rende il tempismo terapeutico decisivo.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V04 · Caso ragionato</p>
+  <p class="scenario">A distanza di mesi da una ferita in regione sternale, un paziente presenta una cicatrice rilevata, rossa e pruriginosa che si estende oltre i margini della lesione originaria, senza alcun segno di regressione.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>La guarigione passa da emostasi, infiammazione, proliferazione e maturazione; quest'ultima dura da sei mesi a un anno e mezzo, con progressivo riordino del collagene e calo di cellularità e vascolarizzazione.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ct</span>Il conto</button>
+      <p>Una cicatrice recente è rossa, rilevata e sintomatica; maturando dovrebbe appiattirsi e schiarire. Qui invece, a mesi di distanza, il tessuto non matura e oltrepassa i confini del trauma originario.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Hp</span>Ipotesi a confronto</button>
+      <p>Una cicatrice ipertrofica semplice resta nei limiti della ferita e regredisce in due o tre anni; una cicatrice che invade i tessuti sani e non tende alla maturazione ha un comportamento diverso e una prognosi peggiore.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il superamento dei margini unito all'assenza di maturazione definisce un cheloide. La sede sternale, insieme al lobo dell'orecchio e alla regione deltoidea, è tra le più predisposte a questo esito.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>L'asportazione chirurgica isolata è controindicata, perché riavvia il processo e produce un cheloide più esteso. Si punta a riduzione parziale con corticosteroide intralesionale, gel di silicone e, quando indicato, terapie fisiche adiuvanti.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  var ENDPOINT = "https://notion-442027153948.europe-west1.run.app/vigil";
+  var PENDING = "vigil:pending";
+  var sent = false;
+
+  function collect() {
+    var per = {};
+    var order = [];
+    items.forEach(function (item) {
+      var qid = item.dataset.q;
+      var tid = item.dataset.tid;
+      if (qid === undefined || tid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      if (!per[tid]) {
+        per[tid] = { id: tid, name: item.dataset.topic || "", total: 0, wrong: 0, notes: [] };
+        order.push(tid);
+      }
+      per[tid].total++;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) {
+        per[tid].wrong++;
+        if (item.dataset.note) per[tid].notes.push(item.dataset.note);
+      }
+    });
+    return order.map(function (k) { return per[k]; });
+  }
+
+  function pendingStore() {
+    try { return JSON.parse(localStorage.getItem(PENDING) || "{}") || {}; } catch (e) { return {}; }
+  }
+
+  function flush() {
+    var token = "";
+    try { token = localStorage.getItem("vigil:token") || ""; } catch (e) {}
+    if (!token) return;
+    var store = pendingStore();
+    Object.keys(store).forEach(function (date) {
+      fetch(ENDPOINT, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token, date: date, topics: store[date] })
+      }).then(function (r) {
+        if (!r.ok) return;
+        var s = pendingStore();
+        delete s[date];
+        try { localStorage.setItem(PENDING, JSON.stringify(s)); } catch (e) {}
+      }).catch(function () {});
+    });
+  }
+
+  function send() {
+    if (sent) return;
+    sent = true;
+    var topics = collect();
+    if (!topics.length) return;
+    var store = pendingStore();
+    store[document.body.dataset.date] = topics;
+    try { localStorage.setItem(PENDING, JSON.stringify(store)); } catch (e) {}
+    flush();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      send();
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (location.hash.indexOf("#t=") === 0) {
+    try { localStorage.setItem("vigil:token", location.hash.slice(3)); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+  flush();
+})();
+</script>
+</body>
+</html>
