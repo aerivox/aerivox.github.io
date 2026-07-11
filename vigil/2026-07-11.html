@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 11 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-11">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>sabato 11 luglio 2026</h1>
+  <div class="spark">
+    <p>Prima di Marko Godina, una tibia spezzata che sbucava dalla pelle si copriva con calma, settimane dopo, quando l'osso era ormai colonizzato dai batteri e il lembo attecchiva su un terreno già perso. Godina, chirurgo a Lubiana, guardò i suoi dati e trovò una soglia: settantadue ore. Entro quel margine, ripulire la ferita fino al tessuto vivo e trasferire subito un lembo libero, ricucendo sotto il microscopio vasi larghi un millimetro, abbatteva infezioni e fallimenti come nessuna prudenza aveva mai ottenuto. Pubblicò la serie nel 1986 e cambiò la regola per tutti. Morì quello stesso anno, a quarantatré, in un incidente d'auto, prima di vedere quanto a fondo la sua soglia sarebbe entrata nell'ortopedia e nella chirurgia plastica. Ancora oggi, davanti a una frattura esposta di gamba, si ragiona in ore, e quelle ore portano il suo nome.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="colloca il confine IIIA/IIIB sull'ampiezza della ferita anziché sulla competenza dei tessuti molli a coprire l'osso">
+  <p class="tag">Q01 · Chirurgia plastica · Fratture esposte arto inferiore</p>
+  <h2 class="q-text">Nella classificazione di Gustilo, quale elemento distingue in modo sostanziale una frattura di tipo IIIA da una di tipo IIIB?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'estensione della lacerazione cutanea oltre i dieci centimetri</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'adeguatezza della copertura ossea con i tessuti molli residui</button></li>
+    <li><button type="button"><span class="key">C</span>La presenza di una lesione arteriosa che impone riparazione</button></li>
+    <li><button type="button"><span class="key">D</span>Il grado di comminuzione del focolaio di frattura tibiale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel tipo IIIA i tessuti molli, per quanto estesamente danneggiati, coprono ancora l'osso; nel IIIB la perdita di sostanza con avulsione periostale lascia l'osso esposto e impone chirurgia ricostruttiva. Il discriminatore è la competenza della copertura dei tessuti molli, non l'ampiezza della ferita né la comminuzione; la lesione arteriosa definisce invece il IIIC.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="attribuisce la scelta del lembo muscolare alla riduzione della carica batterica invece che al riempimento dello spazio morto">
+  <p class="tag">Q02 · Chirurgia plastica · Fratture esposte arto inferiore</p>
+  <h2 class="q-text">Un difetto profondo del terzo prossimale di gamba lascia una cavità fra osso e tessuti molli. Perché qui un lembo muscolare è preferito a uno fasciocutaneo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché riduce in misura maggiore la carica batterica nelle prime 24 ore</button></li>
+    <li><button type="button"><span class="key">B</span>Perché consente sempre di evitare il ricorso alla microchirurgia</button></li>
+    <li><button type="button"><span class="key">C</span>Perché offre una copertura cutanea di qualità estetica superiore</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché riempie lo spazio morto che favorirebbe raccolte e infezione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le evidenze attuali indicano parità fra lembi muscolari e fasciocutanei nella riduzione della conta batterica a 24 ore; la vera differenza è la gestione dello spazio morto. Un fasciocutaneo può lasciare cavità poco vascolarizzate dove ristagnano i fluidi e proliferano i batteri, mentre il muscolo le riempie. Il discriminatore è il riempimento volumetrico, non la carica batterica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="legge polsi presenti e cute rosea come criteri di esclusione della sindrome compartimentale">
+  <p class="tag">Q03 · Chirurgia plastica · Fratture esposte arto inferiore</p>
+  <h2 class="q-text">In un paziente con frattura tibiale esposta e sospetta sindrome compartimentale i polsi periferici sono palpabili e il piede è roseo. Come vanno interpretati questi reperti?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Non escludono la diagnosi, perché il microcircolo è già compromesso</button></li>
+    <li><button type="button"><span class="key">B</span>Escludono la sindrome, dato che la perfusione distale è conservata</button></li>
+    <li><button type="button"><span class="key">C</span>Indicano che la fasciotomia può essere rimandata senza rischio</button></li>
+    <li><button type="button"><span class="key">D</span>Segnalano una lesione arteriosa prossimale come causa primaria</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La pressione intracompartimentale patologica (25-30 mmHg) supera la pressione di perfusione capillare (circa 25 mmHg) ma resta ben sotto la pressione arteriosa sistemica: le arterie principali restano pervie e i polsi palpabili mentre il microcircolo muscolare è già collassato. Polsi presenti e cute rosea sono due delle sei P e non escludono nulla; la diagnosi si conferma misurando la pressione intramuscolare. Il discriminatore è la dissociazione fra macrocircolo e microcircolo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="sposta la profilassi antibiotica oltre le tre ore, ancorandola ai tempi ricostruttivi invece che al trauma">
+  <p class="tag">Q04 · Chirurgia plastica · Fratture esposte arto inferiore</p>
+  <h2 class="q-text">Entro quale finestra va avviata la profilassi antibiotica ad ampio spettro in una frattura esposta per contenere colonizzazione e infezione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Entro dodici ore, dopo la stabilizzazione scheletrica definitiva</button></li>
+    <li><button type="button"><span class="key">B</span>Entro sei ore, contestualmente alla copertura con lembo</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Entro tre ore dal trauma, appena stabilizzato il paziente</button></li>
+    <li><button type="button"><span class="key">D</span>Entro ventiquattro ore, al primo cambio di medicazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Tutte le fratture esposte sono contaminate fin dall'inizio; una terapia attiva su Gram positivi e Gram negativi entro tre ore dal trauma riduce il passaggio da contaminazione a infezione. Copertura dei tessuti molli e debridement completano la strategia, ma la finestra antibiotica è precoce e indipendente dai tempi ricostruttivi. Il discriminatore è l'ancoraggio delle tre ore al trauma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="non ordina rivascolarizzazione, stabilizzazione e copertura precoce nel IIIC, o amputa un arto salvabile">
+  <p class="tag">Q05 · Chirurgia plastica · Fratture esposte arto inferiore</p>
+  <h2 class="q-text">In una frattura di tipo IIIC con arto salvabile e paziente stabile, qual è la sequenza corretta dei tempi chirurgici?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Copertura con lembo, poi riparazione vascolare, poi stabilizzazione ossea</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Stabilizzazione ossea e riparazione vascolare, poi copertura precoce dei tessuti molli</button></li>
+    <li><button type="button"><span class="key">C</span>Ricostruzione dei tessuti molli in urgenza, poi stabilizzazione ossea differita</button></li>
+    <li><button type="button"><span class="key">D</span>Amputazione primaria d'emblée, indipendentemente dallo stato del piede</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il IIIC aggiunge una lesione arteriosa da trattare: si stabilizza lo scheletro e si ripristina la perfusione, quindi debridement e copertura definitiva idealmente nello stesso setting o entro 72 ore. Rinviare la copertura o invertire i tempi lascia esposto un osso devascolarizzato. Il discriminatore è la priorità della rivascolarizzazione con copertura precoce, non l'amputazione automatica di un arto salvabile.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="equipara deficit dello SPE o parestesie parziali alla perdita completa della sensibilità plantare da nervo tibiale posteriore">
+  <p class="tag">Q06 · Chirurgia plastica · Fratture esposte arto inferiore</p>
+  <h2 class="q-text">Quale reperto neurologico può costituire una controindicazione relativa al salvataggio dell'arto inferiore, orientando verso l'amputazione infracondiloidea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un deficit motorio isolato dello sciatico popliteo esterno</button></li>
+    <li><button type="button"><span class="key">B</span>Una parestesia transitoria del dorso del piede</button></li>
+    <li><button type="button"><span class="key">C</span>Una ipoestesia parziale del versante laterale della gamba</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Un danno completo e non ricostruibile del nervo tibiale posteriore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il nervo tibiale posteriore fornisce la sensibilità della pianta, superficie portante sottoposta a carichi continui: un suo danno completo, prossimale o non ricostruibile, lascia un piede anestetico esposto a ulcere e infezioni ricorrenti, funzionalmente inutilizzabile, per cui un'amputazione ben livellata diventa preferibile. Il deficit dello SPE o le parestesie parziali non hanno lo stesso peso prognostico. Il discriminatore è la perdita della sensibilità plantare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="confonde il lembo libero, staccato e rianastomizzato, con un lembo peduncolato ancora connesso all'origine">
+  <p class="tag">Q07 · Chirurgia plastica · Microchirurgia ricostruttiva</p>
+  <h2 class="q-text">Che cosa definisce, in senso stretto, un lembo libero microchirurgico?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Un tessuto con peduncolo vascolare noto, staccato del tutto e rianastomizzato sul sito ricevente</button></li>
+    <li><button type="button"><span class="key">B</span>Un lembo trasposto sul difetto vicino mantenendo intatto il proprio peduncolo d'origine</button></li>
+    <li><button type="button"><span class="key">C</span>Un innesto cutaneo a tutto spessore che si rivascolarizza per imbibizione dal letto</button></li>
+    <li><button type="button"><span class="key">D</span>Un lembo di vicinanza fatto ruotare attorno a un fisso punto di rotazione cutaneo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il lembo libero è per definizione microchirurgico: il tessuto, con peduncolo vascolare noto, viene sezionato, staccato completamente dall'area donatrice e rianastomizzato a vasi dell'area ricevente di calibro 1-2 mm. Le opzioni sul lembo trasposto o ruotato descrivono lembi peduncolati, ancora connessi all'origine; l'innesto è privo di anastomosi vascolare. Il discriminatore è il distacco completo con rianastomosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="denomina l'anastomosi venosa senza seguire la direzione del flusso dal capo terminale al fianco del vaso maggiore">
+  <p class="tag">Q08 · Chirurgia plastica · Microchirurgia ricostruttiva</p>
+  <h2 class="q-text">Tra la vena di un lembo libero, di piccolo calibro, e una vena ricevente maggiore, quale configurazione si adotta e con quale logica di denominazione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Latero-terminale, perché il vaso ricevente più grande viene aperto lateralmente</button></li>
+    <li><button type="button"><span class="key">B</span>Termino-terminale, perché i due calibri vanno prima resi uguali fra loro e suturati</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Termino-laterale, perché la vena piccola scarica dal capo terminale nel fianco di quello grande</button></li>
+    <li><button type="button"><span class="key">D</span>Latero-laterale, perché i due vasi vengono affiancati e uniti per tutta la lunghezza</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il primo termine segue la direzione del flusso: nella vena il sangue lascia il capo terminale del vaso piccolo per entrare nel fianco laterale del vaso maggiore, quindi termino-laterale. Nelle arterie il rapporto si inverte, latero-terminale, perché il sangue entra dall'apertura laterale del ricevente. Il discriminatore è la direzione del flusso, non l'uguaglianza dei calibri.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="non riconosce che la latero-terminale serve a preservare la continuità e il flusso dell'arteria ricevente">
+  <p class="tag">Q09 · Chirurgia plastica · Microchirurgia ricostruttiva</p>
+  <h2 class="q-text">Perché, per la sutura arteriosa su una delle poche arterie di un arto, si preferisce l'anastomosi latero-terminale a quella termino-terminale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché l'apertura laterale garantisce sempre un calibro perfettamente uguale tra i vasi</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la sutura in serie è tecnicamente impossibile su vasi di 1-2 mm</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il flusso arterioso richiede per principio un angolo di ingresso acuto</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché evita di sacrificare la continuità dell'arteria ricevente, il cui flusso non va interrotto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Su un arto con poche arterie non si può sacrificare la continuità del vaso ricevente né interromperne il flusso: aprendo lateralmente il ricevente si abbocca il peduncolo senza sezionarlo, e la tecnica gestisce anche differenze di calibro. La sutura termino-terminale resta possibile su vasi piccoli quando i calibri sono simili e il flusso è sacrificabile. Il discriminatore è la preservazione del vaso ricevente.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="spiega il lembo libero in mammella con la mancanza di vasi riceventi anziché con il surplus di volume da ricostruire">
+  <p class="tag">Q10 · Chirurgia plastica · Microchirurgia ricostruttiva</p>
+  <h2 class="q-text">La ricostruzione mammaria ricorre spesso a lembi liberi pur trovandosi sul tronco, dove i lembi locali di solito bastano. Qual è la ragione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché sul tronco mancano del tutto vasi riceventi di calibro adeguato</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché serve ricostruire volume e forma, con un surplus di tessuto non reperibile in loco</button></li>
+    <li><button type="button"><span class="key">C</span>Perché la cute della mammella non tollera in alcun modo una trasposizione peduncolata</button></li>
+    <li><button type="button"><span class="key">D</span>Perché il rischio di rigetto impone sempre di prelevare tessuto a distanza</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La mammella non richiede solo copertura ma la ricostruzione di volume e forma, che domanda un surplus di tessuto non disponibile nelle immediate vicinanze della ghiandola: da qui il ricorso al lembo libero pur sul tronco. Le zone periferiche come testa, collo e arti distali usano lembi liberi per un motivo diverso, la mancanza di tessuto di vicinanza. Il discriminatore è il surplus per volume e forma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="attribuisce ai microclamp una funzione di dilatazione o misura invece dell'occlusione temporanea del flusso">
+  <p class="tag">Q11 · Chirurgia plastica · Microchirurgia ricostruttiva</p>
+  <h2 class="q-text">Durante un'anastomosi microchirurgica si applicano microclamp sui due monconi vascolari. Qual è la loro funzione?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Interrompere temporaneamente il flusso per suturare in un campo esangue</button></li>
+    <li><button type="button"><span class="key">B</span>Dilatare stabilmente il lume del vaso per facilitare il passaggio dell'ago</button></li>
+    <li><button type="button"><span class="key">C</span>Riscaldare la parete vasale per prevenire lo spasmo intraoperatorio</button></li>
+    <li><button type="button"><span class="key">D</span>Misurare la pressione di perfusione all'interno del peduncolo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Su vasi di 1-2 mm i punti di sutura richiedono un campo esangue: i microclamp occludono momentaneamente i monconi, arrestando la circolazione per il tempo dell'anastomosi. Non servono a dilatare, riscaldare o misurare pressioni. Il discriminatore è l'occlusione temporanea che rende eseguibile la sutura.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="riconduce il dibattito sui trapianti da cadavere a un limite tecnico invece che all'immunosoppressione per un organo non salvavita">
+  <p class="tag">Q12 · Chirurgia plastica · Microchirurgia ricostruttiva</p>
+  <h2 class="q-text">Che cosa alimenta il dibattito bioetico specifico sui trapianti di mano e di faccia da cadavere?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Richiedono un peduncolo vascolare troppo piccolo per le tecniche attuali</button></li>
+    <li><button type="button"><span class="key">B</span>Non sono eseguibili senza il microscopio operatorio a stativo fisso</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Espongono a immunosoppressione cronica un paziente per un organo non salvavita</button></li>
+    <li><button type="button"><span class="key">D</span>Comportano un tempo di ischemia incompatibile con la sopravvivenza del tessuto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>A differenza dei trapianti di organi salvavita, mano e faccia non salvano la vita, eppure impongono immunosoppressione a vita con rischio permanente di rigetto: si discute se le sequele siano accettabili a fronte di un beneficio non vitale. Il nodo è il rapporto rischio-beneficio, non un limite tecnico di calibro, ischemia o strumentazione. Il discriminatore è l'immunosoppressione cronica per un organo non salvavita.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="non collega la transizione lievito-ifa alla comparsa del corredo di virulenza (adesine, proteasi, candidalisina) proprio delle ife">
+  <p class="tag">Q13 · Dermatologia · Malattie da infezioni fungine</p>
+  <h2 class="q-text">Nella patogenesi della candidosi, perché la transizione dalla forma lievitiforme a quella ifale è il primo evento patogenetico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché le sole ife resistono all'azione dei neutrofili e delle NET</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché solo le ife esprimono il repertorio completo di adesine, proteasi e candidalisina</button></li>
+    <li><button type="button"><span class="key">C</span>Perché la forma lievito è incapace di colonizzare le mucose dell'ospite</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la transizione coincide con l'acquisizione della resistenza ai triazoli</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il salto da commensale a patogeno parte dalla transizione lievito-ifa perché solo le ife esprimono adesine Als, aspartil-proteasi SAP, fosfolipasi e la candidalisina, la citotossina peptidica che perfora la membrana dell'epiteliocita. Il lievito colonizza normalmente da commensale, e la resistenza ai farmaci è un fenomeno indipendente. Il discriminatore è il corredo di virulenza espresso solo nella forma ifale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="sceglie la coltura o l'istologia come esame di prima linea al posto dell'esame diretto con KOH">
+  <p class="tag">Q14 · Dermatologia · Malattie da infezioni fungine</p>
+  <h2 class="q-text">Qual è l'esame di prima linea per confermare una micosi superficiale, distinguendo le forme fungine presenti nella lesione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La coltura su piastra, che identifica subito la specie fungina</button></li>
+    <li><button type="button"><span class="key">B</span>L'esame istologico con colorazione argento-metenamina di Grocott</button></li>
+    <li><button type="button"><span class="key">C</span>La ricerca sierologica di anticorpi specifici circolanti</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>L'esame microscopico diretto con idrossido di potassio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'esame microscopico diretto è essenziale e di prima linea: si preleva materiale dalla lesione, si aggiunge idrossido di potassio per macerare il campione e si visualizzano al microscopio le forme fungine. La coltura serve poi a tipizzare la specie e a guidare la terapia, ma è più lenta; istologia e sierologia non sono lo strumento iniziale. Il discriminatore è il KOH sull'esame diretto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="usa la denominazione superata Pityrosporum ovale, o attribuisce la pitiriasi versicolor a un dermatofita">
+  <p class="tag">Q15 · Dermatologia · Malattie da infezioni fungine</p>
+  <h2 class="q-text">Qual è la denominazione corrente dell'agente eziologico della pitiriasi versicolor?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Malassezia (furfur)</button></li>
+    <li><button type="button"><span class="key">B</span>Pityrosporum ovale</button></li>
+    <li><button type="button"><span class="key">C</span>Trichophyton tonsurans</button></li>
+    <li><button type="button"><span class="key">D</span>Epidermophyton floccosum</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'agente è un lievito lipofilo del genere Malassezia (furfur), denominazione canonica che ha sostituito la vecchia Pityrosporum ovale, ormai superata. Trichophyton ed Epidermophyton sono dermatofiti, responsabili delle tinee, non della pitiriasi versicolor. Il discriminatore è la nomenclatura aggiornata contro il termine obsoleto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="spiega l'anello della tinea con un meccanismo immunitario o batterico invece dell'esaurimento della cheratina centrale">
+  <p class="tag">Q16 · Dermatologia · Malattie da infezioni fungine</p>
+  <h2 class="q-text">La tinea corporis assume l'aspetto di una chiazza ad anello con centro più spento e bordo attivo che si espande. Da cosa dipende questa morfologia?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Dalla risposta immunitaria che risparmia selettivamente il centro della lesione</button></li>
+    <li><button type="button"><span class="key">B</span>Dalla contemporanea sovrainfezione batterica del bordo periferico</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Dall'esaurimento della cheratina al centro, che spinge il fungo verso la periferia</button></li>
+    <li><button type="button"><span class="key">D</span>Dalla desquamazione centrale indotta dalla terapia steroidea impropria</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I dermatofiti si nutrono di cheratina: quando la fonte si esaurisce al centro, la proliferazione si sposta in periferia in cerca di nuovo substrato, generando il classico anello con centro spento e bordo eritematoso rilevato che avanza in modo centrifugo. Non è un fenomeno immunitario selettivo né una sovrainfezione batterica. Il discriminatore è l'esaurimento del substrato cheratinico centrale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="attribuisce alla candidosi delle pieghe l'orletto desquamativo periferico proprio della tinea cruris">
+  <p class="tag">Q17 · Dermatologia · Malattie da infezioni fungine</p>
+  <h2 class="q-text">In una piega inguinale, quale reperto orienta verso una candidosi piuttosto che verso una tinea cruris?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un orletto periferico desquamante con tendenza alla risoluzione centrale</button></li>
+    <li><button type="button"><span class="key">B</span>Una chiazza a bordo netto che progredisce in modo centrifugo verso le cosce</button></li>
+    <li><button type="button"><span class="key">C</span>Un interessamento bilaterale con margine finemente squamoso e centro chiaro</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Un eritema vivo e lucido con vescico-pustole satelliti e ragadi dolorose sul fondo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella piega la candidosi dà eritema acceso, superficie liscia e lucida, vescico-pustole satelliti alla periferia e ragadi dolorose sul fondo; la tinea cruris mostra invece l'orletto desquamativo attivo con risoluzione centrale e progressione centrifuga. Pustole satelliti e dolore orientano alla Candida, l'anello desquamante al dermatofita; nei diabetici le due possono sovrapporsi. Il discriminatore è il pattern satellite e lucido contro l'orletto periferico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="tratta la candidemia da catetere senza associare echinocandina sistemica e rimozione del catetere infetto">
+  <p class="tag">Q18 · Dermatologia · Malattie da infezioni fungine</p>
+  <h2 class="q-text">In una candidemia associata a catetere venoso centrale in paziente neutropenico, quali sono i cardini del trattamento?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Fluconazolo orale in monoterapia, mantenendo in sede il catetere</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Echinocandina sistemica e rimozione precoce del catetere infetto</button></li>
+    <li><button type="button"><span class="key">C</span>Sola rimozione del catetere, riservando gli antifungini alle recidive</button></li>
+    <li><button type="button"><span class="key">D</span>Amfotericina B topica sulle localizzazioni cutanee disseminate</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La candidemia ha mortalità del 30-40% e impone terapia antifungina sistemica con echinocandine in prima linea, oltre alla rimozione precoce del catetere infetto, sede di biofilm che protegge il fungo da farmaci e cellule immunitarie. Il fluconazolo orale non copre adeguatamente in prima battuta le specie meno sensibili, e la sola rimozione del catetere è insufficiente. Il discriminatore è l'associazione echinocandina più rimozione del catetere.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="tratta la IOP come criterio diagnostico del glaucoma invece che come fattore di rischio, ignorando le forme a pressione normale">
+  <p class="tag">Q19 · Oftalmologia · Glaucoma</p>
+  <h2 class="q-text">Perché l'aumento della pressione intraoculare non basta, da solo, a porre diagnosi di glaucoma?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché la IOP elevata compare solo nelle fasi terminali della malattia</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la misura tonometrica è troppo imprecisa per avere valore clinico</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché è un fattore di rischio, e il glaucoma può manifestarsi anche a IOP normale</button></li>
+    <li><button type="button"><span class="key">D</span>Perché una IOP normale esclude con certezza qualsiasi neuropatia ottica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La IOP elevata è un fattore di rischio, non un criterio diagnostico: esiste una quota di glaucoma cronico a pressione normale, in cui il danno del nervo ottico è verosimilmente vascolare. La diagnosi poggia sulla neuropatia ottica, escavazione papillare e deficit campimetrico, non sul solo tono. La tonometria è utile ma non definisce la malattia. Il discriminatore è il ruolo di rischio, non caratterizzante, della IOP.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="non riconduce l'inefficacia iniziale della pilocarpina alla paralisi ischemica dello sfintere irideo da IOP molto elevata">
+  <p class="tag">Q20 · Oftalmologia · Glaucoma</p>
+  <h2 class="q-text">Nell'attacco acuto di glaucoma da chiusura d'angolo con IOP di 60 mmHg, perché la pilocarpina topica può risultare inefficace all'inizio?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché lo sfintere irideo è in ischemia da compressione e non risponde al miotico</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la pilocarpina agisce solo aumentando il deflusso uveo-sclerale</button></li>
+    <li><button type="button"><span class="key">C</span>Perché è un midriatico che finisce per aggravare l'affollamento dell'angolo</button></li>
+    <li><button type="button"><span class="key">D</span>Perché l'edema corneale ne blocca del tutto l'assorbimento sistemico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Con IOP oltre 50-60 mmHg i vasi iridei sono compressi e lo sfintere pupillare va in paralisi ischemica, quindi non risponde ai miotici: bisogna prima abbassare la pressione con mannitolo e acetazolamide per riperfondere l'iride e rendere di nuovo efficace la pilocarpina. La pilocarpina è un parasimpatico-mimetico miotico che aumenta il deflusso trabecolare, non un midriatico. Il discriminatore è la paralisi ischemica dello sfintere.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="considera l'atropina o un midriatico un trattamento del glaucoma acuto invece di un fattore scatenante">
+  <p class="tag">Q21 · Oftalmologia · Glaucoma</p>
+  <h2 class="q-text">Quale tra questi può scatenare un attacco acuto di glaucoma da chiusura d'angolo in un occhio predisposto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il timololo in collirio ipotensivo applicato sull'occhio controlaterale</button></li>
+    <li><button type="button"><span class="key">B</span>L'acetazolamide somministrata per bocca a scopo preventivo del tono</button></li>
+    <li><button type="button"><span class="key">C</span>La pilocarpina a bassa concentrazione instillata la sera prima</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Un farmaco midriatico come l'atropina, che favorisce l'affollamento irideo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I midriatici come l'atropina dilatano la pupilla e addensano la radice iridea nell'angolo, potendo precipitare la chiusura in un occhio anatomicamente predisposto: sono un fattore scatenante, non una terapia. Pilocarpina, timololo e acetazolamide riducono invece la pressione. Il discriminatore è l'azione midriatica dell'atropina, opposta a quella miotica utile in acuto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="non collega la controindicazione del timololo negli asmatici al blocco non selettivo dei recettori beta-2 bronchiali">
+  <p class="tag">Q22 · Oftalmologia · Glaucoma</p>
+  <h2 class="q-text">Il timololo è il gold standard nella terapia del glaucoma cronico, ma è controindicato in una categoria di pazienti. Quale e perché?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Nei diabetici, perché altera in modo marcato e imprevedibile il compenso glicemico</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Negli asmatici, perché da beta-bloccante non selettivo può indurre broncocostrizione</button></li>
+    <li><button type="button"><span class="key">C</span>Negli anziani, perché aumenta la produzione notturna di umor acqueo</button></li>
+    <li><button type="button"><span class="key">D</span>Nei miopi elevati, perché accelera l'escavazione della papilla ottica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il timololo è un beta-bloccante non selettivo: agendo anche sui recettori beta-2 bronchiali può provocare broncocostrizione e scatenare crisi negli asmatici. Il suo effetto ipotensivo oculare deriva dalla ridotta produzione di umor acqueo (meno cAMP nell'epitelio ciliare), non da un'azione sul glucosio o sulla papilla. Il discriminatore è il blocco beta-2 bronchiale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="inverte la progressione del danno glaucomatoso, facendolo partire dalla macula anziché dalla periferia arciforme">
+  <p class="tag">Q23 · Oftalmologia · Glaucoma</p>
+  <h2 class="q-text">Nel glaucoma cronico ad angolo aperto l'acuità visiva centrale resta a lungo conservata nonostante un danno campimetrico già presente. Perché?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché lo scotoma arciforme colpisce la periferia e risparmia il fascio papillo-maculare</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la macula rigenera in parte le fibre ganglionari perse nelle fasi iniziali</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il danno inizia dalla fovea centrale e si estende poi verso la periferia</button></li>
+    <li><button type="button"><span class="key">D</span>Perché l'acuità visiva dipende dal cristallino, non dalle cellule ganglionari</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il deficit glaucomatoso classico è lo scotoma arciforme, che interessa le fibre corrispondenti alla periferia del campo e risparmia a lungo il fascio papillo-maculare: la macula, responsabile dell'acuità centrale, è coinvolta solo negli stadi terminali, quando gli scotomi confluiscono in visione a cannocchiale. Le fibre ganglionari non rigenerano e il danno parte dalla periferia, non dalla fovea. Il discriminatore è il risparmio del fascio papillo-maculare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="attribuisce la scelta chirurgica nel glaucoma congenito a controindicazioni farmacologiche invece che al difetto anatomico del trabecolato">
+  <p class="tag">Q24 · Oftalmologia · Glaucoma</p>
+  <h2 class="q-text">Perché la terapia del glaucoma congenito è essenzialmente chirurgica, a differenza del glaucoma cronico dell'adulto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché nel neonato i colliri ipotonizzanti sono tutti controindicati per tossicità</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la IOP congenita è troppo bassa per rispondere alla terapia medica</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché il difetto è anatomico, una disgenesia del trabecolato che nessun farmaco corregge</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la cornea ingrandita impedisce l'assorbimento di qualunque collirio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il glaucoma congenito nasce da una disgenesia delle strutture angolari per anomalo sviluppo della cresta neurale: il trabecolato non si è formato correttamente, un difetto strutturale che nessun farmaco può correggere. Serve un intervento, goniotomia o trabeculectomia, che apra o bypassi l'angolo malformato; la terapia medica ha solo ruolo complementare post-operatorio. Il discriminatore è la natura anatomica del difetto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="preferisce attendere che la ferita si dichiari invece della copertura ortoplastica precoce nella IIIB">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Un motociclista di trent'anni, tibia esposta con perdita di sostanza e osso scoperto, viene ripulito e stabilizzato in prima giornata; è emodinamicamente stabile e l'arto è salvabile. L'équipe discute se coprire subito o attendere due settimane che la ferita si dichiari. Quale scelta riduce di più l'infezione correlata alla frattura?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Rimandare la copertura oltre le due settimane per selezionare meglio il tessuto vitale</button></li>
+    <li><button type="button"><span class="key">B</span>Sostituire il lembo con una guarigione per seconda intenzione sotto VAC prolungata</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Eseguire la copertura ortoplastica precoce, idealmente entro 72 ore dal debridement</button></li>
+    <li><button type="button"><span class="key">D</span>Attendere tre colture profonde negative consecutive prima di qualsiasi lembo</button></li>
+    <li><button type="button"><span class="key">E</span>Convertire subito a un'amputazione infracondiloidea per azzerare il rischio settico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'algoritmo ortoplastico moderno punta a debridement e copertura vascolarizzata precoce, idealmente entro 72 ore. Rimandare lascia l'osso esposto colonizzarsi; la VAC prolunga la finestra fino al settimo giorno ma non sostituisce la copertura, e l'amputazione non è indicata in un arto salvabile. Il discriminatore è la precocità della copertura.</p>
+    <p class="refs"><a href="https://doi.org/10.1007/s00068-026-03189-2">Eur J Trauma Emerg Surg 2026</a> · Ruprecht et al.: nelle Gustilo IIIB/C la copertura precoce riduce l'infezione (OR circa 0,34).</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="legge un lembo turgido, violaceo e a refill rapido come sofferenza arteriosa invece che congestione venosa">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">In prima giornata dopo un lembo libero al terzo distale di gamba, il lembo diventa violaceo e teso, il refill capillare è rapidissimo e alla puntura esce sangue scuro. Qual è il problema più probabile e la condotta corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Insufficienza arteriosa: riscaldare il lembo e osservarlo per alcune ore</button></li>
+    <li><button type="button"><span class="key">B</span>Ematoma superficiale: è sufficiente rimuovere alcuni punti di sutura cutanei</button></li>
+    <li><button type="button"><span class="key">C</span>Vasospasmo transitorio: impacco caldo e rivalutazione in giornata</button></li>
+    <li><button type="button"><span class="key">D</span>Infezione precoce: avviare terapia antibiotica sistemica empirica</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Congestione venosa da trombosi dell'anastomosi: revisione chirurgica urgente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Colorito violaceo, turgore, refill accelerato e sangue scuro indicano congestione venosa da compromissione del deflusso, tipicamente trombosi dell'anastomosi venosa: è un'emergenza da riesplorare subito, perché la finestra per salvare il lembo è breve. L'insufficienza arteriosa dà invece un lembo pallido, freddo, con refill assente; vasospasmo e infezione non spiegano il quadro. Il discriminatore è il pattern venoso contro quello arterioso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="attribuisce la perdita di danno epiteliale del ceppo ECE1-nullo alle adesine o alla risposta dell'ospite invece che alla candidalisina">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">In vitro un ceppo mutante privato del gene ECE1 colonizza un monostrato di epitelio orale ma non provoca danno di membrana né risposta di pericolo, e risulta avirulento nei modelli di infezione mucosa. Quale evento molecolare manca?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La produzione di candidalisina, la tossina peptidica che perfora la membrana</button></li>
+    <li><button type="button"><span class="key">B</span>L'espressione delle adesine Als, del tutto indispensabili all'adesione iniziale</button></li>
+    <li><button type="button"><span class="key">C</span>La transizione inversa dalla forma ifale a quella lievitiforme di resistenza</button></li>
+    <li><button type="button"><span class="key">D</span>L'attivazione della via CARD9 nelle cellule dendritiche dell'ospite</button></li>
+    <li><button type="button"><span class="key">E</span>La formazione del biofilm sulla superficie dell'epitelio colonizzato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il gene ECE1 codifica la poliproteina da cui deriva la candidalisina, prima citotossina peptidica descritta in un fungo umano-patogeno: inserendosi nella membrana dell'epiteliocita forma pori, danneggia la cellula e attiva la risposta di pericolo. Un ceppo ECE1-nullo aderisce ancora (adesine intatte) ma non danneggia né allerta l'epitelio, e risulta avirulento. La via CARD9 è una risposta dell'ospite, non del fungo. Il discriminatore è la perdita della candidalisina.</p>
+    <p class="refs"><a href="https://doi.org/10.1038/nature17625">Nature 2016</a> · Moyes et al.: la candidalisina è la citotossina peptidica critica per l'infezione mucosa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="inverte la sequenza dell'attacco acuto, usa l'atropina o esegue l'iridotomia prima di abbassare la IOP">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">Un ipermetrope di 68 anni arriva la sera con dolore intenso a un occhio, aloni colorati, nausea e vomito, occhio rosso, pupilla in media midriasi fissa, edema corneale e IOP di 62 mmHg. Qual è la condotta di prima linea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Iridotomia YAG immediata, ancor prima di qualsiasi terapia medica</button></li>
+    <li><button type="button"><span class="key">B</span>Instillazione ripetuta di atropina per tentare di rompere il blocco pupillare</button></li>
+    <li><button type="button"><span class="key">C</span>Sola analgesia con antiemetici, rinviando la visita oculistica al mattino</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Abbassare la IOP con mannitolo e acetazolamide, poi pilocarpina, quindi iridotomia YAG</button></li>
+    <li><button type="button"><span class="key">E</span>Beta-bloccante topico come unico presidio fino alla normalizzazione del tono</button></li>
+  </ol>
+  <div class="rationale">
+    <p>È un'emergenza: senza trattamento la cecità sopravviene in 24-48 ore per ischemia da IOP elevata. Si abbatte subito la pressione con osmotici e inibitori dell'anidrasi carbonica, poi si aggiunge pilocarpina, efficace solo quando il tono scende e lo sfintere si riperfonde; superato l'acuto e ridotto l'edema corneale si esegue l'iridotomia YAG. L'atropina è midriatica e peggiora il quadro; l'iridotomia immediata è ostacolata dall'edema. Il discriminatore è la sequenza pressione-prima.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="affida l'esclusione della sindrome compartimentale ai polsi distali invece della misura pressoria che guida la fasciotomia">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Dopo riduzione di una frattura tibiale esposta, il paziente è sedato e intubato, i compartimenti sono tesi, i polsi distali presenti e il refill capillare rallentato. Il dolore non è valutabile. Qual è il passo più appropriato?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Escludere la sindrome compartimentale perché i polsi distali sono presenti</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Misurare la pressione intracompartimentale e, se elevata, procedere a fasciotomia</button></li>
+    <li><button type="button"><span class="key">C</span>Somministrare mannitolo e rivalutare i polsi dopo dodici ore</button></li>
+    <li><button type="button"><span class="key">D</span>Eseguire un'angiografia urgente per cercare una lesione arteriosa prossimale</button></li>
+    <li><button type="button"><span class="key">E</span>Elevare l'arto sopra il livello del cuore e attendere il riassorbimento dell'edema</button></li>
+  </ol>
+  <div class="rationale">
+    <p>In un paziente non valutabile clinicamente i polsi presenti non escludono la sindrome compartimentale, che compromette il microcircolo mentre le arterie restano pervie: la conferma è la misura della pressione intramuscolare, e un valore elevato impone fasciotomia tempestiva prima che l'ischemia diventi necrosi. Elevare l'arto o attendere ritarda la decompressione; l'angiografia indaga un problema diverso. Il discriminatore è la misura pressoria che guida la fasciotomia.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1"
+  data-tid="27f28251-9c2c-80c0-a684-ec89dd80c73c" data-topic="Microchirurgia ricostruttiva"
+  data-note="collega l'urgenza del reimpianto al calibro vasale invece che alla scarsa tolleranza del muscolo all'ischemia">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">Giungono in reparto più parti amputate candidate a reimpianto. Quale va reimpiantata con maggiore urgenza, e per quale ragione la finestra è più stretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un dito isolato, perché il calibro vasale di 1 mm rende l'anastomosi impossibile oltre poche ore</button></li>
+    <li><button type="button"><span class="key">B</span>Un lembo cutaneo puro, per il rapido essiccamento della superficie</button></li>
+    <li><button type="button"><span class="key">C</span>Qualsiasi parte, perché il tempo di ischemia è identico a ogni livello</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Un segmento con abbondante massa muscolare, per la scarsa tolleranza del muscolo all'ischemia</button></li>
+    <li><button type="button"><span class="key">E</span>La parte con la cute più estesa, per il maggiore fabbisogno metabolico epidermico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il muscolo tollera l'ischemia molto meno di cute, osso e parti distali povere di massa muscolare: un segmento riccamente muscolare ha una finestra ischemica breve e va reimpiantato per primo, se necessario raffreddandolo per prolungarla. Un dito, pur con vasi di circa 1 mm, tollera ischemie più lunghe proprio per la minima massa muscolare. Il discriminatore è la massa muscolare, non il calibro del vaso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="affida una candidemia da specie multiresistente al fluconazolo o rinvia la terapia in attesa della tipizzazione">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">In terapia intensiva, un paziente con pregressa esposizione ad antifungini presenta emocolture positive per una Candida multiresistente emergente. Che cosa guida meglio la terapia?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Echinocandina come terapia iniziale, rimozione del catetere e conferma della sensibilità in vitro</button></li>
+    <li><button type="button"><span class="key">B</span>Fluconazolo ad alte dosi, come molecola più affidabile sulle specie non-albicans</button></li>
+    <li><button type="button"><span class="key">C</span>Sola rimozione del catetere, riservando gli antifungini alle emocolture ancora positive</button></li>
+    <li><button type="button"><span class="key">D</span>Amfotericina B topica sulle papule cutanee, in attesa dell'antibiogramma</button></li>
+    <li><button type="button"><span class="key">E</span>Astensione terapeutica fino alla tipizzazione molecolare della specie</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le specie multiresistenti emergenti come C. auris sono un'emergenza nosocomiale: si inizia con un'echinocandina, si rimuove precocemente il catetere infetto e si conferma la sensibilità in vitro, riservando l'amfotericina B liposomiale alle forme refrattarie. Il fluconazolo è spesso inefficace, e ritardare la terapia in una candidemia ad alta mortalità è pericoloso. Il discriminatore è l'echinocandina empirica poi guidata dall'antibiogramma, non l'azolo.</p>
+    <p class="refs"><a href="https://doi.org/10.1038/nrdp.2018.26">Nat Rev Dis Primers 2018</a> · Pappas et al.: echinocandine in prima linea, C. auris multiresistente.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1"
+  data-tid="27f28251-9c2c-8012-add2-f43f9ba473fc" data-topic="Glaucoma"
+  data-note="considera l'iridotomia profilattica obbligatoria in ogni sospetto di chiusura d'angolo, ignorando il basso rischio di progressione">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Uno screening di popolazione individua un cinquantacinquenne asintomatico con angolo occludibile (trabecolato non visibile in due quadranti) ma IOP normale, papilla normale e nessuna sinechia. Che cosa suggerisce la migliore evidenza attuale sull'iridotomia profilattica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'iridotomia profilattica è obbligatoria e va eseguita subito in entrambi gli occhi</button></li>
+    <li><button type="button"><span class="key">B</span>L'occhio non trattato progredisce a glaucoma conclamato nella maggioranza dei casi in pochi anni</button></li>
+    <li><button type="button"><span class="key">C</span>La sola terapia con prostaglandine sostituisce l'indicazione all'iridotomia</button></li>
+    <li><button type="button"><span class="key">D</span>La condizione non comporta alcun rischio e non richiede follow-up</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Il rischio di progressione è basso, per cui l'iridotomia sistematica in tutti i sospetti va riconsiderata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Studi randomizzati recenti mostrano che nei sospetti di chiusura d'angolo asintomatici da screening l'incidenza di progressione a malattia conclamata è bassa, per cui l'iridotomia profilattica sistematica in tutti i sospetti va riconsiderata, pur restando ragionevole nei casi a rischio maggiore. Non è né obbligatoria per tutti né priva di necessità di sorveglianza; le prostaglandine non affrontano il meccanismo di blocco. Il discriminatore è il basso rischio di progressione che ridimensiona l'indicazione universale.</p>
+    <p class="refs"><a href="https://doi.org/10.1016/j.ogla.2023.06.004">Ophthalmol Glaucoma 2023</a> · Filippopoulos et al. · <a href="https://doi.org/10.1016/j.ophtha.2021.01.021">Ophthalmology 2021</a> · Xu et al., ZAP-Trial.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1"
+  data-tid="27f28251-9c2c-8077-b9c4-f8951fc91567" data-topic="Fratture esposte arto inferiore"
+  data-note="insegue il salvataggio di un arto con piede plantare anestetico non ricostruibile, ignorando l'inutilità funzionale">
+  <p class="tag">B09 · Boards</p>
+  <h2 class="q-text">Gamba dilaniata con osso ricostruibile e almeno un pilone valido, ma sezione completa e non ricostruibile del nervo tibiale posteriore a livello prossimale. Paziente stabile. Qual è la decisione più razionale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Procedere al salvataggio a ogni costo, data la presenza di osso ricostruibile</button></li>
+    <li><button type="button"><span class="key">B</span>Ricostruire i tessuti molli e rimandare ogni decisione sulla sensibilità</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Considerare l'amputazione ben livellata, perché un piede anestetico è funzionalmente inutile</button></li>
+    <li><button type="button"><span class="key">D</span>Innestare da subito il nervo tibiale con un lembo libero per ripristinare la sensibilità</button></li>
+    <li><button type="button"><span class="key">E</span>Salvare l'arto e compensare con un plantare su misura la perdita sensitiva</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Un danno completo e non ricostruibile del nervo tibiale posteriore lascia la pianta anestetica: superficie portante che, priva di sensibilità protettiva, sviluppa ulcere e infezioni ricorrenti fino a un arto inutilizzabile. È una controindicazione relativa al salvataggio, e un'amputazione infracondiloidea ben livellata offre un risultato funzionale migliore di un piede insensibile. Ricostruire i tessuti o compensare con ortesi non restituisce la sensibilità. Il discriminatore è l'inutilità funzionale del piede anestetico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b10" tabindex="-1"
+  data-tid="27f28251-9c2c-801c-a833-e2e2ba4e857f" data-topic="Malattie da infezioni fungine"
+  data-note="non associa la candidosi mucocutanea cronica al difetto Th17 e la candidemia disseminata alla neutropenia">
+  <p class="tag">B10 · Boards</p>
+  <h2 class="q-text">Due pazienti. Il primo, con mutazione gain-of-function di STAT1, ha da anni candidosi ricorrente di bocca, cute e unghie ma mai malattia ematica; il secondo, neutropenico dopo chemioterapia, sviluppa candidemia con localizzazione renale. Che cosa spiega meglio la divergenza?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il primo paziente ospiterebbe una specie non-albicans meno invasiva del secondo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il difetto Th17 dà candidosi mucocutanea cronica, la neutropenia la diffusione ematogena</button></li>
+    <li><button type="button"><span class="key">C</span>Il secondo paziente avrebbe perso le adesine Als necessarie all'invasione tissutale</button></li>
+    <li><button type="button"><span class="key">D</span>Il primo avrebbe una candidemia occulta non ancora rilevata dalle emocolture</button></li>
+    <li><button type="button"><span class="key">E</span>La differenza dipende soltanto dalla diversa carica fungina di colonizzazione iniziale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il pattern clinico predice il difetto immunitario: i difetti dell'asse Th17/CARD9, come la STAT1 gain-of-function, producono candidosi mucocutanea cronica senza disseminazione, perché la difesa mucosa è persa ma i neutrofili contengono il circolo; la neutropenia, togliendo il braccio effettore sistemico, apre alla candidemia con localizzazioni d'organo. Non è questione di specie, adesine o carica iniziale. Il discriminatore è quale braccio immunitario è compromesso.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Un motociclista di ventisei anni arriva in shock room con la gamba destra dilaniata: l'osso affiora dalla ferita, il piede è pallido e freddo, i polsi distali non si apprezzano. La squadra ha poche ore per decidere se quell'arto ha un futuro.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Va</span>Valutazione</button>
+      <p>L'esame è sistematico: osso (segmento, comminuzione, perdita di sostanza, avulsione periostale), vasi (polsi, doppler, angiografia), nervi con attenzione al tibiale posteriore, tessuti molli e grado di contaminazione. Solo allora si classifica il trauma secondo Gustilo. Osso scoperto senza copertura possibile orienta al IIIB; una lesione arteriosa da riparare lo porta a IIIC.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Is</span>Ischemia</button>
+      <p>Il piede pallido e senza polsi non significa necessariamente sezione arteriosa: può dipendere da spasmo o inginocchiamento del vaso. Va comunque diagnosticato e risolto in fretta, perché in poche ore l'arto diventa non recuperabile. Doppler e angiografia chiariscono se il flusso va ristabilito chirurgicamente.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cf</span>Criteri a confronto</button>
+      <p>Salvare o amputare. L'arto è salvabile se il piede è presente e non necrotico, se è ricostruibile almeno un pilone osseo, se i muscoli non sono troppo smembrati e se l'innervazione del piede è valida. Il perno è il nervo tibiale posteriore: la sensibilità plantare pesa più della sola integrità ossea.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Sc</span>Scelta</button>
+      <p>Paziente stabile e arto salvabile: si ripristina la perfusione e si stabilizza lo scheletro, si esegue il debridement con eventuale VAC e si punta alla copertura vascolarizzata precoce, idealmente entro cinque-sette giorni e non oltre il settimo. La profilassi antibiotica ad ampio spettro è già partita entro tre ore dal trauma.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Co</span>Conseguenza</button>
+      <p>Un arto salvato che non sente il terreno è un fallimento: la pianta anestetica si ulcera, si infetta e diventa inutilizzabile. Non conta la presenza dell'arto ma la sua funzione, e a volte un'amputazione ben livellata restituisce più autonomia di un piede insensibile tenuto a ogni costo.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Un difetto profondo scopre l'osso al terzo distale di una gamba, e nessun tessuto di vicinanza basta a coprirlo. Si preleva a distanza un lembo con il suo peduncolo, lo si stacca del tutto e lo si deve riportare in vita ricucendo vasi larghi un millimetro.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Le zone periferiche, testa, collo e arti distali, non offrono surplus di tessuto mobilizzabile in loco. Serve un lembo a distanza: un tessuto con peduncolo vascolare noto, staccato completamente dall'area donatrice e rianastomizzato a vasi riceventi. Lembo libero e lembo microchirurgico sono la stessa cosa.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">St</span>Strumentario</button>
+      <p>Vasi di uno-due millimetri impongono il microscopio, strumenti a molla dalla punta finissima e microclamp che interrompono momentaneamente il flusso, creando il campo esangue senza il quale i punti sarebbero impossibili. Nessuna dilatazione o riscaldamento: solo l'occlusione temporanea rende eseguibile la sutura.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Fl</span>Flusso</button>
+      <p>Il nome dell'anastomosi segue la direzione del sangue. Nell'arteria, latero-terminale: il ricevente si apre lateralmente e il sangue entra ad angolo retto, così su un arto con poche arterie non se ne sacrifica la continuità. Nella vena, termino-laterale: il vaso piccolo scarica dal capo terminale nel fianco di quello maggiore.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Tolti i clamp, il lembo si riperfonde e va sorvegliato. Un lembo pallido e freddo, con refill assente, parla di sofferenza arteriosa; uno violaceo, teso, con refill rapido e sangue scuro parla di congestione venosa, spesso una trombosi da riesplorare subito. I due quadri hanno segni opposti e la stessa urgenza.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Lo stesso principio spiega perché la mammella, pur sul tronco, ricorra al lembo libero: non basta coprire, serve ricostruire volume e forma, un surplus di tessuto che le vicinanze non offrono. La periferia chiede tessuto perché manca in loco, la mammella perché ne serve di più: motivi diversi, stessa soluzione.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Una donna diabetica presenta nella piega inguinale un'area arrossata, dolente e umida che non guarisce, nonostante una crema applicata da settimane. Il quadro sembra banale, ma la terapia sbagliata lo peggiora.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>La piega è calda e macerata, il diabete abbassa il pH locale e disturba i fagociti, l'umidità completa il terreno. La crema usata finora non ha migliorato nulla, anzi il rossore è più vivo e le pustole più fitte alla periferia. Prima di insistere conviene capire chi si sta trattando.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Dd</span>Differenziale</button>
+      <p>Nella piega, eritema vivo e lucido con vescico-pustole satelliti e ragadi dolorose sul fondo orienta alla Candida; un orletto desquamativo periferico con schiarimento centrale e progressione centrifuga orienta al dermatofita della tinea cruris. Vanno sempre controllati i piedi: il dermatofita spesso risale da lì verso l'inguine.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esame</button>
+      <p>La conferma non è clinica. Si preleva materiale, si aggiunge idrossido di potassio per macerare e si guarda al microscopio: pseudoife gemmanti orientano alla Candida, filamenti settati al dermatofita. La coltura tipizza poi la specie e guida il farmaco. Nella Candida il salto lievito-ifa accende adesine, proteasi e candidalisina.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Er</span>Errore</button>
+      <p>Quella crema era uno steroide. Scambiare una micosi per un eczema e trattarla con cortisonici toglie il freno locale e favorisce la crescita fungina: la lesione si allarga e si irrita di più. È il classico peggioramento iatrogeno, e spiega perché il quadro non rispondeva ma si aggravava.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Nei diabetici Candida e dermatofita possono convivere nella stessa piega, quindi la regola operativa aiuta ma non chiude il caso: si tratta l'agente confermato dall'esame diretto, si controlla la glicemia e si sospende lo steroide. Liscio, lucido e dolente chiama la Candida; l'orletto che schiarisce al centro chiama il dermatofita.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V04 · Caso ragionato</p>
+  <p class="scenario">Una sera, una signora ipermetrope di settant'anni arriva in pronto soccorso con un occhio rosso e durissimo, un dolore che dalla fronte si irradia alla tempia, nausea e vomito, e aloni colorati attorno alle luci. Qualcuno pensa a una crisi gastrica, qualcun altro a una nevralgia.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>L'occhio ipermetrope ha un asse corto e una camera anteriore poco profonda, con iride, cristallino e cornea ravvicinati: un angolo predisposto alla chiusura. La sera, in penombra, la pupilla si dilata e la radice iridea si addensa nell'angolo. Basta questo, in un occhio già stretto, a innescare il blocco.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Se</span>Segni</button>
+      <p>Occhio rosso con iperemia pericheratica, pupilla in media midriasi ovalare e fissa, cornea edematosa, acuità crollata a due o tre decimi, IOP che sale in poche ore a cinquanta-ottanta millimetri di mercurio. Il dolore è trigeminale e trascina un riflesso vagale con nausea e vomito, che confonde il quadro.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cf</span>Confronto</button>
+      <p>La crisi gastrica non spiega l'occhio duro e l'acuità persa. La nevralgia del trigemino dà dolore ma lascia leggere normalmente: qui invece il visus è marcatamente ridotto, e questo, con l'ipertono e gli aloni, indica l'occhio come origine. È il calo visivo a fare da spartiacque.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Prima si abbatte la pressione: mannitolo endovena e acetazolamide per os. Solo dopo la pilocarpina diventa utile, perché con IOP molto alta lo sfintere irideo è ischemico e non risponde ai miotici finché il tono non scende. L'atropina sarebbe un errore grave: dilata e peggiora. Ridotto l'edema, si esegue l'iridotomia YAG.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>Il meccanismo è il blocco pupillare: l'acqueo intrappolato spinge in avanti la periferia iridea, che si fa bombata e chiude l'angolo. Senza trattamento la cecità arriva in ventiquattro-quarantotto ore. Per questo l'iridotomia si esegue di regola anche sull'occhio controlaterale, anatomicamente predisposto allo stesso attacco.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  var ENDPOINT = "https://notion-442027153948.europe-west1.run.app/vigil";
+  var PENDING = "vigil:pending";
+  var sent = false;
+
+  function collect() {
+    var per = {};
+    var order = [];
+    items.forEach(function (item) {
+      var qid = item.dataset.q;
+      var tid = item.dataset.tid;
+      if (qid === undefined || tid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      if (!per[tid]) {
+        per[tid] = { id: tid, name: item.dataset.topic || "", total: 0, wrong: 0, notes: [] };
+        order.push(tid);
+      }
+      per[tid].total++;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) {
+        per[tid].wrong++;
+        if (item.dataset.note) per[tid].notes.push(item.dataset.note);
+      }
+    });
+    return order.map(function (k) { return per[k]; });
+  }
+
+  function pendingStore() {
+    try { return JSON.parse(localStorage.getItem(PENDING) || "{}") || {}; } catch (e) { return {}; }
+  }
+
+  function flush() {
+    var token = "";
+    try { token = localStorage.getItem("vigil:token") || ""; } catch (e) {}
+    if (!token) return;
+    var store = pendingStore();
+    Object.keys(store).forEach(function (date) {
+      fetch(ENDPOINT, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token, date: date, topics: store[date] })
+      }).then(function (r) {
+        if (!r.ok) return;
+        var s = pendingStore();
+        delete s[date];
+        try { localStorage.setItem(PENDING, JSON.stringify(s)); } catch (e) {}
+      }).catch(function () {});
+    });
+  }
+
+  function send() {
+    if (sent) return;
+    sent = true;
+    var topics = collect();
+    if (!topics.length) return;
+    var store = pendingStore();
+    store[document.body.dataset.date] = topics;
+    try { localStorage.setItem(PENDING, JSON.stringify(store)); } catch (e) {}
+    flush();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      send();
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (location.hash.indexOf("#t=") === 0) {
+    try { localStorage.setItem("vigil:token", location.hash.slice(3)); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+  flush();
+})();
+</script>
+</body>
+</html>
