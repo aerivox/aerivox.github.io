@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 12 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-12">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>domenica 12 luglio 2026</h1>
+  <div class="spark">
+    <p>Grande quanto un pugno, il lipoma sul fianco della paziente era un accumulo di grasso del tutto innocuo, il genere di cosa che un chirurgo asporta e getta. Vincenz Czerny, a Heidelberg, ebbe invece un'altra idea. Aveva appena rimosso un tumore benigno dal seno di quella donna, e davanti al vuoto che restava decise di non lasciarlo vuoto: staccò il lipoma e lo trapiantò nella loggia svuotata. Era il 1895, e quello fu il primo innesto di tessuto adiposo della storia, insieme alla prima ricostruzione mammaria mai tentata. L'intuizione era semplice e ostinata: il materiale migliore per rifare un corpo è il corpo stesso. Il grasso trapiantato però si riassorbiva, capriccioso e imprevedibile, e per quasi un secolo la tecnica restò sospetta, quasi screditata. Eppure quella cavità riempita a Heidelberg è la nonna lontana di ogni lipofilling che si pratica oggi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Estremo cefalico: tempistica della ricostruzione - differita invece di immediata">
+  <p class="tag">Q01 · Chirurgia plastica · Estremo cefalico e cavo orale</p>
+  <h2 class="q-text">Nella chirurgia ricostruttiva dell'estremo cefalico dopo demolizione oncologica, quale principio governa la tempistica dell'intervento ricostruttivo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La ricostruzione è differita per attendere l'istologia definitiva dei margini</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La ricostruzione è immediata, nello stesso atto chirurgico della demolizione</button></li>
+    <li><button type="button"><span class="key">C</span>La ricostruzione segue il completamento della radioterapia adiuvante</button></li>
+    <li><button type="button"><span class="key">D</span>La ricostruzione attende la guarigione per seconda intenzione della loggia</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La ricostruzione dell'estremo cefalico è immediata e morfo-funzionale, eseguita nello stesso tempo chirurgico della demolizione, così da ripristinare in un solo atto tutti i piani anatomici demoliti. Il differimento è l'eccezione, riservata ai casi in cui il follow-up oncologico esige accesso diretto alla sede, come i tumori estesi della piramide nasale con coinvolgimento osteo-cartilagineo. Il discriminatore è la contestualità con la demolizione, non l'attesa dell'istologia o della radioterapia.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling: razionale dell'innesto in microsfere - staccato dalla vascolarizzazione per contatto">
+  <p class="tag">Q02 · Chirurgia plastica · Lipofilling</p>
+  <h2 class="q-text">Perché nella tecnica di Coleman il tessuto adiposo si innesta in microsfere e non come blocco unico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché il blocco unico scatenerebbe una reazione da corpo estraneo</button></li>
+    <li><button type="button"><span class="key">B</span>Perché le microsfere rilasciano molte più cellule staminali del blocco adiposo</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il blocco unico migrerebbe più facilmente per gravità</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché solo le microsfere si lasciano circondare da tessuto vascolarizzato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'attecchimento dell'innesto adiposo dipende dal contatto con il letto vascolarizzato del ricevente: le microsfere, per il rapporto superficie/volume favorevole, vengono rapidamente circondate da tessuto vascolarizzato, mentre il centro di un blocco voluminoso va in necrosi prima di essere raggiunto dai vasi. Il discriminatore è la vascolarizzazione per contatto, non una reazione immune né la quantità di staminali.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Uveite anteriore: marcatore della spondiloartropatia - confuso con DR4 o ANA">
+  <p class="tag">Q03 · Oftalmologia · Uveiti</p>
+  <h2 class="q-text">In un paziente con uveite anteriore acuta, quale dato impone di cercare una spondiloartropatia sieronegativa sottostante?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La positività per HLA-B27</button></li>
+    <li><button type="button"><span class="key">B</span>La positività per HLA-DR4</button></li>
+    <li><button type="button"><span class="key">C</span>La presenza di anticorpi anti-nucleo</button></li>
+    <li><button type="button"><span class="key">D</span>L'ipertono oculare marcato all'esordio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Circa la metà dei pazienti con irite è HLA-B27 positivo, e l'allele lega le spondiloartropatie sieronegative: spesso l'oculista sospetta la spondilite anchilosante prima del reumatologo, perché l'iridociclite precede i sintomi articolari. HLA-DR4 orienta invece verso la malattia di Vogt-Koyanagi-Harada e gli anticorpi anti-nucleo verso l'uveite dell'artrite giovanile. Il discriminatore è l'associazione HLA-B27 con la spondiloartropatia, non DR4 né gli ANA.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma dell'uvea: sede più frequente - sottovalutata la prevalenza coroideale">
+  <p class="tag">Q04 · Oftalmologia · Melanoma dell'uvea</p>
+  <h2 class="q-text">Qual è la sede di gran lunga più frequente del melanoma dell'uvea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'iride</button></li>
+    <li><button type="button"><span class="key">B</span>Il corpo ciliare</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>La coroide</button></li>
+    <li><button type="button"><span class="key">D</span>L'epitelio pigmentato ciliare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il melanoma dell'uvea interessa la coroide nel 93% dei casi, contro il 4% del corpo ciliare e il 3% dell'iride, ed è il tumore intraoculare maligno più frequente dell'adulto. La sede coroideale ne condiziona il decorso spesso silente e la prognosi. Il discriminatore è la netta prevalenza coroideale, non le sedi anteriori.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Carcinoma del labbro: rischio metastatico rispetto ai tumori cutanei - sottostimato">
+  <p class="tag">Q05 · Chirurgia plastica · Estremo cefalico e cavo orale</p>
+  <h2 class="q-text">Che cosa distingue il carcinoma del labbro dai tumori cutanei del massiccio cranio-facciale?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Un rischio metastatico più alto, per l'aggiunta di fumo e alcol agli UV</button></li>
+    <li><button type="button"><span class="key">B</span>Un'origine esclusiva dagli annessi della cute perilabiale</button></li>
+    <li><button type="button"><span class="key">C</span>Una prognosi migliore per la diagnosi costantemente precoce</button></li>
+    <li><button type="button"><span class="key">D</span>Una netta prevalenza dell'istotipo basocellulare cheratinizzante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il carcinoma del labbro insorge sulla semi-mucosa labiale e ha un potere metastatico superiore ai tumori cutanei della stessa regione; alla componente UV si sommano fumo e alcol come fattori promuoventi specifici. L'istotipo dominante è lo spinocellulare, non il basocellulare, che sul labbro è raro perché richiede cute provvista di annessi. Il discriminatore è il maggior rischio metastatico legato all'eziologia combinata, non l'origine annessiale né l'istotipo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling: uso della siringa nel prelievo - scopo di atraumaticità non riconosciuto">
+  <p class="tag">Q06 · Chirurgia plastica · Lipofilling</p>
+  <h2 class="q-text">Nel prelievo secondo Coleman l'aspiratore meccanico è sostituito dalla semplice retrazione dello stantuffo di una siringa. Con quale scopo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aumentare il volume di tessuto prelevato a ogni passaggio</button></li>
+    <li><button type="button"><span class="key">B</span>Accelerare la separazione delle componenti già in fase di prelievo</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Applicare una pressione negativa lieve che preserva gli adipociti</button></li>
+    <li><button type="button"><span class="key">D</span>Consentire l'infiltrazione diretta senza centrifugazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'aspiratore meccanico genera una pressione negativa elevata che lede gli adipociti; lo stantuffo della siringa fornisce una depressione lieve e controllata, coerente col principio di atraumaticità e con la sopravvivenza cellulare necessaria all'attecchimento. Il discriminatore è la depressione lieve e protettiva, non il volume prelevato, la separazione anticipata o il salto della centrifugazione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Uveite anteriore: farmaci cardine - confusi con ipotonizzanti del glaucoma">
+  <p class="tag">Q07 · Oftalmologia · Uveiti</p>
+  <h2 class="q-text">Quali sono i farmaci cardine nella terapia dell'uveite anteriore, accanto agli steroidi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>I beta-bloccanti topici</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>I cicloplegici midriatici</button></li>
+    <li><button type="button"><span class="key">C</span>Gli analoghi delle prostaglandine</button></li>
+    <li><button type="button"><span class="key">D</span>Gli inibitori dell'anidrasi carbonica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I cicloplegici midriatici atropinici sono il cardine dell'iridociclite: dilatando la pupilla alleviano il dolore, rompono e prevengono le sinechie iridolenticolari e decongestionano i vasi di iride e corpo ciliare. Gli altri farmaci elencati abbassano la pressione nel glaucoma e non agiscono sull'infiammazione uveale. Il discriminatore è l'azione cicloplegico-midriatica sulle sinechie, non l'effetto ipotonizzante.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma della coroide: glaucoma secondario - meccanismo da distacco essudativo confuso con invasione trabecolare">
+  <p class="tag">Q08 · Oftalmologia · Melanoma dell'uvea</p>
+  <h2 class="q-text">Attraverso quale meccanismo il melanoma della coroide può causare un glaucoma secondario a chiusura d'angolo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Invadendo direttamente il trabecolato con cellule neoplastiche</button></li>
+    <li><button type="button"><span class="key">B</span>Occludendo le vene vorticose con conseguente stasi venosa retinica</button></li>
+    <li><button type="button"><span class="key">C</span>Inducendo una rubeosis iridea che chiude l'angolo con neovasi</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Con un distacco essudativo massivo che spinge in avanti la radice iridea</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Un distacco di retina essudativo massivo sospinge il corpo vitreo in avanti, disloca la radice iridea e chiude l'angolo camerulare, impedendo il deflusso dell'umor acqueo; il quadro va posto in diagnosi differenziale con i glaucomi acuti primitivi. Pur potendo comparire una rubeosis iridea, il decorso glaucomatoso descritto è quello da spinta essudativa. Il discriminatore è la chiusura d'angolo da distacco essudativo, non l'invasione del trabecolato o la sola rubeosi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Carcinoma del labbro: indicazione alla linfadenectomia - estesa alla profilassi">
+  <p class="tag">Q09 · Chirurgia plastica · Estremo cefalico e cavo orale</p>
+  <h2 class="q-text">Quando è indicata la linfadenectomia nel carcinoma del labbro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sempre, come svuotamento profilattico contestuale all'exeresi</button></li>
+    <li><button type="button"><span class="key">B</span>Nei tumori T1-T2, per stadiare il collo clinicamente negativo</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Solo a scopo terapeutico, in presenza di metastasi accertata</button></li>
+    <li><button type="button"><span class="key">D</span>Mai, essendo il labbro drenato da un solo linfonodo sentinella affidabile</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel carcinoma del labbro la linfadenectomia si esegue esclusivamente a scopo terapeutico, davanti a metastasi accertata clinicamente, radiologicamente o istologicamente, e mai in profilassi: mancano linee guida univoche sul linfonodo sentinella, e lo svuotamento profilattico esporrebbe a morbidità senza beneficio dimostrato sul collo negativo. Il discriminatore è la presenza di metastasi documentata, non lo stadio T né una profilassi sistematica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling: frazione utile dopo centrifugazione - confusa con sopranatante oleoso o acquoso">
+  <p class="tag">Q10 · Chirurgia plastica · Lipofilling</p>
+  <h2 class="q-text">Dopo centrifugazione a 3000 giri per 3 minuti, quale delle tre frazioni ottenute si conserva per l'innesto?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Lo strato intermedio</button></li>
+    <li><button type="button"><span class="key">B</span>Il sopranatante oleoso</button></li>
+    <li><button type="button"><span class="key">C</span>Lo strato acquoso inferiore</button></li>
+    <li><button type="button"><span class="key">D</span>L'intero campione, previa rimozione del solo tappo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La centrifugazione separa tre strati: il sopranatante oleoso, fatto di detriti di adipociti rotti, e lo strato acquoso inferiore, con elementi ematici e anestetico, vengono scartati; si conserva lo strato intermedio, tessuto adiposo concentrato e purificato da trasferire nelle siringhe da 1 ml. Il discriminatore è l'identità dello strato intermedio come frazione vitale, non le componenti oleosa o acquosa destinate allo scarto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Uveite anteriore: sinechie a 360 gradi - meccanismo del glaucoma non idrodinamico">
+  <p class="tag">Q11 · Oftalmologia · Uveiti</p>
+  <h2 class="q-text">Perché le sinechie iridolenticolari estese a 360 gradi rappresentano un'emergenza nell'uveite anteriore?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché retraggono l'iride causando entropion e cheratite da esposizione</button></li>
+    <li><button type="button"><span class="key">B</span>Perché opacizzano irreversibilmente il cristallino in poche ore</button></li>
+    <li><button type="button"><span class="key">C</span>Perché ischemizzano la coroide provocando distacco essudativo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché bloccano il deflusso dell'umor acqueo con glaucoma acuto secondario</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Quando le sinechie tra la faccia posteriore dell'iride e il cristallino si chiudono sull'intera circonferenza pupillare, l'umor acqueo non passa più dalla camera posteriore all'anteriore: l'accumulo scatena un glaucoma acuto secondario da blocco pupillare. Il meccanismo è idrodinamico, non corneale, cristallineo o coroideale. Il discriminatore è il blocco del deflusso acqueo lungo i 360 gradi.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma dell'uvea: istotipo di Callender a prognosi peggiore - non identificato nell'epitelioide">
+  <p class="tag">Q12 · Oftalmologia · Melanoma dell'uvea</p>
+  <h2 class="q-text">Secondo la classificazione di Callender modificata, quale istotipo del melanoma della coroide comporta la prognosi peggiore?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il melanoma a cellule fusiformi</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il melanoma a cellule epitelioidi</button></li>
+    <li><button type="button"><span class="key">C</span>Il nevo a cellule fusiformi</button></li>
+    <li><button type="button"><span class="key">D</span>Il melanoma a cellule miste, migliore delle forme pure</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella classificazione di Callender modificata le cellule epitelioidi, con maggiore atipia nucleare e attività mitotica, definiscono la prognosi peggiore; le forme fusiformi hanno prognosi migliore e il nevo fusiforme è benigno. Le forme miste non sono più favorevoli delle forme fusiformi pure. Il discriminatore è la maggiore aggressività dell'istotipo epitelioide.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Carcinoma del labbro: coinvolgimento dell'orbicolare - conservazione muscolare a scapito della radicalità">
+  <p class="tag">Q13 · Chirurgia plastica · Estremo cefalico e cavo orale</p>
+  <h2 class="q-text">Quando il carcinoma del labbro coinvolge il muscolo orbicolare della bocca, quale scelta garantisce la radicalità oncologica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un lembo di avanzamento del vermiglione che risparmia il muscolo</button></li>
+    <li><button type="button"><span class="key">B</span>La sola vermiglionectomia con innesto mucoso</button></li>
+    <li><button type="button"><span class="key">C</span>La radioterapia esclusiva, per preservare la continenza sfinterica</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>L'escissione a tutto spessore del segmento coinvolto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il coinvolgimento dell'orbicolare impone l'escissione a tutto spessore del labbro per assicurare la radicalità oncologica; solo dopo la demolizione radicale si affronta la ricostruzione, che restituisce la continenza attraverso lembi dedicati. Risparmiare il muscolo o affidarsi alla sola radioterapia lascerebbe malattia sul piano muscolare. Il discriminatore è la resezione a tutto spessore imposta dall'infiltrazione muscolare, non la conservazione a fini funzionali.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling: reticolo di tunnel in infiltrazione - scollegato dall'attecchimento">
+  <p class="tag">Q14 · Chirurgia plastica · Lipofilling</p>
+  <h2 class="q-text">In fase di infiltrazione il tessuto adiposo va rilasciato in un reticolo di tunnel incrociati e mai in un'unica cavità. Quale complicanza previene direttamente questa regola?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'infezione profonda da contaminazione batterica del sito operatorio</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il mancato attecchimento con necrosi centrale del deposito</button></li>
+    <li><button type="button"><span class="key">C</span>L'ematoma del sito ricevente</button></li>
+    <li><button type="button"><span class="key">D</span>La reazione facoanafilattica dei tessuti molli</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Rilasciare 0,20-0,50 ml per passaggio in tunnel incrociati mantiene ogni microdeposito a contatto con tessuto vascolarizzato, condizione della neoangiogenesi e dell'attecchimento; un'unica cavità lascerebbe il tessuto centrale senza vascolarizzazione, condannandolo alla necrosi. Il discriminatore è la dispersione che garantisce l'attecchimento, non la prevenzione di infezione o ematoma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Toxoplasmosi oculare: lesione del primo episodio - confusa con recidiva satellite o quadro di Behçet">
+  <p class="tag">Q15 · Oftalmologia · Uveiti</p>
+  <h2 class="q-text">Qual è l'aspetto tipico di una lesione oculare da toxoplasma al primo episodio attivo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una lesione satellite sul bordo di una cicatrice pigmentata preesistente</button></li>
+    <li><button type="button"><span class="key">B</span>Un infiltrato corneale a bordi geografici con ipoestesia</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Una corioretinite focale bianco-cremosa con vitreite, senza cicatrici</button></li>
+    <li><button type="button"><span class="key">D</span>Una vasculite retinica necrotizzante con ipopion</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il primo episodio di corioretinite toxoplasmica si presenta come focolaio bianco-cremoso con vitreite sovrastante e assenza di cicatrici; le lesioni satelliti al bordo di cicatrici pigmentate segnano invece la recidiva. La vasculite necrotizzante con ipopion appartiene al Behçet, l'infiltrato corneale alle forme erpetiche. Il discriminatore è il focolaio focale con vitreite senza cicatrici proprio del primo episodio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q16" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma dell'uvea: segnale RM della melanina - invertito rispetto al pattern paramagnetico">
+  <p class="tag">Q16 · Oftalmologia · Melanoma dell'uvea</p>
+  <h2 class="q-text">Alla risonanza magnetica il melanoma uveale pigmentato mostra un pattern di segnale caratteristico rispetto al vitreo. Quale?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Iperintenso in T1 e ipointenso in T2</button></li>
+    <li><button type="button"><span class="key">B</span>Ipointenso in T1 e iperintenso in T2</button></li>
+    <li><button type="button"><span class="key">C</span>Iperintenso sia in T1 sia in T2</button></li>
+    <li><button type="button"><span class="key">D</span>Isointenso in T1 e iperintenso in T2</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La melanina è paramagnetica e accorcia i tempi di rilassamento: produce segnale alto in T1 e basso in T2, invertendo il comportamento abituale delle lesioni rispetto al vitreo. Il discriminatore è l'effetto paramagnetico che dà iperintensità in T1 e ipointensità in T2, non il pattern opposto della maggior parte delle lesioni.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q17" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Lembo di fibula: conservazione dei monconi prossimale e distale - motivazione articolare mancante">
+  <p class="tag">Q17 · Chirurgia plastica · Estremo cefalico e cavo orale</p>
+  <h2 class="q-text">Prelevando un lembo di fibula per un difetto osseo del massiccio facciale, perché si conservano 6-8 cm di osso a monte e a valle del segmento asportato?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Per mantenere lunghezza sufficiente al peduncolo dei vasi peronei</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Per preservare la stabilità di ginocchio e caviglia</button></li>
+    <li><button type="button"><span class="key">C</span>Per garantire l'attecchimento della paletta cutanea del lembo</button></li>
+    <li><button type="button"><span class="key">D</span>Per permettere la modellazione dell'osso con osteotomie multiple</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Dal lembo osteomiocutaneo di fibula si prelevano fino a 25 cm di osso, ma si lasciano 6-8 cm prossimali e distali perché quei segmenti garantiscono la stabilità articolare di ginocchio e caviglia e una deambulazione conservata al sito donatore. Il vincolo nasce dalla biomeccanica dell'arto, non dalla lunghezza del peduncolo né dall'attecchimento cutaneo. Il discriminatore è la stabilità articolare del donatore.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q18" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling: valutazione differita del risultato - non ricondotta a edema e riassorbimento">
+  <p class="tag">Q18 · Chirurgia plastica · Lipofilling</p>
+  <h2 class="q-text">Perché l'entità reale della correzione ottenuta con il lipofilling si valuta solo a distanza dall'intervento?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché l'edema gonfia la zona e una parte del tessuto sarà riassorbita</button></li>
+    <li><button type="button"><span class="key">B</span>Perché le cellule staminali proliferano per mesi aumentando il volume</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il tessuto trapiantato migra costantemente verso i piani profondi</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la centrifugazione ritarda l'espansione volumetrica delle microsfere</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Subito dopo l'infiltrazione l'edema aumenta artificialmente il volume trattato, e una quota del tessuto iniettato verrà riassorbita perché non attecchisce: il risultato definitivo, con possibile ipocorrezione, è apprezzabile solo quando l'edema si risolve e l'attecchimento si stabilizza. Il discriminatore è l'edema sommato al riassorbimento, non una proliferazione staminale né una migrazione costante.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q19" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Panuveite: distinzione Behçet-VKH - segni mucocutanei attribuiti alla VKH">
+  <p class="tag">Q19 · Oftalmologia · Uveiti</p>
+  <h2 class="q-text">Una panuveite con ipopion e vasculite retinica necrotizzante, associata ad afte orali e genitali, orienta verso quale diagnosi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Malattia di Vogt-Koyanagi-Harada</button></li>
+    <li><button type="button"><span class="key">B</span>Sarcoidosi oculare</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Malattia di Behçet</button></li>
+    <li><button type="button"><span class="key">D</span>Oftalmia simpatica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La triade afte orali, afte genitali e lesioni cutanee con panuveite, ipopion e vasculite retinica necrotizzante è tipica della malattia di Behçet, spesso HLA-B5 positiva. La Vogt-Koyanagi-Harada dà uveite granulomatosa bilaterale con distacco essudativo multifocale in soggetti pigmentati, senza afte. Il discriminatore è l'associazione mucocutanea afto-genitale con vasculite necrotizzante, non il quadro pigmentario-essudativo della VKH.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q20" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma dell'uvea: sede metastatica prevalente - tropismo epatico sottostimato">
+  <p class="tag">Q20 · Oftalmologia · Melanoma dell'uvea</p>
+  <h2 class="q-text">Qual è la sede metastatica largamente prevalente del melanoma dell'uvea, che ne condiziona la prognosi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il polmone</button></li>
+    <li><button type="button"><span class="key">B</span>L'osso</button></li>
+    <li><button type="button"><span class="key">C</span>L'encefalo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Il fegato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il fegato è colpito nel 90% delle localizzazioni secondarie e detta una sopravvivenza mediana di circa 6 mesi, ragione dello screening epatico ogni 6-12 mesi; polmone, osso e sistema nervoso centrale seguono con frequenze molto inferiori. Il discriminatore è il tropismo epatico dominante, non le sedi secondarie minori.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q21" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Cavo orale: lembo di prima scelta per i tessuti molli - confuso con lembo osseo o di riserva">
+  <p class="tag">Q21 · Chirurgia plastica · Estremo cefalico e cavo orale</p>
+  <h2 class="q-text">Qual è il lembo di prima scelta per la ricostruzione dei difetti dei soli tessuti molli del cavo orale?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Il lembo anterolaterale di coscia</button></li>
+    <li><button type="button"><span class="key">B</span>Il lembo osteomiocutaneo di fibula</button></li>
+    <li><button type="button"><span class="key">C</span>Il lembo ad isola del gran pettorale</button></li>
+    <li><button type="button"><span class="key">D</span>Il lembo miocutaneo di retto addominale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Per i difetti dei soli tessuti molli del cavo orale la prima scelta è il lembo anterolaterale di coscia, versatile e con peduncolo lungo sulla circonflessa femorale laterale. La fibula serve ai difetti ossei a tutto spessore, il retto addominale alle glossectomie totali, il gran pettorale è riserva per il fallimento microchirurgico o la palliazione. Il discriminatore è l'abbinamento tessuti molli-lembo anterolaterale, non un lembo osseo o di riserva.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q22" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling: ruolo rigenerativo delle cellule staminali - ridotto al solo riempimento">
+  <p class="tag">Q22 · Chirurgia plastica · Lipofilling</p>
+  <h2 class="q-text">In un letto cicatriziale o post-radioterapico, quale proprietà del tessuto adiposo autologo si sfrutta oltre al riempimento volumetrico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'effetto antibiotico locale delle microsfere adipose</button></li>
+    <li><button type="button"><span class="key">B</span>La capacità di indurre una fibrosi che irrigidisce il letto ricevente</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Il miglioramento del trofismo dei tessuti per le cellule staminali</button></li>
+    <li><button type="button"><span class="key">D</span>La produzione di collagene che retrae la cicatrice</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il tessuto adiposo autologo contiene cellule staminali mesenchimali che migliorano il trofismo del letto ricevente e riducono il dolore, ragione per cui il lipofilling si impiega anche dove la radioterapia ha compromesso la vascolarizzazione, non solo per dare volume. Il discriminatore è il ruolo rigenerativo trofico delle staminali, non un effetto antibiotico o pro-fibrotico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q23" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Uveite facoanafilattica: meccanismo - non ricondotto al sequestro antigenico del cristallino">
+  <p class="tag">Q23 · Oftalmologia · Uveiti</p>
+  <h2 class="q-text">Su quale meccanismo si fonda l'uveite facoanafilattica dopo rottura o intervento sul cristallino?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una reazione IgE-mediata verso l'anestetico intracamerulare</button></li>
+    <li><button type="button"><span class="key">B</span>Un danno citotossico diretto dell'endotelio corneale da parte del viscoelastico</button></li>
+    <li><button type="button"><span class="key">C</span>Una riattivazione virale latente indotta dal trauma chirurgico</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Una risposta immune contro proteine del cristallino mai esposte all'organismo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cristallino è una struttura antigenicamente sequestrata: durante lo sviluppo le sue proteine non sono state presentate al sistema immunitario, che, quando un trauma, un intervento o una cataratta ipermatura le libera, le riconosce come estranee e monta una risposta infiammatoria. Il discriminatore è il sequestro antigenico del cristallino, non un'allergia all'anestetico, una tossicità endoteliale o una riattivazione virale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q24" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma dell'uvea: rischio dell'enucleazione - misconosciuto l'incremento metastatico peri-operatorio">
+  <p class="tag">Q24 · Oftalmologia · Melanoma dell'uvea</p>
+  <h2 class="q-text">Riguardo alle opzioni terapeutiche del melanoma dell'uvea, quale affermazione è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La radioterapia pre-enucleazione migliora la sopravvivenza</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'enucleazione può accrescere il rischio metastatico durante l'intervento</button></li>
+    <li><button type="button"><span class="key">C</span>Le placche radioattive conservano il visus nella quasi totalità dei casi</button></li>
+    <li><button type="button"><span class="key">D</span>La terapia osservativa è indicata per le lesioni di grandi dimensioni</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'enucleazione, riservata alle lesioni medio-grosse, può accrescere il rischio metastatico al momento dell'atto chirurgico; la radioterapia pre-enucleazione non migliora la sopravvivenza, le placche radioattive causano calo del visus in circa metà dei trattati e l'osservazione spetta a nevi e lesioni sottili, non ai tumori grandi. Il discriminatore è il rischio metastatico peri-operatorio dell'enucleazione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Cavo orale: difetto osseo composito - non ricondotto al lembo di fibula vascolarizzato">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Un uomo di 62 anni, forte fumatore, è candidato all'exeresi di un carcinoma spinocellulare del pavimento orale che infiltra a tutto spessore un segmento della mandibola. La demolizione lascerà una perdita di rivestimento mucoso e una discontinuità ossea segmentaria. Quale ricostruzione rappresenta lo standard di riferimento?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Placca di ricostruzione in titanio senza trasferimento osseo vascolarizzato</button></li>
+    <li><button type="button"><span class="key">B</span>Lembo ad isola del gran pettorale a copertura di una placca</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Lembo libero osteomiocutaneo di fibula</button></li>
+    <li><button type="button"><span class="key">D</span>Lembo anterolaterale di coscia per il solo rivestimento dei tessuti molli</button></li>
+    <li><button type="button"><span class="key">E</span>Innesto osseo non vascolarizzato da cresta iliaca</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Un difetto composito con discontinuità ossea a tutto spessore e perdita di rivestimento richiede osso vascolarizzato più paletta cutanea: il lembo osteomiocutaneo di fibula è il gold standard, offre osso sufficiente per osteotomie modellanti e un letto affidabile anche dopo radioterapia. La sola placca o l'innesto non vascolarizzato, in campo contaminato e irradiato, tendono a esporsi e alla pseudoartrosi; i lembi di soli tessuti molli non ripristinano la continuità ossea. Il discriminatore è la ricostruzione ossea vascolarizzata di un difetto composito.</p>
+    <p class="refs">Fonte: PubMed. <a href="https://doi.org/10.1016/j.bjps.2022.04.060">J Plast Reconstr Aesthet Surg 2022</a> · ricostruzione di difetti oro-mandibolari complessi con lembo libero di fibula.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling mammario: sicurezza oncologica - sovrastimato il rischio di recidiva">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Una donna operata di quadrantectomia per carcinoma mammario, con margini indenni e follow-up in corso, chiede di correggere un difetto di volume residuo con innesto di tessuto adiposo autologo. Teme che il grasso e le sue cellule staminali possano favorire una recidiva. Quale posizione riflette meglio l'evidenza attuale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il lipofilling è controindicato in ogni paziente con un pregresso carcinoma della mammella</button></li>
+    <li><button type="button"><span class="key">B</span>Il lipofilling va rinviato ad almeno dieci anni dalla fine delle terapie</button></li>
+    <li><button type="button"><span class="key">C</span>Il lipofilling è ammesso solo rimuovendo prima le cellule staminali dal tessuto prelevato</button></li>
+    <li><button type="button"><span class="key">D</span>Il lipofilling impone di sospendere la sorveglianza radiologica per evitare falsi positivi</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Il lipofilling è oncologicamente ragionevole, senza aumento dimostrato di recidiva locoregionale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le revisioni sistematiche e le metanalisi disponibili non mostrano un aumento significativo della recidiva locoregionale dopo lipofilling nella ricostruzione mammaria, che resta pratica accettata con adeguata sorveglianza radiologica; microcalcificazioni e steatonecrosi sono distinguibili all'imaging e non giustificano la sospensione del follow-up. Il discriminatore è l'assenza di un rischio oncologico dimostrato, non un divieto assoluto o un rinvio arbitrario.</p>
+    <p class="refs">Fonte: PubMed. <a href="https://doi.org/10.1016/j.ejso.2021.12.017">Eur J Surg Oncol 2021</a> · metanalisi sulla sicurezza oncologica del lipofilling in ricostruzione mammaria; <a href="https://doi.org/10.3390/jcm13154369">J Clin Med 2024</a> · revisione sistematica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Uveite anteriore acuta: fenotipo HLA-B27 - mancata ricerca della spondiloartrite occulta">
+  <p class="tag">B03 · Boards</p>
+  <h2 class="q-text">Un uomo di 30 anni presenta un primo episodio di uveite anteriore acuta unilaterale, fibrinosa, con ipotono e forte fotofobia; nega diagnosi sistemiche note. Oltre al trattamento locale, quale condotta ha la resa clinica maggiore?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Tipizzare HLA-B27 e inviare dal reumatologo per una spondiloartrite non nota</button></li>
+    <li><button type="button"><span class="key">B</span>Richiedere una sierologia per toxoplasma e avviare un trattamento empirico</button></li>
+    <li><button type="button"><span class="key">C</span>Programmare una vitrectomia diagnostica sull'umor vitreo</button></li>
+    <li><button type="button"><span class="key">D</span>Avviare subito un anti-TNF sistemico come prima linea</button></li>
+    <li><button type="button"><span class="key">E</span>Limitarsi al collirio steroideo, essendo l'episodio autolimitante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'uveite anteriore acuta unilaterale fibrinosa con ipotono è il fenotipo dell'HLA-B27, e fino a circa il 40% di questi pazienti ha una spondiloartrite ancora non diagnosticata: la tipizzazione e il rinvio reumatologico intercettano la malattia sistemica e ne anticipano il trattamento. La sierologia toxoplasmica riguarda le forme posteriori, mentre vitrectomia e anti-TNF di prima linea sono sproporzionati. Il discriminatore è la ricerca della spondiloartrite occulta dietro il fenotipo B27.</p>
+    <p class="refs">Fonte: PubMed. <a href="https://doi.org/10.1177/1759720X20951733">Ther Adv Musculoskelet Dis 2020</a> · uveite nella spondiloartrite e strategia di rinvio; <a href="https://doi.org/10.1007/s00347-023-01960-z">Ophthalmologie 2023</a> · uveite anteriore HLA-B27 e malattia sistemica non diagnosticata.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma della coroide: scelta terapeutica nei tumori medi - negata l'equivalenza brachiterapia-enucleazione">
+  <p class="tag">B04 · Boards</p>
+  <h2 class="q-text">A un paziente con melanoma della coroide di dimensioni medie e occhio ancora funzionale viene proposto un trattamento. Chiede se rimuovere l'occhio gli darebbe una sopravvivenza migliore rispetto a una terapia che lo conserva. Quale risposta riflette l'evidenza degli studi randomizzati?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'enucleazione garantisce una sopravvivenza nettamente superiore e va preferita</button></li>
+    <li><button type="button"><span class="key">B</span>La radioterapia esterna pre-enucleazione riduce la mortalità rispetto alla sola enucleazione</button></li>
+    <li><button type="button"><span class="key">C</span>La terapia osservativa offre la stessa sopravvivenza delle opzioni attive nei tumori medi</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Brachiterapia con placca ed enucleazione danno una sopravvivenza sovrapponibile</button></li>
+    <li><button type="button"><span class="key">E</span>Solo l'enucleazione previene la comparsa di metastasi a distanza</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Lo studio randomizzato di riferimento sui melanomi di dimensioni medie non ha mostrato differenze di sopravvivenza tra brachiterapia con placca allo iodio-125 ed enucleazione, per cui il trattamento che conserva l'occhio è legittimo a parità di esito; la radioterapia pre-enucleazione non migliora la sopravvivenza e nessuna opzione azzera il rischio metastatico. Il discriminatore è l'equivalenza di sopravvivenza tra placca ed enucleazione.</p>
+    <p class="refs">Fonte: PubMed. <a href="https://doi.org/10.1177/1740774511419684">Clin Trials 2011</a> · studio randomizzato COMS sulla brachiterapia con iodio-125 nel melanoma della coroide.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-86af-fd188889df95" data-topic="Estremo cefalico e cavo orale"
+  data-fault="Ricostruzione del labbro: difetto di metà lunghezza con perdita dell'orbicolare - preferita continenza passiva a quella attiva">
+  <p class="tag">B05 · Boards</p>
+  <h2 class="q-text">Dopo escissione a tutto spessore di un carcinoma del labbro inferiore residua un difetto che interessa circa metà della lunghezza labiale, con perdita della continuità dell'orbicolare. Si vuole ripristinare una continenza sfinterica attiva. Quale ricostruzione risponde meglio all'obiettivo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Chiusura diretta a cuneo del difetto</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Lembo di Karapandzic, avanzamento-rotazione a fascio neurovascolare conservato</button></li>
+    <li><button type="button"><span class="key">C</span>Lembo libero anterolaterale di coscia con sospensione statica in fascia lata</button></li>
+    <li><button type="button"><span class="key">D</span>Guarigione per seconda intenzione e successiva revisione cicatriziale</button></li>
+    <li><button type="button"><span class="key">E</span>Innesto cutaneo a tutto spessore sul letto muscolare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Per un difetto labiale intorno alla metà della lunghezza con perdita dell'orbicolare, il lembo di Karapandzic ricostruisce con avanzamento-rotazione preservando il fascio neurovascolare, quindi un labbro innervato e sensibile con competenza sfinterica attiva; la chiusura diretta è limitata ai difetti fino a un terzo, mentre i lembi liberi con sospensione statica offrono una continenza passiva, inferiore sul piano funzionale. Il discriminatore è la continenza sfinterica attiva restituita dal lembo innervato.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1"
+  data-tid="27f28251-9c2c-80da-82ce-ea0dd37d6e77" data-topic="Lipofilling"
+  data-fault="Lipofilling: finalità nel letto irradiato - ridotta al riempimento, ignorata la rigenerazione trofica">
+  <p class="tag">B06 · Boards</p>
+  <h2 class="q-text">In una regione sottoposta a radioterapia per un sarcoma, un primo innesto di tessuto adiposo non attecchisce. Il chirurgo ripete la procedura non tanto per dare volume quanto per un'altra finalità. Quale?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Saturare lo spazio morto residuo per prevenire la formazione di un sieroma</button></li>
+    <li><button type="button"><span class="key">B</span>Indurre una capsula fibrosa che stabilizzi il letto</button></li>
+    <li><button type="button"><span class="key">C</span>Somministrare localmente un antibiotico veicolato dagli adipociti innestati</button></li>
+    <li><button type="button"><span class="key">D</span>Bloccare la vascolarizzazione tumorale residua</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Apportare cellule staminali che migliorano il trofismo del letto irradiato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La radioterapia impoverisce la vascolarizzazione del letto e fa fallire l'attecchimento; il lipofilling ripetuto sfrutta le cellule staminali mesenchimali del tessuto adiposo, che migliorano il trofismo e la neoangiogenesi del tessuto irradiato e riducono il dolore, oltre al semplice riempimento. Il discriminatore è l'azione rigenerativa trofica sul letto irradiato, non la gestione dello spazio morto, un effetto antibiotico o antitumorale.</p>
+    <p class="refs">Fonte: PubMed. <a href="https://doi.org/10.1002/term.3253">J Tissue Eng Regen Med 2021</a> · cellule stromali adipose e recupero dei tessuti molli dopo radioterapia; <a href="https://doi.org/10.1186/s13287-020-01955-6">Stem Cell Res Ther 2021</a> · staminali del tessuto adiposo in ricostruzione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1"
+  data-tid="27f28251-9c2c-8011-b535-c3193112f644" data-topic="Uveiti"
+  data-fault="Corioretinite toxoplasmica maculare: gestione - steroide senza copertura o profilassi delle recidive trascurata">
+  <p class="tag">B07 · Boards</p>
+  <h2 class="q-text">Una paziente immunocompetente presenta un focolaio di corioretinite toxoplasmica attiva vicino alla macula, con vitreite, e riferisce episodi ricorrenti nell'occhio adelfo. Quale impostazione terapeutica è la più appropriata?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Antiparassitario mirato, steroide sotto copertura antimicrobica e profilassi delle recidive</button></li>
+    <li><button type="button"><span class="key">B</span>Sola terapia steroidea ad alte dosi, senza antiparassitario</button></li>
+    <li><button type="button"><span class="key">C</span>Nessun trattamento, trattandosi di infezione sempre autolimitante nell'immunocompetente</button></li>
+    <li><button type="button"><span class="key">D</span>Antivirali sistemici per via endovenosa come prima linea</button></li>
+    <li><button type="button"><span class="key">E</span>Enucleazione preventiva per il rischio di diffusione encefalica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel focolaio toxoplasmico che minaccia la macula si associa l'antiparassitario allo steroide, quest'ultimo sempre sotto copertura antimicrobica perché una risposta infiammatoria eccessiva può danneggiare più del parassita; nelle forme ricorrenti la profilassi intermittente con trimetoprim-sulfametossazolo riduce le recidive. Lo steroide isolato, l'astensione, gli antivirali o l'enucleazione sono inappropriati. Il discriminatore è l'antiparassitario con steroide coperto, integrato dalla profilassi delle recidive.</p>
+    <p class="refs">Fonte: PubMed. <a href="https://doi.org/10.1016/j.ajo.2016.08.003">Am J Ophthalmol 2016</a> · trimetoprim-sulfametossazolo contro placebo nelle recidive di corioretinite toxoplasmica; <a href="https://doi.org/10.1016/j.joco.2016.10.002">J Curr Ophthalmol 2016</a> · azitromicina contro TMP-SMX nel trattamento.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1"
+  data-tid="27f28251-9c2c-8015-8c5b-d0d862ea1744" data-topic="Melanoma dell'uvea"
+  data-fault="Melanoma dell'uvea: predittore prognostico più forte - clinica preferita all'assetto genetico">
+  <p class="tag">B08 · Boards</p>
+  <h2 class="q-text">Dopo brachiterapia di un melanoma della coroide si vuole stimare il rischio individuale di metastasi per calibrare la sorveglianza sistemica. Quale parametro fornisce l'informazione prognostica più forte?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il colore, più o meno pigmentato, della lesione osservata al fondo oculare</button></li>
+    <li><button type="button"><span class="key">B</span>Il titolo degli anticorpi anti-melanocita nel siero</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'assetto genetico: monosomia 3, perdita di BAP1, profilo genico di classe 2</button></li>
+    <li><button type="button"><span class="key">D</span>La sola acuità visiva residua dopo il trattamento</button></li>
+    <li><button type="button"><span class="key">E</span>La velocità di riduzione dello spessore ecografico dopo placca</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il rischio metastatico del melanoma uveale è predetto soprattutto dalla biologia del tumore: monosomia 3, perdita di BAP1 e profilo di espressione genica di classe 2 identificano i tumori ad alto rischio e guidano l'intensità della sorveglianza epatica; il colore, il titolo anticorpale, il visus o la cinetica ecografica non hanno quel valore prognostico. Il discriminatore è l'assetto genetico-molecolare del tumore.</p>
+    <p class="refs">Fonte: PubMed. <a href="https://doi.org/10.1002/gcc.22541">Genes Chromosomes Cancer 2018</a> · squilibri cromosomici, BAP1 e prognosi del melanoma uveale; <a href="https://doi.org/10.1007/978-1-62703-727-3_22">Methods Mol Biol 2014</a> · profilo di espressione genica a 15 geni.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Un paziente deve essere operato per un tumore che, oltre alla mucosa, erode a tutto spessore un tratto d'osso della mandibola. Il chirurgo demolitore consegna un difetto composito: manca il rivestimento interno e manca la continuità ossea. Bisogna ricostruire nello stesso atto.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Il principio guida è la ricostruzione immediata e morfo-funzionale: nello stesso tempo chirurgico si ripristinano tutti i piani demoliti, per restituire deglutizione, fonazione, continenza e simmetria. Il differimento è l'eccezione.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Te</span>I tessuti in gioco</button>
+      <p>Il difetto ha due componenti: tessuto molle di rivestimento e osso a tutto spessore. La regola operativa è che ogni difetto ha il suo lembo, scelto per sede, tessuto coinvolto e condizioni del paziente.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Lembo di soli tessuti molli, come l'anterolaterale di coscia, contro osso vascolarizzato; placca metallica o innesto osseo non vascolarizzato contro lembo osteomiocutaneo. In un campo oncologico spesso irradiato il materiale deve portare con sé la propria vascolarizzazione.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il difetto composito osseo a tutto spessore impone osso vascolarizzato: il lembo osteomiocutaneo di fibula è il gold standard, offre fino a 25 cm di osso modellabile e una paletta cutanea per il rivestimento; si conservano 6-8 cm prossimali e distali per la stabilità di ginocchio e caviglia.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Co</span>Conseguenza</button>
+      <p>La sola placca o l'innesto non vascolarizzato, in campo contaminato e irradiato, tenderebbero a esporsi e alla pseudoartrosi. Restituire osso vivo cambia la traiettoria funzionale: masticazione e profilo facciale tornano possibili.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V02 · Caso ragionato</p>
+  <p class="scenario">Un innesto di tessuto grasso viene trasferito in una loggia per colmarne il volume. Nei mesi successivi il volume atteso non si mantiene: parte del tessuto scompare. Si cerca la ragione dell'insuccesso e la regola per evitarlo.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Il tessuto trasferito non porta con sé una propria rete di vasi: sopravvive solo se il letto ricevente lo vascolarizza per contatto prima che entri in sofferenza.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Pr</span>Il principio</button>
+      <p>La sopravvivenza dipende dal rapporto tra superficie e volume. Un frammento piccolo viene circondato in fretta e nutrito; un blocco grande resta al centro fuori dalla portata dei vasi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ic</span>Ipotesi a confronto</button>
+      <p>Un unico deposito voluminoso contro molte microsfere disperse in un reticolo di tunnel incrociati; prelievo aggressivo ad alta depressione contro prelievo atraumatico a depressione lieve.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il blocco unico va in necrosi centrale e si riassorbe: la regola è innestare microsfere, 0,20-0,50 ml per passaggio, in tunnel incrociati, e prelevare con depressione lieve, così ogni parte tocca tessuto vascolarizzato e attecchisce. L'edema iniziale inganna, il risultato si legge a distanza.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Co</span>Conseguenza</button>
+      <p>Dividere e disperdere non è un dettaglio tecnico ma la condizione dell'attecchimento; da qui nasce anche il secondo volto del tessuto adiposo, riserva di cellule che migliorano il trofismo del letto ricevente.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V03 · Caso ragionato</p>
+  <p class="scenario">Un occhio rosso, dolente, che teme la luce e vede annebbiato. Non è la prima volta. Bisogna decidere se si tratta di una banale superficie infiammata o di qualcosa che, se trascurato, può chiudere il deflusso interno dell'occhio.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>L'occhio rosso ha molte cause; la posta in gioco è distinguere un'infiammazione della tonaca vascolare da un problema di superficie o da un attacco pressorio.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Se</span>I segni</button>
+      <p>L'iperemia è concentrata attorno alla cornea, non diffusa alla congiuntiva; il fascio di luce rivela una corpuscolatura sospesa nell'umor acqueo, e sull'endotelio si depositano precipitati. Sono i segni di un'infiammazione della camera anteriore.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Superficie congiuntivale contro camera anteriore; e, dentro l'infiammazione interna, il rischio che i legami tra iride e cristallino si chiudano lungo tutta la circonferenza pupillare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il quadro è un'iridociclite. Il cardine terapeutico sono i cicloplegici midriatici, che tolgono dolore e soprattutto rompono e prevengono le sinechie, insieme agli steroidi. Il pericolo da anticipare è la sinechia a 360 gradi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Co</span>Conseguenza</button>
+      <p>Se i legami si chiudono sull'intera pupilla, l'umor acqueo resta intrappolato dietro l'iride e la pressione sale: un glaucoma acuto secondario. Dilatare in tempo non allevia soltanto, mantiene aperta la via del deflusso.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V04 · Caso ragionato</p>
+  <p class="scenario">Durante un controllo di routine si scopre, senza sintomi, una massa pigmentata sul fondo dell'occhio. Il paziente sta bene e non lamenta nulla. Occorre capire se è una lesione innocua o qualcosa che, pur silenzioso, ha già scritto la sua traiettoria.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>Molte lesioni pigmentate del fondo sono nevi benigni; una minoranza è un tumore maligno che nasce quasi sempre nella coroide e può restare a lungo muto.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">De</span>I dettagli</button>
+      <p>Contano la superficie, liscia o rugosa, il colore, uniforme o disomogeneo per neovasi ed emorragie, i margini, netti o sfumati, lo spessore e i segni di attività. L'esame di riferimento è l'oftalmoscopia indiretta, affiancata dall'ecografia per le dimensioni.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Nevo semplice, a superficie liscia, colore uniforme e margini netti, contro melanoma, rugoso, disomogeneo, a margini sfumati, spesso cupoliforme o a fungo per rottura della membrana di Bruch.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>I caratteri di attività orientano al melanoma della coroide. La conferma è clinico-strumentale; alla risonanza la melanina paramagnetica dà un segnale caratteristico, iperintenso in T1 e ipointenso in T2. Sede e istotipo pesano sulla prognosi.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Co</span>Conseguenza</button>
+      <p>Anche a occhio conservato, il tumore detta una sorveglianza sistemica: il fegato è la sede metastatica dominante e le metastasi crescono negli anni, per cui lo screening si ripete nel tempo. Il silenzio della lesione non è rassicurazione, è la ragione per cercarla.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  var ENDPOINT = "https://notion-442027153948.europe-west1.run.app/vigil";
+  var PENDING = "vigil:pending";
+  var sent = false;
+
+  function collect() {
+    var per = {};
+    var order = [];
+    items.forEach(function (item) {
+      var qid = item.dataset.q;
+      var tid = item.dataset.tid;
+      if (qid === undefined || tid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (b && b.hasAttribute("data-correct")) return;
+      if (!item.dataset.fault) return;
+      if (!per[tid]) {
+        per[tid] = { id: tid, faults: [] };
+        order.push(tid);
+      }
+      if (per[tid].faults.indexOf(item.dataset.fault) === -1) per[tid].faults.push(item.dataset.fault);
+    });
+    return order.map(function (k) { return per[k]; });
+  }
+
+  function pendingStore() {
+    try { return JSON.parse(localStorage.getItem(PENDING) || "{}") || {}; } catch (e) { return {}; }
+  }
+
+  function flush() {
+    var token = "";
+    try { token = localStorage.getItem("vigil:token") || ""; } catch (e) {}
+    if (!token) return;
+    var store = pendingStore();
+    Object.keys(store).forEach(function (date) {
+      fetch(ENDPOINT, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token, topics: store[date] })
+      }).then(function (r) {
+        if (!r.ok) return;
+        var s = pendingStore();
+        delete s[date];
+        try { localStorage.setItem(PENDING, JSON.stringify(s)); } catch (e) {}
+      }).catch(function () {});
+    });
+  }
+
+  function send() {
+    if (sent) return;
+    sent = true;
+    var topics = collect();
+    if (!topics.length) return;
+    var store = pendingStore();
+    store[document.body.dataset.date] = topics;
+    try { localStorage.setItem(PENDING, JSON.stringify(store)); } catch (e) {}
+    flush();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      send();
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (location.hash.indexOf("#t=") === 0) {
+    try { localStorage.setItem("vigil:token", location.hash.slice(3)); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+  flush();
+})();
+</script>
+</body>
+</html>
