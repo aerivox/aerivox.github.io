@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
+<title>vigil · 15 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #f5f5f2;
+  --ink: #191a1c;
+  --sub: #494c50;
+  --muted: #94979d;
+  --accent: #2c5379;
+  --hair: rgba(25, 26, 28, .16);
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116;
+    --ink: #e6e4de;
+    --sub: #a5a49e;
+    --muted: #666a72;
+    --accent: #8fb3d9;
+    --hair: rgba(230, 228, 222, .18);
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--accent); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 14vh, 10rem) 1.5rem 6.5rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .18s ease; }
+  @keyframes appear { from { opacity: 0; transform: translateY(4px); } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1.1rem; right: 1.2rem;
+  background: var(--bg); padding: .5rem .65rem;
+}
+#next {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink);
+}
+#next:hover { color: var(--accent); }
+
+.brand {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.1rem;
+}
+h1 {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-optical-sizing: auto;
+  font-size: clamp(2rem, 5.5vw, 2.8rem);
+  letter-spacing: -.01em; line-height: 1.08; margin: 0 0 2.6rem;
+}
+.spark p {
+  font-size: 1.08rem; line-height: 1.7; margin: 0 0 1.1rem; max-width: 34em;
+}
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.4rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.6rem); font-weight: 600;
+  letter-spacing: -.012em; line-height: 1.32; margin: 0 0 2.1rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1.1rem; width: 100%;
+  text-align: left; padding: .62rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .74rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--accent); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; color: var(--muted); }
+.opts button.is-correct { font-weight: 600; }
+.opts button.is-correct .key { color: var(--accent); }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.3rem; padding-top: 1.5rem; border-top: 1px solid var(--hair); max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.62; margin: 0 0 .8rem; color: var(--sub); }
+.rationale p:last-child { margin-bottom: 0; }
+.rationale p.refs { font-family: var(--mono); font-size: .72rem; color: var(--muted); }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1.6rem; max-width: 34em; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .18s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1.1rem; width: 100%;
+  text-align: left; padding: .62rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .74rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--accent); }
+.stages li.open button .key { color: var(--accent); }
+.stages p { font-size: 1rem; line-height: 1.6; margin: .2rem 0 1.3rem 2.3rem; max-width: 58ch; color: var(--sub); }
+
+</style>
+</head>
+<body data-date="2026-07-15">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>mercoledì 15 luglio 2026</h1>
+  <div class="spark">
+    <p>Oggi entra la dermatite seborroica. Aspettano l'audit un ampio fronte dermatologico, le infezioni cutanee batteriche, le patologie cutanee virali, le lesioni elementari della cute, il sarcoma di Kaposi con i linfomi cutanei, e sul versante chirurgico il melanoma cutaneo, il carcinoma spinocellulare, le lesioni da decubito, le espansioni biologiche e la chirurgia estetica, mentre tra gli occhi resta isolato lo strabismo con l'ambliopia. Da sessioni più vecchie restano aperti quattro punti sulle patologie dell'orbita, uno sulle vie lacrimali e uno sulle plastiche.</p>
+    <p>Negli anni Sessanta David Hubel e Torsten Wiesel cucirono per qualche settimana la palpebra di un gattino appena nato, poi la riaprirono. L'occhio era sano, la retina intatta, il nervo ottico perfetto, eppure restava cieco per sempre.</p>
+    <p>Registrando i neuroni della corteccia visiva capirono il perché: le cellule che avrebbero dovuto rispondere all'occhio chiuso erano state colonizzate dall'altro, in una finestra di poche settimane oltre la quale il territorio non si riprende più. Chiamarono quel varco periodo critico. Da lì viene la fretta con cui si corregge l'ambliopia di un bambino strabico: il difetto vive nella corteccia, che lasciata a scegliere smette di ascoltare il lato più debole. Nel 1981 quei gatti valsero loro il Nobel, e consegnarono alla medicina un'idea scomoda, che certe porte del cervello si aprono una sola volta.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Esoftalmo endocrino: eponimi dei segni palpebrali di Dalrymple e Graefe - mancanti">
+  <p class="tag">Q01 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Nell'esoftalmo endocrino, quale coppia associa correttamente il segno palpebrale al suo eponimo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Retrazione della palpebra superiore a riposo, segno di Graefe</button></li>
+    <li><button type="button"><span class="key">B</span>Chiusura incompleta a occhi serrati, segno di Dalrymple</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Ritardo della palpebra nello sguardo verso il basso, segno di Graefe</button></li>
+    <li><button type="button"><span class="key">D</span>Rima ampliata con ammiccamento raro, segno di Dalrymple</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il segno di Dalrymple è la retrazione della palpebra superiore, con rima palpebrale ampliata a riposo; il segno di von Graefe è il ritardo della palpebra superiore che non segue il bulbo nello sguardo verso il basso. Il discriminatore è l'accoppiamento corretto: il ritardo in downgaze appartiene a Graefe, mentre la retrazione a riposo è di Dalrymple e l'ammiccamento rado è semmai di Stellwag.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Esoftalmo endocrino: valori dell'esoftalmometria di Hertel - instabili">
+  <p class="tag">Q02 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">All'esoftalmometria di Hertel, quale reperto va considerato patologico?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Protrusione oltre 18 mm o asimmetria superiore a 2 mm tra i lati</button></li>
+    <li><button type="button"><span class="key">B</span>Protrusione compresa tra 16 e 18 mm, uguale nei due lati</button></li>
+    <li><button type="button"><span class="key">C</span>Asimmetria di circa 1 mm tra il lato destro e il sinistro</button></li>
+    <li><button type="button"><span class="key">D</span>Protrusione simmetrica di 15 mm, riducibile alla palpazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Con l'esoftalmometro di Hertel una protrusione fino a 16-18 mm è fisiologica; si considera patologica una misura superiore a 18 mm oppure una differenza superiore a 2 mm tra i due occhi. Il discriminatore sono queste due soglie: 16-18 mm bilaterali o un'asimmetria di circa 1 mm restano nel range normale, e una protrusione riducibile e simmetrica di 15 mm è del tutto fisiologica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Cellulite orbitale: batterio della forma sinusitica (S. pneumoniae) - instabile">
+  <p class="tag">Q03 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">In una cellulite orbitaria insorta come complicanza di una sinusite etmoidale, qual è l'agente eziologico più tipicamente implicato?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Staphylococcus aureus</button></li>
+    <li><button type="button"><span class="key">B</span>Haemophilus influenzae</button></li>
+    <li><button type="button"><span class="key">C</span>Pseudomonas aeruginosa</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Streptococcus pneumoniae</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella forma sinusitica, che è la più frequente e propaga dall'etmoide attraverso la sottile lamina papiracea, l'agente tipico è lo Streptococcus pneumoniae. Il discriminatore è l'eziologia: S. aureus e S. pyogenes prevalgono nelle forme post-traumatiche, l'Haemophilus è tipico del bambino non vaccinato, mentre E. coli e Pseudomonas si vedono soprattutto nell'adulto per altre vie.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Neoplasie orbitarie: esposizione organica del quadro (emangiomi, rabdomiosarcoma, cause pediatriche) - instabile">
+  <p class="tag">Q04 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Quale delle seguenti è la più frequente neoplasia maligna dell'orbita in età pediatrica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Emangioma capillare</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Rabdomiosarcoma</button></li>
+    <li><button type="button"><span class="key">C</span>Linfangioma orbitario</button></li>
+    <li><button type="button"><span class="key">D</span>Glioma del nervo ottico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il rabdomiosarcoma è la prima neoplasia maligna orbitaria dell'età pediatrica (tipicamente 6-10 anni), con proptosi a rapida insorgenza nel quadrante supero-mediale. Il discriminatore è la malignità: l'emangioma capillare e il linfangioma sono lesioni benigne, e il glioma del nervo ottico, pur pediatrico e tipico delle bambine, non è la neoplasia maligna orbitaria più frequente in questa fascia d'età.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Esoftalmo endocrino: meccanismo tireotropo all'origine della vera proptosi, il tireotossico solo del tono palpebrale - confuso">
+  <p class="tag">Q05 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Nell'esoftalmo endocrino, quale evento è responsabile della vera protrusione del bulbo, e non della sola retrazione palpebrale?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>L'accumulo di mucopolisaccaridi ed edema orbitario per via tireotropa</button></li>
+    <li><button type="button"><span class="key">B</span>L'ipertono del muscolo di Muller da ipersimpaticotonia tireotossica</button></li>
+    <li><button type="button"><span class="key">C</span>L'eccesso di catecolamine circolanti in corso di tireotossicosi</button></li>
+    <li><button type="button"><span class="key">D</span>La retrazione fibrotica dell'elevatore della palpebra superiore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il meccanismo tireotropo, mediato da anticorpi anti-recettore del TSH sui preadipociti orbitari, produce glicosaminoglicani, edema e ipertrofia muscolare che aumentano il contenuto dell'orbita e spingono davvero il bulbo in avanti. Il discriminatore è che il meccanismo tireotossico agisce solo sul tono del muscolo di Muller, causando retrazione palpebrale e apparente allargamento della rima, ma non un vero spostamento del globo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Esoftalmo endocrino: decompressione orbitaria come primo tempo dell'ordine chirurgico obbligato - incerto">
+  <p class="tag">Q06 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Quando l'esoftalmo endocrino richiede la chirurgia per interessamento del nervo ottico, quale intervento va eseguito per primo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La correzione della retrazione palpebrale</button></li>
+    <li><button type="button"><span class="key">B</span>La blefaroplastica di rifinitura estetica</button></li>
+    <li><button type="button"><span class="key">C</span>La chirurgia dei muscoli extraoculari</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La decompressione orbitaria</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'ordine chirurgico è obbligato: decompressione orbitaria, poi muscoli extraoculari, poi palpebra, infine blefaroplastica, e ogni fase presuppone la stabilizzazione della precedente. Il discriminatore è la priorità: solo la decompressione riduce la pressione sul nervo ottico, per cui va per prima; correggere muscoli o palpebre prima di liberare l'apice sarebbe inutile o dannoso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Orbitopatia tiroidea: neuropatia ottica distiroidea come emergenza da steroidi e decompressione, non quadro da osservare - non riconosciuta">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Una donna di 48 anni, fumatrice, con disfunzione tiroidea nota, riferisce da alcune settimane colori sbiaditi e visus in calo a un occhio. La protrusione è marcata, la motilità ridotta, compare un difetto pupillare afferente relativo e la TC mostra muscoli retti ingrossati all'apice orbitario. Qual è il provvedimento prioritario?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Osservazione con controlli seriati, trattandosi di quadro autolimitante</button></li>
+    <li><button type="button"><span class="key">B</span>Sostituti lacrimali e occlusione notturna per la sofferenza corneale</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Steroidi endovenosi ad alte dosi e decompressione orbitaria dell'apice</button></li>
+    <li><button type="button"><span class="key">D</span>Correzione chirurgica precoce dello strabismo restrittivo</button></li>
+    <li><button type="button"><span class="key">E</span>Radioterapia orbitaria come unico trattamento risolutivo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Discromatopsia, calo del visus, difetto pupillare afferente e affollamento muscolare all'apice indicano una neuropatia ottica distiroidea, una condizione che minaccia la vista e non tollera l'attesa. Il discriminatore è l'urgenza: si somministrano subito steroidi endovenosi ad alte dosi e, in caso di risposta assente o insufficiente entro una-due settimane, si procede a decompressione orbitaria; osservare o limitarsi alla cura corneale lascerebbe progredire il danno.</p>
+    <p class="refs"><a href="https://academic.oup.com/ejendo/article/185/4/G43/6654384">EUGOGO 2021, Eur J Endocrinol 185:G43</a> · linee guida per l'oftalmopatia di Graves.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Proptosi pediatrica rapida e non infettiva: biopsia tempestiva per sospetto rabdomiosarcoma - mancante">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Un bambino di 7 anni sviluppa in due settimane una sporgenza rapidamente ingravescente di un occhio, con dislocazione del bulbo verso il basso e gonfiore della palpebra superiore. Non ha febbre né segni di infezione. L'imaging mostra una massa nel quadrante supero-mediale dell'orbita, senza coinvolgimento dei seni. Qual è la condotta corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Terapia antibiotica endovenosa per sospetta cellulite orbitaria</button></li>
+    <li><button type="button"><span class="key">B</span>Osservazione, attendendo l'involuzione spontanea tipica dell'età</button></li>
+    <li><button type="button"><span class="key">C</span>Corticosteroidi sistemici per accelerare la regressione della massa</button></li>
+    <li><button type="button"><span class="key">D</span>Puntura evacuativa della raccolta con successivo drenaggio</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Biopsia tempestiva della lesione per la definizione istologica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una proptosi pediatrica a rapida insorgenza, non dolorosa e senza segni infettivi, con massa supero-mediale, è un rabdomiosarcoma fino a prova contraria e impone una biopsia tempestiva che apra alla terapia multimodale. Il discriminatore è che l'assenza di febbre esclude la cellulite (che chiederebbe antibiotici), mentre l'involuzione spontanea e gli steroidi appartengono all'emangioma capillare, un quadro biologicamente diverso; rimandare per osservazione perde tempo prezioso.</p>
+    <p class="refs"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3770217/">Jurdy et al., Saudi J Ophthalmol 2013</a> · orbital rhabdomyosarcomas, a review.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Un uomo di 35 anni, alcune settimane dopo un grave trauma cranico da incidente stradale, sviluppa la protrusione di un occhio con arrossamento e un ronzio continuo che avverte dentro la testa. L'occhio è rosso, i vasi congiuntivali appaiono dilatati e tortuosi, e la sporgenza sembra battere a tempo con il polso.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Se</span>Segni</button>
+      <p>La protrusione pulsa in sincronia con il battito; sull'orbita si ausculta un soffio ritmico; i vasi episclerali sono dilatati e serpiginosi, con aspetto a caput medusae. La pressione intraoculare è aumentata e la motilità mostra una debolezza dell'abduzione, per sofferenza dell'abducente.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Una protrusione di origine tiroidea sarebbe piuttosto bilaterale, non pulsante e senza soffio; una forma infettiva sarebbe acuta, calda e dolente, spesso febbrile; una neoplasia darebbe una sporgenza progressiva e indolente. Solo la pulsatilità unita al soffio e all'arterializzazione delle vene congiuntivali punta a una comunicazione anomala ad alto flusso.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ra</span>Ragionamento</button>
+      <p>Il precedente traumatico e i segni orientano verso un passaggio diretto di sangue arterioso in un sistema venoso a bassa pressione: la stasi che ne deriva spinge il bulbo, arterializza le vene episclerali e aumenta la pressione oculare, mentre il flusso turbolento genera il soffio percepito dal paziente. La conferma è nel neuroimaging con studio vascolare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Il quadro è una fistola carotido-cavernosa diretta, post-traumatica e ad alto flusso: una comunicazione tra la carotide e il seno cavernoso. La diagnosi si completa con TC, RM e angiografia, e il trattamento di elezione è la chiusura per via endovascolare in radiologia interventistica.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Co</span>Conseguenza</button>
+      <p>Lasciata aperta, la fistola può portare a glaucoma, sofferenza ischemica del nervo ottico e perdita del visus per la pressione venosa cronicamente elevata. La chiusura endovascolare risolve la stasi e riporta la pressione oculare nella norma: il ronzio che il paziente sentiva nella testa era, letteralmente, il proprio sangue nel posto sbagliato.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1"
+  data-tid="27f28251-9c2c-801b-b764-d9f575c3b201" data-topic="Patologie delle vie lacrimali"
+  data-fault="Dacriocistite: incisione del sacco con drenaggio in fase acuta - instabile">
+  <p class="tag">Q07 · Oftalmologia · Patologie delle vie lacrimali</p>
+  <h2 class="q-text">In una dacriocistite acuta con raccolta purulenta del sacco, se è indicato un gesto chirurgico in fase acuta, a che cosa si limita?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>All'incisione del sacco con drenaggio della raccolta</button></li>
+    <li><button type="button"><span class="key">B</span>Alla dacriocistorinostomia per bypassare l'ostruzione</button></li>
+    <li><button type="button"><span class="key">C</span>All'asportazione completa del sacco lacrimale</button></li>
+    <li><button type="button"><span class="key">D</span>All'intubazione bicanalicolare con sondino in situ</button></li>
+  </ol>
+  <div class="rationale">
+    <p>In fase acuta la chirurgia si limita all'incisione del sacco con drenaggio della raccolta, mentre la terapia è antibiotica ad ampio spettro. Il discriminatore è il tempo: la dacriocistorinostomia, che è l'intervento risolutivo dell'ostruzione, non si esegue durante l'infezione attiva, e l'asportazione del sacco o un'intubazione precoce non trovano posto nel quadro acuto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1"
+  data-tid="27f28251-9c2c-801b-b764-d9f575c3b201" data-topic="Patologie delle vie lacrimali"
+  data-fault="Dacriocistite: incisione del sacco con drenaggio in fase acuta - instabile">
+  <p class="tag">Q08 · Oftalmologia · Patologie delle vie lacrimali</p>
+  <h2 class="q-text">Perché la dacriocistorinostomia non viene eseguita durante la fase acuta della dacriocistite?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché in acuto il sacco è troppo esiguo per essere ricostruito</button></li>
+    <li><button type="button"><span class="key">B</span>Perché in acuto l'edema nasale preclude l'accesso endoscopico</button></li>
+    <li><button type="button"><span class="key">C</span>Perché la terapia antibiotica ne vanifica il risultato anatomico</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché in acuto una nuova via di deflusso diffonderebbe l'infezione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La dacriocistorinostomia crea una comunicazione tra sacco e cavità nasale, e aprirla mentre l'infezione è attiva rischia di diffonderla ai tessuti circostanti: per questo si esegue solo dopo la risoluzione della fase acuta. Il discriminatore è il rischio di diffusione, non un problema di dimensioni del sacco né un'incompatibilità con gli antibiotici; in acuto ci si ferma all'incisione con drenaggio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1"
+  data-tid="27f28251-9c2c-801b-b764-d9f575c3b201" data-topic="Patologie delle vie lacrimali"
+  data-fault="Occhio lacrimoso: epifora da deficit di drenaggio contro lacrimazione da iperproduzione riflessa - confuse">
+  <p class="tag">Q09 · Oftalmologia · Patologie delle vie lacrimali</p>
+  <h2 class="q-text">Quale affermazione distingue correttamente l'epifora dalla lacrimazione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'epifora è transitoria e fisiologica, la lacrimazione continua e patologica</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'epifora nasce da deficit di drenaggio, la lacrimazione da iperproduzione riflessa</button></li>
+    <li><button type="button"><span class="key">C</span>L'epifora è sempre bilaterale, la lacrimazione sempre monolaterale</button></li>
+    <li><button type="button"><span class="key">D</span>L'epifora risponde ai colliri, la lacrimazione richiede sempre la chirurgia</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'epifora è la fuoriuscita continua delle lacrime per insufficienza del drenaggio ed è un fenomeno patologico e persistente; la lacrimazione è iperproduzione riflessa o emozionale, fisiologica e transitoria. Il discriminatore è il meccanismo, deflusso contro produzione: le altre coppie invertono i caratteri o introducono criteri di lateralità e di risposta terapeutica che non distinguono le due condizioni.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1"
+  data-tid="27f28251-9c2c-801b-b764-d9f575c3b201" data-topic="Patologie delle vie lacrimali"
+  data-fault="Dacriocistite neonatale: massaggio del sacco come prima linea con ricanalizzazione spontanea prevalente - incerto">
+  <p class="tag">Q10 · Oftalmologia · Patologie delle vie lacrimali</p>
+  <h2 class="q-text">Nella dacriocistite del neonato da imperforazione del dotto nasolacrimale, qual è il trattamento di prima linea?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sondaggio e irrigazione immediati delle vie lacrimali</button></li>
+    <li><button type="button"><span class="key">B</span>Antibiotici sistemici per prevenire la cellulite orbitaria</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Massaggio del sacco in senso discendente, eseguito dai genitori</button></li>
+    <li><button type="button"><span class="key">D</span>Dacriocistorinostomia precoce per ripristinare il deflusso</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La prima linea è il massaggio del sacco eseguito dai genitori con il polpastrello dall'alto verso il basso, perché la ricanalizzazione avviene spontaneamente nella grande maggioranza dei casi. Il discriminatore è la gradualità: sondaggio e irrigazione si riservano al fallimento del massaggio, gli antibiotici servono solo se compare l'infezione, e la dacriocistorinostomia è un'opzione tardiva, non un gesto neonatale precoce.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: distinzione Z in serie (allungamento sommato su un unico asse) vs Z contrapposte (dispersione multidirezionale e drappeggio nelle sedi incavate) prodotta solo su richiamo - instabile">
+  <p class="tag">Q11 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">In una retrazione cicatriziale del cavo ascellare, dove serve disperdere le forze in più direzioni e migliorare il drappeggio in una sede incavata, quale variante è preferibile?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Le Z contrapposte</button></li>
+    <li><button type="button"><span class="key">B</span>Le Z multiple in serie</button></li>
+    <li><button type="button"><span class="key">C</span>La plastica a W</button></li>
+    <li><button type="button"><span class="key">D</span>La plastica V-Y singola</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le Z contrapposte spezzano la cicatrice in vettori orientati in più direzioni, disperdendo le forze di accorciamento e migliorando il drappeggio proprio nelle zone incavate come l'ascella. Il discriminatore è la finalità: le Z multiple in serie sommano invece l'allungamento lungo un unico asse, la plastica a W è un rimodellamento estetico per exeresi e la V-Y singola non affronta questa geometria di retrazione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: distinzione Z in serie (allungamento sommato su un unico asse) vs Z contrapposte (dispersione multidirezionale e drappeggio nelle sedi incavate) prodotta solo su richiamo - instabile">
+  <p class="tag">Q12 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">Per una lunga cicatrice retraente lineare, ad esempio post-ustione, in cui occorre massimizzare l'allungamento lungo un solo asse, quale soluzione è indicata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le Z contrapposte per un migliore drappeggio</button></li>
+    <li><button type="button"><span class="key">B</span>La plastica a W per l'aspetto estetico</button></li>
+    <li><button type="button"><span class="key">C</span>La plastica Y-V singola di avvicinamento</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Le Z multiple in serie</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le Z multiple in serie dispongono più Z una dietro l'altra sulla stessa cicatrice, sommando i singoli allungamenti lungo l'unico asse di rilascio con lembi piccoli e sicuri. Il discriminatore è la direzione del guadagno: le Z contrapposte privilegiano la dispersione multidirezionale e il drappeggio anziché l'allungamento lineare, la W serve al riorientamento estetico e la Y-V avvicina i margini invece di allungarli.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: corrispondenza tra angolo dei lembi e percentuale di allungamento ottenuta - incerta">
+  <p class="tag">Q13 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">Nella plastica a Z, con quale angolazione dei lembi si ottiene il massimo allungamento, quella comunemente impiegata quando la retrazione è già avvenuta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>30°, con un allungamento del 25%</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>60°, con un allungamento del 70%</button></li>
+    <li><button type="button"><span class="key">C</span>45°, con il solo cambio di orientamento</button></li>
+    <li><button type="button"><span class="key">D</span>90°, con un allungamento massimale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'allungamento cresce con l'angolo dei lembi: 30° danno circa il 25%, 45° il 50% con la sola variazione di orientamento e distanza tra gli estremi invariata, 60° il 70% con un reale allungamento, ed è l'angolo usato quasi sempre quando la retrazione è già presente. Il discriminatore è la scala angolo-allungamento: i 90° non sono una scelta praticabile della tecnica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: Z multiple per frazionare l'allungamento ed evitare la necrosi di lembi troppo ampi - incerta">
+  <p class="tag">Q14 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">Perché su una cicatrice molto lunga si preferiscono più Z in successione anziché un'unica grande Z?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché una sola Z non cambia l'orientamento della cicatrice</button></li>
+    <li><button type="button"><span class="key">B</span>Perché le Z multiple ignorano le linee di tensione cutanea</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perché un'unica grande Z richiederebbe lembi ampi a rischio di necrosi</button></li>
+    <li><button type="button"><span class="key">D</span>Perché una sola Z non consente alcun allungamento della cicatrice</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Un'unica Z su una cicatrice lunga imporrebbe lembi molto grandi, la cui vascolarizzazione precaria li espone alla necrosi; frazionare in più Z permette lembi piccoli, ciascuno con il proprio contributo di allungamento che si somma agli altri. Il discriminatore è la vitalità del lembo: la scelta non nasce dall'incapacità di riorientare o allungare, e le Z multiple rispettano comunque le linee di tensione.</p>
+  </div>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  var ENDPOINT = "https://notion-442027153948.europe-west1.run.app/vigil";
+  var PENDING = "vigil:pending";
+  var sent = false;
+
+  function collect() {
+    var per = {};
+    var order = [];
+    items.forEach(function (item) {
+      var qid = item.dataset.q;
+      var tid = item.dataset.tid;
+      if (qid === undefined || tid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (b && b.hasAttribute("data-correct")) return;
+      if (!item.dataset.fault) return;
+      if (!per[tid]) {
+        per[tid] = { id: tid, faults: [] };
+        order.push(tid);
+      }
+      if (per[tid].faults.indexOf(item.dataset.fault) === -1) per[tid].faults.push(item.dataset.fault);
+    });
+    return order.map(function (k) { return per[k]; });
+  }
+
+  function pendingStore() {
+    try { return JSON.parse(localStorage.getItem(PENDING) || "{}") || {}; } catch (e) { return {}; }
+  }
+
+  function flush() {
+    var token = "";
+    try { token = localStorage.getItem("vigil:token") || ""; } catch (e) {}
+    if (!token) return;
+    var store = pendingStore();
+    Object.keys(store).forEach(function (date) {
+      fetch(ENDPOINT, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token, topics: store[date] })
+      }).then(function (r) {
+        if (!r.ok) return;
+        var s = pendingStore();
+        delete s[date];
+        try { localStorage.setItem(PENDING, JSON.stringify(s)); } catch (e) {}
+      }).catch(function () {});
+    });
+  }
+
+  function send() {
+    if (sent) return;
+    sent = true;
+    var topics = collect();
+    if (!topics.length) return;
+    var store = pendingStore();
+    store[document.body.dataset.date] = topics;
+    try { localStorage.setItem(PENDING, JSON.stringify(store)); } catch (e) {}
+    flush();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      send();
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (location.hash.indexOf("#t=") === 0) {
+    try { localStorage.setItem("vigil:token", location.hash.slice(3)); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+  flush();
+})();
+</script>
+</body>
+</html>
