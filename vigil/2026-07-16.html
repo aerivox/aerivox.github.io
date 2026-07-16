@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 16 luglio 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+
+.scenario { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+.stages { list-style: none; margin: 0; padding: 0; }
+html.js .stages li:not(.open) p { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .stages li.open p { animation: appear .14s ease; }
+}
+.stages button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5; font-weight: 500;
+}
+.stages button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem; font-weight: 400;
+}
+.stages button:hover .key { color: var(--ink); }
+.stages p { font-size: 1rem; margin: .2rem 0 1.2rem 2.2rem; max-width: 60ch; }
+
+</style>
+</head>
+<body data-date="2026-07-16">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>giovedì 16 luglio 2026</h1>
+  <div class="spark">
+    <p>Oggi entra la dermatite seborroica, mentre aspetta l'audit una fila lunga: rosacea, psoriasi, lichen planus e orticaria dalla dermatologia; dalla chirurgia plastica gli innesti cutanei, i lembi, la chirurgia estetica, il carcinoma basocellulare e le ferite acute e croniche dell'arto inferiore; le maculopatie dall'oftalmologia. Restano poi i punti lasciati indietro nelle sessioni scorse: cinque sulle patologie dell'orbita, uno sulle plastiche, uno sulle patologie del cristallino.</p>
+    <p>Per secoli la psoriasi non ebbe un nome suo: le sue placche argentee finivano sotto la stessa parola che indicava la lebbra, e chi le portava ne ereditava la sorte. Isolato, segnato, in molti luoghi costretto a farsi annunciare da un campanello perché nessuno lo sfiorasse per errore. La pelle diceva contagio, e a nessuno veniva in mente di chiedere altro. Fu Robert Willan, a Londra, a cominciare a distinguere le squame dalla malattia dei lebbrosi, e poi Ferdinand von Hebra, a Vienna, a separarla per sempre nel 1841: la chiamò psoriasi vulgaris e la tolse dalla casta dei condannati, mostrando che quelle croste non contagiavano nessuno. Un fraintendimento vecchio quanto la medicina, corretto da un uomo che guardò la stessa pelle e, dove altri leggevano una sentenza, vide soltanto una malattia.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q01" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-fault="Cataratta congenita: specifiche anomalie cromosomiche associate, comprese trisomie 13, 18 e 21 e sindrome di Turner - mancanti">
+  <p class="tag">Q01 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">In un neonato con cataratta congenita né idiopatica né ereditaria, quale gruppo di alterazioni cromosomiche rientra tra le cause riconosciute?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le trisomie 22 e le microdelezioni del braccio lungo del 22</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Le trisomie 13, 18 e 21 e la sindrome di Turner</button></li>
+    <li><button type="button"><span class="key">C</span>Le monosomie complete dei cromosomi 7 e 9</button></li>
+    <li><button type="button"><span class="key">D</span>Le triploidie e le trisomie dei cromosomi 8 e 9</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Tra le forme non idiopatiche e non ereditarie, il gruppo cromosomico della cataratta congenita comprende le trisomie 13, 18 e 21 e la monosomia X della sindrome di Turner. Il discriminatore è proprio questo insieme: le altre combinazioni citano anomalie che non figurano tra le associazioni classiche di questa cataratta.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q02" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-fault="Cataratta congenita: specifiche anomalie cromosomiche associate, comprese trisomie 13, 18 e 21 e sindrome di Turner - mancanti">
+  <p class="tag">Q02 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Davanti a una cataratta congenita, quale quadro sindromico a base cromosomica va considerato tra le associazioni note?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La sindrome di Klinefelter (47,XXY)</button></li>
+    <li><button type="button"><span class="key">B</span>La sindrome di Prader-Willi (delezione 15q)</button></li>
+    <li><button type="button"><span class="key">C</span>La sindrome di DiGeorge (delezione 22q11)</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La sindrome di Turner (45,X)</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La sindrome di Turner, monosomia X, figura tra le anomalie cromosomiche associate alla cataratta congenita, accanto alle trisomie 13, 18 e 21. Il discriminatore è la monosomia X: le altre sindromi elencate, pur legate ad alterazioni cromosomiche, non rientrano nel gruppo classicamente associato.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q03" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-fault="Cataratta congenita: diagnosi differenziale obbligatoria della leucocoria - da consolidare">
+  <p class="tag">Q03 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">In un lattante con leucocoria e sospetta cataratta congenita, quale diagnosi va esclusa in via prioritaria per la sua gravità?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Il retinoblastoma</button></li>
+    <li><button type="button"><span class="key">B</span>La corioretinite cicatriziale</button></li>
+    <li><button type="button"><span class="key">C</span>La cataratta zonulare stazionaria</button></li>
+    <li><button type="button"><span class="key">D</span>Il coloboma corioretinico</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La leucocoria impone la diagnosi differenziale obbligatoria con il retinoblastoma, neoplasia maligna che mette a rischio la vita del bambino. Il discriminatore è l'urgenza oncologica: le altre condizioni possono alterare il riflesso pupillare ma non hanno la stessa priorità di esclusione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q04" tabindex="-1"
+  data-tid="27f28251-9c2c-8091-adf9-c20abb5df396" data-topic="Patologie del cristallino"
+  data-fault="Cataratta nucleare: miopizzazione da aumento dell'indice di refrazione - da consolidare">
+  <p class="tag">Q04 · Oftalmologia · Patologie del cristallino</p>
+  <h2 class="q-text">Un paziente presbite riferisce di aver ripreso a leggere senza occhiali; l'esame mostra una cataratta nucleare iniziale. Quale meccanismo lo spiega?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La riduzione del potere refrattivo del cristallino opacizzato</button></li>
+    <li><button type="button"><span class="key">B</span>L'irrigidimento del muscolo ciliare che recupera l'accomodazione</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'aumento dell'indice di refrazione del nucleo che induce miopizzazione</button></li>
+    <li><button type="button"><span class="key">D</span>L'aumento del diametro pupillare che estende la profondità di fuoco</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'opacizzazione nucleare aumenta la densità e quindi l'indice di refrazione del cristallino, spostando il fuoco davanti alla retina: una miopia da indice che compensa la presbiopia, la cosiddetta seconda visione. Il discriminatore è l'aumento dell'indice, non un recupero accomodativo né un effetto pupillare.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q05" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: distinzione Z in serie (allungamento sommato su un unico asse) vs Z contrapposte (dispersione multidirezionale e drappeggio nelle sedi incavate) prodotta solo su richiamo - instabile">
+  <p class="tag">Q05 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">Rispetto alle Z multiple in serie, che cosa caratterizza in modo proprio le Z contrapposte?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La somma degli allungamenti lungo un unico asse di rilascio</button></li>
+    <li><button type="button"><span class="key">B</span>L'impiego di un solo lembo triangolare avanzato senza trasposizione</button></li>
+    <li><button type="button"><span class="key">C</span>L'aumento dell'angolo dei lembi fino a superare i settanta gradi</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La dispersione delle forze su più vettori con miglior drappeggio nelle sedi incavate</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le Z contrapposte spezzano la cicatrice in vettori orientati in direzioni diverse, così la risultante è meno efficiente nell'accorciamento ma migliora il drappeggio in sedi come l'ascella. Il discriminatore è la dispersione multidirezionale, mentre la somma dell'allungamento su un asse unico è la proprietà delle Z in serie.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q06" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: distinzione Z in serie (allungamento sommato su un unico asse) vs Z contrapposte (dispersione multidirezionale e drappeggio nelle sedi incavate) prodotta solo su richiamo - instabile">
+  <p class="tag">Q06 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">In una retrazione post-ustione lineare e molto lunga da rilasciare lungo una sola direzione, quale principio governa le Z multiple in serie?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Ogni Z somma il proprio allungamento lungo lo stesso asse di rilascio</button></li>
+    <li><button type="button"><span class="key">B</span>Ogni Z disperde la forza in un vettore diverso riducendo l'accorciamento</button></li>
+    <li><button type="button"><span class="key">C</span>Un unico grande lembo triangolare copre l'intera lunghezza della cicatrice</button></li>
+    <li><button type="button"><span class="key">D</span>L'allungamento deriva dal solo scambio di orientamento senza guadagno di lunghezza</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nelle Z in serie ogni segmento applica la stessa relazione angolo-allungamento e i guadagni si sommano lungo un'unica direzione di rilascio. Il discriminatore è la somma lungo l'asse unico, che distingue la serie dalle contrapposte, dove le forze si disperdono su più vettori a scapito dell'accorciamento.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q07" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: relazione tra angolo dei lembi e allungamento ottenibile - da consolidare">
+  <p class="tag">Q07 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">In una plastica a Z su una cicatrice in cui la retrazione è già avvenuta e serve un vero allungamento della distanza tra gli estremi, quale angolo dei lembi si impiega?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Quindici gradi</button></li>
+    <li><button type="button"><span class="key">B</span>Trenta gradi</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Sessanta gradi</button></li>
+    <li><button type="button"><span class="key">D</span>Quarantacinque gradi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>A sessanta gradi si ottiene circa il 70% di allungamento con effettivo aumento della distanza fra gli estremi, ed è l'angolo scelto quando la retrazione è già instaurata. Il discriminatore è che a quarantacinque gradi si ha solo il cambio di orientamento a distanza invariata, insufficiente quando serve allungare davvero.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q08" tabindex="-1"
+  data-tid="27f28251-9c2c-8042-bffb-d30820a37fc1" data-topic="Plastiche"
+  data-fault="Plastica a Z: orientamento delle incisioni estreme lungo le relaxed skin tension lines - da consolidare">
+  <p class="tag">Q08 · Chirurgia plastica · Plastiche</p>
+  <h2 class="q-text">Perché le due incisioni estreme della Z vanno tracciate parallele alle relaxed skin tension lines?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché lungo quelle linee la vascolarizzazione dei lembi triangolari è massima</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché una cicatrice perpendicolare alle linee di minima tensione tende all'ipertrofia e alla retrazione</button></li>
+    <li><button type="button"><span class="key">C</span>Perché solo così i lembi si possono avanzare senza staccarli dalla base</button></li>
+    <li><button type="button"><span class="key">D</span>Perché in quella direzione l'angolo dei lembi raggiunge da sé i sessanta gradi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Disporre le incisioni lungo le RSTL colloca la cicatrice dove la tensione è minima, evitando le sollecitazioni che generano ipertrofia e retrazione e vanificano la plastica. Il discriminatore è la tensione meccanica sulla cicatrice, non la vascolarizzazione né la vitalità del lembo, che riguardano altre scelte tecniche.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q09" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Neoplasie orbitarie: esposizione organica del quadro (emangiomi, rabdomiosarcoma, cause pediatriche) - instabile">
+  <p class="tag">Q09 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Qual è la più frequente neoplasia maligna primitiva dell'orbita in età pediatrica?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Il rabdomiosarcoma</button></li>
+    <li><button type="button"><span class="key">B</span>L'emangioma capillare</button></li>
+    <li><button type="button"><span class="key">C</span>Il glioma del nervo ottico</button></li>
+    <li><button type="button"><span class="key">D</span>Il linfangioma orbitario</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il rabdomiosarcoma è la prima neoplasia maligna orbitaria del bambino, con proptosi a rapida insorgenza tipicamente nel quadrante supero-mediale. Il discriminatore è la natura maligna: emangioma capillare e linfangioma sono lesioni benigne, e il glioma del nervo ottico, pur neoplastico, non è la maligna più frequente in questa sede.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q10" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Orbitopatia tiroidea: neuropatia ottica distiroidea come emergenza da steroidi e decompressione, non quadro da osservare - non riconosciuta">
+  <p class="tag">Q10 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">In un paziente con oftalmopatia di Graves compare un calo del visus con discromatopsia da compressione del nervo ottico. Quale approccio è corretto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sola osservazione, poiché l'oftalmopatia è autolimitante in 12-36 mesi</button></li>
+    <li><button type="button"><span class="key">B</span>Lubrificazione corneale e attesa della stabilizzazione spontanea</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Steroidi sistemici ad alte dosi e decompressione orbitaria se non risponde</button></li>
+    <li><button type="button"><span class="key">D</span>Blefaroplastica estetica per ridurre l'esposizione corneale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La neuropatia ottica distiroidea è un'emergenza visiva: richiede steroidi sistemici ad alte dosi e, in assenza di risposta, decompressione orbitaria, non l'osservazione riservata alle forme senza minaccia per la vista. Il discriminatore è la minaccia al nervo ottico, che sposta la condotta dall'attesa all'intervento urgente.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q11" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Esoftalmo endocrino: eponimi dei segni palpebrali di Dalrymple e Graefe - mancanti">
+  <p class="tag">Q11 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Nell'esoftalmo endocrino, quale segno palpebrale prende il nome di segno di Graefe?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La retrazione della palpebra superiore a sguardo primario</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il ritardo della palpebra superiore nello sguardo verso il basso</button></li>
+    <li><button type="button"><span class="key">C</span>La chiusura incompleta delle palpebre durante l'ammiccamento</button></li>
+    <li><button type="button"><span class="key">D</span>Il tremore fine del bordo palpebrale a occhi chiusi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il segno di Graefe è il ritardo della palpebra superiore che non segue il bulbo nello sguardo verso il basso; la retrazione palpebrale a sguardo primario è invece il segno di Dalrymple. Il discriminatore è la dinamica nello sguardo in basso, che distingue Graefe da Dalrymple.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q12" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Esoftalmo endocrino: valori dell'esoftalmometria di Hertel - instabili">
+  <p class="tag">Q12 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">All'esoftalmometria di Hertel, quale reperto è considerato patologico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una protrusione compresa tra 12 e 16 mm in entrambi gli occhi</button></li>
+    <li><button type="button"><span class="key">B</span>Una protrusione simmetrica di 14 mm non dolente</button></li>
+    <li><button type="button"><span class="key">C</span>Una differenza di 1 mm tra i due occhi con valori nella norma</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Una protrusione superiore a 18 mm o una differenza oltre 2 mm tra i due occhi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Valori fino a 16-18 mm sono fisiologici; si considera patologica una protrusione oltre 18 mm o una differenza superiore a 2 mm tra i due occhi. Il discriminatore è il superamento della soglia o l'asimmetria oltre 2 mm, non un valore assoluto che resta entro il range normale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q13" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Cellulite orbitale: batterio della forma sinusitica (S. pneumoniae) - instabile">
+  <p class="tag">Q13 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">In una cellulite orbitale insorta come complicanza di una sinusite etmoidale, qual è l'agente più tipicamente responsabile?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Streptococcus pneumoniae</button></li>
+    <li><button type="button"><span class="key">B</span>Pseudomonas aeruginosa</button></li>
+    <li><button type="button"><span class="key">C</span>Staphylococcus aureus</button></li>
+    <li><button type="button"><span class="key">D</span>Escherichia coli</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella forma sinusitica l'agente più tipico è lo Streptococcus pneumoniae, mentre S. aureus e S. pyogenes prevalgono nelle forme post-traumatiche. Il discriminatore è l'eziologia sinusale, che orienta verso il pneumococco piuttosto che verso i germi da inoculo traumatico o gli enterobatteri.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q14" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Esoftalmo endocrino: distinzione tra meccanismo tireotossico e tireotropo - da consolidare">
+  <p class="tag">Q14 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Quale delle seguenti descrive correttamente il meccanismo tireotropo dell'esoftalmo endocrino?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'ipertono del muscolo di Muller che retrae la palpebra superiore</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'accumulo di mucopolisaccaridi nell'orbita che spinge in avanti il bulbo</button></li>
+    <li><button type="button"><span class="key">C</span>La paralisi dei muscoli retti che fa arretrare il globo nell'orbita</button></li>
+    <li><button type="button"><span class="key">D</span>La riduzione del grasso retrobulbare che simula una protrusione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il meccanismo tireotropo, mediato dagli anticorpi anti-recettore del TSH, aumenta il contenuto orbitario con mucopolisaccaridi, edema e fibrosi, producendo vera proptosi. Il discriminatore è l'aumento di volume del contenuto: l'ipertono del muscolo di Muller appartiene invece al meccanismo tireotossico, che dà retrazione palpebrale ma non vera protrusione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="q15" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Diagnosi differenziale della proptosi: la proptosi pulsante come segno della fistola carotido-cavernosa - da consolidare">
+  <p class="tag">Q15 · Oftalmologia · Patologie dell'orbita</p>
+  <h2 class="q-text">Una proptosi pulsante, con pulsazioni sincrone al battito cardiaco, orienta verso quale diagnosi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Lo pseudotumor orbitario infiammatorio</button></li>
+    <li><button type="button"><span class="key">B</span>La dacrioadenite acuta</button></li>
+    <li><button type="button"><span class="key">C</span>L'emangioma cavernoso dell'adulto</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La fistola carotido-cavernosa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La proptosi pulsante sincrona al polso è il segno della fistola carotido-cavernosa, per la trasmissione della pulsazione arteriosa al seno cavernoso. Il discriminatore è la pulsatilità sincrona: pseudotumor, dacrioadenite ed emangioma cavernoso danno protrusione, ma non pulsante.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Orbitopatia tiroidea: neuropatia ottica distiroidea come emergenza da steroidi e decompressione, non quadro da osservare - non riconosciuta">
+  <p class="tag">B01 · Boards</p>
+  <h2 class="q-text">Una donna di 52 anni, in cura per ipertiroidismo, sviluppa in poche settimane un peggioramento del visus in un occhio, con discromatopsia al rosso-verde e difetto pupillare afferente relativo. Il campo visivo mostra un difetto centrale e il disco ottico appare iperemico. Quale condotta è la più corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Osservazione, poiché l'oftalmopatia di Graves si stabilizza da sola in 12-36 mesi</button></li>
+    <li><button type="button"><span class="key">B</span>Radioterapia orbitaria in monoterapia, rimandando ogni altro provvedimento</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Boli endovenosi di metilprednisolone ad alte dosi, con decompressione se non risponde</button></li>
+    <li><button type="button"><span class="key">D</span>Correzione chirurgica della retrazione palpebrale per proteggere la superficie corneale</button></li>
+    <li><button type="button"><span class="key">E</span>Antibioticoterapia endovenosa ad ampio spettro per dieci-quattordici giorni</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro è una neuropatia ottica distiroidea, un'emergenza visiva. La prima scelta sono i boli endovenosi di metilprednisolone ad alte dosi, seguiti da decompressione orbitaria urgente se la risposta è assente entro due settimane. Il discriminatore è la minaccia al nervo ottico, che esclude tanto l'osservazione quanto le rifiniture palpebrali; l'antibiotico apparterrebbe a una cellulite, qui assente.</p>
+    <p class="refs"><a href="https://academic.oup.com/ejendo/article/185/4/G43/6654384">EUGOGO 2021, Eur J Endocrinol</a> · linee guida per la neuropatia ottica distiroidea.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1"
+  data-tid="27f28251-9c2c-80a0-9003-d057ad44d106" data-topic="Patologie dell'orbita"
+  data-fault="Cellulite orbitale: indicazione al drenaggio chirurgico rispetto alla sola terapia endovenosa - da consolidare">
+  <p class="tag">B02 · Boards</p>
+  <h2 class="q-text">Un bambino di 8 anni, pochi giorni dopo una sinusite etmoidale, presenta edema periorbitario caldo e dolente, proptosi laterale, oftalmoplegia dolorosa e febbre a 38,5 gradi. La TC mostra una raccolta subperiostea mediale di circa 12 mm; il visus è ancora conservato. Qual è la condotta iniziale più appropriata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Drenaggio chirurgico immediato, prima ancora di iniziare qualsiasi antibiotico</button></li>
+    <li><button type="button"><span class="key">B</span>Antibiotico orale a domicilio, con rivalutazione clinica dopo circa una settimana</button></li>
+    <li><button type="button"><span class="key">C</span>Sola terapia steroidea sistemica, per spegnere l'infiammazione dei tessuti orbitari</button></li>
+    <li><button type="button"><span class="key">D</span>Osservazione senza imaging di controllo, fino a un eventuale peggioramento del visus</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Ricovero e antibiotici endovenosi, con drenaggio riservato alla mancata risposta o al calo visivo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La cellulite orbitale con ascesso subperiosteo si tratta con ricovero e antibiotici endovenosi; il drenaggio chirurgico si riserva alla mancata risposta clinica, al deterioramento visivo o agli ascessi voluminosi. Il discriminatore è il visus ancora conservato con risposta da verificare, che rende la terapia medica il primo passo e la chirurgia condizionata. Ascesso ampio, oltre 10 mm, età maggiore e febbre elevata aumentano però la probabilità di dover operare.</p>
+    <p class="refs"><a href="https://cps.ca/en/documents/position/preseptal-orbital-cellulitis">Canadian Paediatric Society</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9155619/">Epidemiology and Management of Orbital Cellulitis in Children</a>.</p>
+  </div>
+</section>
+
+<section class="item" data-case tabindex="-1">
+  <p class="tag">V01 · Caso ragionato</p>
+  <p class="scenario">Una donna di 45 anni nota da mesi che un occhio sporge lentamente in avanti, senza dolore e senza arrossamento; la vista è ancora buona e la protrusione non pulsa.</p>
+  <ol class="stages">
+    <li>
+      <button type="button"><span class="key">Cx</span>Contesto</button>
+      <p>La protrusione è assiale, non riducibile alla palpazione e non varia con la posizione del capo. Non ci sono segni di ipertiroidismo, né retrazione palpebrale, né alterazioni della funzione tiroidea agli esami del sangue.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Ip</span>Ipotesi a confronto</button>
+      <p>Un esoftalmo endocrino monolaterale, un processo infiammatorio idiopatico dell'orbita, una comunicazione vascolare del seno cavernoso, una massa intraconica a lenta crescita.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Di</span>Discriminante</button>
+      <p>L'assenza di dolore, di segni infiammatori, di autoimmunità tiroidea e di pulsatilità toglie campo alle prime tre ipotesi; una progressione lenta e indolore in una donna adulta, con massa ben delimitata intraconica alla TC, indica un tumore benigno vascolare.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Es</span>Esito</button>
+      <p>Si tratta di un emangioma cavernoso, il tumore orbitario benigno più frequente dell'adulto, con prevalenza femminile tra i 40 e i 50 anni; la terapia è l'exeresi chirurgica radicale.</p>
+    </li>
+    <li>
+      <button type="button"><span class="key">Cq</span>Conseguenza</button>
+      <p>La sede intraconica comprime il nervo ottico e può ridurre acuità e campo visivo in modo spesso irreversibile: la lentezza del quadro non giustifica l'attesa quando la funzione visiva comincia a cedere.</p>
+    </li>
+  </ol>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var qid = item.dataset.q;
+      if (qid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return item.dataset.q === undefined || st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (item.dataset.q !== undefined && st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  var ENDPOINT = "https://notion-442027153948.europe-west1.run.app/vigil";
+  var PENDING = "vigil:pending";
+  var sent = false;
+
+  function collect() {
+    var per = {};
+    var order = [];
+    items.forEach(function (item) {
+      var qid = item.dataset.q;
+      var tid = item.dataset.tid;
+      if (qid === undefined || tid === undefined) return;
+      var idx = st.a[qid];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (b && b.hasAttribute("data-correct")) return;
+      if (!item.dataset.fault) return;
+      if (!per[tid]) {
+        per[tid] = { id: tid, faults: [] };
+        order.push(tid);
+      }
+      if (per[tid].faults.indexOf(item.dataset.fault) === -1) per[tid].faults.push(item.dataset.fault);
+    });
+    return order.map(function (k) { return per[k]; });
+  }
+
+  function pendingStore() {
+    try { return JSON.parse(localStorage.getItem(PENDING) || "{}") || {}; } catch (e) { return {}; }
+  }
+
+  function flush() {
+    var token = "";
+    try { token = localStorage.getItem("vigil:token") || ""; } catch (e) {}
+    if (!token) return;
+    var store = pendingStore();
+    Object.keys(store).forEach(function (date) {
+      fetch(ENDPOINT, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token, topics: store[date] })
+      }).then(function (r) {
+        if (!r.ok) return;
+        var s = pendingStore();
+        delete s[date];
+        try { localStorage.setItem(PENDING, JSON.stringify(s)); } catch (e) {}
+      }).catch(function () {});
+    });
+  }
+
+  function send() {
+    if (sent) return;
+    sent = true;
+    var topics = collect();
+    if (!topics.length) return;
+    var store = pendingStore();
+    store[document.body.dataset.date] = topics;
+    try { localStorage.setItem(PENDING, JSON.stringify(store)); } catch (e) {}
+    flush();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      send();
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    if (qid === undefined) {
+      item.querySelectorAll(".stages li").forEach(function (li) {
+        var b = li.querySelector("button");
+        b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-expanded", li.classList.toggle("open") ? "true" : "false");
+        });
+      });
+      return;
+    }
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && item.dataset.q !== undefined && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (location.hash.indexOf("#t=") === 0) {
+    try { localStorage.setItem("vigil:token", location.hash.slice(3)); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+  flush();
+})();
+</script>
+</body>
+</html>
