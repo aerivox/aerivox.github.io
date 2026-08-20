@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 20 agosto 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+</style>
+</head>
+<body data-date="2026-08-20">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>giovedì 20 agosto 2026</h1>
+  <div class="spark">
+    <p>Gli restava una palpebra sinistra, e con quella scrisse un libro. Jean-Dominique Bauby, direttore dell'edizione francese di Elle, nel dicembre 1995 fu colpito da un ictus del tronco encefalico; si risvegliò dal coma tre settimane dopo perfettamente cosciente e interamente paralizzato. È la locked-in syndrome: la mente intatta, murata in un corpo che non risponde. Un'assistente recitava l'alfabeto in ordine di frequenza, lui sbatteva l'occhio sulla lettera giusta, e così, un battito alla volta, dettò Lo scafandro e la farfalla: circa duecentomila ammiccamenti, due minuti a parola. Il libro uscì il 7 marzo 1997; Bauby morì due giorni dopo. Ed è esattamente il caso che ogni scala del coma teme di sbagliare, un paziente che vede tutto, sente tutto, capisce tutto, e che uno sguardo frettoloso archivierebbe come assente.</p>
+    <p>Nessun ingresso oggi: la giornata è tutta di verifica. La psichiatria chiede conto del colloquio psichiatrico e della semeiotica e psicopatologia, i due strumenti con cui si ascolta e si nomina ciò che non si vede; la neurochirurgia mette alla prova il trauma cranico e l'ipertensione endocranica, il coma e i disturbi della coscienza, i traumi vertebro-midollari e l'ictus ischemico e il TIA. Niente resta in sospeso dalle sessioni passate: quello che si ripassa oggi è tutto quello che c'è.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01</p>
+  <h2 class="q-text">Uno specializzando conduce il primo colloquio ponendo fin dall'inizio una sequenza rapida di domande a risposta chiusa, alle quali la paziente risponde a monosillabi negando quasi ogni item. Al termine il quadro appare privo di sintomi rilevanti. Qual è il rischio principale di questa conduzione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Allunga inutilmente il colloquio senza aggiungere dati diagnostici</button></li>
+    <li><button type="button"><span class="key">B</span>Sposta il fuoco sui dettagli somatici trascurando la storia psicosociale</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Produce negazioni sistematiche che simulano un'anamnesi negativa</button></li>
+    <li><button type="button"><span class="key">D</span>Compromette l'alleanza ma lascia intatta la resa diagnostica</button></li>
+    <li><button type="button"><span class="key">E</span>Riduce l'ansia della paziente a scapito della precisione dei dettagli</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La domanda chiusa segnala la risposta attesa, e in una sequenza rapida la negazione diventa la risposta di default: il risultato non è un dato mancante, che il clinico riconoscerebbe come tale, ma un dato apparentemente raccolto e falsamente rassicurante. Il discriminatore è che l'errore genera falsi negativi, cosa diversa dal semplice colloquio povero o dalla perdita di rapporto.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK546682/">StatPearls</a> · Mental Status Examination.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02</p>
+  <h2 class="q-text">Un paziente riferisce di avvertire che qualcosa in lui non funziona, senza saper dire che cosa, e ne è angosciato. Riconosce l'alterazione ma non la inquadra e non ne coglie la portata. Come conviene condurre il colloquio in questa condizione di consapevolezza?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Nominare l'alterazione percepita e ricondurla a un quadro riconoscibile</button></li>
+    <li><button type="button"><span class="key">B</span>Spostare il lavoro sul solo piano empatico, lasciando da parte il contenuto</button></li>
+    <li><button type="button"><span class="key">C</span>Confermare la percezione del paziente per rinforzare l'alleanza terapeutica</button></li>
+    <li><button type="button"><span class="key">D</span>Contestare l'interpretazione del paziente per correggere l'esame di realtà</button></li>
+    <li><button type="button"><span class="key">E</span>Rinviare ogni inquadramento a una valutazione cognitiva strutturata</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il paziente ha un sentimento di malattia, cioè percepisce l'alterazione senza coglierne misura e interezza, e con una consapevolezza anche solo parziale il colloquio può ancora lavorare sul contenuto, nominando l'alterazione e ricollegandola a un quadro. Lo spostamento sul solo piano empatico è invece la regola dell'insight assente con giudizio di realtà scorretto, cioè del delirio. Il discriminatore è il grado di consapevolezza, qui parziale e non nullo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03</p>
+  <h2 class="q-text">Un collega evita di porre domande dirette sul suicidio a un paziente che non ne ha parlato, temendo di introdurre un'idea che non c'era. Nessun segno esteriore orienta verso il rischio. Come si valuta questa condotta al primo colloquio?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>È prudente, perché la domanda può rinforzare l'ideazione nel soggetto vulnerabile</button></li>
+    <li><button type="button"><span class="key">B</span>È corretta quando manca una depressione maggiore chiaramente in atto</button></li>
+    <li><button type="button"><span class="key">C</span>È accettabile se la valutazione del rischio è solo rinviata ai colloqui dopo</button></li>
+    <li><button type="button"><span class="key">D</span>È indifferente, perché l'ideazione emerge comunque dai segni esteriori</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>È infondata, perché la domanda omessa lascia il rischio non valutato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Interrogare esplicitamente sul suicidio non aumenta l'ideazione suicidaria e semmai la riduce lievemente, mentre molti pazienti con ideazione non ne lasciano trapelare nulla: la domanda taciuta è l'unico rischio che nessuno ha valutato. Il discriminatore è che l'ideazione non è suggeribile come un'informazione neutra, per cui l'omissione è dannosa e non prudente.</p>
+    <p class="refs"><a href="https://doi.org/10.1017/S0033291714001299">Dazzi et al., Psychol Med 2014</a> · asking about suicide does not induce ideation.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04</p>
+  <h2 class="q-text">Durante un primo colloquio il medico incalza con le domande della checklist diagnostica e sorvola sul lutto recente che la paziente accenna. La paziente si chiude e da quel momento risponde a monosillabi. Quale principio del colloquio è stato violato?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La valutazione dei rischi immediati precede la raccolta anamnestica</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>L'alleanza è la prima tappa del colloquio, non un esito tardivo</button></li>
+    <li><button type="button"><span class="key">C</span>Le domande chiuse vanno riservate alla definizione dei dettagli</button></li>
+    <li><button type="button"><span class="key">D</span>La prima impressione non deve condizionare il giudizio clinico</button></li>
+    <li><button type="button"><span class="key">E</span>I termini del paziente vanno verificati nel loro significato reale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il materiale sensibile su cui si regge la diagnosi viene offerto solo entro una relazione percepita come sicura, e prestare più attenzione al caso che al paziente fa ritirare chi arriva già demoralizzato: per questo l'alleanza è la prima tappa e non una conseguenza tardiva del colloquio. Il discriminatore è la priorità della relazione sul contenuto, che qui è stata invertita.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05</p>
+  <h2 class="q-text">Tre pazienti portano lo stesso tema di colpa. Il primo lo vive come un'idea propria, intensa ma allontanabile con sforzo; il secondo lo riconosce assurdo, vi resiste e mette in atto rituali; il terzo ne è assolutamente certo e inaccessibile a ogni critica. Che cosa permette di attribuire a ciascuno un fenomeno diverso?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il tema del pensiero, che pur condiviso orienta verso diagnosi diverse</button></li>
+    <li><button type="button"><span class="key">B</span>L'intensità del tono affettivo che accompagna ciascuna convinzione</button></li>
+    <li><button type="button"><span class="key">C</span>La frequenza con cui il contenuto ritorna nell'arco della giornata</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>L'appartenenza all'Io e la correggibilità del contenuto</button></li>
+    <li><button type="button"><span class="key">E</span>La presenza di correlati neurovegetativi durante l'esperienza</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il tema è contenuto, largamente prestato dalla biografia e dalla cultura, mentre la diagnosi si appoggia alla forma: l'idea prevalente è egosintonica e allontanabile, l'ossessione è egodistonica e xenopatica e suscita uno psichismo di difesa, il delirio è sostenuto con certezza assoluta e incorreggibile. Il discriminatore è l'appartenenza all'Io e la correggibilità, non il tema condiviso né l'intensità affettiva.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06</p>
+  <h2 class="q-text">Un paziente vigile e orientato riferisce una voce che lo insulta; precisa che si trova dentro la sua testa e aggiunge di sapere che non è reale. Come si classifica il fenomeno e che cosa ne consegue sul piano diagnostico?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Pseudoallucinazione, per collocazione interna e critica conservata</button></li>
+    <li><button type="button"><span class="key">B</span>Allucinazione uditiva, reperto più tipico della schizofrenia</button></li>
+    <li><button type="button"><span class="key">C</span>Illusione, per la percezione reale caricata di elementi soggettivi</button></li>
+    <li><button type="button"><span class="key">D</span>Percezione delirante, per il significato abnorme attribuito al dato</button></li>
+    <li><button type="button"><span class="key">E</span>Allucinosi, per la vigilanza e l'orientamento pienamente conservati</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La collocazione nello spazio interno e la critica conservata definiscono la pseudoallucinazione, distinta dall'allucinazione propriamente detta, che è vissuta nello spazio esterno con piena certezza e senza critica: il fenomeno perde così valore di sintomo psicotico di primo piano. Il discriminatore è la coppia collocazione dell'esperienza più conservazione della critica, non il contenuto denigratorio; l'allucinosi resta un'allucinazione vera, priva di critica, in un soggetto vigile.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK546579/">StatPearls</a> · Psychosis.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07</p>
+  <h2 class="q-text">Un paziente anziano sviluppa in poche ore disattenzione, pensiero disorganizzato e dispercezioni visive, con andamento che fluttua nell'arco della giornata e inversione del ritmo sonno-veglia. Quale terna di caratteri lo separa da una depressione e da una psicosi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Allucinazioni uditive, deliri sistematizzati e appiattimento affettivo</button></li>
+    <li><button type="button"><span class="key">B</span>Rallentamento psicomotorio, peggioramento mattutino e anedonia</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Esordio in ore, fluttuazione oraria e disturbo dell'attenzione</button></li>
+    <li><button type="button"><span class="key">D</span>Insonnia, attivazione vegetativa e timore di perdere il controllo</button></li>
+    <li><button type="button"><span class="key">E</span>Rigidità dell'umore, decorso indipendente e sintomi somatici</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro confusionale acuto si riconosce per esordio in ore, fluttuazione nell'arco della giornata e disturbo primario dell'attenzione e della consapevolezza, e su questi tre caratteri si separa dal rallentamento depressivo, che non fluttua e conserva il livello di coscienza, e dalla psicosi, con allucinazioni tipicamente uditive e deliri più strutturati. Il discriminatore è la triade esordio-fluttuazione-attenzione, spesso mascherata quando la forma è ipoattiva.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK470399/">StatPearls</a> · Delirium.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08</p>
+  <h2 class="q-text">Durante un episodio depressivo grave un paziente sviluppa la convinzione incrollabile di aver rovinato economicamente la famiglia e di meritare una punizione. Perché questo delirio non depone di per sé per una schizofrenia?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché è incorreggibile e sostenuto con certezza soggettiva assoluta</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il contenuto è impossibile e culturalmente estraneo</button></li>
+    <li><button type="button"><span class="key">C</span>Perché insorge in un unico momento, come un'illuminazione improvvisa</button></li>
+    <li><button type="button"><span class="key">D</span>Perché muove da una percezione reale con significato abnorme</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Perché è olotimico, cioè secondario e congruo con l'umore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il delirio di rovina è olotimico, dunque secondario: il contenuto è dettato dall'umore e ne è conseguenza comprensibile, e la sua genesi si lascia derivare dallo stato affettivo. La schizofrenia si riconosce piuttosto su deliri primari, esperienze di influenzamento e dissociazione ideica, incomprensibili nella genesi e non congrui con il tono dell'umore. Il discriminatore è la comprensibilità genetica, non l'incorreggibilità né la certezza, comuni a ogni delirio.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK546579/">StatPearls</a> · Psychosis.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1">
+  <p class="tag">B09</p>
+  <h2 class="q-text">In un traumatizzato cranico grave viene proposto desametasone ad alte dosi per ridurre l'edema, sul modello della risposta spettacolare che si ottiene nell'edema perilesionale di una metastasi. Perché la scelta è sbagliata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché nel trauma l'edema è vasogenico e chiede terapia osmotica</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché nel trauma prevale l'edema citotossico, insensibile al cortisone</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il desametasone abbassa troppo rapidamente la pressione intracranica</button></li>
+    <li><button type="button"><span class="key">D</span>Perché il cortisone agisce solo dopo la craniectomia decompressiva</button></li>
+    <li><button type="button"><span class="key">E</span>Perché nel trauma la barriera è integra e il farmaco non la attraversa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cortisone stabilizza le tight junctions e agisce elettivamente sull'edema vasogenico delle metastasi, dove le giunzioni cedono; nel trauma prevale invece la componente citotossica, con giunzioni conservate e danno cellulare, che non risponde al farmaco, e ad alte dosi il metilprednisolone si associa a un aumento della mortalità. Il discriminatore è il tipo di edema dominante, citotossico nel trauma, non la barriera integra né la cinetica pressoria.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK482119/">StatPearls</a> · Increased Intracranial Pressure. <a href="https://doi.org/10.1007/s00701-022-05383-8">Acta Neurochir 2023</a> · consensus ICP e CPP nel trauma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b10" tabindex="-1">
+  <p class="tag">B10</p>
+  <h2 class="q-text">Alla TC senza contrasto si osserva una raccolta iperdensa a lente biconvessa addossata al tavolato interno, che non oltrepassa le suture craniche. L'anamnesi riferisce un trauma temporale seguito da un breve intervallo lucido. Quale lesione e quale sorgente sono più probabili?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ematoma subdurale acuto da lacerazione delle vene a ponte</button></li>
+    <li><button type="button"><span class="key">B</span>Contusione dei poli frontali da meccanismo di colpo e contraccolpo</button></li>
+    <li><button type="button"><span class="key">C</span>Emorragia subaracnoidea traumatica delle cisterne della base</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Ematoma epidurale da lacerazione dell'arteria meningea media</button></li>
+    <li><button type="button"><span class="key">E</span>Ematoma subdurale cronico da stillicidio venoso protratto</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma a lente biconvessa e l'arresto alle suture, dove la dura è ancorata all'osso, definiscono l'ematoma epidurale, la cui sorgente è nella grande maggioranza arteriosa, tipicamente la meningea media lacerata da una frattura dello pterion; l'intervallo lucido riflette il regime pressorio arterioso. Il subdurale, per confronto, è a semiluna, scavalca le suture e ha sorgente venosa. Il discriminatore è la forma unita al rapporto con le suture.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK518982/">StatPearls</a> · Epidural Hematoma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b11" tabindex="-1">
+  <p class="tag">B11</p>
+  <h2 class="q-text">Un traumatizzato in coma presenta una midriasi fissa a destra di nuova comparsa; il terzo nervo cranico non decussa. Come si interpreta il segno e quale condotta impone?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Ernia uncale a destra: abbassare subito la pressione intracranica</button></li>
+    <li><button type="button"><span class="key">B</span>Lesione periferica del terzo nervo a destra: completare l'imaging orbitario</button></li>
+    <li><button type="button"><span class="key">C</span>Compromissione simpatica a sinistra: correggere prima l'ipotensione</button></li>
+    <li><button type="button"><span class="key">D</span>Danno mesencefalico bilaterale: attendere il calo del punteggio motorio</button></li>
+    <li><button type="button"><span class="key">E</span>Aneurisma della comunicante posteriore: consulenza neurochirurgica differita</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel paziente comatoso l'anisocoria di nuova comparsa è un'ernia uncale in atto fino a prova contraria, con compressione ab extrinseco del terzo nervo omolaterale alla massa, quindi a destra perché il nervo non decussa, e impone di abbassare subito la pressione intracranica senza aspettare il peggioramento del punteggio. Nel paziente vigile lo stesso segno orienterebbe verso una causa periferica. Il discriminatore è lo stato di coscienza, che dà all'anisocoria il significato di erniazione.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK537108/">StatPearls</a> · Uncal Herniation.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b12" tabindex="-1">
+  <p class="tag">B12</p>
+  <h2 class="q-text">Un traumatizzato monitorato mantiene una pressione intracranica di 30 mmHg nonostante sedazione profonda, drenaggio liquorale e mannitolo, e il controllo prima ottenuto si è perso. Qual è il passo successivo più corretto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aggiungere subito barbiturici ad alte dosi in seconda linea</button></li>
+    <li><button type="button"><span class="key">B</span>Spingere l'iperventilazione sotto i 25 mmHg di PaCO2</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Ripetere la TC senza contrasto ed eseguire un EEG</button></li>
+    <li><button type="button"><span class="key">D</span>Instaurare terapia osmotica continua ad alte dosi di mannitolo</button></li>
+    <li><button type="button"><span class="key">E</span>Procedere direttamente alla craniectomia decompressiva</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una pressione che non risponde alla scala terapeutica, e ancor più una prima controllata che si perde, fa sospettare una lesione chirurgica comparsa o cresciuta oppure uno stato di male non convulsivo: la prima mossa è diagnostica, TC senza contrasto ed EEG, non l'escalation medica su una lesione evacuabile. Il discriminatore è che davanti alla refrattarietà si torna all'imaging prima di salire di gradino.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK507811/">StatPearls</a> · Intracranial Hypertension. <a href="https://doi.org/10.1007/s00701-022-05383-8">Acta Neurochir 2023</a> · consensus ICP e CPP nel trauma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b13" tabindex="-1">
+  <p class="tag">B13</p>
+  <h2 class="q-text">Un paziente appare comatoso dopo un evento acuto, ma un esaminatore attento gli chiede di aprire e chiudere gli occhi e di guardare in alto e in basso, e il paziente esegue. Che cosa dimostra la manovra e quale quadro identifica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Riflessi di tronco conservati, compatibili con un coma metabolico</button></li>
+    <li><button type="button"><span class="key">B</span>Automatismi oculari residui propri dello stato vegetativo persistente</button></li>
+    <li><button type="button"><span class="key">C</span>Movimenti riflessi da stimolazione vestibolare non intenzionale</button></li>
+    <li><button type="button"><span class="key">D</span>Deviazione coniugata dello sguardo da lesione emisferica distruttiva</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Consapevolezza conservata: sindrome locked-in da lesione pontina</button></li>
+  </ol>
+  <div class="rationale">
+    <p>I movimenti oculari verticali e l'ammiccamento su comando sono gli unici movimenti volontari conservati nella sindrome locked-in, da lesione ventrale pontina bilaterale, di regola un infarto della basilare, e dimostrano una consapevolezza che lo stato vegetativo non ha. Senza questa manovra il paziente viene scambiato per comatoso o vegetativo. Il discriminatore è la risposta volontaria a comando, non un riflesso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b14" tabindex="-1">
+  <p class="tag">B14</p>
+  <h2 class="q-text">Un paziente in coma profondo presenta pupille simmetriche, piccole e ancora reagenti alla luce, con riflessi oculo-vestibolari conservati e segni motori simmetrici. Verso quale causa orienta questa combinazione e perché?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Lesione mesencefalica, per le pupille fisse in mediposizione</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Causa metabolica o tossica, perché la fotoreattività resiste all'insulto</button></li>
+    <li><button type="button"><span class="key">C</span>Ernia uncale iniziale, per la simmetria ancora conservata dei segni motori</button></li>
+    <li><button type="button"><span class="key">D</span>Lesione pontina, per le pupille miotiche a punta di spillo</button></li>
+    <li><button type="button"><span class="key">E</span>Morte encefalica, per la profondità del coma raggiunta</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La reattività pupillare resiste all'insulto metabolico più di ogni altro riflesso di tronco, quindi pupille simmetriche e ancora reagenti, con riflessi oculo-vestibolari integri e segni simmetrici in un coma profondo, orientano verso una causa tossico-metabolica anziché strutturale. Il discriminatore è la conservazione della fotoreattività, il singolo segno più utile per separare le due classi; le pupille piccole e reattive non appartengono al mesencefalo né alla morte encefalica.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK513298/">StatPearls</a> · Glasgow Coma Scale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b15" tabindex="-1">
+  <p class="tag">B15</p>
+  <h2 class="q-text">Un paziente alcolista viene trovato non risvegliabile; prima di ogni inquadramento si somministra empiricamente glucosio per correggere una possibile ipoglicemia. Quale accortezza è indispensabile insieme al glucosio?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Associare naloxone, per un sospetto coma da oppiacei</button></li>
+    <li><button type="button"><span class="key">B</span>Frazionare il glucosio, per prevenire un rimbalzo glicemico</button></li>
+    <li><button type="button"><span class="key">C</span>Rinviare il glucosio alla conferma laboratoristica dell'ipoglicemia</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Somministrare tiamina insieme al glucosio, e non da sola</button></li>
+    <li><button type="button"><span class="key">E</span>Anteporre corticosteroidi, per contenere l'edema cerebrale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel paziente malnutrito o alcolista il carico glucidico in carenza di vitamina B1 precipita l'encefalopatia di Wernicke, quindi la tiamina va data sempre insieme al glucosio, e nel dubbio prima. Il discriminatore è la deplezione tiaminica del terreno alcolista, che rende pericoloso il glucosio isolato; rinviarlo o frazionarlo non tocca quel rischio.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b16" tabindex="-1">
+  <p class="tag">B16</p>
+  <h2 class="q-text">Un paziente con lesione espansiva, inizialmente in flessione lenta degli arti superiori con arti inferiori estesi, passa nel tempo all'iperestensione dei quattro arti. Come si legge questa evoluzione?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Passaggio da decorticazione a decerebrazione, deterioramento in corso</button></li>
+    <li><button type="button"><span class="key">B</span>Comparsa di crisi tonico-cloniche, indicazione ad anticonvulsivanti</button></li>
+    <li><button type="button"><span class="key">C</span>Triplice flessione riflessa, reperto midollare non localizzatorio</button></li>
+    <li><button type="button"><span class="key">D</span>Decerebrazione isolata, danno emisferico con tronco conservato</button></li>
+    <li><button type="button"><span class="key">E</span>Postura antalgica riflessa, segno di ripresa della risposta finalistica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La flessione lenta degli arti superiori con arti inferiori estesi è la decorticazione, da danno sopra il nucleo rosso; l'iperestensione dei quattro arti è la decerebrazione, da sezione intercollicolare che denuncia un interessamento del tronco alto ed è prognosticamente più severa, e il passaggio dall'una all'altra documenta il deterioramento rostro-caudale in corso. Il discriminatore è la direzione del passaggio fra le due posture, non da confondere con una crisi convulsiva.</p>
+  </div>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  if (!N || !next) {
+    cover.classList.add("on");
+    return;
+  }
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var idx = st.a[item.dataset.q];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
