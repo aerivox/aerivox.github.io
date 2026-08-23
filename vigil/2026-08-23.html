@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 23 agosto 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+</style>
+</head>
+<body data-date="2026-08-23">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>domenica 23 agosto 2026</h1>
+  <div class="spark">
+    <p>Nessuna materia nuova oggi: la giornata è tutta revisione. La neurochirurgia si presenta in blocco all'audit, il trauma cranico con l'ipertensione endocranica, il coma e i disturbi della coscienza, i traumi vertebro-midollari, l'ictus ischemico con il TIA, le emorragie con gli aneurismi e le malformazioni vascolari; la neurologia porta l'esame obiettivo e i nervi cranici, la psichiatria la sua semeiotica con la psicopatologia e le pagine di introduzione e storia della disciplina. Alle spalle non resta nessun punto aperto.</p>
+    <p>Una palpebra sinistra, l'unico muscolo che ancora gli obbediva, batteva contro un alfabeto recitato a voce alta e riordinato per frequenza: E, S, A, R, I, N, le lettere più comuni prima. Jean-Dominique Bauby dirigeva Elle quando, nel dicembre del 1995, un ictus del tronco encefalico lo lasciò perfettamente lucido e murato nel proprio corpo: la sindrome locked-in, che nessun coma descrive, coscienza intatta e movimento quasi del tutto abolito.</p>
+    <p>Per mesi dettò così, lettera per lettera, circa duecentomila battiti di ciglia, un libro intero: lo scafandro di piombo che era diventato la sua carne, la farfalla che restava la sua mente. Le Scaphandre et le papillon uscì nel marzo del 1997; due giorni dopo Bauby morì. Aveva composto una prosa limpida con l'ultimo muscolo che gli era rimasto, mentre tutto il resto taceva.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01</p>
+  <h2 class="q-text">Un uomo di 74 anni, in reparto da tre giorni dopo un intervento, verso sera diventa disattento e disorientato, non tiene il filo del discorso e vede insetti sul lenzuolo; la moglie riferisce che al mattino era quasi lucido, e il livello di vigilanza oscilla nell'arco delle ore. Quale singolo carattere separa questo quadro da un episodio depressivo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Le allucinazioni visive, che l'episodio depressivo non produce</button></li>
+    <li><button type="button"><span class="key">B</span>Il disorientamento nel tempo, che la depressione tende a risparmiare</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'esordio in poche ore con fluttuazione oraria e disturbo dell'attenzione</button></li>
+    <li><button type="button"><span class="key">D</span>Il colorito ansioso che accompagna il tono dell'umore</button></li>
+    <li><button type="button"><span class="key">E</span>La riduzione dell'appetito e del sonno nella notte</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro confusionale acuto si riconosce su esordio in ore, fluttuazione oraria e disturbo dell'attenzione con alterazione del livello di coscienza, ed è la fluttuazione dell'attenzione a separarlo dalla depressione, dove coscienza e vigilanza restano stabili e il quadro non oscilla nell'arco della giornata. Allucinazioni, disorientamento e sintomi neurovegetativi possono comparire in entrambi e non discriminano. Il discriminatore è l'andamento fluttuante dell'attenzione, non un singolo sintomo.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/36581459/">PubMed 36581459</a> · Diagnosis of delirium: a practical approach.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02</p>
+  <h2 class="q-text">Una donna di 29 anni riferisce di sentire una voce che la critica; precisa che la voce si trova dentro la sua testa, che non proviene dalle persone intorno e che sa non essere reale. È vigile e orientata. Come va classificato il fenomeno?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Pseudoallucinazione, per la sede interna e la critica conservata</button></li>
+    <li><button type="button"><span class="key">B</span>Allucinazione uditiva vera, perché la voce commenta ciò che fa</button></li>
+    <li><button type="button"><span class="key">C</span>Allucinosi, definita dalla vigilanza e dall'orientamento conservati</button></li>
+    <li><button type="button"><span class="key">D</span>Illusione uditiva, cioè un suono reale deformato dall'affetto</button></li>
+    <li><button type="button"><span class="key">E</span>Percezione delirante, un dato reale con significato abnorme</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La collocazione nello spazio interno e la critica conservata definiscono la pseudoallucinazione, non vissuta come reale né proiettata all'esterno, e per questo priva del valore di sintomo psicotico di primo piano che avrebbe la voce di commento vissuta come esterna. L'allucinosi richiede la vigilanza ma anche la piena realtà dell'esperienza, qui assente; illusione e percezione delirante presuppongono uno stimolo reale, anch'esso assente. Il discriminatore è la sede interna insieme alla critica conservata.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03</p>
+  <h2 class="q-text">Un uomo di 35 anni è tormentato dall'idea di aver lasciato il gas aperto; la riconosce come esagerata e propria, la giudica assurda, e vi si oppone tornando a controllare più volte prima di uscire. Su quale carattere questo fenomeno si separa da un delirio?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sul contenuto, che nel delirio riguarda sempre la persecuzione</button></li>
+    <li><button type="button"><span class="key">B</span>Sull'intensità del tono affettivo che accompagna l'idea</button></li>
+    <li><button type="button"><span class="key">C</span>Sulla comprensibilità del tema a partire dalla biografia</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Sull'egodistonia e sulla critica che il paziente conserva</button></li>
+    <li><button type="button"><span class="key">E</span>Sulla presenza del rituale che accompagna il pensiero</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'idea ossessiva è egodistonica e xenopatica, riconosciuta come propria e assurda e contrastata da uno psichismo di difesa come la compulsione di controllo, mentre il delirio è egosintonico, sostenuto con certezza assoluta e inaccessibile alla critica. Il rituale è conseguenza dell'ossessione e non il criterio, e il contenuto non distingue perché prestato dalla biografia. Il discriminatore è l'appartenenza all'Io insieme alla critica conservata.</p>
+    <p class="refs"><a href="https://www.cambridge.org/core/journals/the-british-journal-of-psychiatry/article/obsessivecompulsive-disorder-and-delusions-revisited/D1AA643960BF24B01D7F0230BBAD6C45">Br J Psychiatry</a> · Obsessive-compulsive disorder and delusions revisited.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04</p>
+  <h2 class="q-text">Un uomo di 40 anni è immobile e mutacico e non risponde agli stimoli; giace con gli occhi aperti e, se gli si solleva un braccio, mantiene a lungo la postura imposta. I riflessi del tronco e la reattività pupillare sono normali. Perché questo quadro non va collocato sul continuum quantitativo della coscienza?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché la postura mantenuta indica una lesione mesencefalica</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché la vigilanza è conservata e l'immobilità non è ottundimento</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il mutismo esclude ogni origine organica del quadro</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la reattività pupillare colloca il paziente nel sopore</button></li>
+    <li><button type="button"><span class="key">E</span>Perché gli occhi aperti dimostrano un coma vigile del tronco</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Lo stupore psicomotorio è un arresto motorio a vigilanza conservata, e la flessibilità cerea con riflessi e pupille integri mostra che non c'è riduzione quantitativa della coscienza: scambiarlo per sopore fa perdere una catatonia. Le posture patologiche e i quadri di livello del tronco si accompagnano invece a compromissione della vigilanza e dei riflessi. Il discriminatore è la vigilanza conservata nonostante l'immobilità completa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05</p>
+  <h2 class="q-text">Un uomo di 60 anni con edema perilesionale da metastasi cerebrale migliora nettamente con desametasone. Pochi giorni dopo arriva in reparto un paziente con trauma cranico grave e ipertensione endocranica. Perché il cortisone che ha giovato al primo è controindicato nel secondo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché nel trauma il cortisone abbassa troppo la pressione arteriosa</button></li>
+    <li><button type="button"><span class="key">B</span>Perché la barriera nel trauma è integra e il farmaco non la raggiunge</button></li>
+    <li><button type="button"><span class="key">C</span>Perché nel trauma l'edema è liquorale e non risponde ai corticosteroidi</button></li>
+    <li><button type="button"><span class="key">D</span>Perché il desametasone agisce solo sull'edema da ischemia acuta</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Perché nel trauma prevale l'edema citotossico, che il cortisone non tocca</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cortisone stabilizza le tight junctions e agisce quindi sull'edema vasogenico della metastasi, che nasce proprio dalla loro apertura; nel trauma prevale la componente citotossica, con giunzioni conservate e danno cellulare, dove il farmaco non tocca il meccanismo e ai dosaggi alti aumenta la mortalità. Il discriminatore è il tipo di edema, vasogenico contro citotossico.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/15474134/">MRC CRASH trial, Lancet 2004</a> · i corticosteroidi aumentano la mortalità nel trauma cranico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06</p>
+  <h2 class="q-text">Un ragazzo di 20 anni cade dalla bici, perde brevemente coscienza, poi torna vigile; un'ora dopo peggiora rapidamente con emiparesi controlaterale e midriasi omolaterale. La TC mostra una raccolta iperdensa biconvessa che non oltrepassa le suture. Qual è la lesione e la sua sorgente?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Ematoma epidurale, da lacerazione dell'arteria meningea media</button></li>
+    <li><button type="button"><span class="key">B</span>Ematoma subdurale acuto, da rottura delle vene a ponte</button></li>
+    <li><button type="button"><span class="key">C</span>Contusione emorragica polare, da colpo e contraccolpo</button></li>
+    <li><button type="button"><span class="key">D</span>Emorragia subaracnoidea, da lacerazione dei vasi corticali</button></li>
+    <li><button type="button"><span class="key">E</span>Ematoma subdurale cronico, da stillicidio venoso lento</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma a lente biconvessa arrestata dalle suture, l'intervallo lucido e la rapidità del quadro identificano l'ematoma epidurale, la cui sorgente è di regola arteriosa, tipicamente la meningea media lacerata da una frattura dello pterion. Il subdurale è a semiluna, scavalca le suture e ha sorgente venosa. Il discriminatore è la forma biconvessa arrestata alle suture con sorgente arteriosa.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07</p>
+  <h2 class="q-text">Un traumatizzato monitorato mantiene una pressione intracranica di 30 mmHg nonostante sedazione profonda, drenaggio liquorale e mannitolo; il valore, prima controllato, è tornato a salire. Qual è il passo successivo più corretto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Aumentare il bolo di mannitolo fino a osmolalità di 340 mOsm/L</button></li>
+    <li><button type="button"><span class="key">B</span>Iniziare subito i barbiturici ad alte dosi in infusione continua</button></li>
+    <li><button type="button"><span class="key">C</span>Portare l'iperventilazione a una PaCO2 di 25 mmHg</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Ripetere la TC senza contrasto ed eseguire un EEG</button></li>
+    <li><button type="button"><span class="key">E</span>Somministrare desametasone ad alte dosi per ridurre l'edema</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una pressione che non risponde alla scala terapeutica, e ancor più una pressione prima controllata che si riperde, impone di escludere con una TC senza contrasto una lesione chirurgica comparsa o cresciuta e con un EEG uno stato di male non convulsivo, prima di scalare la terapia. Spingere il mannitolo oltre la soglia renale, iperventilare sotto i 25 mmHg o dare cortisone sono scelte dannose o inefficaci. Il discriminatore è la diagnosi prima dell'escalation.</p>
+    <p class="refs"><a href="https://braintrauma.org/coma/guidelines/severe-tbi">Brain Trauma Foundation, 4th ed.</a> · gestione del trauma cranico grave.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08</p>
+  <h2 class="q-text">Un traumatizzato normoteso, con pressione arteriosa media stabile, sviluppa ischemia cerebrale mentre la pressione intracranica sale progressivamente. Quale relazione spiega l'ischemia a pressione arteriosa invariata?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'autoregolazione aumenta le resistenze e riduce il flusso di suo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La perfusione è la differenza fra pressione arteriosa media e intracranica</button></li>
+    <li><button type="button"><span class="key">C</span>L'aumento della pressione intracranica dilata il letto arterioso a valle</button></li>
+    <li><button type="button"><span class="key">D</span>Il flusso dipende dalla sola pressione arteriosa media, non dall'intracranica</button></li>
+    <li><button type="button"><span class="key">E</span>La normocapnia mantenuta restringe di suo il calibro arteriolare cerebrale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La pressione di perfusione cerebrale è la differenza fra pressione arteriosa media e pressione intracranica, quindi ogni millimetro guadagnato dall'intracranica è un millimetro perso dalla perfusione, e il flusso cade anche a pressione arteriosa ferma, tanto più quando l'autoregolazione è compromessa. Il discriminatore è che la perfusione è una differenza, non la sola pressione arteriosa.</p>
+    <p class="refs"><a href="https://braintrauma.org/coma/guidelines/severe-tbi">Brain Trauma Foundation, 4th ed.</a> · obiettivi di pressione di perfusione cerebrale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1">
+  <p class="tag">B09</p>
+  <h2 class="q-text">Un paziente in coma profondo presenta pupille simmetriche, piccole e ancora reattive alla luce, con riflessi oculo-vestibolari conservati e nessun segno focale. Verso quale categoria eziologica orienta questa combinazione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Lesione strutturale mesencefalica, per le pupille di piccolo diametro</button></li>
+    <li><button type="button"><span class="key">B</span>Ernia uncale iniziale, per la conservazione dei riflessi di tronco</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Causa metabolica o tossica, perché la reattività pupillare resiste</button></li>
+    <li><button type="button"><span class="key">D</span>Lesione pontina, per le pupille miotiche bilaterali reattive</button></li>
+    <li><button type="button"><span class="key">E</span>Emorragia sottotentoriale, per la simmetria dei segni clinici</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La reattività pupillare resiste all'insulto metabolico più di ogni altro riflesso del tronco, per cui pupille simmetriche e reagenti con riflessi oculo-vestibolari integri, a fronte di un coma profondo e senza segni focali, orientano verso una causa tossico-metabolica. Una lesione strutturale del tronco a quella profondità avrebbe abolito reattività e riflessi. Il discriminatore è la conservazione della reattività pupillare con segni simmetrici.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b10" tabindex="-1">
+  <p class="tag">B10</p>
+  <h2 class="q-text">Un uomo denutrito e con storia di abuso alcolico arriva soporoso in pronto soccorso; la glicemia è bassa. Prima di somministrare glucosio, quale accortezza evita di precipitare un'encefalopatia acuta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Correggere per prima l'eventuale ipokaliemia associata</button></li>
+    <li><button type="button"><span class="key">B</span>Somministrare naloxone per escludere un concomitante oppiaceo</button></li>
+    <li><button type="button"><span class="key">C</span>Infondere soluzione salina ipertonica per proteggere l'encefalo</button></li>
+    <li><button type="button"><span class="key">D</span>Eseguire prima una TC per escludere un ematoma sottodurale</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Somministrare tiamina insieme al glucosio, e nel dubbio prima</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel paziente denutrito o alcolista il carico di glucosio in carenza di tiamina consuma le riserve residue della vitamina, cofattore del metabolismo glucidico, e precipita l'encefalopatia di Wernicke; per questo la tiamina va data insieme al glucosio, e nel dubbio prima. Le altre misure non prevengono quel meccanismo. Il discriminatore è la tiamina reintegrata prima del carico glucidico.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/9486750/">PubMed 9486750</a> · tiamina e glucosio nella prevenzione dell'encefalopatia di Wernicke.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b11" tabindex="-1">
+  <p class="tag">B11</p>
+  <h2 class="q-text">Dopo una trombosi della basilare un paziente appare immobile e non parla, ma apre e chiude gli occhi e guarda in alto e in basso quando glielo si chiede. Qual è la condizione e che cosa la separa dallo stato vegetativo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Sindrome locked-in, per i movimenti oculari verticali su comando</button></li>
+    <li><button type="button"><span class="key">B</span>Stato vegetativo, con arousal presente ma nessuna consapevolezza</button></li>
+    <li><button type="button"><span class="key">C</span>Coma profondo, con movimenti oculari solo riflessi del tronco</button></li>
+    <li><button type="button"><span class="key">D</span>Mutismo acinetico da lesione frontale mediale bilaterale</button></li>
+    <li><button type="button"><span class="key">E</span>Stato di minima coscienza, con risposte incostanti e non riproducibili</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La lesione ventrale pontina bilaterale della sindrome locked-in interrompe le vie motorie risparmiando la corteccia, e lascia i soli movimenti oculari verticali e l'ammiccamento, che eseguiti su comando dimostrano una coscienza integra; nello stato vegetativo l'arousal è presente ma mancano consapevolezza e ogni risposta finalistica riproducibile. Il discriminatore è il movimento oculare verticale volontario su comando.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b12" tabindex="-1">
+  <p class="tag">B12</p>
+  <h2 class="q-text">Un paziente con emiparesi destra tiene gli occhi deviati coniugatamente verso destra, cioè verso il lato paretico. Dove si colloca la lesione e perché?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Corteccia frontale destra, perché lo sguardo punta verso la lesione</button></li>
+    <li><button type="button"><span class="key">B</span>Talamo sinistro, per una deviazione tonica verso il basso associata</button></li>
+    <li><button type="button"><span class="key">C</span>Mesencefalo destro, per interruzione della via sopranucleare verticale</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Ponte sinistro, perché una lesione pontina fa guardare verso l'emiparesi</button></li>
+    <li><button type="button"><span class="key">E</span>Corteccia frontale sinistra, con sguardo deviato lontano dalla lesione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una lesione distruttiva corticale fa deviare gli occhi verso la lesione e quindi lontano dall'emiparesi, mentre una lesione pontina li fa deviare lontano dalla lesione e quindi verso l'emiparesi; qui gli occhi guardano verso il lato paretico destro, per cui la lesione è nel ponte controlaterale, a sinistra. Il discriminatore è la regola opposta fra sguardo corticale e sguardo pontino rispetto all'emiparesi.</p>
+    <p class="refs"><a href="https://www.neurology.org/doi/10.1212/WNL.41.6.846">Neurology, 1991</a> · conjugate eye deviation, side and site of the lesion.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b13" tabindex="-1">
+  <p class="tag">B13</p>
+  <h2 class="q-text">Dopo una ferita da arma bianca al dorso, un paziente presenta sotto il livello di lesione un deficit motorio e una perdita di senso vibratorio e propriocettivo a destra, e una perdita della sensibilità termica e dolorifica a sinistra che inizia uno o due metameri più in basso. Quale sindrome, e dove è l'emisezione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sindrome centro-midollare, con lesione centrale a estensione centrifuga</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Sindrome di Brown-Séquard, con emisezione destra del midollo</button></li>
+    <li><button type="button"><span class="key">C</span>Sindrome cordonale anteriore, con risparmio dei cordoni posteriori</button></li>
+    <li><button type="button"><span class="key">D</span>Sindrome cordonale posteriore, con motricità conservata</button></li>
+    <li><button type="button"><span class="key">E</span>Sindrome di Brown-Séquard, con emisezione sinistra del midollo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il deficit motorio ed epicritico è omolaterale perché fascio cortico-spinale e cordoni posteriori a quel livello non hanno ancora decussato, mentre la perdita termo-dolorifica è controlaterale e inizia uno o due metameri sotto perché quelle fibre incrociano nel midollo poco dopo l'ingresso; il deficit motorio destro colloca l'emisezione a destra. Il discriminatore è la dissociazione dei lati secondo il punto di decussazione.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK538135/">StatPearls</a> · Brown-Séquard syndrome.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b14" tabindex="-1">
+  <p class="tag">B14</p>
+  <h2 class="q-text">Due pazienti hanno entrambi una frattura da scoppio dell'anello di C1, neurologicamente indenni. Uno viene trattato con ortesi, l'altro con stabilizzazione e artrodesi. Quale reperto giustifica la scelta chirurgica nel secondo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il numero di punti di interruzione dell'anello di C1</button></li>
+    <li><button type="button"><span class="key">B</span>La presenza di un deficit sensitivo transitorio agli arti superiori</button></li>
+    <li><button type="button"><span class="key">C</span>L'ampiezza del canale midollare a livello dell'atlante</button></li>
+    <li><button type="button"><span class="key">D</span>La comminuzione dei frammenti dell'arco posteriore</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>L'interruzione del legamento trasverso dell'atlante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La stabilità di C1 non dipende dall'osso ma dal legamento trasverso dell'atlante, e la sua interruzione, sospettata per una sporgenza delle masse laterali pari o superiore a 7 mm o per un intervallo atlanto-odontoideo aumentato e confermata in risonanza, rende la frattura instabile e impone l'artrodesi. Il numero di rime e l'ampiezza del canale non decidono la stabilità. Il discriminatore è l'integrità del legamento trasverso.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b15" tabindex="-1">
+  <p class="tag">B15</p>
+  <h2 class="q-text">Un uomo di 68 anni con spondilosi cervicale cade in avanti battendo il volto, in iperestensione del collo. Sviluppa un deficit motorio più marcato agli arti superiori che agli inferiori e un'anestesia termo-dolorifica sospesa, con senso vibratorio conservato. Quale sindrome e quale meccanismo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sindrome cordonale anteriore, con perdita termo-dolorifica e motoria completa</button></li>
+    <li><button type="button"><span class="key">B</span>Sindrome di Brown-Séquard, con deficit crociato da emisezione</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Sindrome centro-midollare, con lesione centrale a estensione centrifuga</button></li>
+    <li><button type="button"><span class="key">D</span>Sindrome cordonale posteriore, con perdita del senso vibratorio</button></li>
+    <li><button type="button"><span class="key">E</span>Mielopatia spondilosica cronica, a decorso lentamente progressivo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'iperestensione su un canale ristretto da spondilosi produce una contusione centro-midollare che si estende dal centro verso la periferia, colpendo per prime le fibre termo-nocicettive che decussano attorno al canale centrale, da cui l'anestesia sospesa con dissociazione, e coinvolgendo gli arti superiori più degli inferiori. Il senso vibratorio conservato esclude i cordoni posteriori. Il discriminatore è il deficit sproporzionato agli arti superiori con dissociazione sospesa.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK441932/">StatPearls</a> · central cord syndrome.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b16" tabindex="-1">
+  <p class="tag">B16</p>
+  <h2 class="q-text">Un paziente arriva 12 ore dopo un trauma cervicale con lesione midollare incompleta. Un collega propone di iniziare il metilprednisolone ad alte dosi secondo il protocollo NASCIS. Perché la proposta non è giustificata?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Perché oltre le 8 ore il beneficio scompare e resta solo il rischio</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il protocollo è indicato solo nelle lesioni complete</button></li>
+    <li><button type="button"><span class="key">C</span>Perché il cortisone è efficace unicamente per via intratecale</button></li>
+    <li><button type="button"><span class="key">D</span>Perché la lesione incompleta guarisce senza alcun trattamento</button></li>
+    <li><button type="button"><span class="key">E</span>Perché il metilprednisolone è controindicato in ogni trauma midollare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il razionale del cortisonico ad alte dosi è interrompere la cascata ipossico-ischemica del danno secondario, che si esaurisce nelle prime ore; oltre l'ottava ora il beneficio, già marginale nelle finestre precoci, scompare, mentre resta intero l'eccesso di mortalità infettiva, tromboembolica ed emorragica. Le linee guida che ancora lo contemplano lo limitano alle prime 8 ore. Il discriminatore è la finestra temporale del danno secondario.</p>
+    <p class="refs"><a href="https://journals.sagepub.com/doi/10.1177/2192568217703085">AOSpine 2017, Global Spine J</a> · methylprednisolone sodium succinate nel trauma midollare acuto.</p>
+  </div>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  if (!N || !next) {
+    cover.classList.add("on");
+    return;
+  }
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var idx = st.a[item.dataset.q];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
