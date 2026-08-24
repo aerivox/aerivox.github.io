@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 24 agosto 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+</style>
+</head>
+<body data-date="2026-08-24">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>lunedì 24 agosto 2026</h1>
+  <div class="spark">
+    <p>Oggi nessuna materia nuova, e nessun debito aperto alle spalle: solo audit, nove, distribuiti su tre moduli. Dalla neurochirurgia rientrano il trauma cranico con l'ipertensione endocranica, il coma e i disturbi della coscienza, i traumi vertebro-midollari, l'ictus ischemico e il TIA, le emorragie con aneurismi e malformazioni vascolari. Dalla neurologia, l'esame obiettivo neurologico e i nervi cranici; dalla psichiatria, la semeiotica e psicopatologia insieme all'introduzione e alla storia della disciplina.</p>
+    <p>Era azzurro, alto quattro metri, fatto di cartapesta e legno, e nel ventre portava fogli piegati: i desideri dei ricoverati, uno per ciascuno. L'avevano costruito nel cortile del manicomio di San Giovanni, a Trieste, e chiamato Marco, come il vero cavallo che per anni aveva trainato la biancheria dentro l'istituto. Un mattino del febbraio 1973 lo portarono in corteo per le strade della città, oltre i muri. In testa alla sfilata c'era Franco Basaglia, che a Gorizia, il primo giorno da direttore, si era rifiutato di firmare il registro delle contenzioni e da allora smontava, reparto dopo reparto, l'ospedale psichiatrico dall'interno. Cinque anni dopo il Parlamento approvò la legge 180, prima al mondo a chiudere i manicomi. Marco è ancora a Trieste, dentro l'ex manicomio che è diventato parco pubblico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01</p>
+  <h2 class="q-text">Un uomo di 24 anni, al primo colloquio, racconta che due giorni prima, camminando in strada, ha visto un semaforo diventare rosso e in quell'istante ha avuto la certezza assoluta che quel rosso fosse un ordine indirizzato a lui perché iniziasse la sua missione. Conferma di aver visto il semaforo esattamente come chiunque altro. Come si classifica il fenomeno?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Intuizione delirante, perché la certezza è insorta come illuminazione improvvisa</button></li>
+    <li><button type="button"><span class="key">B</span>Rappresentazione delirante, perché il significato investe un'immagine della memoria</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Percezione delirante, perché a un percetto reale e corretto è attribuito un senso abnorme</button></li>
+    <li><button type="button"><span class="key">D</span>Illusione affettiva, perché il dato sensoriale è deformato dallo stato d'animo</button></li>
+    <li><button type="button"><span class="key">E</span>Idea prevalente a tema mistico, comprensibile a partire dalla sua biografia</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La percezione delirante muove da una percezione corretta, il semaforo visto come da chiunque, alla quale viene attribuito un valore semantico abnorme e autoriferito; è la presenza di un percetto reale a separarla dall'intuizione delirante, che insorge come illuminazione senza alcun antecedente percettivo, e dalla rappresentazione delirante, che investe invece un'immagine mnestica. L'illusione richiederebbe un dato sensoriale deformato, qui assente, e l'idea prevalente sarebbe egosintonica e comprensibile dalla biografia. Il discriminatore è il percetto reale caricato di un significato abnorme.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02</p>
+  <h2 class="q-text">Una donna di 32 anni descrive con angoscia di sentirsi come se non fosse più lei, come se i propri gesti e pensieri non le appartenessero e assistesse a sé da spettatrice; aggiunge di sapere bene che è una sensazione e non la realtà. È lucida e orientata. Quale carattere colloca il vissuto fra le alterazioni della coscienza dell'Io e non fra i deliri?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La componente ansiosa che accompagna in modo costante l'esperienza</button></li>
+    <li><button type="button"><span class="key">B</span>La sensazione che i gesti procedano da soli, propria dell'automatismo mentale</button></li>
+    <li><button type="button"><span class="key">C</span>Il carattere sgradevole e persistente del vissuto lungo il tempo</button></li>
+    <li><button type="button"><span class="key">D</span>L'orientamento conservato nei tre parametri di spazio, tempo e persona</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>La clausola del come se, che mantiene distinti l'osservatore e l'osservato</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella depersonalizzazione il paziente conserva la critica: la firma linguistica del come se dice che chi osserva e chi è osservato restano la stessa persona, e proprio questo separa il vissuto dal delirio nichilistico e dalle esperienze di influenzamento, dove quella distinzione cade. L'ansia, l'automatismo e la persistenza accompagnano il quadro ma non lo definiscono, e l'orientamento conservato non lo distingue da un delirio lucido. Il discriminatore è la critica preservata espressa dal come se.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03</p>
+  <h2 class="q-text">Un uomo di 28 anni parla senza sosta, salta rapidamente da un tema all'altro seguendo assonanze e spunti dell'ambiente, e appare euforico e distraibile; nonostante i continui cambi di argomento, l'ascoltatore riesce a ricostruire il filo che collega ciascuna idea alla successiva. Quale carattere distingue questo disturbo formale dalla dissociazione schizofrenica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La velocità elevata con cui i contenuti ideativi si succedono l'un l'altro</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La conservazione dei nessi fra un'idea e l'altra, pur nella perdita della meta</button></li>
+    <li><button type="button"><span class="key">C</span>La presenza di neologismi che punteggiano il discorso via via prodotto</button></li>
+    <li><button type="button"><span class="key">D</span>L'euforia che accompagna e sostiene l'accelerazione del pensiero</button></li>
+    <li><button type="button"><span class="key">E</span>La distraibilità che dirotta il discorso sugli stimoli dell'ambiente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nella fuga delle idee la velocità associativa aumenta fino a far perdere la tendenza determinante, ma i nessi fra un concetto e il successivo restano comprensibili all'ascoltatore; nella dissociazione schizofrenica sono proprio quei nessi a cadere, con deragliamento verso concetti non inerenti fino all'insalata di parole. La velocità, l'euforia e la distraibilità descrivono il contesto maniacale ma non separano i due disturbi, e i neologismi appartengono semmai alla disgregazione schizofrenica. Il discriminatore è la conservazione del legame associativo fra le idee.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04</p>
+  <h2 class="q-text">Una donna di 26 anni, informata durante il colloquio della morte del padre, risponde con una risata e prosegue come nulla fosse; nel resto dell'incontro la sua reazione emotiva appare ripetutamente scollegata dal contenuto di ciò che dice. Non vi sono né euforia né rallentamento. Come si qualifica l'anomalia affettiva?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Labilità affettiva, per l'eccessiva variabilità del tono agli stimoli</button></li>
+    <li><button type="button"><span class="key">B</span>Appiattimento affettivo, per la riduzione globale della risonanza emotiva</button></li>
+    <li><button type="button"><span class="key">C</span>Ambivalenza affettiva, per la compresenza di sentimenti opposti insieme</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Dissociazione affettiva, per lo scollamento fra l'avvenimento e la risonanza</button></li>
+    <li><button type="button"><span class="key">E</span>Anedonia, per la perdita della capacità di provare piacere</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La dissociazione affettiva, o paratimia, è lo scollegamento fra un avvenimento e la risonanza emotiva che dovrebbe accompagnarlo, di cui ridere a una notizia di morte è l'esempio estremo, ed è tipica della schizofrenia. La labilità implicherebbe oscillazioni ampie del tono, l'appiattimento una riduzione globale della risonanza e l'anedonia la perdita del piacere, tutte assenti qui, dove l'emozione è presente ma incongrua; l'ambivalenza richiederebbe sentimenti opposti verso lo stesso oggetto. Il discriminatore è l'incongruenza fra evento e risposta affettiva.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05</p>
+  <h2 class="q-text">Un uomo di 30 anni, dopo un trauma facciale con impatto sullo zigomo, giunge vigile, collaborante e orientato, con GCS 15; a un esame attento la pupilla destra è dilatata e non reagisce alla luce. Non vi sono deficit motori. Quale interpretazione del reperto è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Orienta verso una causa periferica, perché la coscienza conservata esclude l'erniazione</button></li>
+    <li><button type="button"><span class="key">B</span>È un'ernia uncale destra iniziale, che impone mannitolo e TC immediati</button></li>
+    <li><button type="button"><span class="key">C</span>È un'ernia uncale sinistra, perché la midriasi da erniazione è controlaterale</button></li>
+    <li><button type="button"><span class="key">D</span>È un segno di deterioramento rostro-caudale già in fase diencefalica</button></li>
+    <li><button type="button"><span class="key">E</span>È un'ernia tonsillare iniziale, per la compressione precoce del bulbo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'anisocoria da compressione del terzo nervo cranico vale come marcatore di erniazione uncale soltanto nel paziente comatoso; in un traumatizzato che parla e collabora la coscienza conservata esclude compensi esauriti e orienta verso una causa periferica, come una frattura del pavimento orbitario o un aneurisma della comunicante posteriore. La midriasi da erniazione sarebbe comunque omolaterale, perché il terzo nervo non decussa, e l'ernia tonsillare darebbe arresto cardiorespiratorio, non una midriasi isolata in paziente vigile. Il discriminatore è il livello di coscienza, non la pupilla.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06</p>
+  <h2 class="q-text">Un ragazzo di 19 anni, dopo uno scontro automobilistico ad alta velocità, è in coma profondo fin dal luogo dell'incidente e vi rimane; la TC encefalo all'arrivo mostra solo minime alterazioni, sproporzionate rispetto alla gravità clinica, senza ematoma né shift della linea mediana. Qual è la lesione più probabile e l'esame che la conferma?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Ematoma subdurale acuto isodenso, da rileggere con finestre dedicate</button></li>
+    <li><button type="button"><span class="key">B</span>Coma metabolico post-traumatico, da chiarire con il pannello tossicologico</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Danno assonale diffuso, da confermare con la risonanza magnetica</button></li>
+    <li><button type="button"><span class="key">D</span>Stato di male non convulsivo, da documentare con l'elettroencefalogramma</button></li>
+    <li><button type="button"><span class="key">E</span>Contusione dei poli frontali, in crescita alla TC di controllo a sei ore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Un coma immediato e prolungato senza una lesione focale che lo giustifichi, con TC poco eloquente, è il quadro del danno assonale diffuso, in cui le forze rotazionali stirano gli assoni alla giunzione fra sostanza grigia e bianca; la risonanza magnetica è assai più sensibile della TC e ne è l'esame di conferma. Un subdurale o una contusione lascerebbero un correlato tomografico visibile, e le cause metaboliche o comiziali non rendono conto del meccanismo rotazionale ad alta energia. Il discriminatore è la dissociazione fra coma grave e TC quasi muta.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK448102/">StatPearls</a> · Diffuse axonal injury.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07</p>
+  <h2 class="q-text">Un uomo di 45 anni, dopo un trauma cranico, presenta un gocciolamento chiaro dalla narice che si accentua quando flette il capo in avanti, ed ecchimosi periorbitarie bilaterali comparse in seconda giornata. È vigile, con esame neurologico normale. Quale lettura del quadro è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>È una rinorrea vasomotoria, ininfluente sulla gestione del trauma</button></li>
+    <li><button type="button"><span class="key">B</span>Impone il posizionamento di un sondino naso-gastrico per nutrire presto</button></li>
+    <li><button type="button"><span class="key">C</span>Esclude una lesione intracranica, essendo l'esame neurologico normale</button></li>
+    <li><button type="button"><span class="key">D</span>È un reperto atteso e benigno, che non cambia le indicazioni all'imaging</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Segnala una frattura della base con fistola liquorale e impone la TC</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Una rinorrea chiara posizionale e le ecchimosi periorbitarie tardive tradiscono una frattura della base cranica con fistola liquorale, che apre una comunicazione fra spazio subaracnoideo ed esterno; ogni frattura si associa a un'incidenza nettamente maggiore di lesioni intracraniche e impone la TC anche a esame neurologico normale. La via naso-gastrica e ogni manovra transnasale vanno evitate per il rischio di attraversare la breccia durale, e il liquor non va scambiato per una banale rinorrea. Il discriminatore è il riconoscimento della fistola liquorale post-traumatica.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08</p>
+  <h2 class="q-text">Un uomo di 50 anni, dopo un trauma temporale, presenta alla TC una raccolta iperdensa che si distende sulla convessità e attraversa la sutura coronale, senza oltrepassare la falce; la forma è in parte lentiforme. Quale raccolta è, e per quale motivo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Epidurale, perché la forma lentiforme è propria della raccolta arteriosa</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Subdurale, perché attraversa la sutura, che la dura ancorata invece arresta</button></li>
+    <li><button type="button"><span class="key">C</span>Epidurale, perché si ferma alla falce senza mai oltrepassarla</button></li>
+    <li><button type="button"><span class="key">D</span>Subaracnoidea, perché il sangue segue le scissure e le cisterne della base</button></li>
+    <li><button type="button"><span class="key">E</span>Intraparenchimale, perché la contusione confluisce verso la superficie</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Quando la forma è ambigua il criterio dirimente è il rapporto con le suture: l'ematoma epidurale è arrestato dalle suture, dove la dura è ancorata all'osso, ma può scavalcare le pliche durali; il subdurale attraversa le suture e si ferma invece a falce e tentorio. Una raccolta che scavalca la sutura coronale è quindi subdurale nonostante l'aspetto in parte lentiforme, che da solo può ingannare. Il discriminatore è l'attraversamento della sutura, non la sola morfologia.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/20483531/">PubMed 20483531</a> · Differential CT features of acute lentiform subdural and epidural hematoma.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1">
+  <p class="tag">B09</p>
+  <h2 class="q-text">Un uomo di 62 anni iperteso entra in coma a esordio brusco; le pupille sono puntiformi e bilaterali, con una minima reattività apprezzabile solo con la lente, i riflessi oculo-vestibolari sono assenti e il respiro è apneustico. Quale livello lesionale spiega meglio il quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Lesione mesencefalica, che darebbe pupille in mediposizione e fisse</button></li>
+    <li><button type="button"><span class="key">B</span>Intossicazione da oppiacei, con miosi che regredisce al naloxone</button></li>
+    <li><button type="button"><span class="key">C</span>Compressione del terzo nervo cranico da ernia uncale iniziale</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Lesione pontina, con miosi bilaterale da interruzione del solo simpatico</button></li>
+    <li><button type="button"><span class="key">E</span>Lesione tettale dorsale, con pupille ampie e diametro fluttuante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Le pupille puntiformi bilaterali che conservano una reattività minima nascono da una lesione pontina, che interrompe le vie simpatiche e lascia il parasimpatico senza antagonista; il respiro apneustico e l'assenza dei riflessi di tronco collocano il danno allo stesso livello. Una lesione mesencefalica darebbe pupille in mediposizione e del tutto fisse, per interruzione simultanea di simpatico e parasimpatico, e la miosi da oppiacei non spiegherebbe la perdita dei riflessi vestibolari né il pattern respiratorio. Il discriminatore è la miosi ancora reattiva del ponte contro la mediposizione fissa del mesencefalo.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b10" tabindex="-1">
+  <p class="tag">B10</p>
+  <h2 class="q-text">Una donna di 55 anni con emorragia intraparenchimale, inizialmente con arti superiori flessi e addotti e arti inferiori estesi, dopo due ore presenta i quattro arti in iperestensione con avambracci iperpronati e pupille in mediposizione. Come va interpretato il cambiamento?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Come un deterioramento rostro-caudale in corso, con danno sceso al tronco alto</button></li>
+    <li><button type="button"><span class="key">B</span>Come una crisi epilettica tonica, da trattare con benzodiazepine endovena</button></li>
+    <li><button type="button"><span class="key">C</span>Come un miglioramento della risposta motoria rispetto al quadro iniziale</button></li>
+    <li><button type="button"><span class="key">D</span>Come una postura invariata, semplice cambio di posizione degli arti</button></li>
+    <li><button type="button"><span class="key">E</span>Come un'ernia tonsillare imminente, premonitrice dell'arresto cardiaco</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il passaggio dalla decorticazione, che indica un danno al di sopra del nucleo rosso, alla decerebrazione, che nasce da una sezione intercollicolare del tronco alto, documenta un deterioramento rostro-caudale in atto ed è prognosticamente più severo. Scambiarlo per una convulsione è un errore frequente e costoso in termini di tempo; l'estensione è peggiore della flessione, non un progresso, e l'ernia tonsillare darebbe iperestensione con compromissione bulbare e arresto, non lo stadio mesencefalico. Il discriminatore è la progressione posturale come marcatore del livello raggiunto.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b11" tabindex="-1">
+  <p class="tag">B11</p>
+  <h2 class="q-text">In un paziente con lesione encefalica nota si avvia la valutazione di morte encefalica. Sono assenti i riflessi corneale, oculo-vestibolare e faringeo; allo stimolo nocicettivo compare una triplice flessione dell'arto inferiore, e la temperatura centrale è 33 gradi. Quale considerazione è corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La triplice flessione è incompatibile con la diagnosi e la esclude</button></li>
+    <li><button type="button"><span class="key">B</span>L'accertamento può concludersi, essendo assenti i riflessi di tronco</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>L'ipotermia va corretta prima, mentre la triplice flessione non esclude nulla</button></li>
+    <li><button type="button"><span class="key">D</span>Una postura di decerebrazione confermerebbe la cessazione delle funzioni</button></li>
+    <li><button type="button"><span class="key">E</span>Il test di apnea va eseguito subito, come primo atto dell'accertamento</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nessun accertamento è valido finché una condizione reversibile come l'ipotermia non sia corretta, mentre i riflessi di origine spinale, compresa la triplice flessione, possono persistere e non escludono la diagnosi. Una postura di decorticazione o di decerebrazione, al contrario, è incompatibile con la morte encefalica perché implica attività del tronco, e il test di apnea, che può aumentare la pressione intracranica, va riservato all'ultimo. Il discriminatore è la distinzione fra riflessi spinali ammessi e confondenti reversibili da rimuovere prima.</p>
+    <p class="refs"><a href="https://www.neurology.org/doi/10.1212/WNL.0000000000207740">Neurology 2023</a> · Pediatric and adult brain death/death by neurologic criteria consensus guideline.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b12" tabindex="-1">
+  <p class="tag">B12</p>
+  <h2 class="q-text">Un uomo di 48 anni con lesione espansiva della fossa posteriore sviluppa, nell'arco di poco tempo, ipertensione sistolica con ampliamento della pressione differenziale, bradicardia e respiro irregolare. Qual è la lettura corretta del quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>È una crisi ipertensiva primaria, da trattare abbassando subito la pressione</button></li>
+    <li><button type="button"><span class="key">B</span>È un riflesso vagale benigno, che si risolve senza alcun provvedimento</button></li>
+    <li><button type="button"><span class="key">C</span>È un quadro settico iniziale, coerente con la bradicardia relativa</button></li>
+    <li><button type="button"><span class="key">D</span>È un'ipertensione da dolore, da controllare con la sola analgesia</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>È il riflesso di Cushing, segno tardivo di ipertensione endocranica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La triade di ipertensione sistolica con aumento della pressione differenziale, bradicardia e respiro irregolare è il riflesso di Cushing, risposta all'aumento della pressione intracranica che compare tardivamente e soprattutto nelle lesioni della fossa posteriore. Abbassare la pressione arteriosa è dannoso, perché quella spinta sostiene la perfusione cerebrale a fronte di una pressione intracranica elevata: il bersaglio è la pressione intracranica, non la sistemica. Il discriminatore è il riconoscimento della triade come segno di ipertensione endocranica, non come ipertensione primaria.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b13" tabindex="-1">
+  <p class="tag">B13</p>
+  <h2 class="q-text">Una donna di 42 anni, caduta dalle scale, presenta alla TC una riduzione dell'altezza anteriore del corpo di L1 con un frammento della parete posteriore retropulso nel canale; la forza agli arti inferiori è 4 su 5. Che cosa qualifica la frattura come instabile?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La perdita di altezza anteriore del corpo, che misura la deformità a cuneo</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Il cedimento della colonna media, con la parete posteriore retropulsa nel canale</button></li>
+    <li><button type="button"><span class="key">C</span>Il grado del deficit motorio residuo agli arti inferiori all'ingresso</button></li>
+    <li><button type="button"><span class="key">D</span>La sede lombare della lesione, di per sé a rischio di instabilità</button></li>
+    <li><button type="button"><span class="key">E</span>L'entità dell'angolazione cifotica visibile sulla proiezione laterale</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel modello di Denis il discriminante fra compressione a cuneo stabile e frattura a scoppio instabile è la colonna media: integra nella compressione pura, dove funge da fulcro, cede nella frattura a scoppio liberando frammenti retropulsi nel canale, ed è il coinvolgimento di due colonne su tre a definire l'instabilità. La perdita di altezza anteriore e la cifosi descrivono la sola colonna anteriore, e il deficit iniziale non definisce la stabilità meccanica. Il discriminatore è la parete posteriore, cioè la colonna media.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK544310/">StatPearls</a> · Denis classification of thoracolumbar fractures.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b14" tabindex="-1">
+  <p class="tag">B14</p>
+  <h2 class="q-text">Un uomo di 60 anni, dopo un trauma in flessione del rachide dorsale, presenta sotto il livello di lesione un deficit motorio completo e la perdita della sensibilità termica e dolorifica, mentre vibrazione e senso di posizione sono conservati. Quale sindrome midollare descrive il quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sindrome centro-midollare, con arti superiori più colpiti degli inferiori</button></li>
+    <li><button type="button"><span class="key">B</span>Sindrome di Brown-Séquard, con dissociazione dei deficit fra i due lati</button></li>
+    <li><button type="button"><span class="key">C</span>Sindrome cordonale posteriore, con motricità conservata e atassia sensitiva</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Sindrome cordonale anteriore, con risparmio dei soli cordoni posteriori</button></li>
+    <li><button type="button"><span class="key">E</span>Lesione midollare completa, senza alcuna funzione sotto il livello</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La perdita di motricità e di sensibilità termo-dolorifica con conservazione di vibrazione e propriocezione identifica la sindrome cordonale anteriore, in cui restano indenni solo i cordoni posteriori, ed è la sindrome con la prognosi peggiore fra le lesioni incomplete. La centro-midollare colpirebbe di più gli arti superiori con anestesia sospesa, la Brown-Séquard dissocerebbe i deficit fra i due lati, e la lesione completa non risparmierebbe alcuna funzione, mentre qui vibrazione e propriocezione persistono. Il discriminatore è la conservazione dei cordoni posteriori a fronte del deficit motorio e termo-dolorifico.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK560731/">StatPearls</a> · Anterior spinal artery syndrome.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b15" tabindex="-1">
+  <p class="tag">B15</p>
+  <h2 class="q-text">Due traumatizzati hanno lo stesso livello di lesione dorsale e un grave deficit sotto di esso. Il primo non conserva alcuna funzione nei metameri sacrali S4-S5; il secondo mantiene una minima sensibilità perianale. Che cosa separa una lesione completa da una incompleta?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>La preservazione di una qualunque funzione nei metameri sacrali S4-S5</button></li>
+    <li><button type="button"><span class="key">B</span>L'entità complessiva del deficit motorio e sensitivo sotto il livello</button></li>
+    <li><button type="button"><span class="key">C</span>Il numero di muscoli chiave con forza inferiore a tre alla scala ASIA</button></li>
+    <li><button type="button"><span class="key">D</span>L'altezza del livello neurologico, se cervicale, dorsale o lombare</button></li>
+    <li><button type="button"><span class="key">E</span>La presenza di una zona di parziale preservazione sotto il livello</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La lesione è incompleta quando persiste una qualunque funzione motoria o sensitiva nei metameri sacrali S4-S5, ed è questa definizione, non la gravità del deficit, a separarla dalla completa; la minima sensibilità perianale del secondo paziente basta a renderla incompleta. L'entità del deficit, il conteggio dei muscoli chiave e il livello neurologico descrivono la lesione ma non la classificano, e la zona di parziale preservazione è propria della lesione completa. Il discriminatore è il risparmio sacrale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b16" tabindex="-1">
+  <p class="tag">B16</p>
+  <h2 class="q-text">Un uomo di 35 anni, dopo un incidente stradale, presenta una frattura del processo odontoideo di C2 con rima alla base del dente, senza deficit neurologico. Rispetto agli altri tipi secondo Anderson e D'Alonzo, che cosa rende questa lesione la più problematica?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il rischio vertebro-basilare, che sarebbe esclusivo di questo tipo di frattura</button></li>
+    <li><button type="button"><span class="key">B</span>La compressione midollare diretta, che il tipo alla base produce più degli altri</button></li>
+    <li><button type="button"><span class="key">C</span>La sede apicale della rima, che riduce la superficie di consolidazione</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La sede basale, che unisce massima instabilità e peggior tendenza a consolidare</button></li>
+    <li><button type="button"><span class="key">E</span>L'associazione costante con la rottura del legamento trasverso dell'atlante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel tipo II di Anderson e D'Alonzo la rima passa alla base del dente, zona di minor superficie di contatto e peggior perfusione, e questo unisce la massima mobilità dei monconi alla peggior tendenza alla consolidazione, rendendolo il più frequente e il più instabile e giustificando la chirurgia nella maggioranza dei casi. Il tipo I, apicale, e il tipo III, esteso al corpo, sono di regola trattabili in ortesi; la rima qui non è apicale, e il rischio vertebro-basilare dipende dalla rotazione C1-C2, non dalla frattura del dente. Il discriminatore è la sede basale della rima.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK441956/">StatPearls</a> · Odontoid fractures.</p>
+  </div>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  if (!N || !next) {
+    cover.classList.add("on");
+    return;
+  }
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var idx = st.a[item.dataset.q];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
