@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 25 agosto 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+</style>
+</head>
+<body data-date="2026-08-25">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>martedì 25 agosto 2026</h1>
+  <div class="spark">
+    <p>Nessuna materia nuova oggi: la giornata è tutta di verifica, e quasi tutta di neurochirurgia. Chiedono l'audit il trauma cranico con l'ipertensione endocranica, il coma e i disturbi della coscienza, i traumi vertebro-midollari, l'ictus ischemico con il TIA, e le emorragie con aneurismi e malformazioni vascolari; accanto, dalla neurologia, l'esame obiettivo e i nervi cranici, e dalla psichiatria le sue origini e la sua storia. Della semeiotica e psicopatologia resta un solo punto aperto.</p>
+    <p>Jean-Baptiste Pussin era entrato al Bicêtre come malato, una scrofola al collo, e ne era uscito guarito per restarci da sorvegliante del reparto dei folli. Nel 1797, di sua iniziativa, fece togliere le catene agli uomini legati da anni ai muri e le sostituì con camicie di forza: nessuna teoria dietro, solo l'idea che un pazzo trattato da uomo potesse tornare a comportarsi da uomo. Philippe Pinel, il medico, lo osservò, gli credette, e qualche anno dopo portò quel metodo alla Salpêtrière. Ma la memoria volle un solo eroe: dipinti e manuali consegnarono ai posteri Pinel che spezza le catene, in piedi tra le donne liberate, e lasciarono nell'ombra l'ex paziente che le aveva tolte per primo, senza essere medico e senza chiedere il permesso di nessuno.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01</p>
+  <h2 class="q-text">Un uomo di 32 anni appartiene a una comunità religiosa in cui il digiuno prolungato e la preghiera ripetuta sono pratiche diffuse e stimate. Negli ultimi mesi le ha intensificate fino a perdere peso in modo marcato, ad assentarsi dal lavoro e a ritirarsi dai rapporti familiari, e riferisce un'angoscia continua perché non riesce a interrompere il rituale pur desiderandolo. I familiari confermano che il comportamento rientra pienamente nella loro tradizione. Su quale elemento si fonda il giudizio che distingue qui un fenomeno normale da uno patologico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La congruenza del comportamento con la tradizione religiosa della sua comunità</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La presenza di sofferenza personale e di compromissione interpersonale</button></li>
+    <li><button type="button"><span class="key">C</span>La condivisione della stessa pratica da parte dei familiari conviventi</button></li>
+    <li><button type="button"><span class="key">D</span>Lo scostamento del comportamento dalla cultura maggioritaria del paese</button></li>
+    <li><button type="button"><span class="key">E</span>Il contenuto religioso dei pensieri e delle preoccupazioni riferite</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è che la sola congruenza culturale non basta a rendere normale un fenomeno: l'anormalità richiede, oltre alla deviazione valutata nel contesto, la sofferenza personale e/o la compromissione del funzionamento. Qui la pratica è culturalmente congruente, per cui il criterio della cultura la classificherebbe erroneamente come normale, mentre a decidere sono l'angoscia soggettiva e la ricaduta su lavoro e relazioni. L'errore speculare sarebbe patologizzare una credenza condivisa dalla sottocultura del paziente per il solo fatto che devia dalla cultura maggioritaria.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK559510/">NCBI Bookshelf, DSM-5 definition of mental disorder</a> · <a href="https://my.clevelandclinic.org/health/articles/24291-diagnostic-and-statistical-manual-dsm-5">Cleveland Clinic, Diagnostic and Statistical Manual (DSM-5)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02</p>
+  <h2 class="q-text">Un uomo di 40 anni, perfettamente sveglio e orientato, seduto in una stanza ben illuminata, fissa una parete spoglia e vede con nitidezza un grosso ragno che vi cammina sopra. È del tutto convinto che l'animale sia realmente lì e reagisce con paura, ma sulla parete non c'è nulla. Come si classifica il fenomeno?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Illusione visiva</button></li>
+    <li><button type="button"><span class="key">B</span>Pseudoallucinazione visiva</button></li>
+    <li><button type="button"><span class="key">C</span>Allucinosi visiva</button></li>
+    <li><button type="button"><span class="key">D</span>Pareidolia visiva</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Allucinazione visiva</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è la sequenza stimolo reale, collocazione dell'esperienza e conservazione della critica: qui manca qualunque oggetto sulla parete, il che esclude illusione e pareidolia, che deformano un dato percettivo reale. L'esperienza è collocata nello spazio esterno e vissuta con piena certezza, il che esclude la pseudoallucinazione, che è collocata nello spazio interno con critica conservata; l'allucinosi denota inoltre uno stato sindromico (tipicamente astinenziale) più che la classificazione di un singolo percetto. Resta l'allucinazione, e la modalità visiva orienta verso una causa organica o tossica.</p>
+    <p class="refs"><a href="https://www.us.elsevierhealth.com/sims-symptoms-in-the-mind-textbook-of-descriptive-psychopathology-9780702085253.html">Sims' Symptoms in the Mind: Textbook of Descriptive Psychopathology (Elsevier)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03</p>
+  <h2 class="q-text">Un uomo di 28 anni, da poco padre, è tormentato da immagini ricorrenti in cui fa del male alla figlia neonata. Le trova ripugnanti e insensate, le riconosce come prodotte dalla propria mente, cerca in ogni modo di scacciarle ed evita di restare solo con la bambina per ridurre l'angoscia che ne deriva. Come si classifica questo fenomeno?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Idea ossessiva</button></li>
+    <li><button type="button"><span class="key">B</span>Idea prevalente</button></li>
+    <li><button type="button"><span class="key">C</span>Idea dominante</button></li>
+    <li><button type="button"><span class="key">D</span>Idea delirante</button></li>
+    <li><button type="button"><span class="key">E</span>Idea fissa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è la coppia appartenenza all'Io e correggibilità, con lo psichismo di difesa che ne consegue: le immagini sono egodistoniche, xenopatiche, riconosciute come proprie ma assurde e attivamente contrastate con evitamento, tratti propri dell'ossessione. Le idee prevalente, dominante e fissa sono escluse perché egosintoniche e vissute come consonanti con l'Io, senza resistenza; l'idea delirante è esclusa perché sostenuta con certezza e inaccessibile alla critica, mentre qui la critica è conservata. Il riconoscere le immagini come proprie la separa inoltre dalle esperienze di passività.</p>
+    <p class="refs"><a href="https://www.sciencedirect.com/science/article/pii/0005796794901325">Kozak &amp; Foa, Obsessions, overvalued ideas, and delusions in OCD (ScienceDirect)</a> · <a href="http://veale.co.uk/PDf/Over-valued%20ideas.pdf">Veale, Over-valued ideas: a conceptual analysis (PDF)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04</p>
+  <h2 class="q-text">Un uomo di 24 anni è ricoverato in rianimazione dopo un incidente motociclistico, intubato e sedato, con GCS 6. Un catetere misura in continuo la pressione intracranica, che nelle ultime ore è salita a 30 mmHg, mentre la pressione arteriosa media si mantiene stabile a 85 mmHg e i parametri sistemici restano nella norma. Il neurointensivista teme un danno ischemico secondario nonostante l'assenza di ipotensione. Quale meccanismo spiega meglio questo rischio?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'autoregolazione sposta il proprio plateau verso destra e mantiene il flusso costante finché la pressione arteriosa media resta nella norma.</button></li>
+    <li><button type="button"><span class="key">B</span>La vasoparalisi post-traumatica abbatte le resistenze cerebrovascolari e dirotta il sangue lontano dai territori metabolicamente più esposti.</button></li>
+    <li><button type="button"><span class="key">C</span>L'ipertensione endocranica comprime per primo il distretto venoso, e la congestione che ne deriva garantisce comunque l'apporto arterioso.</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>La perfusione cerebrale è la differenza fra pressione arteriosa media e pressione intracranica, quindi il suo margine si riduce man mano che l'ICP sale.</button></li>
+    <li><button type="button"><span class="key">E</span>La ventilazione in normocapnia fissa il calibro arteriolare, per cui il flusso finisce per dipendere solo dalla pressione arteriosa media.</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è che la pressione di perfusione è una differenza, CPP = MAP - ICP: a pressione arteriosa media invariata, ogni millimetro guadagnato dall'ICP è un millimetro perduto dalla perfusione, e nel traumatizzato l'autoregolazione abolita rende il flusso passivo a quella caduta. L'opzione che invoca un plateau autoregolatorio conservato è falsa proprio perché il trauma grave abolisce l'autoregolazione; le altre confondono meccanismi di furto, congestione venosa o reattività alla CO2 con la determinante pressoria della perfusione.</p>
+    <p class="refs"><a href="https://braintrauma.org/coma/guidelines/severe-tbi">Guidelines for the Management of Severe TBI, 4th Edition (Brain Trauma Foundation)</a> · <a href="https://litfl.com/cerebral-perfusion-pressure-in-tbi/">Cerebral Perfusion Pressure in TBI (LITFL)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05</p>
+  <h2 class="q-text">Una donna di 51 anni è portata in pronto soccorso in coma (GCS 5) dopo una caduta da un'impalcatura. All'esame la pupilla destra è dilatata e non reagisce alla luce, mentre la sinistra è normoreagente; si rileva inoltre un deficit motorio dell'emisoma sinistro. Non sono stati somministrati farmaci midriatici. Come si interpreta correttamente questo quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La lesione è a sinistra: la pupilla dilatata segue lo stesso lato dell'emiparesi controlaterale alla massa che sta erniando.</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La lesione è a destra: il parasimpatico del terzo nervo cranico non decussa, quindi la midriasi è omolaterale alla massa che ernia l'uncus.</button></li>
+    <li><button type="button"><span class="key">C</span>La lesione è a destra, ma la midriasi nasce dalla compressione diretta del mesencefalo e non del terzo nervo cranico.</button></li>
+    <li><button type="button"><span class="key">D</span>La lesione è a sinistra: il terzo nervo dilatato è quello controlaterale, spinto e stirato contro il margine libero del tentorio.</button></li>
+    <li><button type="button"><span class="key">E</span>La sede non è deducibile dalla pupilla, perché nel paziente comatoso l'anisocoria è aspecifica e va attribuita ai farmaci.</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è la lateralità del terzo nervo cranico: le sue fibre parasimpatiche non decussano, per cui l'uncus erniato comprime il nervo omolaterale alla massa e la pupilla fissa e dilatata segnala il lato della lesione, qui la destra. Le opzioni che pongono la lesione a sinistra invertono la lateralità; quella che invoca la compressione mesencefalica sbaglia il bersaglio anatomico (il nervo decorre nello spazio incisurale), e l'ultima nega erroneamente il valore localizzatorio dell'anisocoria nel comatoso.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK537108/">Uncal Herniation (StatPearls, NCBI Bookshelf)</a> · <a href="https://acnr.co.uk/articles/the-dilated-pupil-and-brain-herniation/">The dilated pupil and brain herniation (ACNR)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06</p>
+  <h2 class="q-text">Un ragazzo di 19 anni riceve un colpo alla regione temporale destra durante una partita. Perde brevemente coscienza, poi torna vigile e orientato per circa un'ora; quindi si deteriora rapidamente fino al coma, con emiparesi sinistra e pupilla destra dilatata. La TC senza contrasto mostra una raccolta iperdensa a lente biconvessa in sede temporale, che non oltrepassa le suture. Quale descrizione inquadra correttamente la lesione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Raccolta subdurale acuta a semiluna da stiramento delle vene a ponte, che scavalca le suture e si arresta alle pliche durali.</button></li>
+    <li><button type="button"><span class="key">B</span>Raccolta subdurale cronica a semiluna da microtraumi ripetuti, ipodensa, con deterioramento lentamente ingravescente.</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Raccolta epidurale biconvessa da lacerazione dell'arteria meningea media, che non scavalca le suture e a rapida evoluzione.</button></li>
+    <li><button type="button"><span class="key">D</span>Contusione dei poli temporali da colpo e contraccolpo, iperdensa con alone ipodenso, in confluenza nelle prime ore.</button></li>
+    <li><button type="button"><span class="key">E</span>Ematoma intraparenchimale profondo da lacerazione, iperdenso, con marcato effetto massa e shift della linea mediana.</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è l'insieme forma-sede-comportamento: la lente biconvessa arrestata dalle suture nasce nello spazio epidurale virtuale, dove il sangue scolla la dura ancorata all'osso, e l'origine arteriosa dalla meningea media allo pterion spiega l'intervallo lucido seguito dallo scompenso rapido. La semiluna subdurale scavalcherebbe le suture, la variante cronica sarebbe ipodensa e lenta, la contusione è polare con alone edematoso e l'ematoma intraparenchimale è profondo: nessuna riproduce la lente sovraccorticale che non varca le suture.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK518982/">Epidural Hematoma (StatPearls, NCBI Bookshelf)</a> · <a href="https://www.ebmconsult.com/articles/anatomy-epidural-subdural-hematoma">Anatomy: Epidural vs Subdural Hematoma (EBM Consult)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07</p>
+  <h2 class="q-text">Un uomo di 38 anni con trauma cranico grave è monitorato con catetere ventricolare; la pressione intracranica era stata riportata sotto controllo. Dopo sedazione profonda, drenaggio liquorale e boli di mannitolo, l'ICP risale in modo persistente a 32 mmHg e il controllo prima ottenuto viene perso. I parametri emodinamici e ventilatori sono ottimizzati. Qual è la mossa più appropriata a questo punto?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Boli aggiuntivi di mannitolo spingendo l'osmolalità sierica fino a circa 340 mOsm/L.</button></li>
+    <li><button type="button"><span class="key">B</span>Iperventilazione spinta a una PaCO2 di 25 mmHg per ridurre subito il volume ematico.</button></li>
+    <li><button type="button"><span class="key">C</span>Bolo di desametasone ad alte dosi per contrastare l'edema citotossico associato.</button></li>
+    <li><button type="button"><span class="key">D</span>Craniectomia decompressiva immediata da anticipare come misura di seconda linea.</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>TC encefalo senza contrasto per escludere una lesione chirurgica comparsa o accresciuta.</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è che la perdita di un controllo prima ottenuto impone un atto diagnostico, non un'ulteriore escalation medica: una TC senza contrasto (con EEG per lo stato di male non convulsivo) cerca una lesione evacuabile comparsa o cresciuta prima di spendere altra terapia. Spingere il mannitolo oltre 320 mOsm/L rischia il danno renale, l'iperventilazione a 25 mmHg induce ischemia, il desametasone è inefficace e dannoso nel trauma, e saltare alla craniectomia su una lesione ancora evacuabile fa perdere tempo utile.</p>
+    <p class="refs"><a href="https://pubmed.ncbi.nlm.nih.gov/31659383/">A management algorithm for patients with intracranial pressure monitoring (SIBICC, PubMed)</a> · <a href="https://braintrauma.org/coma/guidelines/severe-tbi">Guidelines for the Management of Severe TBI, 4th Edition (Brain Trauma Foundation)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08</p>
+  <h2 class="q-text">Un uomo di 62 anni sviluppa in modo improvviso uno stato in cui non può essere risvegliato da alcuno stimolo verbale o doloroso. La tomografia computerizzata mostra due piccoli infarti paramediani, uno per lato, in sede talamica, mentre il tronco encefalico e la corteccia appaiono indenni. Quale meccanismo rende conto della perdita della veglia nonostante lesioni così limitate?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Interruzione bilaterale del relais talamico della via reticolare ascendente</button></li>
+    <li><button type="button"><span class="key">B</span>Compressione del tegmento mesencefalico da ernia uncale in atto</button></li>
+    <li><button type="button"><span class="key">C</span>Disfunzione corticale diffusa da ipossia cerebrale globale</button></li>
+    <li><button type="button"><span class="key">D</span>Lesione distruttiva unilaterale della capsula interna di un emisfero</button></li>
+    <li><button type="button"><span class="key">E</span>Interruzione bilaterale delle vie corticospinali ventrali del ponte</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è che la via dell'arousal non si esaurisce nel tronco: prende un relais nel talamo e da lì si proietta in modo diffuso alla corteccia, per cui la sua interruzione bilaterale a livello talamico abolisce la veglia quanto una lesione tegmentale. Una lesione limitata a un solo emisfero o alla capsula interna di un lato non produce coma, e l'interruzione ventrale pontina risparmia l'arousal dando semmai una sindrome locked-in; la TC documenta infarti talamici, non ipossia diffusa né una massa erniante.</p>
+    <p class="refs"><a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/ascending-reticular-activating-system">Ascending Reticular Activating System - overview (ScienceDirect)</a> · <a href="https://www.ncbi.nlm.nih.gov/books/NBK556102/">Neuroanatomy, Reticular Activating System (StatPearls)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1">
+  <p class="tag">B09</p>
+  <h2 class="q-text">Un uomo di 30 anni viene portato in pronto soccorso dopo un incidente in moto ad alta velocità. All'esame apre gli occhi solo dopo stimolazione dolorosa, emette suoni incomprensibili senza parole riconoscibili e allo stimolo nocicettivo flette lentamente gli arti superiori in modo anomalo. La pressione arteriosa e la saturazione sono nella norma. Qual è l'intervento indicato in questo momento?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Somministrazione empirica endovenosa di naloxone e flumazenil</button></li>
+    <li><button type="button"><span class="key">B</span>Ossigenoterapia in maschera con monitoraggio saturimetrico continuo</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Intubazione orotracheale immediata per la protezione delle vie aeree</button></li>
+    <li><button type="button"><span class="key">D</span>Posizionamento in decubito laterale di sicurezza con aspirazione</button></li>
+    <li><button type="button"><span class="key">E</span>Osservazione neurologica seriata rimandando l'intubazione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Sommando apertura al dolore, suoni incomprensibili e flessione anomala il punteggio è 7, quindi pari o inferiore a 8: il discriminatore è proprio questa soglia, che definisce operativamente il coma e indica l'intubazione a protezione delle vie aeree, oltre al monitoraggio della pressione intracranica nel trauma. Le manovre di supporto non protettive e l'attesa lasciano le vie aeree non protette in un paziente comatoso, e la terapia antidotica empirica non è giustificata da un quadro traumatico con emodinamica stabile.</p>
+    <p class="refs"><a href="https://epmonthly.com/article/gcs-less-than-8-then-intubate/">GCS Less Than 8? Then Intubate! (Emergency Physicians Monthly)</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7726605/">Endotracheal intubation to reduce aspiration in comatose patients (systematic review, PMC)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b10" tabindex="-1">
+  <p class="tag">B10</p>
+  <h2 class="q-text">Una donna di 68 anni giunge in coma dopo due giorni di progressivo peggioramento dello stato di coscienza. All'esame le pupille sono di 2 mm, uguali e prontamente reattive alla luce; i riflessi oculo-vestibolari sono conservati e simmetrici, gli occhi presentano lenti movimenti coniugati di va e vieni, il tono è ridotto e simmetrico e non vi sono segni focali. Che cosa suggerisce con maggiore probabilità questa combinazione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Una lesione strutturale del tegmento mesencefalico</button></li>
+    <li><button type="button"><span class="key">B</span>Un'ernia uncale del lobo temporale in fase iniziale</button></li>
+    <li><button type="button"><span class="key">C</span>Un infarto ventrale pontino bilaterale acuto</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Un processo diffuso di natura metabolica o tossica</button></li>
+    <li><button type="button"><span class="key">E</span>Un ematoma sottodurale unilaterale in espansione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è la reattività pupillare, il segno più resistente all'insulto metabolico: pupille simmetriche e ancora reagenti insieme a riflessi oculo-vestibolari conservati e a movimenti oculari di roving a escursione piena depongono per una causa diffusa metabolica o tossica. Le opzioni strutturali comporterebbero asimmetria o quadri pupillari fissi propri del livello leso, come l'anisocoria dell'ernia uncale o la mediposizione fissa della lesione mesencefalica, qui tutti assenti.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1742582/">Pupillary evaluation for differential diagnosis of coma (PMC)</a> · <a href="https://www.ncbi.nlm.nih.gov/books/NBK470309/">Coma (StatPearls)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b11" tabindex="-1">
+  <p class="tag">B11</p>
+  <h2 class="q-text">Un uomo di 55 anni collassa improvvisamente e giunge in ospedale apparentemente non responsivo. È tetraplegico, non muove gli arti ai comandi e non presenta motilità facciale, ma quando gli si chiede di farlo apre e chiude gli occhi e sposta lo sguardo verso l'alto e verso il basso. Alterna fasi di apparente veglia e sonno. Come va interpretato il quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Paziente in stato vegetativo con arousal senza consapevolezza</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Paziente vigile e consapevole con lesione ventrale pontina bilaterale</button></li>
+    <li><button type="button"><span class="key">C</span>Paziente in coma profondo da lesione tegmentale mesencefalica</button></li>
+    <li><button type="button"><span class="key">D</span>Paziente con mutismo acinetico da lesione frontale mediale bilaterale</button></li>
+    <li><button type="button"><span class="key">E</span>Paziente con catatonia di verosimile origine psichiatrica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il discriminatore è l'esecuzione su comando di movimenti oculari verticali e ammiccamento, gli unici movimenti volontari risparmiati quando una lesione ventrale pontina bilaterale interrompe le vie corticospinali e corticobulbari lasciando indenne la corteccia: dimostrano coscienza conservata e definiscono la sindrome locked-in. Nello stato vegetativo l'arousal è presente ma manca ogni risposta finalistica riproducibile, e nel coma vero questi movimenti su comando sono assenti; è proprio la manovra che impedisce di scambiare la locked-in per uno stato vegetativo o per il coma.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK559026/">Locked-in Syndrome (StatPearls)</a> · <a href="https://www.amboss.com/us/knowledge/locked-in-syndrome">Locked-in syndrome (AMBOSS)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b12" tabindex="-1">
+  <p class="tag">B12</p>
+  <h2 class="q-text">Un uomo di 28 anni si tuffa in una piscina e urta il fondo con il vertice del capo. Arriva vigile, senza alcun deficit motorio o sensitivo agli arti. La TC mostra l'anello di C1 interrotto in quattro punti, con le due masse laterali divaricate verso l'esterno. Si deve scegliere fra ortesi rigida e stabilizzazione con artrodesi. Quale elemento pesa di più in questa decisione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il numero di corticali interrotte dell'anello di C1</button></li>
+    <li><button type="button"><span class="key">B</span>L'ampiezza del canale vertebrale al livello di C1</button></li>
+    <li><button type="button"><span class="key">C</span>La presenza di un deficit sensitivo agli arti superiori</button></li>
+    <li><button type="button"><span class="key">D</span>Il coinvolgimento del foro trasversario da parte della rima</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>L'integrità del legamento trasverso dell'atlante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La stabilità del complesso occipito-atlanto-assiale è quasi interamente legamentosa: l'osso di C1, se allineato, consolida in ortesi, mentre è la rottura del legamento trasverso a rendere la lesione instabile e a imporre l'artrodesi. Il discriminante è dunque lo stato del legamento, sospettato per una sporgenza delle masse laterali pari o superiore a circa 7 mm (regola di Spence) e confermato in risonanza, non l'aspetto quadricorticale della frattura. L'ampiezza del canale spiega perché il deficit neurologico è raro a questo livello, ma non decide la condotta.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK534091/">C1 Fractures (StatPearls)</a> · <a href="https://www.cns.org/Assets/01542026-10d2-4692-9129-a357f4413253/636985306828200000/management-of-isolated-fractures-of-the-atlas-in-15-pdf">Management of Isolated Fractures of the Atlas in Adults (CNS/AANS)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b13" tabindex="-1">
+  <p class="tag">B13</p>
+  <h2 class="q-text">Un uomo di 35 anni cade da un'impalcatura e atterra sui piedi. Lamenta dolore dorso-lombare intenso; gli arti inferiori sono mobili ma ipostenici. La TC mostra una frattura del corpo di L1 con un frammento della parete posteriore sospinto all'interno del canale. Quale reperto qualifica questa frattura come instabile, a differenza di una compressione a cuneo?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Il cedimento della colonna media con retropulsione di un frammento</button></li>
+    <li><button type="button"><span class="key">B</span>La perdita di altezza della metà anteriore del corpo vertebrale</button></li>
+    <li><button type="button"><span class="key">C</span>La lesione del legamento longitudinale anteriore del segmento</button></li>
+    <li><button type="button"><span class="key">D</span>L'entità della deformità cifotica del segmento vertebrale leso</button></li>
+    <li><button type="button"><span class="key">E</span>La localizzazione della frattura alla giunzione toraco-lombare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel modello a tre colonne di Denis la colonna media è il vero discriminante: integra nella compressione a cuneo, dove funge da fulcro e la lesione resta stabile, cede nella frattura a scoppio liberando frammenti retropulsi nel canale. Sono il coinvolgimento di due colonne su tre e il cedimento della media, non l'entità della deformità né la sede, a definire instabilità e rischio neurologico. La perdita di altezza anteriore isolata e la lesione del legamento longitudinale anteriore riguardano la sola colonna anteriore, tipica del cuneo stabile.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK544310/">Denis Classification (StatPearls)</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9100632/">Analysis of the Classification Systems for Thoracolumbar Fractures</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b14" tabindex="-1">
+  <p class="tag">B14</p>
+  <h2 class="q-text">Un uomo di 24 anni viene accoltellato alla schiena, appena a destra della linea mediana. Sotto il livello della lesione presenta una paresi dell'arto inferiore destro e la perdita del senso di posizione e della vibrazione allo stesso arto. L'esame sensitivo va completato. Quale reperto ci si attende di trovare?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perdita di dolore e temperatura all'arto destro allo stesso livello</button></li>
+    <li><button type="button"><span class="key">B</span>Perdita di vibrazione e senso di posizione all'arto sinistro</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Perdita di dolore e temperatura all'arto sinistro sotto il livello</button></li>
+    <li><button type="button"><span class="key">D</span>Anestesia termo-dolorifica sospesa fra due bande di sensibilità normale</button></li>
+    <li><button type="button"><span class="key">E</span>Perdita di ogni modalità sensitiva ai due arti sotto il livello</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nell'emisezione midollare la via motoria e i cordoni posteriori decussano più in alto, nel bulbo, quindi al di sotto della lesione deficit motorio ed epicritico sono omolaterali (qui a destra); la via termo-nocicettiva ha invece già incrociato nel midollo dopo una breve ascesa, per cui la perdita di dolore e temperatura è controlaterale (a sinistra) e comincia 1-2 metameri sotto il livello. Il discriminante è il diverso punto di decussazione: dolore e temperatura sul lato opposto rispetto a motricità e sensibilità profonda. L'anestesia sospesa è propria della sindrome centro-midollare, la perdita globale bilaterale di una lesione completa.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK538135/">Brown-Sequard Syndrome (StatPearls)</a></p>
+  </div>
+</section>
+
+<section class="item" data-q="b15" tabindex="-1">
+  <p class="tag">B15</p>
+  <h2 class="q-text">Una donna di 60 anni è vittima di un politrauma stradale. È intubata e sedata, per cui l'esame neurologico non è valutabile. La TC total-body documenta una frattura-lussazione del rachide cervicale sub-assiale e nient'altro di rilevante sul rachide. Quale accertamento fornisce l'informazione sul contenuto del canale che la TC non dà?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Radiografia dinamica in flessione ed estensione del collo</button></li>
+    <li><button type="button"><span class="key">B</span>TC con mezzo di contrasto e ricostruzioni multiplanari</button></li>
+    <li><button type="button"><span class="key">C</span>Angio-TC dei vasi epiaortici e delle arterie vertebrali</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Risonanza magnetica di midollo, disco e legamenti</button></li>
+    <li><button type="button"><span class="key">E</span>Ripetizione della TC del rachide dopo 48 ore</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La TC definisce il contenitore osseo e la frattura, ma non vede il contenuto del canale: solo la risonanza studia midollo, disco e legamenti e distingue il midollo contuso, recuperabile, dal midollo interrotto. Il discriminante è che le due metodiche rispondono a domande diverse e non si sostituiscono; in un traumatizzato non valutabile la RM è ancora più necessaria per definire il danno neurologico e prognosticarlo. La radiografia dinamica è impraticabile e non interpretabile in un paziente sedato e potenzialmente instabile, mentre TC con contrasto, angio-TC (che studia i vasi) e TC ripetuta restano indagini dell'osso o dei vasi, non del midollo.</p>
+    <p class="refs"><a href="https://journals.sagepub.com/doi/full/10.1177/2192568217703089">A Clinical Practice Guideline on the Role of Baseline MRI in Acute SCI (AOSpine/Fehlings 2017)</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10455833/">The Role of MRI and CT in Spinal Cord Injury</a></p>
+  </div>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  if (!N || !next) {
+    cover.classList.add("on");
+    return;
+  }
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var idx = st.a[item.dataset.q];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
