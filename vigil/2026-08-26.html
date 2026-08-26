@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
+<title>vigil · 26 agosto 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #17181a;
+  --sub: #45484e;
+  --muted: #9aa0a8;
+  --sans: "Familjen Grotesk", Helvetica, Arial, sans-serif;
+  --mono: "Spline Sans Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1013;
+    --ink: #e9e7e2;
+    --sub: #a9a8a2;
+    --muted: #6f7076;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+::selection { background: var(--ink); color: var(--bg); }
+
+html.js .screen, html.js .item { display: none; }
+html.js .screen.on, html.js .item.on { display: block; }
+.screen, .item {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 15vh, 11rem) 1.5rem 6rem;
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .screen.on, html.js .item.on { animation: appear .14s ease; }
+  @keyframes appear { from { opacity: 0; } }
+}
+
+.controls { display: none; }
+html.js .controls {
+  display: block;
+  position: fixed; bottom: 1rem; right: 1.1rem;
+  background: var(--bg); padding: .5rem .6rem;
+}
+#next {
+  font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.brand {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem;
+}
+h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.1; margin: 0 0 2.2rem;
+}
+.spark p { font-size: 1.08rem; line-height: 1.7; margin: 0 0 1rem; max-width: 34em; }
+.spark p:last-child { margin-bottom: 0; }
+
+.tag {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 1.3rem;
+}
+.q-text {
+  font-size: clamp(1.3rem, 1.05rem + 1.6vw, 1.65rem); font-weight: 600;
+  letter-spacing: -.01em; line-height: 1.3; margin: 0 0 2rem;
+}
+.opts { list-style: none; margin: 0; padding: 0; }
+.opts button {
+  display: flex; align-items: baseline; gap: 1rem; width: 100%;
+  text-align: left; padding: .6rem 0;
+  font-size: 1.05rem; line-height: 1.5;
+}
+.opts button .key {
+  font-family: var(--mono); font-size: .75rem; color: var(--muted);
+  flex: 0 0 1.2rem;
+}
+.item:not(.answered) .opts button:hover .key { color: var(--ink); }
+.item.answered .opts button { cursor: default; }
+.opts button.ko { text-decoration: line-through; }
+.opts button.is-correct { font-weight: 600; }
+
+html.js .item:not(.full) .rationale { display: none; }
+.rationale { margin-top: 2.2rem; max-width: 60ch; }
+.rationale p { font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; }
+.rationale p.refs { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+.rationale a { text-underline-offset: 3px; }
+</style>
+</head>
+<body data-date="2026-08-26">
+
+<section class="screen" id="cover" tabindex="-1">
+  <p class="brand">vigil</p>
+  <h1>mercoledì 26 agosto 2026</h1>
+  <div class="spark">
+    <p>Nessuna materia nuova oggi: si revisiona e basta. Passano all'audit, di neurochirurgia, il trauma cranico e l'ipertensione endocranica, il coma e i disturbi della coscienza, i traumi vertebro-midollari, l'ictus ischemico e il TIA, le emorragie con aneurismi e malformazioni vascolari; di neurologia, l'esame obiettivo neurologico e i nervi cranici; e l'introduzione e storia della psichiatria. Su semeiotica e psicopatologia resta un punto aperto.</p>
+    <p>Henri Laborit, chirurgo di marina, cercava soltanto un farmaco che proteggesse i suoi pazienti dallo shock dell'operazione. La molecola che gli passò tra le mani nel 1951, sintetizzata l'anno prima alla Rhône-Poulenc per tutt'altro scopo, faceva qualcosa di inatteso: senza addormentarli, rendeva gli operandi stranamente sereni, indifferenti, come staccati dal proprio dolore. Laborit intuì e insistette: portatela agli psichiatri. Nel 1952, all'ospedale Sainte-Anne di Parigi, Jean Delay e Pierre Deniker la somministrarono a uomini in preda all'agitazione più incontenibile, e li videro tacere, sedersi, rientrare in una realtà da cui mancavano da anni. Era la clorpromazina. Nel giro di un decennio, la sostanza nata per tenere fermo un corpo sul tavolo operatorio cominciò a svuotare i manicomi che secoli di catene non avevano saputo aprire.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b01" tabindex="-1">
+  <p class="tag">B01</p>
+  <h2 class="q-text">Un uomo di quarant'anni, ingegnere, dedica gran parte del tempo libero a costruire il modello in scala di una città immaginaria, un'attività che i familiari giudicano bizzarra. Lavora regolarmente, ha relazioni stabili, non riferisce alcuna sofferenza e non chiede aiuto: è la moglie a portarlo dal medico perché quel comportamento le pare anormale. Quale criterio decide se il quadro sia patologico?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>La deviazione del comportamento dalla norma statistica e culturale</button></li>
+    <li><button type="button"><span class="key">B</span>L'eccentricità e l'insolità dell'interesse coltivato</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>La presenza di sofferenza personale o di compromissione del funzionamento</button></li>
+    <li><button type="button"><span class="key">D</span>La coerenza interna e la finalità del comportamento osservato</button></li>
+    <li><button type="button"><span class="key">E</span>La percezione di anormalità da parte dei familiari</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il confine fra normale e patologico non si traccia sulla sola distanza dalla norma: un fenomeno diventa abnorme quando, valutato nel contesto culturale e ambientale del paziente, se ne discosta e insieme produce sofferenza personale o compromissione interpersonale. Qui il secondo requisito manca del tutto, e l'eccentricità priva di disagio e di disfunzione non basta a fare una diagnosi. Il discriminatore è la sofferenza o la compromissione del funzionamento, non l'insolità in sé né lo sguardo di chi osserva.</p>
+    <p class="refs"><a href="https://www.saybrook.edu/unbound/defining-mental-disorders-dsm-5-style/">DSM-5</a> · definizione di disturbo mentale: distress o disabilità, non la sola devianza.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b02" tabindex="-1">
+  <p class="tag">B02</p>
+  <h2 class="q-text">Una donna di settant'anni, ricoverata, la sera in una stanza poco illuminata scambia ripetutamente la vestaglia appesa all'attaccapanni per la figura di una persona ferma nell'angolo. Quando accende la luce e vi posa l'attenzione riconosce subito l'oggetto e la falsa impressione svanisce. Come si qualifica il fenomeno?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Un'illusione</button></li>
+    <li><button type="button"><span class="key">B</span>Un'allucinazione</button></li>
+    <li><button type="button"><span class="key">C</span>Una pseudoallucinazione</button></li>
+    <li><button type="button"><span class="key">D</span>Una pareidolia</button></li>
+    <li><button type="button"><span class="key">E</span>Un'allucinosi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>C'è uno stimolo reale, la vestaglia, percepito in modo errato e caricato di un contenuto soggettivo: è la definizione dell'illusione, che a differenza dell'allucinazione si corregge rapidamente non appena l'attenzione si applica all'oggetto. L'allucinazione sarebbe una percezione senza oggetto, la pseudoallucinazione la collocherebbe nello spazio interno, l'allucinosi richiederebbe un'esperienza allucinatoria in un soggetto vigile senza alcuno stimolo esterno. Il discriminatore è la presenza di un oggetto reale unita alla pronta correggibilità.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK557633/">StatPearls</a> · illusione come mispercezione di uno stimolo reale, distinta dall'allucinazione.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b03" tabindex="-1">
+  <p class="tag">B03</p>
+  <h2 class="q-text">Un uomo di ventotto anni riferisce l'immagine ricorrente e intrusiva di essersi contaminato toccando le maniglie. La riconosce come propria ed eccessiva, la giudica irragionevole, tenta di scacciarla e si lava a lungo le mani per attenuare l'angoscia. Sullo stesso tema della contaminazione, quale forma configura questo quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un'idea prevalente</button></li>
+    <li><button type="button"><span class="key">B</span>Un delirio</button></li>
+    <li><button type="button"><span class="key">C</span>Un'esperienza di passività</button></li>
+    <li><button type="button"><span class="key">D</span>Un'idea dominante</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Un'ossessione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Lo stesso tema può abitare un'idea prevalente, un'ossessione o un delirio, e solo la forma decide quale: qui il contenuto è egodistonico, riconosciuto come proprio, vissuto come estraneo e contrastato con un rituale di lavaggio, cioè un'ossessione con il suo psichismo di difesa. L'idea prevalente non sarebbe vissuta come estranea all'Io e non incontrerebbe resistenza, il delirio sarebbe egosintonico e incorreggibile, l'esperienza di passività verrebbe attribuita a un agente esterno. Il discriminatore è la forma, non il contenuto: egodistonia, critica conservata e resistenza attiva.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK563175/">StatPearls</a> · il delirio egosintonico e incorreggibile contro l'ossessione egodistonica con insight.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b04" tabindex="-1">
+  <p class="tag">B04</p>
+  <h2 class="q-text">Un paziente con trauma cranico grave è monitorato: la pressione arteriosa media resta stabile a 90 mmHg, mentre la pressione intracranica sale progressivamente da 12 a 35 mmHg. Perché il cervello va incontro a ischemia pur senza alcun calo della pressione arteriosa?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>L'aumento della pressione intracranica dilata le arteriole e riduce il flusso a valle</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>La pressione di perfusione, differenza fra pressione arteriosa media e intracranica, si riduce</button></li>
+    <li><button type="button"><span class="key">C</span>La pressione arteriosa media stabile non garantisce da sola la gittata cerebrale</button></li>
+    <li><button type="button"><span class="key">D</span>L'autoregolazione sposta il proprio plateau verso pressioni più elevate</button></li>
+    <li><button type="button"><span class="key">E</span>La resistenza cerebrovascolare crolla e con essa la pressione di perfusione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La pressione di perfusione cerebrale è una differenza, pressione arteriosa media meno pressione intracranica, quindi a pressione arteriosa ferma ogni millimetro di mercurio guadagnato dall'ipertensione endocranica è un millimetro perduto dalla perfusione. Con l'intracranica a 35 mmHg la perfusione scende a 55, sotto l'obiettivo di 60-70, e il flusso cade tanto più rapidamente quanto più l'autoregolazione è compromessa dal trauma. Il discriminatore è che la perfusione è una sottrazione, non un valore assoluto della pressione arteriosa.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK537271/">StatPearls</a> · pressione di perfusione cerebrale come MAP meno ICP.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b05" tabindex="-1">
+  <p class="tag">B05</p>
+  <h2 class="q-text">In un traumatizzato cranico grave con edema cerebrale diffuso e ipertensione endocranica un collega propone desametasone ad alte dosi, ricordandone l'efficacia sull'edema perilesionale delle metastasi. Qual è la condotta corretta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Desametasone ad alte dosi</button></li>
+    <li><button type="button"><span class="key">B</span>Desametasone a basse dosi</button></li>
+    <li><button type="button"><span class="key">C</span>Iperventilazione profonda mantenuta</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Terapia osmotica in boli</button></li>
+    <li><button type="button"><span class="key">E</span>Metilprednisolone ad alte dosi</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il cortisone stabilizza le giunzioni serrate e agisce quindi sull'edema vasogenico delle metastasi, dove quelle giunzioni cedono; nel trauma l'edema è prevalentemente citotossico, con giunzioni conservate e danno cellulare, e il farmaco non abbassa la pressione mentre il metilprednisolone ad alte dosi si associa a un aumento della mortalità. L'arma corretta è la terapia osmotica, mannitolo in boli sulle punte pressorie, non un dosaggio steroideo fisso e prolungato. L'iperventilazione profonda non è una misura di prima linea e va evitata nelle prime ore. Il discriminatore è il tipo di edema.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK482119/">StatPearls</a> · terapia osmotica nell'ipertensione endocranica; cortisone inefficace sull'edema citotossico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b06" tabindex="-1">
+  <p class="tag">B06</p>
+  <h2 class="q-text">Un uomo di venticinque anni, dopo un urto temporale con frattura in corrispondenza dello pterion, ha una breve perdita di coscienza, poi un intervallo lucido e infine un rapido deterioramento con emiparesi controlaterale. La TC mostra una raccolta iperdensa biconvessa che non oltrepassa le suture. Quale lesione e quale sorgente?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Ematoma epidurale da lacerazione della meningea media</button></li>
+    <li><button type="button"><span class="key">B</span>Ematoma subdurale acuto da rottura delle vene a ponte</button></li>
+    <li><button type="button"><span class="key">C</span>Ematoma epidurale da sanguinamento venoso diploico</button></li>
+    <li><button type="button"><span class="key">D</span>Ematoma subdurale acuto da lacerazione parenchimale sottostante</button></li>
+    <li><button type="button"><span class="key">E</span>Contusione emorragica dei poli temporali</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La forma a lente biconvessa nasce nello spazio epidurale virtuale, dove il sangue deve scollare la dura vincendone l'adesione all'osso e per questo cresce in spessore e si arresta alle suture; la sorgente arteriosa, di regola la meningea media lacerata allo pterion, spiega la rapidità e l'intervallo lucido. Il subdurale sarebbe a semiluna, venoso e capace di scavalcare le suture. Il discriminatore è la coppia forma biconvessa e sorgente arteriosa nello spazio epidurale.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK518982/">StatPearls</a> · ematoma epidurale biconvesso, meningea media, arresto alle suture.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b07" tabindex="-1">
+  <p class="tag">B07</p>
+  <h2 class="q-text">Un giovane politraumatizzato della strada è in coma profondo, immediato e prolungato, senza alcuna lesione focale che lo giustifichi. La TC è poco eloquente, mentre la risonanza mostra piccole lesioni alla giunzione fra sostanza grigia e sostanza bianca. Qual è il meccanismo del quadro?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Un danno ischemico secondario da ipotensione sistemica</button></li>
+    <li><button type="button"><span class="key">B</span>Un edema citotossico diffuso a compressione simmetrica</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Uno stiramento assonale alla giunzione fra sostanza grigia e bianca</button></li>
+    <li><button type="button"><span class="key">D</span>Una sofferenza del tronco da erniazione tonsillare precoce</button></li>
+    <li><button type="button"><span class="key">E</span>Una concussione con alterazione transitoria della funzione</button></li>
+  </ol>
+  <div class="rationale">
+    <p>È il danno assonale diffuso: le forze di accelerazione e decelerazione producono uno stiramento che si concentra dove è massima la differenza di densità fra i tessuti, cioè alla giunzione fra sostanza grigia e bianca, dove gli assoni si torcono, si disconnettono e interrompono il trasporto assonale. Ne deriva un coma immediato e prolungato senza lesione focale corrispondente, con TC spesso muta e risonanza assai più sensibile. Il discriminatore è la sede di stiramento alla giunzione grigia-bianca, non una massa o un'ischemia focale.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK448102/">StatPearls</a> · danno assonale diffuso da shear alla giunzione grigia-bianca.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b08" tabindex="-1">
+  <p class="tag">B08</p>
+  <h2 class="q-text">Una paziente è in coma, ma le indagini escludono qualunque lesione del tronco encefalico, che risulta integro; si documentano invece infarti talamici bilaterali. Perché la veglia può spegnersi nonostante il tronco sia indenne?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché il coma richiede sempre una lesione corticale di un solo emisfero</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il talamo genera da sé il ritmo sonno-veglia, indipendente dalla corteccia</button></li>
+    <li><button type="button"><span class="key">C</span>Perché un tronco integro implica necessariamente una causa metabolica</button></li>
+    <li><button type="button"><span class="key">D</span>Perché gli infarti talamici interrompono le vie sensitive del contenuto di coscienza</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>Perché la via reticolare ascendente ha un relais talamico e una proiezione corticale diffusa</button></li>
+  </ol>
+  <div class="rationale">
+    <p>L'arousal è sostenuto dalla via reticolare ascendente, che non si esaurisce nel tronco: prende un relais nel talamo e si distribuisce alla corteccia con una proiezione diffusa, entrambi altrettanto necessari. Per questo infarti talamici bilaterali o un danno corticale diffuso spengono la veglia con il tronco intatto, mentre una lesione limitata a un solo emisfero non lo fa. Il discriminatore è che la via dell'arousal è interrompibile anche fuori dal tronco, al talamo e alla corteccia.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK549835/">StatPearls</a> · sistema reticolare attivante ascendente, relais talamico e proiezione corticale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b09" tabindex="-1">
+  <p class="tag">B09</p>
+  <h2 class="q-text">Un paziente in coma profondo presenta pupille piccole, simmetriche e ancora reagenti alla luce, riflessi oculo-vestibolari conservati e roving oculare a escursione piena, senza segni focali. Verso quale origine orienta questa combinazione?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Verso una lesione strutturale del tronco encefalico</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Verso una causa metabolica o tossica</button></li>
+    <li><button type="button"><span class="key">C</span>Verso un'ernia uncale iniziale</button></li>
+    <li><button type="button"><span class="key">D</span>Verso una lesione pontina localizzata</button></li>
+    <li><button type="button"><span class="key">E</span>Verso una morte encefalica imminente</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La fotoreattività pupillare resiste all'insulto metabolico più di ogni altro riflesso di tronco, quindi pupille piccole ma reagenti, riflessi oculo-vestibolari conservati e roving a escursione piena, in assenza di segni focali, orientano verso una causa metabolica o tossica anche in un coma profondo. Una lesione strutturale del tronco darebbe asimmetria o un quadro pupillare fisso proprio del livello leso. Il discriminatore è la conservazione del riflesso alla luce insieme alla simmetria dei segni.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK430722/">StatPearls</a> · il riflesso pupillare conservato depone per il coma metabolico.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b10" tabindex="-1">
+  <p class="tag">B10</p>
+  <h2 class="q-text">Un paziente con infarto pontino ventrale da trombosi della basilare appare immobile e non risponde ai comandi verbali né muove gli arti; sembra comatoso. Quale singola manovra separa una sindrome locked-in da uno stato vegetativo?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Stimolare dolorosamente lo sterno e osservare la postura evocata</button></li>
+    <li><button type="button"><span class="key">B</span>Verificare la presenza dei cicli sonno-veglia</button></li>
+    <li><button type="button"><span class="key">C</span>Ricercare la fissazione e l'inseguimento visivo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Chiedere di aprire gli occhi e di guardare in alto e in basso</button></li>
+    <li><button type="button"><span class="key">E</span>Evocare il riflesso oculo-cefalico con la rotazione del capo</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La lesione ventrale pontina interrompe le vie cortico-spinali e cortico-bulbari ma risparmia la corteccia e il tetto mesencefalico, per cui restano conservati i soli movimenti oculari verticali e l'ammiccamento, gli unici canali volontari del paziente locked-in, vigile e consapevole. Chiedere di aprire gli occhi e di guardare in alto e in basso rivela quella consapevolezza, mentre lo stato vegetativo è veglia senza consapevolezza. Il discriminatore è la risposta oculare volontaria su comando, che i cicli sonno-veglia e i riflessi non dimostrano.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK559026/">StatPearls</a> · locked-in ventrale pontina, movimenti oculari verticali conservati.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b11" tabindex="-1">
+  <p class="tag">B11</p>
+  <h2 class="q-text">Un paziente denutrito, con storia di abuso alcolico, arriva in coma; nella terapia empirica iniziale è previsto glucosio. Quale accorgimento è indispensabile prima o insieme alla somministrazione?</h2>
+  <ol class="opts">
+    <li><button type="button" data-correct><span class="key">A</span>Somministrare tiamina insieme o prima del glucosio</button></li>
+    <li><button type="button"><span class="key">B</span>Somministrare naloxone prima del glucosio</button></li>
+    <li><button type="button"><span class="key">C</span>Correggere l'ipernatriemia prima del glucosio</button></li>
+    <li><button type="button"><span class="key">D</span>Rinviare il glucosio fino all'esito della TC</button></li>
+    <li><button type="button"><span class="key">E</span>Associare cortisone al glucosio</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Nel paziente denutrito o alcolista le riserve di tiamina sono esaurite, e il carico glucidico consuma quel poco che resta come cofattore, precipitando l'encefalopatia di Wernicke. La tiamina va perciò data sempre insieme al glucosio, e nel dubbio prima. Il discriminatore è la carenza di vitamina B1 smascherata dal glucosio, non l'ipotesi oppiacea o elettrolitica.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK470344/">StatPearls</a> · tiamina prima o insieme al glucosio per prevenire l'encefalopatia di Wernicke.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b12" tabindex="-1">
+  <p class="tag">B12</p>
+  <h2 class="q-text">Dopo una ferita da arma bianca al dorso, un paziente presenta, al di sotto della lesione, deficit motorio e perdita di vibrazione e propriocezione a destra, e perdita di sensibilità termica e dolorifica a sinistra che inizia un paio di metameri più in basso. Quale sindrome?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Sindrome centro-midollare</button></li>
+    <li><button type="button"><span class="key">B</span>Sindrome cordonale anteriore</button></li>
+    <li><button type="button" data-correct><span class="key">C</span>Sindrome di Brown-Séquard</button></li>
+    <li><button type="button"><span class="key">D</span>Sindrome cordonale posteriore</button></li>
+    <li><button type="button"><span class="key">E</span>Sindrome siringomielica</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il quadro crociato dell'emisezione midollare: motricità e sensibilità epicritica incrociano più in alto, nel bulbo, quindi il loro deficit è omolaterale alla lesione, mentre la sensibilità termo-nocicettiva ha già incrociato nel midollo dopo una breve ascesa, per cui la sua perdita è controlaterale e inizia uno o due metameri più in basso. Da questa sola differenza di sede di decussazione discende tutta la semeiotica. Il discriminatore è il punto di incrocio delle vie, non l'entità del danno.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK538135/">StatPearls</a> · Brown-Séquard, deficit motorio ed epicritico omolaterale, termo-dolorifico controlaterale.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b13" tabindex="-1">
+  <p class="tag">B13</p>
+  <h2 class="q-text">Due pazienti hanno entrambi una frattura da scoppio di C1 senza deficit neurologico; uno viene trattato con ortesi rigida, l'altro sottoposto ad artrodesi. Che cosa decide la differenza di condotta?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Il numero di corticali interrotte dell'anello di C1</button></li>
+    <li><button type="button"><span class="key">B</span>L'ampiezza del canale vertebrale a livello di C1</button></li>
+    <li><button type="button"><span class="key">C</span>La direzione centrifuga o centripeta dei frammenti</button></li>
+    <li><button type="button"><span class="key">D</span>L'entità della cifosi segmentaria e dello scivolamento</button></li>
+    <li><button type="button" data-correct><span class="key">E</span>L'integrità del legamento trasverso dell'atlante</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La stabilità di C1 non dipende dall'osso ma dal legamento trasverso dell'atlante: con il legamento integro la frattura consolida in ortesi, con il legamento interrotto diventa altamente instabile e impone l'artrodesi. La rottura si sospetta per una sporgenza complessiva delle masse laterali pari o superiore a 7 mm, regola di Spence, o per un intervallo atlanto-odontoideo aumentato, e si conferma in risonanza. Il discriminatore è il legamento, non il conto delle corticali né l'ampiezza del canale, che a quel livello risparmia di regola il midollo.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK534091/">StatPearls</a> · stabilità di C1 e legamento trasverso dell'atlante, regola di Spence.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b14" tabindex="-1">
+  <p class="tag">B14</p>
+  <h2 class="q-text">In una frattura toraco-lombare la tomografia mostra il coinvolgimento della metà posteriore del corpo vertebrale e della parete posteriore, con frammenti retropulsi nel canale. Perché questo reperto pesa più di una semplice deformità a cuneo nel giudizio di instabilità?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché la deformità a cuneo coinvolge sempre tutte e tre le colonne di Denis</button></li>
+    <li><button type="button" data-correct><span class="key">B</span>Perché segnala il cedimento della colonna media di Denis</button></li>
+    <li><button type="button"><span class="key">C</span>Perché la parete posteriore appartiene alla colonna posteriore</button></li>
+    <li><button type="button"><span class="key">D</span>Perché ogni frattura a scoppio comporta un deficit neurologico completo</button></li>
+    <li><button type="button"><span class="key">E</span>Perché la cifosi predice il rischio neurologico meglio del pattern colonnare</button></li>
+  </ol>
+  <div class="rationale">
+    <p>La metà posteriore del corpo con la parete posteriore è la colonna media di Denis, vero discriminante meccanico del segmento: integra nella compressione pura a cuneo, dove funge da fulcro e il quadro resta stabile, cede invece nella frattura a scoppio e libera i frammenti retropulsi nel canale, trasformando una deformità in una minaccia neurologica. Il cedimento di due colonne su tre definisce l'instabilità. Il discriminatore è lo stato della colonna media, non l'entità della cifosi.</p>
+    <p class="refs"><a href="https://www.ncbi.nlm.nih.gov/books/NBK544310/">StatPearls</a> · classificazione di Denis, colonna media determinante della stabilità.</p>
+  </div>
+</section>
+
+<section class="item" data-q="b15" tabindex="-1">
+  <p class="tag">B15</p>
+  <h2 class="q-text">Un paziente arriva dodici ore dopo un trauma cervicale con lesione midollare incompleta. Perché oggi non si avvia il protocollo con metilprednisolone ad alte dosi?</h2>
+  <ol class="opts">
+    <li><button type="button"><span class="key">A</span>Perché il cortisone è controindicato in ogni lesione del sistema nervoso centrale</button></li>
+    <li><button type="button"><span class="key">B</span>Perché il metilprednisolone agisce solo sull'edema vasogenico, assente nel midollo</button></li>
+    <li><button type="button"><span class="key">C</span>Perché la lesione incompleta ha prognosi troppo buona per giustificarlo</button></li>
+    <li><button type="button" data-correct><span class="key">D</span>Perché oltre le otto ore il beneficio scompare e resta l'eccesso di mortalità</button></li>
+    <li><button type="button"><span class="key">E</span>Perché il protocollo richiede una lesione completa per essere efficace</button></li>
+  </ol>
+  <div class="rationale">
+    <p>Il razionale del cortisonico ad alto dosaggio è interrompere la cascata ipossico-ischemica del danno secondario, che si esaurisce nelle prime ore; oltre l'ottava ora il beneficio motorio, già marginale nelle finestre precoci, scompare, mentre resta intero l'eccesso di mortalità per infezioni, sepsi, embolie polmonari ed emorragie gastrointestinali. È questo bilancio, non l'assenza di effetto, ad aver fatto abbandonare il protocollo NASCIS nella maggior parte dei centri. Il discriminatore è la finestra delle otto ore rispetto al rapporto fra rischio e beneficio.</p>
+    <p class="refs"><a href="https://journals.sagepub.com/doi/10.1177/2192568217703085">AOSpine 2017</a> · metilprednisolone opzionale solo entro 8 ore, non oltre.</p>
+  </div>
+</section>
+
+<div class="controls"><button id="next" type="button">inizia</button></div>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+
+  var KEY = "vigil:" + document.body.dataset.date;
+  var st = { a: {}, pos: -1 };
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || "{}");
+    if (raw && typeof raw === "object") {
+      st.a = raw.a || {};
+      st.pos = typeof raw.pos === "number" ? raw.pos : -1;
+    }
+  } catch (e) {}
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var N = items.length;
+  var cover = document.getElementById("cover");
+  var next = document.getElementById("next");
+
+  if (!N || !next) {
+    cover.classList.add("on");
+    return;
+  }
+
+  var mode = "cover";
+  var wrong = [];
+  var rpos = 0;
+  var reviewed = false;
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ a: st.a, pos: st.pos })); } catch (e) {}
+  }
+
+  function resolve(item) {
+    if (item.classList.contains("answered")) return;
+    var idx = st.a[item.dataset.q];
+    if (idx === undefined) return;
+    item.classList.add("answered");
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.disabled = true;
+      if (i === idx && !b.hasAttribute("data-correct")) b.classList.add("ko");
+      if (b.hasAttribute("data-correct")) { b.classList.add("is-correct"); b.querySelector(".key").textContent = "✓"; }
+    });
+  }
+
+  function findWrong() {
+    wrong = [];
+    items.forEach(function (item, i) {
+      var idx = st.a[item.dataset.q];
+      if (idx === undefined) return;
+      var b = item.querySelectorAll(".opts button")[idx];
+      if (!(b && b.hasAttribute("data-correct"))) wrong.push(i);
+    });
+  }
+
+  function current() {
+    return mode === "review" ? items[wrong[rpos]] : items[st.pos];
+  }
+
+  function complete(item) {
+    return st.a[item.dataset.q] !== undefined;
+  }
+
+  function ending() {
+    findWrong();
+    next.textContent = "termina";
+    next.hidden = false;
+  }
+
+  function show() {
+    items.forEach(function (el) { el.classList.remove("on"); });
+    cover.classList.remove("on");
+    next.hidden = true;
+
+    var focus;
+    if (mode === "cover") {
+      cover.classList.add("on");
+      next.textContent = "inizia";
+      next.hidden = false;
+      focus = cover;
+    } else {
+      var item = current();
+      item.classList.add("on");
+      if (st.a[item.dataset.q] !== undefined) {
+        resolve(item);
+        item.classList.add("full");
+      }
+      if (mode === "run" && st.pos === N - 1) {
+        if (complete(item)) ending();
+      } else if (complete(item)) {
+        next.textContent = "continua";
+        next.hidden = false;
+      }
+      focus = item;
+    }
+    window.scrollTo(0, 0);
+    if (focus) focus.focus({ preventScroll: true });
+  }
+
+  function advance() {
+    if (mode === "review") {
+      rpos++;
+      if (rpos >= wrong.length) mode = "run";
+      show();
+      return;
+    }
+    st.pos = Math.min(st.pos + 1, N - 1);
+    save();
+    show();
+  }
+
+  next.addEventListener("click", function () {
+    if (mode === "cover") {
+      mode = "run";
+      st.pos = 0;
+      save();
+      show();
+      return;
+    }
+    if (mode === "run" && st.pos === N - 1 && complete(current())) {
+      if (wrong.length && !reviewed) {
+        reviewed = true;
+        mode = "review";
+        rpos = 0;
+        show();
+        return;
+      }
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      location.reload();
+      return;
+    }
+    advance();
+  });
+
+  items.forEach(function (item) {
+    var qid = item.dataset.q;
+    item.querySelectorAll(".opts button").forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        if (st.a[qid] !== undefined) return;
+        st.a[qid] = i;
+        save();
+        if (b.hasAttribute("data-correct")) { advance(); return; }
+        resolve(item);
+        item.classList.add("full");
+        if (mode === "run" && st.pos === N - 1) { ending(); return; }
+        next.textContent = "continua";
+        next.hidden = false;
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var k = ev.key;
+    if (mode === "run" || mode === "review") {
+      var item = current();
+      if (item && st.a[item.dataset.q] === undefined) {
+        var i = "abcde".indexOf(k.toLowerCase());
+        if (i === -1 && k >= "1" && k <= "5") i = k.charCodeAt(0) - 49;
+        var buttons = item.querySelectorAll(".opts button");
+        if (i > -1 && i < buttons.length) { buttons[i].click(); ev.preventDefault(); return; }
+      }
+    }
+    if ((k === "Enter" || k === " " || k === "ArrowRight") && !next.hidden) {
+      if (ev.target.closest && ev.target.closest("button, a")) return;
+      next.click();
+      ev.preventDefault();
+    }
+  });
+
+  if (st.pos >= N) st.pos = N - 1;
+  if (st.pos >= 0) mode = "run";
+  show();
+})();
+</script>
+</body>
+</html>
