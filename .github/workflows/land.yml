@@ -28,11 +28,3 @@ jobs:
           if [ "$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)" = "$GITHUB_SHA" ]; then
             git push --force-with-lease="refs/heads/$BRANCH:$GITHUB_SHA" origin --delete "$BRANCH"
           fi
-  # a push made with the workflow's token starts no other workflow, so the deploy of what landed is called from here
-  deploy:
-    needs: land
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/deploy-pages.yml

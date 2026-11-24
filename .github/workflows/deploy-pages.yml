@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
-  workflow_call:
+  workflow_run:
+    workflows:
+      - land
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
@@ -19,6 +23,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deploy3.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy1.outputs.page_url }}
