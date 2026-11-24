@@ -1,5 +1,7 @@
 name: land
 # The agents that publish the pages push branches of any name; each lands on main, and deploy pages runs after it.
+# This repository is public, and a public repository cannot call the workflow land of the private repository setup, so
+# the job is here, as setup's land.yml has it.
 on:
   push:
     branches-ignore: [main]
@@ -7,4 +9,24 @@ permissions:
   contents: write
 jobs:
   land:
-    uses: aerivox/setup/.github/workflows/land.yml@main
+    runs-on: ubuntu-latest
+    concurrency:
+      group: land
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: rebase onto main and fast-forward main
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+          # the run of the last push to the branch deletes it, with a lease, so an earlier run leaves a newer commit alone
+          if [ "$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)" = "$GITHUB_SHA" ]; then
+            git push --force-with-lease="refs/heads/$BRANCH:$GITHUB_SHA" origin --delete "$BRANCH"
+          fi
