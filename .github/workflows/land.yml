@@ -1,10 +1,8 @@
 name: land
-# The agents that publish the pages push branches of any name; each lands on main, and deploy pages runs after it.
-# This repository is public, and a public repository cannot call the workflow land of the private repository setup, so
-# the job is here, as setup's land.yml has it.
+# a public repository cannot call a workflow of the private repository setup, so the job of setup's land.yml is here
 on:
   push:
-    branches-ignore: [main]
+    branches: ['claude/**']
 permissions:
   contents: write
 jobs:
@@ -30,3 +28,11 @@ jobs:
           if [ "$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)" = "$GITHUB_SHA" ]; then
             git push --force-with-lease="refs/heads/$BRANCH:$GITHUB_SHA" origin --delete "$BRANCH"
           fi
+  # a push made with the workflow's token starts no other workflow, so the deploy of what landed is called from here
+  deploy:
+    needs: land
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages.yml
