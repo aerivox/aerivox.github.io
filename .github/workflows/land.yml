@@ -1,0 +1,10 @@
+name: land
+# The agents that publish the pages push branches of any name; each lands on main, and deploy pages runs after it.
+on:
+  push:
+    branches-ignore: [main]
+permissions:
+  contents: write
+jobs:
+  land:
+    uses: aerivox/setup/.github/workflows/land.yml@main
